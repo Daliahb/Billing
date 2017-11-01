@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2207A5F1-BD35-4DF0-9900-02703255D63D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+    <RootNamespace>WindowsApplication1</RootNamespace>
+    <AssemblyName>Billing</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Billing.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Billing.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>maple1_logo %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Devart.Data, Version=5.0.1772.0, Culture=neutral, PublicKeyToken=09af7300eec23701" />
+    <Reference Include="Devart.Data.MySql, Version=8.9.980.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\Microsoft.Vbe.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.DLL</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.vb" />
+    <Compile Include="Collection\Bank.vb" />
+    <Compile Include="Collection\Client.vb" />
+    <Compile Include="Collection\Company.vb" />
+    <Compile Include="Collection\Obj.vb" />
+    <Compile Include="Collection\Role.vb" />
+    <Compile Include="Collection\User.vb" />
+    <Compile Include="DataSets\DataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsAccountManagers.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAccountManagers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsAccountManagers.vb">
+      <DependentUpon>dsAccountManagers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsBeginingBalance.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBeginingBalance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsBeginingBalance.vb">
+      <DependentUpon>dsBeginingBalance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsCashFlow.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCashFlow.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsClientsBanks.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsClientsBanks.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMapleAccounts.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMapleAccounts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsSoftwares.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSoftwares.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsTest.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsTest.vb">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsUser.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsUser.vb">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStatementOfAccount.Designer.vb">
+      <DependentUpon>frmStatementOfAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStatementOfAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPurchaseNote.Designer.vb">
+      <DependentUpon>frmPurchaseNote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPurchaseNote.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmApproveInvoicesDate.Designer.vb">
+      <DependentUpon>frmApproveInvoicesDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmApproveInvoicesDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rates\frmEditProviderRate.Designer.vb">
+      <DependentUpon>frmEditProviderRate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmEditProviderRate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmClientStatementOfAccount.Designer.vb">
+      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClientStatementOfAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditPurchace.Designer.vb">
+      <DependentUpon>frmEditPurchace.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditPurchace.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPaymentBankFees.Designer.vb">
+      <DependentUpon>frmPaymentBankFees.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPaymentBankFees.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMaplePayments.Designer.vb">
+      <DependentUpon>frmMaplePayments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMaplePayments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddMaplePayment.Designer.vb">
+      <DependentUpon>frmAddMaplePayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddMaplePayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCashflowReport.Designer.vb">
+      <DependentUpon>frmCashflowReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCashflowReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPurchases.Designer.vb">
+      <DependentUpon>frmPurchases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPurchases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCompanyPerformanceReport.Designer.vb">
+      <DependentUpon>frmCompanyPerformanceReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCompanyPerformanceReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPassword.Designer.vb">
+      <DependentUpon>frmPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmInvoicing.Designer.vb">
+      <DependentUpon>FrmInvoicing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmInvoicing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSetTestEmail.Designer.vb">
+      <DependentUpon>FrmSetTestEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSetTestEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddUser.Designer.vb">
+      <DependentUpon>frmAddUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.Designer.vb">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTransactions.Designer.vb">
+      <DependentUpon>frmTransactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTransactions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBegingBalances.designer.vb">
+      <DependentUpon>FrmBegingBalances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBegingBalances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmClientsPayments.Designer.vb">
+      <DependentUpon>frmClientsPayments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClientsPayments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddVoucher.Designer.vb">
+      <DependentUpon>frmAddVoucher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddVoucher.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddClientPayment.Designer.vb">
+      <DependentUpon>frmAddClientPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddClientPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVouchers.Designer.vb">
+      <DependentUpon>frmVouchers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmVouchers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPerformanceReport.Designer.vb">
+      <DependentUpon>frmPerformanceReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPerformanceReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rates\frmRatesByCountryProvider.Designer.vb">
+      <DependentUpon>frmRatesByCountryProvider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmRatesByCountryProvider.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rates\frmRatesByCode.Designer.vb">
+      <DependentUpon>frmRatesByCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmRatesByCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rates\frmRatesByProvider.Designer.vb">
+      <DependentUpon>frmRatesByProvider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmRatesByProvider.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rates\frmImportOffer.Designer.vb">
+      <DependentUpon>frmImportOffer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmImportOffer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMappleAccounts.designer.vb">
+      <DependentUpon>frmMappleAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMappleAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAccountManagers.designer.vb">
+      <DependentUpon>frmAccountManagers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAccountManagers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddBank.Designer.vb">
+      <DependentUpon>frmAddBank.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddBank.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddClient.Designer.vb">
+      <DependentUpon>frmAddClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddCompany.Designer.vb">
+      <DependentUpon>frmAddCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBanks.Designer.vb">
+      <DependentUpon>frmBanks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBanks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBilling.Designer.vb">
+      <DependentUpon>frmBilling.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBilling.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmClients.Designer.vb">
+      <DependentUpon>frmClients.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClients.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCompanies.Designer.vb">
+      <DependentUpon>frmCompanies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCompanies.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmImportData.Designer.vb">
+      <DependentUpon>frmImportData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmImportData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInvoices.Designer.vb">
+      <DependentUpon>frmInvoices.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInvoices.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmProgressBar.Designer.vb">
+      <DependentUpon>frmProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmProgressBar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSoftwares.designer.vb">
+      <DependentUpon>FrmSoftwares.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSoftwares.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmailBody.Designer.vb">
+      <DependentUpon>frmEmailBody.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmailBody.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generate Invoice.vb" />
+    <Compile Include="dbAccess.vb" />
+    <Compile Include="Enumerators.vb" />
+    <Compile Include="Forms\FrmMain.Designer.vb">
+      <DependentUpon>FrmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Rates\frmAllRates.Designer.vb">
+      <DependentUpon>frmAllRates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rates\frmAllRates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendEmails.vb" />
+    <Compile Include="voip_billing_system_devDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>voip_billing_system_devDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmStatementOfAccount.resx">
+      <DependentUpon>frmStatementOfAccount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPurchaseNote.resx">
+      <DependentUpon>frmPurchaseNote.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmApproveInvoicesDate.resx">
+      <DependentUpon>frmApproveInvoicesDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmEditProviderRate.resx">
+      <DependentUpon>frmEditProviderRate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmClientStatementOfAccount.resx">
+      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditPurchace.resx">
+      <DependentUpon>frmEditPurchace.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPaymentBankFees.resx">
+      <DependentUpon>frmPaymentBankFees.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMaplePayments.resx">
+      <DependentUpon>frmMaplePayments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddMaplePayment.resx">
+      <DependentUpon>frmAddMaplePayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCashflowReport.resx">
+      <DependentUpon>frmCashflowReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPurchases.resx">
+      <DependentUpon>frmPurchases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCompanyPerformanceReport.resx">
+      <DependentUpon>frmCompanyPerformanceReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPassword.resx">
+      <DependentUpon>frmPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmInvoicing.resx">
+      <DependentUpon>FrmInvoicing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSetTestEmail.resx">
+      <DependentUpon>FrmSetTestEmail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddUser.resx">
+      <DependentUpon>frmAddUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransactions.resx">
+      <DependentUpon>frmTransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBegingBalances.resx">
+      <DependentUpon>FrmBegingBalances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmClientsPayments.resx">
+      <DependentUpon>frmClientsPayments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddVoucher.resx">
+      <DependentUpon>frmAddVoucher.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddClientPayment.resx">
+      <DependentUpon>frmAddClientPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVouchers.resx">
+      <DependentUpon>frmVouchers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPerformanceReport.resx">
+      <DependentUpon>frmPerformanceReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmRatesByCountryProvider.resx">
+      <DependentUpon>frmRatesByCountryProvider.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmRatesByCode.resx">
+      <DependentUpon>frmRatesByCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmRatesByProvider.resx">
+      <DependentUpon>frmRatesByProvider.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmImportOffer.resx">
+      <DependentUpon>frmImportOffer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMappleAccounts.resx">
+      <DependentUpon>frmMappleAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAccountManagers.resx">
+      <DependentUpon>frmAccountManagers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddBank.resx">
+      <DependentUpon>frmAddBank.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddClient.resx">
+      <DependentUpon>frmAddClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddCompany.resx">
+      <DependentUpon>frmAddCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBanks.resx">
+      <DependentUpon>frmBanks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBilling.resx">
+      <DependentUpon>frmBilling.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmClients.resx">
+      <DependentUpon>frmClients.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCompanies.resx">
+      <DependentUpon>frmCompanies.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmImportData.resx">
+      <DependentUpon>frmImportData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInvoices.resx">
+      <DependentUpon>frmInvoices.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmProgressBar.resx">
+      <DependentUpon>frmProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSoftwares.resx">
+      <DependentUpon>FrmSoftwares.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmailBody.resx">
+      <DependentUpon>frmEmailBody.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rates\frmAllRates.resx">
+      <DependentUpon>frmAllRates.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DataSets\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsAccountManagers.xsc">
+      <DependentUpon>dsAccountManagers.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsAccountManagers.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAccountManagers.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsAccountManagers.xss">
+      <DependentUpon>dsAccountManagers.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsBeginingBalance.xsc">
+      <DependentUpon>dsBeginingBalance.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsBeginingBalance.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBeginingBalance.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsBeginingBalance.xss">
+      <DependentUpon>dsBeginingBalance.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCashFlow.xsc">
+      <DependentUpon>dsCashFlow.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCashFlow.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCashFlow.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsCashFlow.xss">
+      <DependentUpon>dsCashFlow.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsClientsBanks.xsc">
+      <DependentUpon>dsClientsBanks.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsClientsBanks.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsClientsBanks.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsClientsBanks.xss">
+      <DependentUpon>dsClientsBanks.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMapleAccounts.xsc">
+      <DependentUpon>dsMapleAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMapleAccounts.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMapleAccounts.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMapleAccounts.xss">
+      <DependentUpon>dsMapleAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSoftwares.xsc">
+      <DependentUpon>dsSoftwares.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSoftwares.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSoftwares.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsSoftwares.xss">
+      <DependentUpon>dsSoftwares.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsTest.xsc">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsTest.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTest.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsTest.xss">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsUser.xsc">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsUser.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUser.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsUser.xss">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="voip_billing_system_devDataSet.xsc">
+      <DependentUpon>voip_billing_system_devDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="voip_billing_system_devDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>voip_billing_system_devDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="voip_billing_system_devDataSet.xss">
+      <DependentUpon>voip_billing_system_devDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maple logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\small maple logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\maple logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="maple1_logo %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AccessibilityCplAdminLib">
+      <Guid>{714DD4F6-7676-4BDE-925A-C2FEC2073F36}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="LCC11">
+      <Guid>{EDCD5812-6A06-43C3-AFAC-46EF5D14E22C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
