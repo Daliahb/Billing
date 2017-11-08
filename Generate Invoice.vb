@@ -348,14 +348,14 @@ Public Class Generate_Invoice
                     Dim x As Integer
                     x = ds.Tables(0).Rows.Count - 5
                     For i = 1 To x
-                        worksheet.Rows(7).Insert()
+                        worksheet.Rows(4).Insert()
                     Next
 
                 End If
 
-                Me.worksheet.Range("B" & 4).Value = Now.Date
+                Me.worksheet.Range("B" & 1).Value = "Statement Of Acount   " & Now.Date.ToString("dd-MM-yyyy")
 
-                i = 6
+                i = 3
                 For Each dr As DataRow In ds.Tables(0).Rows
                     With dr
                         If Not .Item("Company_Code") Is DBNull.Value Then
@@ -398,6 +398,11 @@ Public Class Generate_Invoice
 
                             Me.worksheet.Range("J" & i).Value = intDiff
                         End If
+
+                        If Not .Item("AccountManager") Is DBNull.Value Then
+                            Me.worksheet.Range("K" & i).Value = .Item("AccountManager")
+                        End If
+
 
                         ' Fill Form DataGrid
                         intRowIndex = frmStatementOfAccount.DataGridView1.Rows.Add
@@ -444,7 +449,7 @@ Public Class Generate_Invoice
                     End If
 
                 End If
-                worksheet.Protect("111111", False, True, False, True, True, True, True, True, True, True, True, True, True, True, True)
+                '     worksheet.Protect("111111", False, True, False, True, True, True, True, True, True, True, True, True, True, True, True)
                 worksheet.SaveAs(Filename:=RootDirectory & "\" & strName)
                 ' excel.Workbooks.Close()
                 '  excel.Quit()

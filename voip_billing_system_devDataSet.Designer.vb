@@ -23340,13 +23340,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class AccountManagersTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -23359,7 +23359,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -23370,7 +23370,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -23391,7 +23391,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -23428,7 +23428,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -23451,7 +23451,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "AccountManagers"
@@ -23459,124 +23459,124 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Name", "Name")
             tableMapping.ColumnMappings.Add("Email", "Email")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`AccountManagers` WHERE ((`ID` = :Original_"& _ 
                 "ID) AND ((:IsNull_Name = 1 AND `Name` IS NULL) OR (`Name` = :Original_Name)) AND"& _ 
                 " ((:IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = :Original_Email)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Email"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`AccountManagers` (`Name`, `Email`) VALUES "& _ 
                 "(:Name, :Email)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Email"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`AccountManagers` SET `Name` = :Name, `Email` = "& _ 
                 ":Email WHERE ((`ID` = :Original_ID) AND ((:IsNull_Name = 1 AND `Name` IS NULL) O"& _ 
                 "R (`Name` = :Original_Name)) AND ((:IsNull_Email = 1 AND `Email` IS NULL) OR (`E"& _ 
                 "mail` = :Original_Email)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Email"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Email"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -23586,15 +23586,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Name, Email FROM voip_billing_system_dev.AccountManagers"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -23775,13 +23775,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class bank_accountsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -23794,7 +23794,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -23805,7 +23805,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -23826,7 +23826,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -23863,7 +23863,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -23886,7 +23886,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "bank_accounts"
@@ -23902,7 +23902,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`bank_accounts` WHERE ((`ID` = :Original_ID"& _ 
                 ") AND ((:IsNull_Bank_Name = 1 AND `Bank_Name` IS NULL) OR (`Bank_Name` = :Origin"& _ 
@@ -23919,178 +23919,178 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 " NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsNull_edit_by = 1 AND `edit_b"& _ 
                 "y` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Bank_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Account_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Account_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Account_Number"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Account_Number"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_IBAN"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Beneficiary_Bank_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Beneficiary_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Beneficiary_Bank_Address"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Beneficiary_Bank_Address"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_SWIFT"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_SWIFT"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`bank_accounts` (`Bank_Name`, `Account_Name"& _ 
                 "`, `Account_Number`, `IBAN`, `Beneficiary_Bank_Name`, `Beneficiary_Bank_Address`"& _ 
@@ -24098,70 +24098,70 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "ccount_Number, :IBAN, :Beneficiary_Bank_Name, :Beneficiary_Bank_Address, :SWIFT,"& _ 
                 " :Active, :inst_by, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Account_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Account_Number"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Beneficiary_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Beneficiary_Bank_Address"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "SWIFT"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`bank_accounts` SET `Bank_Name` = :Bank_Name, `A"& _ 
                 "ccount_Name` = :Account_Name, `Account_Number` = :Account_Number, `IBAN` = :IBAN"& _ 
@@ -24182,236 +24182,236 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "Original_inst_by)) AND ((:IsNull_edit_by = 1 AND `edit_by` IS NULL) OR (`edit_by"& _ 
                 "` = :Original_edit_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Account_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Account_Number"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Beneficiary_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Beneficiary_Bank_Address"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "SWIFT"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Bank_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Account_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Account_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Account_Number"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Account_Number"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Account_Number"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_IBAN"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Beneficiary_Bank_Name"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Beneficiary_Bank_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Beneficiary_Bank_Address"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Beneficiary_Bank_Address"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Beneficiary_Bank_Address"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_SWIFT"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_SWIFT"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "SWIFT"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -24421,15 +24421,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Bank_Name, Account_Name, Account_Number, IBAN, Beneficiary_Bank_Name, "& _ 
                 "Beneficiary_Bank_Address, SWIFT, Active, inst_by, edit_by FROM voip_billing_syst"& _ 
@@ -24825,13 +24825,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class BeginingBalancesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -24844,7 +24844,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -24855,7 +24855,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -24876,7 +24876,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -24913,7 +24913,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -24936,7 +24936,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "BeginingBalances"
@@ -24947,7 +24947,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Insert_Date", "Insert_Date")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`BeginingBalances` WHERE ((`ID` = :Original"& _ 
                 "_ID) AND (`FK_Client` = :Original_FK_Client) AND ((:IsNull_Client_Code = 1 AND `"& _ 
@@ -24955,112 +24955,112 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "= :Original_Amount) AND ((:IsNull_Insert_Date = 1 AND `Insert_Date` IS NULL) OR "& _ 
                 "(`Insert_Date` = :Original_Insert_Date)) AND (`edit_by` = :Original_edit_by))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Client_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`BeginingBalances` (`FK_Client`, `Client_Co"& _ 
                 "de`, `Amount`, `Insert_Date`, `edit_by`) VALUES (:FK_Client, :Client_Code, :Amou"& _ 
                 "nt, :Insert_Date, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`BeginingBalances` SET `FK_Client` = :FK_Client,"& _ 
                 " `Client_Code` = :Client_Code, `Amount` = :Amount, `Insert_Date` = :Insert_Date,"& _ 
@@ -25070,101 +25070,101 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "Insert_Date = 1 AND `Insert_Date` IS NULL) OR (`Insert_Date` = :Original_Insert_"& _ 
                 "Date)) AND (`edit_by` = :Original_edit_by))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Client_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -25174,15 +25174,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, Client_Code, Amount, Insert_Date, edit_by FROM voip_billing"& _ 
                 "_system_dev.BeginingBalances"
@@ -25376,13 +25376,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class billingTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -25395,7 +25395,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -25406,7 +25406,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -25427,7 +25427,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -25464,7 +25464,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -25487,7 +25487,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "billing"
@@ -25507,7 +25507,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("InOutBound", "InOutBound")
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`billing` WHERE ((`ID` = :Original_ID) AND "& _ 
                 "(`Client_Code` = :Original_Client_Code) AND (`Area_Name` = :Original_Area_Name) "& _ 
@@ -25526,204 +25526,204 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "inal_InOutBound)) AND ((:IsNull_inst_by = 1 AND `inst_by` IS NULL) OR (`inst_by`"& _ 
                 " = :Original_inst_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Area_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Area_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Total_Charges"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Charges"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Total_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InvoiceNo"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`billing` (`Client_Code`, `Area_Name`, `Are"& _ 
                 "a_Code`, `Total_Charges`, `Total_Duration`, `Billing_Period_From`, `Billing_Peri"& _ 
@@ -25732,101 +25732,101 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "ges, :Total_Duration, :Billing_Period_From, :Billing_Period_To, :FK_Software, :F"& _ 
                 "K_Invoice, :Insert_Date, :FK_Client, :InvoiceNo, :InOutBound, :inst_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Area_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Area_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Total_Charges"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Charges"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Total_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Duration"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InvoiceNo"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`billing` SET `Client_Code` = :Client_Code, `Are"& _ 
                 "a_Name` = :Area_Name, `Area_Code` = :Area_Code, `Total_Charges` = :Total_Charges"& _ 
@@ -25850,293 +25850,293 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "LL) OR (`InOutBound` = :Original_InOutBound)) AND ((:IsNull_inst_by = 1 AND `ins"& _ 
                 "t_by` IS NULL) OR (`inst_by` = :Original_inst_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Area_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Area_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Total_Charges"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Charges"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Total_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Duration"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InvoiceNo"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Area_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Area_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Area_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Total_Charges"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Charges"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Total_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Total_Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Software"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Software"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Invoice"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Invoice"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InvoiceNo"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InOutBound"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InOutBound"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -26146,15 +26146,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Bill"& _ 
                 "ing_Period_From, Billing_Period_To, FK_Software, FK_Invoice, Insert_Date, FK_Cli"& _ 
@@ -26602,13 +26602,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class cashflowdataTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -26621,7 +26621,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -26632,7 +26632,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -26653,7 +26653,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -26690,7 +26690,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -26713,7 +26713,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "cashflowdata"
@@ -26725,7 +26725,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Net", "Net")
             tableMapping.ColumnMappings.Add("Percentage", "Percentage")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`cashflowdata` WHERE ((`ID` = :Original_ID)"& _ 
                 " AND ((:IsNull_Invoice_Date = 1 AND `Invoice_Date` IS NULL) OR (`Invoice_Date` ="& _ 
@@ -26736,165 +26736,165 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "= :Original_Net)) AND ((:IsNull_Percentage = 1 AND `Percentage` IS NULL) OR (`Pe"& _ 
                 "rcentage` = :Original_Percentage)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Invoice_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Sales"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Sales"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Sales"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Sales"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Purchases"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Purchases"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Wire"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Wire"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Wire"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Wire"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Net"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Net"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Net"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Net"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Percentage"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Percentage"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`cashflowdata` (`Invoice_Date`, `Sales`, `P"& _ 
                 "urchases`, `Wire`, `Net`, `Percentage`) VALUES (:Invoice_Date, :Sales, :Purchase"& _ 
                 "s, :Wire, :Net, :Percentage)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Sales"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Sales"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Purchases"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Wire"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Wire"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Net"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Net"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Percentage"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`cashflowdata` SET `Invoice_Date` = :Invoice_Dat"& _ 
                 "e, `Sales` = :Sales, `Purchases` = :Purchases, `Wire` = :Wire, `Net` = :Net, `Pe"& _ 
@@ -26907,154 +26907,154 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "ull_Percentage = 1 AND `Percentage` IS NULL) OR (`Percentage` = :Original_Percen"& _ 
                 "tage)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Sales"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Sales"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Purchases"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Wire"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Wire"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Net"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Net"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Percentage"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Invoice_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Invoice_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Sales"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Sales"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Sales"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Sales"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Purchases"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Purchases"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Purchases"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Wire"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Wire"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Wire"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Wire"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Net"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Net"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Net"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Net"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Percentage"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Percentage"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Percentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -27064,15 +27064,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Invoice_Date, Sales, Purchases, Wire, Net, Percentage FROM voip_billin"& _ 
                 "g_system_dev.cashflowdata"
@@ -27350,13 +27350,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class clientsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -27369,7 +27369,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -27380,7 +27380,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -27401,7 +27401,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -27438,7 +27438,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -27461,7 +27461,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "clients"
@@ -27491,7 +27491,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`clients` WHERE ((`ID` = :Original_ID) AND "& _ 
                 "(`CompanyCode` = :Original_CompanyCode) AND ((:IsNull_TimeZone = 1 AND `TimeZone"& _ 
@@ -27516,285 +27516,285 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "by` IS NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsNull_edit_by = 1 AND `"& _ 
                 "edit_by` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_CompanyCode"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "CompanyCode"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_TimeZone"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_TimeZone"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_Period"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Period"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Statement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Statement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Companies"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Companies"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccounts"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccounts"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BankAccountName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BankAccountName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BankAccountNumber"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BankAccountNumber"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_IBAN"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BeneficiaryBankName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BeneficiaryBankName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BeneficiaryBankAddress"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BeneficiaryBankAddress"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Swift"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Swift"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Swift"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Swift"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`clients` (`CompanyName`, `CompanyCode`, `A"& _ 
                 "ddress`, `TimeZone`, `Invoice_Period`, `Statement`, `Credit_Limit`, `FK_AccountM"& _ 
@@ -27807,167 +27807,167 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "nkAccountNumber, :IBAN, :BeneficiaryBankName, :BeneficiaryBankAddress, :Swift, :"& _ 
                 "Agreement, :Active, :inst_by, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CompanyName"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CompanyName"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CompanyCode"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "CompanyCode"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Address"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Address"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "TimeZone"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_Period"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Period"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Statement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Statement"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Companies"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Companies"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccounts"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccounts"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Email"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CCEmails"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CCEmails"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Rates_Email"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Rates_Email"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BankAccountName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BankAccountNumber"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BeneficiaryBankName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BeneficiaryBankAddress"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Swift"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Swift"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`clients` SET `CompanyName` = :CompanyName, `Com"& _ 
                 "panyCode` = :CompanyCode, `Address` = :Address, `TimeZone` = :TimeZone, `Invoice"& _ 
@@ -28001,440 +28001,440 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "`inst_by` IS NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsNull_edit_by = 1"& _ 
                 " AND `edit_by` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CompanyName"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CompanyName"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CompanyCode"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "CompanyCode"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Address"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Address"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "TimeZone"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_Period"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Period"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Statement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Statement"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Companies"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Companies"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccounts"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccounts"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Email"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CCEmails"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CCEmails"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Rates_Email"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Rates_Email"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BankAccountName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BankAccountNumber"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BeneficiaryBankName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "BeneficiaryBankAddress"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Swift"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Swift"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_CompanyCode"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "CompanyCode"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_TimeZone"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_TimeZone"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "TimeZone"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_Period"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_Period"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Statement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Statement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit_Limit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit_Limit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Companies"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Companies"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccounts"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccounts"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_InvoiceNo"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "InvoiceNo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BankAccountName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BankAccountName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BankAccountNumber"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BankAccountNumber"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BankAccountNumber"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_IBAN"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_IBAN"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "IBAN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BeneficiaryBankName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BeneficiaryBankName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_BeneficiaryBankAddress"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_BeneficiaryBankAddress"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "BeneficiaryBankAddress"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Swift"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Swift"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Swift"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Swift"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Agreement"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Agreement"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -28444,15 +28444,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, CompanyName, CompanyCode, Address, TimeZone, Invoice_Period, Statement"& _ 
                 ", Credit_Limit, FK_AccountManager, FK_Companies, FK_BankAccounts, InvoiceNo, Bil"& _ 
@@ -29099,13 +29099,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class clients_paymentsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -29118,7 +29118,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -29129,7 +29129,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -29150,7 +29150,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -29187,7 +29187,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -29210,7 +29210,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "clients_payments"
@@ -29226,7 +29226,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             tableMapping.ColumnMappings.Add("isBankFeesSentToVoucher", "isBankFeesSentToVoucher")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`clients_payments` WHERE ((`ID` = :Original"& _ 
                 "_ID) AND (`FK_Client` = :Original_FK_Client) AND (`ClientAmount` = :Original_Cli"& _ 
@@ -29240,148 +29240,148 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "SentToVoucher = 1 AND `isBankFeesSentToVoucher` IS NULL) OR (`isBankFeesSentToVo"& _ 
                 "ucher` = :Original_isBankFeesSentToVoucher)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_RecievedAmount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`clients_payments` (`FK_Client`, `ClientAmo"& _ 
                 "unt`, `RecievedAmount`, `Bank_Fees`, `FK_Bank`, `Note`, `insert_Date`, `inst_by`"& _ 
@@ -29389,76 +29389,76 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "evedAmount, :Bank_Fees, :FK_Bank, :Note, :insert_Date, :inst_by, :edit_by, :isBa"& _ 
                 "nkFeesSentToVoucher)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`clients_payments` SET `FK_Client` = :FK_Client,"& _ 
                 " `ClientAmount` = :ClientAmount, `RecievedAmount` = :RecievedAmount, `Bank_Fees`"& _ 
@@ -29476,212 +29476,212 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "tToVoucher` IS NULL) OR (`isBankFeesSentToVoucher` = :Original_isBankFeesSentToV"& _ 
                 "oucher)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_RecievedAmount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -29691,15 +29691,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, ClientAmount, RecievedAmount, Bank_Fees, FK_Bank, Note, ins"& _ 
                 "ert_Date, inst_by, edit_by, isBankFeesSentToVoucher FROM voip_billing_system_dev"& _ 
@@ -30015,13 +30015,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class CodesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -30034,7 +30034,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -30045,7 +30045,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -30066,7 +30066,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -30103,7 +30103,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -30126,7 +30126,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Codes"
@@ -30134,106 +30134,106 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Code", "Code")
             tableMapping.ColumnMappings.Add("Destination", "Destination")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Codes` WHERE ((`ID` = :Original_ID) AND (`"& _ 
                 "Code` = :Original_Code) AND ((:IsNull_Destination = 1 AND `Destination` IS NULL)"& _ 
                 " OR (`Destination` = :Original_Destination)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Destination"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Destination"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Destination"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Destination"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Codes` (`Code`, `Destination`) VALUES (:Co"& _ 
                 "de, :Destination)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Destination"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Destination"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Codes` SET `Code` = :Code, `Destination` = :Des"& _ 
                 "tination WHERE ((`ID` = :Original_ID) AND (`Code` = :Original_Code) AND ((:IsNul"& _ 
                 "l_Destination = 1 AND `Destination` IS NULL) OR (`Destination` = :Original_Desti"& _ 
                 "nation)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Destination"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Destination"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Destination"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Destination"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Destination"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Destination"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -30243,15 +30243,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Code, Destination FROM voip_billing_system_dev.Codes"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -30428,13 +30428,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class companiesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -30447,7 +30447,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -30458,7 +30458,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -30479,7 +30479,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -30516,7 +30516,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -30539,7 +30539,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "companies"
@@ -30556,7 +30556,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`companies` WHERE ((`ID` = :Original_ID) AN"& _ 
                 "D (`Name` = :Original_Name) AND ((:IsNull_Billing_Email = 1 AND `Billing_Email` "& _ 
@@ -30570,137 +30570,137 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "_by` IS NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsNull_edit_by = 1 AND "& _ 
                 "`edit_by` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Email"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_LogoName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_LogoName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_EmailCredentialUsername"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_EmailCredentialUsername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_EmailCredentialPassword"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_EmailCredentialPassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`companies` (`Name`, `Address`, `Billing_Em"& _ 
                 "ail`, `CC_Emails`, `LogoName`, `EmailCredentialUsername`, `EmailCredentialPasswo"& _ 
@@ -30708,79 +30708,79 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 ":Billing_Email, :CC_Emails, :LogoName, :EmailCredentialUsername, :EmailCredentia"& _ 
                 "lPassword, :EmailSignature, :Active, :inst_by, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Address"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Address"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CC_Emails"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CC_Emails"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "LogoName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailCredentialUsername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailCredentialPassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailSignature"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "EmailSignature"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`companies` SET `Name` = :Name, `Address` = :Add"& _ 
                 "ress, `Billing_Email` = :Billing_Email, `CC_Emails` = :CC_Emails, `LogoName` = :"& _ 
@@ -30798,204 +30798,204 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "ND `inst_by` IS NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsNull_edit_by "& _ 
                 "= 1 AND `edit_by` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Address"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Address"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "CC_Emails"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "CC_Emails"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "LogoName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailCredentialUsername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailCredentialPassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "EmailSignature"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "EmailSignature"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Email"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Email"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Billing_Email"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_LogoName"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_LogoName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "LogoName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_EmailCredentialUsername"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_EmailCredentialUsername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialUsername"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_EmailCredentialPassword"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_EmailCredentialPassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "EmailCredentialPassword"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Active"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -31005,15 +31005,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Name, Address, Billing_Email, CC_Emails, LogoName, EmailCredentialUser"& _ 
                 "name, EmailCredentialPassword, EmailSignature, Active, inst_by, edit_by FROM voi"& _ 
@@ -31386,13 +31386,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class EmailBodyTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -31405,7 +31405,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -31416,7 +31416,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -31437,7 +31437,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -31474,7 +31474,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -31497,28 +31497,28 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "EmailBody"
             tableMapping.ColumnMappings.Add("Body", "Body")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`EmailBody` (`Body`, `edit_by`) VALUES (:Bo"& _ 
                 "dy, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Body"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Body"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
@@ -31527,15 +31527,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Body, edit_by FROM voip_billing_system_dev.EmailBody"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -31636,13 +31636,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class HistoryTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -31655,7 +31655,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -31666,7 +31666,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -31687,7 +31687,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -31724,7 +31724,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -31747,7 +31747,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "History"
@@ -31759,7 +31759,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("ActionType", "ActionType")
             tableMapping.ColumnMappings.Add("Note", "Note")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`History` WHERE ((`ID` = :Original_ID) AND "& _ 
                 "(`Date` = :Original_Date) AND (`Source_Type` = :Original_Source_Type) AND (`Sour"& _ 
@@ -31767,118 +31767,118 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "pe` = :Original_ActionType) AND ((:IsNull_Note = 1 AND `Note` IS NULL) OR (`Note"& _ 
                 "` = :Original_Note)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_fk_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "fk_User"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ActionType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ActionType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`History` (`Date`, `Source_Type`, `Source_I"& _ 
                 "D`, `fk_User`, `ActionType`, `Note`) VALUES (:Date, :Source_Type, :Source_ID, :f"& _ 
                 "k_User, :ActionType, :Note)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "fk_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "fk_User"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ActionType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ActionType"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`History` SET `Date` = :Date, `Source_Type` = :S"& _ 
                 "ource_Type, `Source_ID` = :Source_ID, `fk_User` = :fk_User, `ActionType` = :Acti"& _ 
@@ -31887,107 +31887,107 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "e_ID) AND (`fk_User` = :Original_fk_User) AND (`ActionType` = :Original_ActionTy"& _ 
                 "pe) AND ((:IsNull_Note = 1 AND `Note` IS NULL) OR (`Note` = :Original_Note)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "fk_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "fk_User"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ActionType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ActionType"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_fk_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "fk_User"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ActionType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ActionType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -31997,15 +31997,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, `Date`, Source_Type, Source_ID, fk_User, ActionType, Note FROM voip_bi"& _ 
                 "lling_system_dev.History"
@@ -32183,13 +32183,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class invoicesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -32202,7 +32202,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -32213,7 +32213,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -32234,7 +32234,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -32271,7 +32271,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -32294,7 +32294,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "invoices"
@@ -32313,7 +32313,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             tableMapping.ColumnMappings.Add("send_email_by", "send_email_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`invoices` WHERE ((`ID` = :Original_ID) AND"& _ 
                 " ((:IsNull_Invoice_No = 1 AND `Invoice_No` IS NULL) OR (`Invoice_No` = :Original"& _ 
@@ -32334,234 +32334,234 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "al_inst_by)) AND ((:IsNull_send_email_by = 1 AND `send_email_by` IS NULL) OR (`s"& _ 
                 "end_email_by` = :Original_send_email_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Invoice_No"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_No"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Client_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Amount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Duration"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isSentEmail"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isSentEmail"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`invoices` (`Invoice_No`, `FK_Client`, `Cli"& _ 
                 "ent_Code`, `Date`, `Billing_Period_From`, `Billing_Period_To`, `Amount`, `Durati"& _ 
@@ -32570,96 +32570,96 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "m, :Billing_Period_To, :Amount, :Duration, :FK_BankAccount, :FK_AccountManager, "& _ 
                 ":isSentEmail, :inst_by, :send_email_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_No"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isSentEmail"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`invoices` SET `Invoice_No` = :Invoice_No, `FK_C"& _ 
                 "lient` = :FK_Client, `Client_Code` = :Client_Code, `Date` = :Date, `Billing_Peri"& _ 
@@ -32685,318 +32685,318 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "t_by)) AND ((:IsNull_send_email_by = 1 AND `send_email_by` IS NULL) OR (`send_em"& _ 
                 "ail_by` = :Original_send_email_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Invoice_No"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isSentEmail"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Invoice_No"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Invoice_No"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Invoice_No"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Client_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Amount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Duration"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isSentEmail"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isSentEmail"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isSentEmail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_send_email_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "send_email_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -33006,15 +33006,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Invoice_No, FK_Client, Client_Code, `Date`, Billing_Period_From, Billi"& _ 
                 "ng_Period_To, Amount, Duration, FK_BankAccount, FK_AccountManager, isSentEmail, "& _ 
@@ -33488,13 +33488,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class Maple_ClientsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -33507,7 +33507,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -33518,7 +33518,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -33539,7 +33539,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -33576,7 +33576,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -33599,65 +33599,65 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Maple_Clients"
             tableMapping.ColumnMappings.Add("Id", "Id")
             tableMapping.ColumnMappings.Add("Code", "Code")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Maple_Clients` WHERE ((`Id` = :Original_Id"& _ 
                 ") AND (`Code` = :Original_Code))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Maple_Clients` (`Code`) VALUES (:Code)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Maple_Clients` SET `Code` = :Code WHERE ((`Id` "& _ 
                 "= :Original_Id) AND (`Code` = :Original_Code))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -33667,15 +33667,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Id, Code FROM voip_billing_system_dev.Maple_Clients"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -33828,13 +33828,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class maple_paymentsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -33847,7 +33847,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -33858,7 +33858,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -33879,7 +33879,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -33916,7 +33916,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -33939,7 +33939,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "maple_payments"
@@ -33955,7 +33955,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             tableMapping.ColumnMappings.Add("isBankFeesSentToVoucher", "isBankFeesSentToVoucher")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`maple_payments` WHERE ((`ID` = :Original_I"& _ 
                 "D) AND (`FK_Client` = :Original_FK_Client) AND (`ClientAmount` = :Original_Clien"& _ 
@@ -33969,148 +33969,148 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "ntToVoucher = 1 AND `isBankFeesSentToVoucher` IS NULL) OR (`isBankFeesSentToVouc"& _ 
                 "her` = :Original_isBankFeesSentToVoucher)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_RecievedAmount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`maple_payments` (`FK_Client`, `ClientAmoun"& _ 
                 "t`, `RecievedAmount`, `Bank_Fees`, `FK_Bank`, `Note`, `insert_Date`, `inst_by`, "& _ 
@@ -34118,76 +34118,76 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "edAmount, :Bank_Fees, :FK_Bank, :Note, :insert_Date, :inst_by, :edit_by, :isBank"& _ 
                 "FeesSentToVoucher)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`maple_payments` SET `FK_Client` = :FK_Client, `"& _ 
                 "ClientAmount` = :ClientAmount, `RecievedAmount` = :RecievedAmount, `Bank_Fees` ="& _ 
@@ -34205,212 +34205,212 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "oVoucher` IS NULL) OR (`isBankFeesSentToVoucher` = :Original_isBankFeesSentToVou"& _ 
                 "cher)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ClientAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "ClientAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_RecievedAmount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_RecievedAmount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "RecievedAmount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Bank_Fees"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Bank_Fees"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Note"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Note"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Note"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isBankFeesSentToVoucher"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isBankFeesSentToVoucher"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -34420,15 +34420,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, ClientAmount, RecievedAmount, Bank_Fees, FK_Bank, Note, ins"& _ 
                 "ert_Date, inst_by, edit_by, isBankFeesSentToVoucher FROM voip_billing_system_dev"& _ 
@@ -34744,13 +34744,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class norm_clients_outboundnameTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -34763,7 +34763,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -34774,7 +34774,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -34795,7 +34795,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -34832,7 +34832,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -34855,7 +34855,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "norm_clients_outboundname"
@@ -34863,91 +34863,91 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("FK_Client", "FK_Client")
             tableMapping.ColumnMappings.Add("OutboundName", "OutboundName")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`norm_clients_outboundname` WHERE ((`ID` = "& _ 
                 ":Original_ID) AND (`FK_Client` = :Original_FK_Client) AND (`OutboundName` = :Ori"& _ 
                 "ginal_OutboundName))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_OutboundName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "OutboundName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`norm_clients_outboundname` (`FK_Client`, `"& _ 
                 "OutboundName`) VALUES (:FK_Client, :OutboundName)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "OutboundName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "OutboundName"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`norm_clients_outboundname` SET `FK_Client` = :F"& _ 
                 "K_Client, `OutboundName` = :OutboundName WHERE ((`ID` = :Original_ID) AND (`FK_C"& _ 
                 "lient` = :Original_FK_Client) AND (`OutboundName` = :Original_OutboundName))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "OutboundName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "OutboundName"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_OutboundName"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "OutboundName"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -34957,15 +34957,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, OutboundName FROM voip_billing_system_dev.norm_clients_outb"& _ 
                 "oundname"
@@ -35123,13 +35123,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class Norm_Users_RolesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -35142,7 +35142,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -35153,7 +35153,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -35174,7 +35174,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -35211,7 +35211,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -35234,7 +35234,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Norm_Users_Roles"
@@ -35242,94 +35242,94 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Fk_Role", "Fk_Role")
             tableMapping.ColumnMappings.Add("FK_User", "FK_User")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Norm_Users_Roles` WHERE ((`ID` = :Original"& _ 
                 "_ID) AND (`Fk_Role` = :Original_Fk_Role) AND (`FK_User` = :Original_FK_User))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Fk_Role"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Fk_Role"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_User"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Norm_Users_Roles` (`Fk_Role`, `FK_User`) V"& _ 
                 "ALUES (:Fk_Role, :FK_User)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Fk_Role"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Fk_Role"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_User"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Norm_Users_Roles` SET `Fk_Role` = :Fk_Role, `FK"& _ 
                 "_User` = :FK_User WHERE ((`ID` = :Original_ID) AND (`Fk_Role` = :Original_Fk_Rol"& _ 
                 "e) AND (`FK_User` = :Original_FK_User))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Fk_Role"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Fk_Role"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_User"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Fk_Role"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Fk_Role"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_User"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_User"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -35339,15 +35339,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Fk_Role, FK_User FROM voip_billing_system_dev.Norm_Users_Roles"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -35488,13 +35488,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class purchasesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -35507,7 +35507,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -35518,7 +35518,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -35539,7 +35539,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -35576,7 +35576,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -35599,7 +35599,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "purchases"
@@ -35618,7 +35618,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`purchases` WHERE ((`ID` = :Original_ID) AN"& _ 
                 "D (`Client_Code` = :Original_Client_Code) AND (`Amount` = :Original_Amount) AND "& _ 
@@ -35634,165 +35634,165 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "_by)) AND ((:IsNull_edit_by = 1 AND `edit_by` IS NULL) OR (`edit_by` = :Original"& _ 
                 "_edit_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Duration"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isConfirmed"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isConfirmed"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`purchases` (`FK_Client`, `Client_Code`, `A"& _ 
                 "mount`, `Duration`, `Billing_Period_From`, `Billing_Period_To`, `insert_Date`, `"& _ 
@@ -35801,97 +35801,97 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "Billing_Period_To, :insert_Date, :Note, :FK_AccountManager, :FK_BankAccount, :is"& _ 
                 "Confirmed, :inst_by, :edit_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isConfirmed"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`purchases` SET `FK_Client` = :FK_Client, `Clien"& _ 
                 "t_Code` = :Client_Code, `Amount` = :Amount, `Duration` = :Duration, `Billing_Per"& _ 
@@ -35911,250 +35911,250 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "nst_by = 1 AND `inst_by` IS NULL) OR (`inst_by` = :Original_inst_by)) AND ((:IsN"& _ 
                 "ull_edit_by = 1 AND `edit_by` IS NULL) OR (`edit_by` = :Original_edit_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isConfirmed"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Client_Code"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Client_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Amount"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Duration"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Duration"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Duration"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_From"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_From"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Billing_Period_To"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Billing_Period_To"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_insert_Date"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_BankAccount"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_BankAccount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isConfirmed"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isConfirmed"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isConfirmed"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -36164,15 +36164,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, Client_Code, Amount, Duration, Billing_Period_From, Billing"& _ 
                 "_Period_To, insert_Date, Note, FK_AccountManager, FK_BankAccount, isConfirmed, i"& _ 
@@ -36552,13 +36552,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class RatesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -36571,7 +36571,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -36582,7 +36582,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -36603,7 +36603,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -36640,7 +36640,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -36663,7 +36663,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Rates"
@@ -36676,7 +36676,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("isNew", "isNew")
             tableMapping.ColumnMappings.Add("inst_by", "inst_by")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Rates` WHERE ((`ID` = :Original_ID) AND (`"& _ 
                 "FK_Code` = :Original_FK_Code) AND (`FK_Client` = :Original_FK_Client) AND ((:IsN"& _ 
@@ -36686,162 +36686,162 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "R (`isNew` = :Original_isNew)) AND ((:IsNull_inst_by = 1 AND `inst_by` IS NULL) "& _ 
                 "OR (`inst_by` = :Original_inst_by)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Price"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Price"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Price"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Price"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isNew"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isNew"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isNew"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isNew"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Rates` (`FK_Code`, `FK_Client`, `Price`, `"& _ 
                 "Type`, `NonCLIType`, `isNew`, `inst_by`) VALUES (:FK_Code, :FK_Client, :Price, :"& _ 
                 "Type, :NonCLIType, :isNew, :inst_by)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Code"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Price"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Price"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isNew"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isNew"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Rates` SET `FK_Code` = :FK_Code, `FK_Client` = "& _ 
                 ":FK_Client, `Price` = :Price, `Type` = :Type, `NonCLIType` = :NonCLIType, `isNew"& _ 
@@ -36853,151 +36853,151 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 " :Original_isNew)) AND ((:IsNull_inst_by = 1 AND `inst_by` IS NULL) OR (`inst_by"& _ 
                 "` = :Original_inst_by)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Code"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Price"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Price"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isNew"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isNew"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Code"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Code"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Price"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Price"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Price"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Price"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_NonCLIType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NonCLIType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_isNew"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "isNew"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isNew"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isNew"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -37007,15 +37007,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Code, FK_Client, Price, Type, NonCLIType, isNew, inst_by FROM voip_"& _ 
                 "billing_system_dev.Rates"
@@ -37257,13 +37257,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class rolesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -37276,7 +37276,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -37287,7 +37287,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -37308,7 +37308,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -37345,7 +37345,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -37368,65 +37368,65 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "roles"
             tableMapping.ColumnMappings.Add("Id", "Id")
             tableMapping.ColumnMappings.Add("role", "role")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`roles` WHERE ((`Id` = :Original_Id) AND (`"& _ 
                 "role` = :Original_role))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_role"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "role"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`roles` (`role`) VALUES (:role)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "role"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "role"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`roles` SET `role` = :role WHERE ((`Id` = :Origi"& _ 
                 "nal_Id) AND (`role` = :Original_role))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "role"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "role"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_role"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "role"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -37436,15 +37436,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Id, role FROM voip_billing_system_dev.roles"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -37597,13 +37597,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class softwaresTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -37616,7 +37616,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -37627,7 +37627,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -37648,7 +37648,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -37685,7 +37685,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -37708,7 +37708,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "softwares"
@@ -37716,90 +37716,90 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Name", "Name")
             tableMapping.ColumnMappings.Add("Type", "Type")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`softwares` WHERE ((`ID` = :Original_ID) AN"& _ 
                 "D (`Name` = :Original_Name) AND (`Type` = :Original_Type))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`softwares` (`Name`, `Type`) VALUES (:Name,"& _ 
                 " :Type)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`softwares` SET `Name` = :Name, `Type` = :Type W"& _ 
                 "HERE ((`ID` = :Original_ID) AND (`Name` = :Original_Name) AND (`Type` = :Origina"& _ 
                 "l_Type))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Name"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Name"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -37809,15 +37809,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Name, Type FROM voip_billing_system_dev.softwares"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -37974,13 +37974,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class Softwares_TypesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -37993,7 +37993,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -38004,7 +38004,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -38025,7 +38025,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -38062,7 +38062,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -38085,84 +38085,84 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Softwares_Types"
             tableMapping.ColumnMappings.Add("ID", "ID")
             tableMapping.ColumnMappings.Add("Type", "Type")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Softwares_Types` WHERE ((`ID` = :Original_"& _ 
                 "ID) AND ((:IsNull_Type = 1 AND `Type` IS NULL) OR (`Type` = :Original_Type)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Softwares_Types` (`Type`) VALUES (:Type)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Softwares_Types` SET `Type` = :Type WHERE ((`ID"& _ 
                 "` = :Original_ID) AND ((:IsNull_Type = 1 AND `Type` IS NULL) OR (`Type` = :Origi"& _ 
                 "nal_Type)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -38172,15 +38172,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Type FROM voip_billing_system_dev.Softwares_Types"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
@@ -38337,13 +38337,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class System_VersionTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -38356,7 +38356,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -38367,7 +38367,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -38388,7 +38388,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -38425,7 +38425,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -38448,7 +38448,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "System-Version"
@@ -38460,7 +38460,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("NewSetupLink", "NewSetupLink")
             tableMapping.ColumnMappings.Add("PurchaseEditPercentage", "PurchaseEditPercentage")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`System-Version` WHERE ((`id` = :Original_i"& _ 
                 "d) AND (`Major` = :Original_Major) AND (`Minor` = :Original_Minor) AND (`Build` "& _ 
@@ -38469,247 +38469,247 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 ") AND ((:IsNull_PurchaseEditPercentage = 1 AND `PurchaseEditPercentage` IS NULL)"& _ 
                 " OR (`PurchaseEditPercentage` = :Original_PurchaseEditPercentage)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Major"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Major"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Minor"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Minor"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Build"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Build"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Revision"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Revision"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_NewSetupLink"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "NewSetupLink"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_NewSetupLink"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "NewSetupLink"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "PurchaseEditPercentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Double]
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Double
+            param.IsNullable = True
             param.SourceColumn = "PurchaseEditPercentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`System-Version` (`Major`, `Minor`, `Build`"& _ 
-                ", `Revision`, `NewSetupLink`, `PurchaseEditPercentage`) VALUES (:Major, :Minor, "& _ 
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`System-Version` (`Major`, `Minor`, `Build`" & _
+                ", `Revision`, `NewSetupLink`, `PurchaseEditPercentage`) VALUES (:Major, :Minor, " & _
                 ":Build, :Revision, :NewSetupLink, :PurchaseEditPercentage)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Major"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Major"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Minor"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Minor"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Build"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Build"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Revision"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Revision"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "NewSetupLink"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = True
             param.SourceColumn = "NewSetupLink"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Double]
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Double
+            param.IsNullable = True
             param.SourceColumn = "PurchaseEditPercentage"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`System-Version` SET `Major` = :Major, `Minor` ="& _ 
-                " :Minor, `Build` = :Build, `Revision` = :Revision, `NewSetupLink` = :NewSetupLin"& _ 
-                "k, `PurchaseEditPercentage` = :PurchaseEditPercentage WHERE ((`id` = :Original_i"& _ 
-                "d) AND (`Major` = :Original_Major) AND (`Minor` = :Original_Minor) AND (`Build` "& _ 
-                "= :Original_Build) AND (`Revision` = :Original_Revision) AND ((:IsNull_NewSetupL"& _ 
-                "ink = 1 AND `NewSetupLink` IS NULL) OR (`NewSetupLink` = :Original_NewSetupLink)"& _ 
-                ") AND ((:IsNull_PurchaseEditPercentage = 1 AND `PurchaseEditPercentage` IS NULL)"& _ 
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`System-Version` SET `Major` = :Major, `Minor` =" & _
+                " :Minor, `Build` = :Build, `Revision` = :Revision, `NewSetupLink` = :NewSetupLin" & _
+                "k, `PurchaseEditPercentage` = :PurchaseEditPercentage WHERE ((`id` = :Original_i" & _
+                "d) AND (`Major` = :Original_Major) AND (`Minor` = :Original_Minor) AND (`Build` " & _
+                "= :Original_Build) AND (`Revision` = :Original_Revision) AND ((:IsNull_NewSetupL" & _
+                "ink = 1 AND `NewSetupLink` IS NULL) OR (`NewSetupLink` = :Original_NewSetupLink)" & _
+                ") AND ((:IsNull_PurchaseEditPercentage = 1 AND `PurchaseEditPercentage` IS NULL)" & _
                 " OR (`PurchaseEditPercentage` = :Original_PurchaseEditPercentage)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Major"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Major"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Minor"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Minor"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Build"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Build"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Revision"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Revision"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "NewSetupLink"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = True
             param.SourceColumn = "NewSetupLink"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Double]
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Double
+            param.IsNullable = True
             param.SourceColumn = "PurchaseEditPercentage"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_id"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "id"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Major"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Major"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Minor"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Minor"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Build"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Build"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Revision"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "Revision"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_NewSetupLink"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "NewSetupLink"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            param.SourceColumnNullMapping = true
+            param.SourceColumnNullMapping = True
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_NewSetupLink"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = True
             param.SourceColumn = "NewSetupLink"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
-            param.IsNullable = true
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = True
             param.SourceColumn = "PurchaseEditPercentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            param.SourceColumnNullMapping = true
+            param.SourceColumnNullMapping = True
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_PurchaseEditPercentage"
             param.DbType = Global.System.Data.DbType.[Double]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Double]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Double
             param.IsNullable = true
             param.SourceColumn = "PurchaseEditPercentage"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -38719,15 +38719,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT id, Major, Minor, Build, Revision, NewSetupLink, PurchaseEditPercentage FR"& _ 
                 "OM voip_billing_system_dev.`System-Version`"
@@ -38925,13 +38925,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class transactionsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -38944,7 +38944,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -38955,7 +38955,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -38976,7 +38976,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -39013,7 +39013,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -39036,7 +39036,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "transactions"
@@ -39049,7 +39049,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Source_ID", "Source_ID")
             tableMapping.ColumnMappings.Add("type", "type")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`transactions` WHERE ((`ID` = :Original_ID)"& _ 
                 " AND (`FK_Client` = :Original_FK_Client) AND ((:IsNull_Debit = 1 AND `Debit` IS "& _ 
@@ -39058,149 +39058,149 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "e_Type` = :Original_Source_Type) AND (`Source_ID` = :Original_Source_ID) AND ((:"& _ 
                 "IsNull_type = 1 AND `type` IS NULL) OR (`type` = :Original_type)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Debit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Debit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Debit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Debit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Credit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Credit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_ID"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`transactions` (`FK_Client`, `Debit`, `Cred"& _ 
                 "it`, `Date`, `Source_Type`, `Source_ID`, `type`) VALUES (:FK_Client, :Debit, :Cr"& _ 
                 "edit, :Date, :Source_Type, :Source_ID, :type)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Debit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Debit"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Credit"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_ID"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "type"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`transactions` SET `FK_Client` = :FK_Client, `De"& _ 
                 "bit` = :Debit, `Credit` = :Credit, `Date` = :Date, `Source_Type` = :Source_Type,"& _ 
@@ -39211,138 +39211,138 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 ":Original_Source_Type) AND (`Source_ID` = :Original_Source_ID) AND ((:IsNull_typ"& _ 
                 "e = 1 AND `type` IS NULL) OR (`type` = :Original_type)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Debit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Debit"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Credit"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Source_ID"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "type"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Debit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Debit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Debit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Debit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_Credit"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Credit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit"
             param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Decimal
             param.IsNullable = true
             param.SourceColumn = "Credit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_Type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Source_Type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Source_ID"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Source_ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_type"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_type"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "type"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -39352,15 +39352,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, Debit, Credit, `Date`, Source_Type, Source_ID, type FROM vo"& _ 
                 "ip_billing_system_dev.transactions"
@@ -39598,13 +39598,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class UsersTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -39617,7 +39617,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -39628,7 +39628,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -39649,7 +39649,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -39686,7 +39686,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -39709,7 +39709,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Users"
@@ -39722,7 +39722,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("FK_AccountManager", "FK_AccountManager")
             tableMapping.ColumnMappings.Add("isAccountManager", "isAccountManager")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`Users` WHERE ((`ID` = :Original_ID) AND (`"& _ 
                 "Username` = :Original_Username) AND (`Password` = :Original_Password) AND (`Acti"& _ 
@@ -39732,150 +39732,150 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "countManager` IS NULL) OR (`FK_AccountManager` = :Original_FK_AccountManager)) A"& _ 
                 "ND (`isAccountManager` = :Original_isAccountManager))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Username"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Username"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Password"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Password"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isAccountManager"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isAccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`Users` (`Username`, `Password`, `Active`, "& _ 
                 "`edit_by`, `inst_by`, `FK_AccountManager`, `isAccountManager`) VALUES (:Username"& _ 
                 ", :Password, :Active, :edit_by, :inst_by, :FK_AccountManager, :isAccountManager)"& _ 
                 ""
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Username"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Username"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Password"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Password"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isAccountManager"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isAccountManager"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`Users` SET `Username` = :Username, `Password` ="& _ 
                 " :Password, `Active` = :Active, `edit_by` = :edit_by, `inst_by` = :inst_by, `FK_"& _ 
@@ -39888,138 +39888,138 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 " :Original_FK_AccountManager)) AND (`isAccountManager` = :Original_isAccountMana"& _ 
                 "ger))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Username"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Username"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Password"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Password"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isAccountManager"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isAccountManager"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Username"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Username"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Password"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Password"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Active"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "Active"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_AccountManager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_AccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_isAccountManager"
             param.DbType = Global.System.Data.DbType.Int64
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Bit
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Bit
             param.IsNullable = true
             param.SourceColumn = "isAccountManager"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -40029,15 +40029,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Username, `Password`, Active, edit_by, inst_by, FK_AccountManager, isA"& _ 
                 "ccountManager FROM voip_billing_system_dev.Users"
@@ -40291,13 +40291,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class vouchersTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -40310,7 +40310,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -40321,7 +40321,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -40342,7 +40342,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -40379,7 +40379,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -40402,7 +40402,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "vouchers"
@@ -40417,7 +40417,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
             tableMapping.ColumnMappings.Add("edit_by", "edit_by")
             tableMapping.ColumnMappings.Add("VoucherType", "VoucherType")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `voip_billing_system_dev`.`vouchers` WHERE ((`ID` = :Original_ID) AND"& _ 
                 " (`FK_Client` = :Original_FK_Client) AND (`Credit_Amount` = :Original_Credit_Amo"& _ 
@@ -40428,174 +40428,174 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "erType = 1 AND `VoucherType` IS NULL) OR (`VoucherType` = :Original_VoucherType)"& _ 
                 "))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Credit_Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Debit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Debit_Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            Me._adapter.InsertCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `voip_billing_system_dev`.`vouchers` (`FK_Client`, `Credit_Amount`, `"& _ 
                 "Debit_Amount`, `FK_Bank`, `Note`, `insert_Date`, `inst_by`, `edit_by`, `VoucherT"& _ 
                 "ype`) VALUES (:FK_Client, :Credit_Amount, :Debit_Amount, :FK_Bank, :Note, :inser"& _ 
                 "t_Date, :inst_by, :edit_by, :VoucherType)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Credit_Amount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Debit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Debit_Amount"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `voip_billing_system_dev`.`vouchers` SET `FK_Client` = :FK_Client, `Credit"& _ 
                 "_Amount` = :Credit_Amount, `Debit_Amount` = :Debit_Amount, `FK_Bank` = :FK_Bank,"& _ 
@@ -40608,162 +40608,162 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 "dit_by` IS NULL) OR (`edit_by` = :Original_edit_by)) AND ((:IsNull_VoucherType ="& _ 
                 " 1 AND `VoucherType` IS NULL) OR (`VoucherType` = :Original_VoucherType)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Client"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Credit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Credit_Amount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Debit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Debit_Amount"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Note"
             param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Text
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Text
             param.IsNullable = true
             param.SourceColumn = "Note"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_ID"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "ID"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Client"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "FK_Client"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Credit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Credit_Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_Debit_Amount"
             param.DbType = Global.System.Data.DbType.[Single]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Float
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.float
             param.IsNullable = true
             param.SourceColumn = "Debit_Amount"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_FK_Bank"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "FK_Bank"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_insert_Date"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.IsNullable = true
             param.SourceColumn = "insert_Date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_inst_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "inst_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_edit_by"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "edit_by"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "IsNull_VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "Original_VoucherType"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "VoucherType"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -40773,15 +40773,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, FK_Client, Credit_Amount, Debit_Amount, FK_Bank, Note, insert_Date, in"& _ 
                 "st_by, edit_by, VoucherType FROM voip_billing_system_dev.vouchers"
@@ -41051,13 +41051,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class CreateTemperoryTableTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -41070,7 +41070,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -41081,7 +41081,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -41102,7 +41102,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -41139,7 +41139,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -41162,7 +41162,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "CreateTemperoryTable"
@@ -41176,15 +41176,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.CreateTemperoryTable"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -41227,13 +41227,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class find_textTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -41246,7 +41246,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -41257,7 +41257,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -41278,7 +41278,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -41315,7 +41315,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -41338,7 +41338,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "find_text"
@@ -41379,21 +41379,21 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.find_text"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "mytext"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
@@ -41447,13 +41447,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GenerateWeeklyReportTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -41466,7 +41466,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -41477,7 +41477,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -41498,7 +41498,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -41535,7 +41535,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -41558,7 +41558,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GenerateWeeklyReport"
@@ -41574,22 +41574,22 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GenerateWeeklyReport"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "dinsertdate"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
@@ -41643,13 +41643,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetBanksTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -41662,7 +41662,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -41673,7 +41673,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -41694,7 +41694,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -41731,7 +41731,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -41754,7 +41754,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetBanks"
@@ -41775,15 +41775,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetBanks"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -41826,13 +41826,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetBanksDSTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -41845,7 +41845,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -41856,7 +41856,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -41877,7 +41877,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -41914,7 +41914,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -41937,7 +41937,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetBanksDS"
@@ -41949,15 +41949,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetBanksDS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -42000,13 +42000,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetClientsBanksDSTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42019,7 +42019,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42030,7 +42030,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42051,7 +42051,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42088,7 +42088,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -42111,7 +42111,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetClientsBanksDS"
@@ -42124,15 +42124,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetClientsBanksDS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -42175,13 +42175,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetCompaniesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42194,7 +42194,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42205,7 +42205,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42226,7 +42226,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42263,7 +42263,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -42286,7 +42286,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetCompanies"
@@ -42308,15 +42308,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetCompanies"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -42359,13 +42359,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetCompaniesDSTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42378,7 +42378,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42389,7 +42389,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42410,7 +42410,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42447,7 +42447,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -42470,7 +42470,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetCompaniesDS"
@@ -42482,15 +42482,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetCompaniesDS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -42533,13 +42533,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class getEmailBodyTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42552,7 +42552,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42563,7 +42563,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42584,7 +42584,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42621,7 +42621,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -42644,7 +42644,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "getEmailBody"
@@ -42655,15 +42655,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.getEmailBody"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -42706,13 +42706,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetEmailsInfoTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42725,7 +42725,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42736,7 +42736,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42757,7 +42757,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42794,7 +42794,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -42817,7 +42817,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetEmailsInfo"
@@ -42840,22 +42840,22 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetEmailsInfo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "dinstdate"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
@@ -42909,13 +42909,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetLastPaymentForAllClientsTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -42928,7 +42928,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -42939,7 +42939,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -42960,7 +42960,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -42997,7 +42997,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -43020,7 +43020,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetLastPaymentForAllClients"
@@ -43034,15 +43034,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetLastPaymentForAllClients"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -43085,13 +43085,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetOutboundNamesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -43104,7 +43104,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -43115,7 +43115,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -43136,7 +43136,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -43173,7 +43173,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -43196,7 +43196,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetOutboundNames"
@@ -43207,22 +43207,22 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetOutboundNames"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "lclientid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
@@ -43276,13 +43276,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetSoftwareDSTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -43295,7 +43295,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -43306,7 +43306,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -43327,7 +43327,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -43364,7 +43364,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -43387,7 +43387,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetSoftwareDS"
@@ -43399,15 +43399,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetSoftwareDS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -43450,13 +43450,13 @@ Namespace voip_billing_system_devDataSetTableAdapters
     Partial Public Class GetUsersTableAdapter
         Inherits Global.System.ComponentModel.Component
         
-        Private WithEvents _adapter As Global.Devart.Data.MySql.MySqlDataAdapter
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
         
-        Private _connection As Global.Devart.Data.MySql.MySqlConnection
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
         
         Private _transaction As Global.System.Data.Common.DbTransaction
         
-        Private _commandCollection() As Global.Devart.Data.MySql.MySqlCommand
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
         
         Private _clearBeforeFill As Boolean
         
@@ -43469,7 +43469,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.Devart.Data.MySql.MySqlDataAdapter
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
                     Me.InitAdapter
@@ -43480,7 +43480,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.Devart.Data.MySql.MySqlConnection
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
             Get
                 If (Me._connection Is Nothing) Then
                     Me.InitConnection
@@ -43501,7 +43501,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.Devart.Data.MySql.MySqlCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
@@ -43538,7 +43538,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.Devart.Data.MySql.MySqlCommand()
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
                     Me.InitCommandCollection
@@ -43561,7 +43561,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
-            Me._adapter = New Global.Devart.Data.MySql.MySqlDataAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "GetUsers"
@@ -43579,15 +43579,15 @@ Namespace voip_billing_system_devDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
-            Me._connection = New Global.Devart.Data.MySql.MySqlConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
             Me._connection.ConnectionString = Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.Devart.Data.MySql.MySqlCommand(0) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "voip_billing_system_dev.GetUsers"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
@@ -43647,385 +43647,385 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
             Me._commandCollection = New Global.System.Data.IDbCommand(12) {}
-            Me._commandCollection(0) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(0),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(0),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.ABC"
-            CType(Me._commandCollection(0),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Dim param As Global.Devart.Data.MySql.MySqlParameter = New Global.Devart.Data.MySql.MySqlParameter()
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(0),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(0),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.ABC"
+            CType(Me._commandCollection(0),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "fullstr"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(0),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(1) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.AddPurchaseNote"
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(0),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(1) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.AddPurchaseNote"
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "lpurchaseid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strnote"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(1),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(2) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(2),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(2),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.CheckLogin"
-            CType(Me._commandCollection(2),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(2) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.CheckLogin"
+            CType(Me._commandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strpassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(2),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strusername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(2),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(3) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(3),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(3),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.EditEmailBody"
-            CType(Me._commandCollection(3),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(3) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.EditEmailBody"
+            CType(Me._commandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(3),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "txtbody"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(3),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(4) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(4),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(4),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.GenerateInvoices"
-            CType(Me._commandCollection(4),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(4) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.GenerateInvoices"
+            CType(Me._commandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "dinvoicedate"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(4),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(4),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(5) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(5),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(5),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.GeneratePurchases"
-            CType(Me._commandCollection(5),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(5) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.GeneratePurchases"
+            CType(Me._commandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "dinvoicedate"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(5),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(5),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(6) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.InsertBank"
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(6) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.InsertBank"
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "bankaccountname"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "bankaccountnumber"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "bankname"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "beneficiarybankaddress"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "beneficiarybankname"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "iban"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "swift"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(6),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(7) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(7),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(7),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.InsertClientOutboundNames"
-            CType(Me._commandCollection(7),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(7) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.InsertClientOutboundNames"
+            CType(Me._commandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "lclientid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(7),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "stroutboundnames"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(7),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(8) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.InsertCompany"
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(8) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.InsertCompany"
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "address"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "billingemail"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ccemails"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "companyname"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "emailsignature"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(8),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(9) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.InsertHistory"
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(9) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.InsertHistory"
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "enumhistoryaction"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ltype"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "ltypeid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strnote"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(9),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(10) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.InsertUser"
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(10) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.InsertUser"
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "isaccountmanager"
             param.DbType = Global.System.Data.DbType.Int16
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.TinyInt
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int16
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "laccountmanager"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strpassword"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strroleids"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strusername"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(10),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(11) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(11),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(11),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.SPLIT_VALUE_STRING"
-            CType(Me._commandCollection(11),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(11) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(11),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(11),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.SPLIT_VALUE_STRING"
+            CType(Me._commandCollection(11),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "lclients"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(11),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            Me._commandCollection(12) = New Global.Devart.Data.MySql.MySqlCommand()
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).Connection = New Global.Devart.Data.MySql.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).CommandText = "voip_billing_system_dev.UpdateInvoiceEmailStatus"
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(11),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            Me._commandCollection(12) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = New Global.MySql.Data.MySqlClient.MySqlConnection(Global.WindowsApplication1.My.MySettings.Default.voip_billing_system_devConnectionString1)
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).CommandText = "voip_billing_system_dev.UpdateInvoiceEmailStatus"
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).CommandType = Global.System.Data.CommandType.StoredProcedure
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "dinsertdate"
             param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Date
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "luserid"
             param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.Int
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
-            param = New Global.Devart.Data.MySql.MySqlParameter()
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "strclientsids"
-            param.MySqlType = Global.Devart.Data.MySql.MySqlType.VarChar
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.Size = 2147483647
             param.IsNullable = true
             param.SourceColumn = Nothing
-            CType(Me._commandCollection(12),Global.Devart.Data.MySql.MySqlCommand).Parameters.Add(param)
+            CType(Me._commandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand).Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function ABC(ByVal fullstr As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(0),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(0),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (fullstr Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -44051,7 +44051,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function AddPurchaseNote(ByVal lpurchaseid As Global.System.Nullable(Of Integer), ByVal luserid As Global.System.Nullable(Of Integer), ByVal strnote As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(1),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(1),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (lpurchaseid.HasValue = true) Then
                 command.Parameters(0).Value = CType(lpurchaseid.Value,Integer)
             Else
@@ -44087,7 +44087,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function CheckLogin(ByVal strpassword As String, ByVal strusername As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(2),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(2),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (strpassword Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -44118,7 +44118,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function EditEmailBody(ByVal luserid As Global.System.Nullable(Of Integer), ByVal txtbody As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(3),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(3),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (luserid.HasValue = true) Then
                 command.Parameters(0).Value = CType(luserid.Value,Integer)
             Else
@@ -44149,7 +44149,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function GenerateInvoices(ByVal dinvoicedate As Global.System.Nullable(Of Date), ByVal luserid As Global.System.Nullable(Of Integer)) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(4),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(4),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (dinvoicedate.HasValue = true) Then
                 command.Parameters(0).Value = CType(dinvoicedate.Value,Date)
             Else
@@ -44180,7 +44180,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function GeneratePurchases(ByVal dinvoicedate As Global.System.Nullable(Of Date), ByVal luserid As Global.System.Nullable(Of Integer)) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(5),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(5),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (dinvoicedate.HasValue = true) Then
                 command.Parameters(0).Value = CType(dinvoicedate.Value,Date)
             Else
@@ -44211,7 +44211,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertBank(ByVal bankaccountname As String, ByVal bankaccountnumber As String, ByVal bankname As String, ByVal beneficiarybankaddress As String, ByVal beneficiarybankname As String, ByVal iban As String, ByVal luserid As Global.System.Nullable(Of Integer), ByVal swift As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(6),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(6),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (bankaccountname Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -44272,7 +44272,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertClientOutboundNames(ByVal lclientid As Global.System.Nullable(Of Integer), ByVal stroutboundnames As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(7),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(7),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (lclientid.HasValue = true) Then
                 command.Parameters(0).Value = CType(lclientid.Value,Integer)
             Else
@@ -44303,7 +44303,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertCompany(ByVal address As String, ByVal billingemail As String, ByVal ccemails As String, ByVal companyname As String, ByVal emailsignature As String, ByVal luserid As Global.System.Nullable(Of Integer)) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(8),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(8),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (address Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -44354,7 +44354,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertHistory(ByVal enumhistoryaction As Global.System.Nullable(Of Integer), ByVal ltype As Global.System.Nullable(Of Integer), ByVal ltypeid As Global.System.Nullable(Of Integer), ByVal luserid As Global.System.Nullable(Of Integer), ByVal strnote As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(9),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(9),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (enumhistoryaction.HasValue = true) Then
                 command.Parameters(0).Value = CType(enumhistoryaction.Value,Integer)
             Else
@@ -44400,7 +44400,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function InsertUser(ByVal isaccountmanager As Global.System.Nullable(Of Short), ByVal laccountmanager As Global.System.Nullable(Of Integer), ByVal luserid As Global.System.Nullable(Of Integer), ByVal strpassword As String, ByVal strroleids As String, ByVal strusername As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(10),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(10),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (isaccountmanager.HasValue = true) Then
                 command.Parameters(0).Value = CType(isaccountmanager.Value,Short)
             Else
@@ -44451,7 +44451,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SPLIT_VALUE_STRING(ByVal lclients As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(11),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(11),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (lclients Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -44477,7 +44477,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function UpdateInvoiceEmailStatus(ByVal dinsertdate As Global.System.Nullable(Of Date), ByVal luserid As Global.System.Nullable(Of Integer), ByVal strclientsids As String) As Integer
-            Dim command As Global.Devart.Data.MySql.MySqlCommand = CType(Me.CommandCollection(12),Global.Devart.Data.MySql.MySqlCommand)
+            Dim command As Global.MySql.Data.MySqlClient.MySqlCommand = CType(Me.CommandCollection(12),Global.MySql.Data.MySqlClient.MySqlCommand)
             If (dinsertdate.HasValue = true) Then
                 command.Parameters(0).Value = CType(dinsertdate.Value,Date)
             Else
@@ -46001,7 +46001,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 '
                 If (Not (Me._accountManagersTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._accountManagersTableAdapter, Me._accountManagersTableAdapter.Connection)
-                    Me._accountManagersTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._accountManagersTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._accountManagersTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._accountManagersTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._accountManagersTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46010,7 +46010,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._bank_accountsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._bank_accountsTableAdapter, Me._bank_accountsTableAdapter.Connection)
-                    Me._bank_accountsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._bank_accountsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._bank_accountsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._bank_accountsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._bank_accountsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46019,7 +46019,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._beginingBalancesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._beginingBalancesTableAdapter, Me._beginingBalancesTableAdapter.Connection)
-                    Me._beginingBalancesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._beginingBalancesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._beginingBalancesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._beginingBalancesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._beginingBalancesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46028,7 +46028,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._billingTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._billingTableAdapter, Me._billingTableAdapter.Connection)
-                    Me._billingTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._billingTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._billingTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._billingTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._billingTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46037,7 +46037,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._cashflowdataTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._cashflowdataTableAdapter, Me._cashflowdataTableAdapter.Connection)
-                    Me._cashflowdataTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._cashflowdataTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._cashflowdataTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._cashflowdataTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._cashflowdataTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46046,7 +46046,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._clientsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._clientsTableAdapter, Me._clientsTableAdapter.Connection)
-                    Me._clientsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._clientsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._clientsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46055,7 +46055,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._clients_paymentsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._clients_paymentsTableAdapter, Me._clients_paymentsTableAdapter.Connection)
-                    Me._clients_paymentsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._clients_paymentsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._clients_paymentsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._clients_paymentsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._clients_paymentsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46064,7 +46064,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._codesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._codesTableAdapter, Me._codesTableAdapter.Connection)
-                    Me._codesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._codesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._codesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._codesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._codesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46073,7 +46073,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._companiesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._companiesTableAdapter, Me._companiesTableAdapter.Connection)
-                    Me._companiesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._companiesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._companiesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._companiesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._companiesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46082,7 +46082,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._emailBodyTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._emailBodyTableAdapter, Me._emailBodyTableAdapter.Connection)
-                    Me._emailBodyTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._emailBodyTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._emailBodyTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._emailBodyTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._emailBodyTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46091,7 +46091,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._historyTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._historyTableAdapter, Me._historyTableAdapter.Connection)
-                    Me._historyTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._historyTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._historyTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._historyTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._historyTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46100,7 +46100,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._invoicesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._invoicesTableAdapter, Me._invoicesTableAdapter.Connection)
-                    Me._invoicesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._invoicesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._invoicesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._invoicesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._invoicesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46109,7 +46109,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._maple_ClientsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._maple_ClientsTableAdapter, Me._maple_ClientsTableAdapter.Connection)
-                    Me._maple_ClientsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._maple_ClientsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._maple_ClientsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._maple_ClientsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._maple_ClientsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46118,7 +46118,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._maple_paymentsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._maple_paymentsTableAdapter, Me._maple_paymentsTableAdapter.Connection)
-                    Me._maple_paymentsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._maple_paymentsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._maple_paymentsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._maple_paymentsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._maple_paymentsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46127,7 +46127,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._norm_clients_outboundnameTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._norm_clients_outboundnameTableAdapter, Me._norm_clients_outboundnameTableAdapter.Connection)
-                    Me._norm_clients_outboundnameTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._norm_clients_outboundnameTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._norm_clients_outboundnameTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._norm_clients_outboundnameTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._norm_clients_outboundnameTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46136,7 +46136,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._norm_Users_RolesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._norm_Users_RolesTableAdapter, Me._norm_Users_RolesTableAdapter.Connection)
-                    Me._norm_Users_RolesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._norm_Users_RolesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._norm_Users_RolesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._norm_Users_RolesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._norm_Users_RolesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46145,7 +46145,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._purchasesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._purchasesTableAdapter, Me._purchasesTableAdapter.Connection)
-                    Me._purchasesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._purchasesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._purchasesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._purchasesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._purchasesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46154,7 +46154,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._ratesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._ratesTableAdapter, Me._ratesTableAdapter.Connection)
-                    Me._ratesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._ratesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._ratesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._ratesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._ratesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46163,7 +46163,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._rolesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._rolesTableAdapter, Me._rolesTableAdapter.Connection)
-                    Me._rolesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._rolesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._rolesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._rolesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._rolesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46172,7 +46172,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._softwaresTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._softwaresTableAdapter, Me._softwaresTableAdapter.Connection)
-                    Me._softwaresTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._softwaresTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._softwaresTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._softwaresTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._softwaresTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46181,7 +46181,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._softwares_TypesTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._softwares_TypesTableAdapter, Me._softwares_TypesTableAdapter.Connection)
-                    Me._softwares_TypesTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._softwares_TypesTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._softwares_TypesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._softwares_TypesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._softwares_TypesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46190,7 +46190,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._system_VersionTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._system_VersionTableAdapter, Me._system_VersionTableAdapter.Connection)
-                    Me._system_VersionTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._system_VersionTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._system_VersionTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._system_VersionTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._system_VersionTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46199,7 +46199,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._transactionsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._transactionsTableAdapter, Me._transactionsTableAdapter.Connection)
-                    Me._transactionsTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._transactionsTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._transactionsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._transactionsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._transactionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46208,7 +46208,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._usersTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._usersTableAdapter, Me._usersTableAdapter.Connection)
-                    Me._usersTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._usersTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._usersTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._usersTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._usersTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46217,7 +46217,7 @@ Namespace voip_billing_system_devDataSetTableAdapters
                 End If
                 If (Not (Me._vouchersTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._vouchersTableAdapter, Me._vouchersTableAdapter.Connection)
-                    Me._vouchersTableAdapter.Connection = CType(workConnection,Global.Devart.Data.MySql.MySqlConnection)
+                    Me._vouchersTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._vouchersTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Common.DbTransaction)
                     If Me._vouchersTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._vouchersTableAdapter.Adapter.AcceptChangesDuringUpdate = false
@@ -46285,103 +46285,103 @@ Namespace voip_billing_system_devDataSetTableAdapters
                     workConnection.Close
                 End If
                 If (Not (Me._accountManagersTableAdapter) Is Nothing) Then
-                    Me._accountManagersTableAdapter.Connection = CType(revertConnections(Me._accountManagersTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._accountManagersTableAdapter.Connection = CType(revertConnections(Me._accountManagersTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._accountManagersTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._bank_accountsTableAdapter) Is Nothing) Then
-                    Me._bank_accountsTableAdapter.Connection = CType(revertConnections(Me._bank_accountsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._bank_accountsTableAdapter.Connection = CType(revertConnections(Me._bank_accountsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._bank_accountsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._beginingBalancesTableAdapter) Is Nothing) Then
-                    Me._beginingBalancesTableAdapter.Connection = CType(revertConnections(Me._beginingBalancesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._beginingBalancesTableAdapter.Connection = CType(revertConnections(Me._beginingBalancesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._beginingBalancesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._billingTableAdapter) Is Nothing) Then
-                    Me._billingTableAdapter.Connection = CType(revertConnections(Me._billingTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._billingTableAdapter.Connection = CType(revertConnections(Me._billingTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._billingTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._cashflowdataTableAdapter) Is Nothing) Then
-                    Me._cashflowdataTableAdapter.Connection = CType(revertConnections(Me._cashflowdataTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._cashflowdataTableAdapter.Connection = CType(revertConnections(Me._cashflowdataTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._cashflowdataTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._clientsTableAdapter) Is Nothing) Then
-                    Me._clientsTableAdapter.Connection = CType(revertConnections(Me._clientsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._clientsTableAdapter.Connection = CType(revertConnections(Me._clientsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._clientsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._clients_paymentsTableAdapter) Is Nothing) Then
-                    Me._clients_paymentsTableAdapter.Connection = CType(revertConnections(Me._clients_paymentsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._clients_paymentsTableAdapter.Connection = CType(revertConnections(Me._clients_paymentsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._clients_paymentsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._codesTableAdapter) Is Nothing) Then
-                    Me._codesTableAdapter.Connection = CType(revertConnections(Me._codesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._codesTableAdapter.Connection = CType(revertConnections(Me._codesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._codesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._companiesTableAdapter) Is Nothing) Then
-                    Me._companiesTableAdapter.Connection = CType(revertConnections(Me._companiesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._companiesTableAdapter.Connection = CType(revertConnections(Me._companiesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._companiesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._emailBodyTableAdapter) Is Nothing) Then
-                    Me._emailBodyTableAdapter.Connection = CType(revertConnections(Me._emailBodyTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._emailBodyTableAdapter.Connection = CType(revertConnections(Me._emailBodyTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._emailBodyTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._historyTableAdapter) Is Nothing) Then
-                    Me._historyTableAdapter.Connection = CType(revertConnections(Me._historyTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._historyTableAdapter.Connection = CType(revertConnections(Me._historyTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._historyTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._invoicesTableAdapter) Is Nothing) Then
-                    Me._invoicesTableAdapter.Connection = CType(revertConnections(Me._invoicesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._invoicesTableAdapter.Connection = CType(revertConnections(Me._invoicesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._invoicesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._maple_ClientsTableAdapter) Is Nothing) Then
-                    Me._maple_ClientsTableAdapter.Connection = CType(revertConnections(Me._maple_ClientsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._maple_ClientsTableAdapter.Connection = CType(revertConnections(Me._maple_ClientsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._maple_ClientsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._maple_paymentsTableAdapter) Is Nothing) Then
-                    Me._maple_paymentsTableAdapter.Connection = CType(revertConnections(Me._maple_paymentsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._maple_paymentsTableAdapter.Connection = CType(revertConnections(Me._maple_paymentsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._maple_paymentsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._norm_clients_outboundnameTableAdapter) Is Nothing) Then
-                    Me._norm_clients_outboundnameTableAdapter.Connection = CType(revertConnections(Me._norm_clients_outboundnameTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._norm_clients_outboundnameTableAdapter.Connection = CType(revertConnections(Me._norm_clients_outboundnameTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._norm_clients_outboundnameTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._norm_Users_RolesTableAdapter) Is Nothing) Then
-                    Me._norm_Users_RolesTableAdapter.Connection = CType(revertConnections(Me._norm_Users_RolesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._norm_Users_RolesTableAdapter.Connection = CType(revertConnections(Me._norm_Users_RolesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._norm_Users_RolesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._purchasesTableAdapter) Is Nothing) Then
-                    Me._purchasesTableAdapter.Connection = CType(revertConnections(Me._purchasesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._purchasesTableAdapter.Connection = CType(revertConnections(Me._purchasesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._purchasesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._ratesTableAdapter) Is Nothing) Then
-                    Me._ratesTableAdapter.Connection = CType(revertConnections(Me._ratesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._ratesTableAdapter.Connection = CType(revertConnections(Me._ratesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._ratesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._rolesTableAdapter) Is Nothing) Then
-                    Me._rolesTableAdapter.Connection = CType(revertConnections(Me._rolesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._rolesTableAdapter.Connection = CType(revertConnections(Me._rolesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._rolesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._softwaresTableAdapter) Is Nothing) Then
-                    Me._softwaresTableAdapter.Connection = CType(revertConnections(Me._softwaresTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._softwaresTableAdapter.Connection = CType(revertConnections(Me._softwaresTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._softwaresTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._softwares_TypesTableAdapter) Is Nothing) Then
-                    Me._softwares_TypesTableAdapter.Connection = CType(revertConnections(Me._softwares_TypesTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._softwares_TypesTableAdapter.Connection = CType(revertConnections(Me._softwares_TypesTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._softwares_TypesTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._system_VersionTableAdapter) Is Nothing) Then
-                    Me._system_VersionTableAdapter.Connection = CType(revertConnections(Me._system_VersionTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._system_VersionTableAdapter.Connection = CType(revertConnections(Me._system_VersionTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._system_VersionTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._transactionsTableAdapter) Is Nothing) Then
-                    Me._transactionsTableAdapter.Connection = CType(revertConnections(Me._transactionsTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._transactionsTableAdapter.Connection = CType(revertConnections(Me._transactionsTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._transactionsTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._usersTableAdapter) Is Nothing) Then
-                    Me._usersTableAdapter.Connection = CType(revertConnections(Me._usersTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._usersTableAdapter.Connection = CType(revertConnections(Me._usersTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._usersTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._vouchersTableAdapter) Is Nothing) Then
-                    Me._vouchersTableAdapter.Connection = CType(revertConnections(Me._vouchersTableAdapter),Global.Devart.Data.MySql.MySqlConnection)
+                    Me._vouchersTableAdapter.Connection = CType(revertConnections(Me._vouchersTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._vouchersTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then

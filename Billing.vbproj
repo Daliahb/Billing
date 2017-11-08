@@ -166,14 +166,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSoftwares.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsTest.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsTest.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\dsTest.vb">
-      <DependentUpon>dsTest.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSets\dsUser.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -699,17 +691,6 @@
     </None>
     <None Include="DataSets\dsSoftwares.xss">
       <DependentUpon>dsSoftwares.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsTest.xsc">
-      <DependentUpon>dsTest.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsTest.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsTest.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="DataSets\dsTest.xss">
-      <DependentUpon>dsTest.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsUser.xsc">
       <DependentUpon>dsUser.xsd</DependentUpon>
