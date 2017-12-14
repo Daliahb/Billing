@@ -32,13 +32,6 @@ Partial Class frmBanks
         Me.rbInactive = New System.Windows.Forms.RadioButton()
         Me.rbActive = New System.Windows.Forms.RadioButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clActive = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteRowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,6 +43,16 @@ Partial Class frmBanks
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clActive = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,8 +63,8 @@ Partial Class frmBanks
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.DataGridView1)
@@ -71,7 +74,7 @@ Partial Class frmBanks
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1123, 733)
+        Me.Panel1.Size = New System.Drawing.Size(1348, 733)
         Me.Panel1.TabIndex = 0
         '
         'GroupBox1
@@ -91,7 +94,7 @@ Partial Class frmBanks
         Me.rbInactive.Enabled = False
         Me.rbInactive.Location = New System.Drawing.Point(153, 10)
         Me.rbInactive.Name = "rbInactive"
-        Me.rbInactive.Size = New System.Drawing.Size(64, 17)
+        Me.rbInactive.Size = New System.Drawing.Size(79, 20)
         Me.rbInactive.TabIndex = 1
         Me.rbInactive.Text = "Inactive"
         Me.rbInactive.UseVisualStyleBackColor = True
@@ -103,7 +106,7 @@ Partial Class frmBanks
         Me.rbActive.Enabled = False
         Me.rbActive.Location = New System.Drawing.Point(6, 11)
         Me.rbActive.Name = "rbActive"
-        Me.rbActive.Size = New System.Drawing.Size(55, 17)
+        Me.rbActive.Size = New System.Drawing.Size(68, 20)
         Me.rbActive.TabIndex = 0
         Me.rbActive.TabStop = True
         Me.rbActive.Text = "Active"
@@ -115,8 +118,8 @@ Partial Class frmBanks
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -126,7 +129,7 @@ Partial Class frmBanks
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.clName, Me.clEmail, Me.Column5, Me.Column1, Me.clActive})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.clName, Me.clEmail, Me.Column2, Me.Column5, Me.Column1, Me.Column4, Me.Column3, Me.clActive})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.LemonChiffon
@@ -142,60 +145,8 @@ Partial Class frmBanks
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1114, 682)
+        Me.DataGridView1.Size = New System.Drawing.Size(1339, 682)
         Me.DataGridView1.TabIndex = 39
-        '
-        'clID
-        '
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.ReadOnly = True
-        Me.clID.Visible = False
-        '
-        'clNo
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clNo.HeaderText = "No."
-        Me.clNo.Name = "clNo"
-        Me.clNo.ReadOnly = True
-        Me.clNo.Width = 40
-        '
-        'clName
-        '
-        Me.clName.HeaderText = "Bank Name"
-        Me.clName.Name = "clName"
-        Me.clName.ReadOnly = True
-        Me.clName.Width = 240
-        '
-        'clEmail
-        '
-        Me.clEmail.HeaderText = "Account Name"
-        Me.clEmail.Name = "clEmail"
-        Me.clEmail.ReadOnly = True
-        Me.clEmail.Width = 240
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Beneficiary Bank Name"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 240
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Beneficiary Bank Adress"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 240
-        '
-        'clActive
-        '
-        Me.clActive.HeaderText = "Active"
-        Me.clActive.Name = "clActive"
-        Me.clActive.ReadOnly = True
-        Me.clActive.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.clActive.Width = 90
         '
         'ContextMenuStrip1
         '
@@ -229,7 +180,7 @@ Partial Class frmBanks
         'btnSearch
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Location = New System.Drawing.Point(1015, 5)
+        Me.btnSearch.Location = New System.Drawing.Point(1240, 5)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(102, 34)
@@ -240,7 +191,7 @@ Partial Class frmBanks
         'btnAddCustomer
         '
         Me.btnAddCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddCustomer.Location = New System.Drawing.Point(943, 5)
+        Me.btnAddCustomer.Location = New System.Drawing.Point(1168, 5)
         Me.btnAddCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddCustomer.Name = "btnAddCustomer"
         Me.btnAddCustomer.Size = New System.Drawing.Size(64, 34)
@@ -251,6 +202,8 @@ Partial Class frmBanks
         'chkStatus
         '
         Me.chkStatus.AutoSize = True
+        Me.chkStatus.Checked = True
+        Me.chkStatus.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkStatus.Location = New System.Drawing.Point(10, 10)
         Me.chkStatus.Name = "chkStatus"
         Me.chkStatus.Size = New System.Drawing.Size(70, 20)
@@ -277,12 +230,85 @@ Partial Class frmBanks
         Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
         '
+        'clID
+        '
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
+        Me.clID.ReadOnly = True
+        Me.clID.Visible = False
+        '
+        'clNo
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clNo.HeaderText = "No."
+        Me.clNo.Name = "clNo"
+        Me.clNo.ReadOnly = True
+        Me.clNo.Width = 40
+        '
+        'clName
+        '
+        Me.clName.HeaderText = "Bank Name"
+        Me.clName.Name = "clName"
+        Me.clName.ReadOnly = True
+        Me.clName.Width = 240
+        '
+        'clEmail
+        '
+        Me.clEmail.HeaderText = "Account Name"
+        Me.clEmail.Name = "clEmail"
+        Me.clEmail.ReadOnly = True
+        Me.clEmail.Width = 240
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Account Number"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 150
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Beneficiary Bank Name"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 240
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Beneficiary Bank Adress"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 240
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Swift"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 130
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "ABA Routing No."
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 150
+        '
+        'clActive
+        '
+        Me.clActive.HeaderText = "Active"
+        Me.clActive.Name = "clActive"
+        Me.clActive.ReadOnly = True
+        Me.clActive.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.clActive.Width = 90
+        '
         'frmBanks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(1128, 737)
+        Me.ClientSize = New System.Drawing.Size(1353, 737)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -321,7 +347,10 @@ Partial Class frmBanks
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clEmail As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clActive As System.Windows.Forms.DataGridViewCheckBoxColumn
 End Class

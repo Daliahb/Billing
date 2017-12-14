@@ -30,9 +30,12 @@
                         .Cells(1).Value = intCounter + 1
                         .Cells(2).Value = oBank.BankName
                         .Cells(3).Value = oBank.BankAccountName
-                        .Cells(4).Value = oBank.BeneficiaryBankName
-                        .Cells(5).Value = oBank.BeneficiaryBankAddress
-                        .Cells(6).Value = oBank.active
+                        .Cells(4).Value = oBank.BankAccountNumber
+                        .Cells(5).Value = oBank.BeneficiaryBankName
+                        .Cells(6).Value = oBank.BeneficiaryBankAddress
+                        .Cells(7).Value = oBank.Swift
+                        .Cells(8).Value = oBank.ABARouting
+                        .Cells(9).Value = oBank.active
                         intCounter += 1
                     End With
                 Next
@@ -54,8 +57,11 @@
                 With Me.DataGridView1.SelectedRows(0)
                     .Cells(2).Value = obank.BankName
                     .Cells(3).Value = obank.BankAccountName
-                    .Cells(4).Value = obank.BeneficiaryBankName
-                    .Cells(5).Value = obank.BeneficiaryBankAddress
+                    .Cells(4).Value = obank.BankAccountNumber
+                    .Cells(5).Value = obank.BeneficiaryBankName
+                    .Cells(6).Value = obank.BeneficiaryBankAddress
+                    .Cells(7).Value = obank.Swift
+                    .Cells(8).Value = obank.ABARouting
                 End With
 
                 '   Me.btnSearch_Click(Me, New System.EventArgs)

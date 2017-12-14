@@ -168,6 +168,14 @@ Public Class Generate_Invoice
                     Me.worksheet.Range("c" & 46).Value = .Item("SWIFT")
                 End If
 
+                If Not .Item("Account_Number") Is DBNull.Value Then
+                    Me.worksheet.Range("c" & 47).Value = .Item("Account_Number").ToString
+                End If
+
+                If Not .Item("ABARouting") Is DBNull.Value Then
+                    Me.worksheet.Range("c" & 48).Value = .Item("ABARouting").ToString
+                End If
+
                 If Not .Item("LogoName") Is DBNull.Value AndAlso Not .Item("LogoName").ToString.Length = 0 Then
                     LogoPath = System.Windows.Forms.Application.StartupPath & "\" & .Item("LogoName").ToString
                 Else

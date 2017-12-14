@@ -1,7 +1,7 @@
 ﻿Public Class Bank
     Public ID As Integer
     Public BankName As String
-    Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift As String
+    Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift, ABARouting As String
     Public active As Boolean
     Public Sub SetProperties(ByVal dr As DataRow)
         Try
@@ -27,6 +27,9 @@
                 End If
                 If Not dr.Item("SWIFT") Is DBNull.Value Then
                     Me.Swift = dr.Item("SWIFT").ToString
+                End If
+                If Not dr.Item("ABARouting") Is DBNull.Value Then
+                    Me.ABARouting = dr.Item("ABARouting").ToString
                 End If
                 If Not dr.Item("active") Is DBNull.Value Then
                     Me.active = CBool(dr.Item("active"))

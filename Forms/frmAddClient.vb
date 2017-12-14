@@ -112,6 +112,7 @@
             .BeneficiaryBankName = Me.txtBeneficiaryBankName.Text
             .BeneficiaryBankAddress = Me.txtBeneficiaryBankAdd.Text
             .Swift = Me.txtSwift.Text
+            .ABARouting = Me.txtABARouting.Text
             .CreditLimit = CInt(Me.txtCreditLimit.Text)
             .ContractMapleNameID = CLng(Me.cmbContractMapleName.SelectedValue)
             .ContractMapleBankID = CLng(Me.cmbContractMapleBank.SelectedValue)
@@ -150,6 +151,7 @@
                 Me.txtBeneficiaryBankName.Text = .BeneficiaryBankName
                 Me.txtBeneficiaryBankAdd.Text = .BeneficiaryBankAddress
                 Me.txtSwift.Text = .Swift
+                Me.txtABARouting.Text = .ABARouting
                 Me.txtCreditLimit.Text = .CreditLimit.ToString
                 Me.cmbContractMapleName.SelectedValue = .ContractMapleNameID
                 Me.cmbContractMapleBank.SelectedValue = .ContractMapleBankID

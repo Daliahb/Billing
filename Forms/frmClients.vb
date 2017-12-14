@@ -49,6 +49,11 @@
                         .Cells(8).Value = oClient.ContractMapleBank
                         .Cells(9).Value = oClient.AccountManagerName
                         .Cells(10).Value = oClient.Agreement
+                        .Cells(11).Value = oClient.BankAccountName
+                        .Cells(12).Value = oClient.BankAccountNumber
+                        .Cells(13).Value = oClient.IBAN
+                        .Cells(14).Value = oClient.Swift
+                        .Cells(15).Value = oClient.ABARouting
                         intCounter += 1
                     End With
                 Next
@@ -80,6 +85,11 @@
                     .Cells(8).Value = oclient.ContractMapleBank
                     .Cells(9).Value = oclient.AccountManagerName
                     .Cells(10).Value = oclient.Agreement
+                    .Cells(11).Value = oclient.BankAccountName
+                    .Cells(12).Value = oclient.BankAccountNumber
+                    .Cells(13).Value = oclient.IBAN
+                    .Cells(14).Value = oclient.Swift
+                    .Cells(15).Value = oclient.ABARouting
                     '    intCounter += 1
                 End With
                 '  Me.btnSearch_Click(Me, New System.EventArgs)

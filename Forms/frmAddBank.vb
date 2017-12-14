@@ -61,13 +61,13 @@
     Public Sub ResetForm()
         Me.txtBankName.Text = ""
         Me.txtBankAccountName.Text = ""
-        '   Me.txtBankAccountNumber.Text = ""
+        Me.txtBankAccountNo.Text = ""
         Me.txtIBAN.text = ""
         Me.txtBeneficiaryBankName.text = ""
         Me.txtBeneficiaryBankAdd.text = ""
         Me.txtSwift.Text = ""
         Me.oBank = New Bank
-
+        Me.txtABARouting.Text = ""
     End Sub
 
     Public Sub FillObject()
@@ -77,11 +77,12 @@
         With Me.oBank
             .BankName = Me.txtBankName.Text
             .BankAccountName = Me.txtBankAccountName.Text
-            .BankAccountNumber = ""
+            .BankAccountNumber = Me.txtBankAccountNo.Text
             .IBAN = Me.txtIBAN.Text
             .BeneficiaryBankName = Me.txtBeneficiaryBankName.Text
             .BeneficiaryBankAddress = Me.txtBeneficiaryBankAdd.Text
             .Swift = Me.txtSwift.Text
+            .ABARouting = Me.txtABARouting.Text
         End With
     End Sub
 
@@ -91,11 +92,12 @@
             With Me.oBank
                 Me.txtBankName.Text = .BankName
                 Me.txtBankAccountName.Text = .BankAccountName
-                ' Me.txtBankAccountNumber.Text = .BankAccountNumber
+                Me.txtBankAccountNo.Text = .BankAccountNumber
                 Me.txtIBAN.Text = .IBAN
                 Me.txtBeneficiaryBankName.Text = .BeneficiaryBankName
                 Me.txtBeneficiaryBankAdd.Text = .BeneficiaryBankAddress
                 Me.txtSwift.Text = .Swift
+                Me.txtABARouting.Text = .ABARouting
             End With
         End If
     End Sub

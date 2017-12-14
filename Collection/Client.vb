@@ -6,7 +6,7 @@
     Public Address As String
     Public Period, Statement, CreditLimit As Integer
     Public BillingEmail, CCEmail As String
-    Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift As String
+    Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift, ABARouting As String
     Public Agreement As New Enumerators.Agreement
 
     Public Sub SetProperties(ByVal dr As DataRow)
@@ -54,6 +54,9 @@
                 End If
                 If Not dr.Item("Swift") Is DBNull.Value Then
                     Me.Swift = dr.Item("Swift").ToString
+                End If
+                If Not dr.Item("ABARouting") Is DBNull.Value Then
+                    Me.ABARouting = dr.Item("ABARouting").ToString
                 End If
                 If Not dr.Item("Credit_Limit") Is DBNull.Value Then
                     Me.CreditLimit = CInt(dr.Item("Credit_Limit").ToString)

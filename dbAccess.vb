@@ -139,6 +139,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "ABARouting"
+                .Value = oClient.ABARouting
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "CreditLimit"
                 .Value = oClient.CreditLimit
             End With
@@ -342,6 +349,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "Swift"
                 .Value = oClient.Swift
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "ABARouting"
+                .Value = oClient.ABARouting
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -573,6 +587,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "ABARouting"
+                .Value = oBank.ABARouting
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
@@ -795,6 +816,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "Swift"
                 .Value = oBank.Swift
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "ABARouting"
+                .Value = oBank.ABARouting
             End With
             oSelectCommand.Parameters.Add(oParam)
 

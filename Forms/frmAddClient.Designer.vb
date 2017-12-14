@@ -79,6 +79,8 @@ Partial Class frmAddClient
         Me.btnReset = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtABARouting = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,8 +94,8 @@ Partial Class frmAddClient
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.GroupBox2)
         Me.Panel1.Controls.Add(Me.GroupBox1)
@@ -101,7 +103,7 @@ Partial Class frmAddClient
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(736, 512)
+        Me.Panel1.Size = New System.Drawing.Size(736, 555)
         Me.Panel1.TabIndex = 0
         '
         'GroupBox2
@@ -113,7 +115,7 @@ Partial Class frmAddClient
         Me.GroupBox2.Controls.Add(Me.cmbContractMapleName)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 378)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 417)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(707, 87)
         Me.GroupBox2.TabIndex = 80
@@ -215,6 +217,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.txtCreditLimit)
         Me.GroupBox1.Controls.Add(Me.txtPeriod)
         Me.GroupBox1.Controls.Add(Me.txtCCEmails)
+        Me.GroupBox1.Controls.Add(Me.txtABARouting)
         Me.GroupBox1.Controls.Add(Me.txtSwift)
         Me.GroupBox1.Controls.Add(Me.txtBeneficiaryBankAdd)
         Me.GroupBox1.Controls.Add(Me.txtBeneficiaryBankName)
@@ -223,6 +226,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.txtBankAccountName)
         Me.GroupBox1.Controls.Add(Me.txtBillingEmail)
         Me.GroupBox1.Controls.Add(Me.txtTimeZone)
+        Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.lblGender)
@@ -230,7 +234,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(718, 374)
+        Me.GroupBox1.Size = New System.Drawing.Size(718, 408)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Client Info"
@@ -256,8 +260,8 @@ Partial Class frmAddClient
         'dgOutboundNames
         '
         Me.dgOutboundNames.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -282,7 +286,7 @@ Partial Class frmAddClient
         Me.dgOutboundNames.RowHeadersVisible = False
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         Me.dgOutboundNames.RowsDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgOutboundNames.Size = New System.Drawing.Size(165, 104)
+        Me.dgOutboundNames.Size = New System.Drawing.Size(165, 138)
         Me.dgOutboundNames.TabIndex = 78
         Me.dgOutboundNames.Visible = False
         '
@@ -550,7 +554,7 @@ Partial Class frmAddClient
         Me.Panel2.Controls.Add(Me.btnCancel)
         Me.Panel2.Controls.Add(Me.btnSave)
         Me.Panel2.Controls.Add(Me.btnReset)
-        Me.Panel2.Location = New System.Drawing.Point(211, 472)
+        Me.Panel2.Location = New System.Drawing.Point(211, 515)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(254, 35)
         Me.Panel2.TabIndex = 78
@@ -592,12 +596,28 @@ Partial Class frmAddClient
         '
         Me.AccountManagersTableAdapter.ClearBeforeFill = True
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(15, 369)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(118, 16)
+        Me.Label19.TabIndex = 76
+        Me.Label19.Text = "ABA/Routing No."
+        '
+        'txtABARouting
+        '
+        Me.txtABARouting.Location = New System.Drawing.Point(187, 366)
+        Me.txtABARouting.Name = "txtABARouting"
+        Me.txtABARouting.Size = New System.Drawing.Size(297, 23)
+        Me.txtABARouting.TabIndex = 14
+        '
         'frmAddClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(740, 514)
+        Me.ClientSize = New System.Drawing.Size(740, 557)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -672,4 +692,6 @@ Partial Class frmAddClient
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cmbAgreement As System.Windows.Forms.ComboBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents txtABARouting As System.Windows.Forms.TextBox
+    Friend WithEvents Label19 As System.Windows.Forms.Label
 End Class
