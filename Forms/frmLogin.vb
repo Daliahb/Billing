@@ -2,6 +2,8 @@
 
 Public Class frmLogin
 
+    Dim txtLink As String
+
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Me.Close()
         Application.Exit()
@@ -33,7 +35,7 @@ Public Class frmLogin
                     Else
                         Me.lblError.Visible = True
                         Me.lblError.Text = "Please install the updated version!"
-                        Me.lblURL.Text = dr.Item("NewSetupLink").ToString
+                        txtLink = dr.Item("NewSetupLink").ToString
 
                         Me.lblURL.Visible = True
                     End If
@@ -64,7 +66,7 @@ Public Class frmLogin
     End Sub
 
     Private Sub lblURL_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lblURL.LinkClicked
-        System.Diagnostics.Process.Start(Me.lblURL.Text)
+        System.Diagnostics.Process.Start(txtLink)
     End Sub
 
 End Class

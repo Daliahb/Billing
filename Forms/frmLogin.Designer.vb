@@ -38,8 +38,8 @@ Partial Class frmLogin
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.Controls.Add(Me.lblURL)
         Me.Panel1.Controls.Add(Me.btnCancel)
         Me.Panel1.Controls.Add(Me.lblUserName)
@@ -57,13 +57,13 @@ Partial Class frmLogin
         'lblURL
         '
         Me.lblURL.AutoSize = True
-        Me.lblURL.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblURL.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblURL.Location = New System.Drawing.Point(10, 94)
         Me.lblURL.Name = "lblURL"
-        Me.lblURL.Size = New System.Drawing.Size(56, 13)
+        Me.lblURL.Size = New System.Drawing.Size(209, 14)
         Me.lblURL.TabIndex = 12
         Me.lblURL.TabStop = True
-        Me.lblURL.Text = "LinkLabel1"
+        Me.lblURL.Text = "Click here to downlaod setup file"
         Me.lblURL.Visible = False
         '
         'btnCancel
