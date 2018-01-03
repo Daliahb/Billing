@@ -19,13 +19,13 @@ Public Class DBAccess
 
     Public Sub New()
         'Real Online  DB
-        '  oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
+        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
 
         'Test  DB
-        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
-        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
+        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
 
         'Armenia Test
         'oConnection.ConnectionString = "server=localhost;User Id=root;Password=root;Persist Security Info=false;database=voip_billing_system_mapleexpress_yerevan"
@@ -424,7 +424,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer) As ColClient
+    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer, boolFromMC As Boolean) As ColClient
         ds = New DataSet
         Dim oColClient As New ColClient
 
@@ -474,7 +474,13 @@ Public Class DBAccess
                 .Value = lCompanyAccount
             End With
             oSelectCommand.Parameters.Add(oParam)
-            
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolFromMC"
+                .Value = boolFromMC
+            End With
+            oSelectCommand.Parameters.Add(oParam)
 
             oDataAdapter.SelectCommand = oSelectCommand
             oSelectCommand.Connection = Me.oConnection
@@ -2260,6 +2266,25 @@ Public Class DBAccess
                 Return ds.Tables(0).Rows(0).Item(0).ToString
             End If
             Return ""
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function CheckClientsFromMC() As Boolean
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "CheckClientsFromMC"
+            oSelectCommand.Connection = oConnection
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            Return CBool(oSelectCommand.ExecuteScalar)
         Catch ex As Exception
             MsgBox(ex.Message & ex.StackTrace)
             Return Nothing

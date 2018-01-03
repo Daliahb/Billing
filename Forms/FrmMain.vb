@@ -15,6 +15,12 @@ Public Class FrmMain
         Me.lblCountry.Text = gCountry
         CheckPermission()
         Me.Text += gUser.UserName
+
+        'Check if there are clients added from MC
+        If odbaccess.CheckClientsFromMC() Then
+            Dim frm As New frmWarningClientsFromMC
+            frm.Show()
+        End If
     End Sub
 
     Public Sub CheckPermission()

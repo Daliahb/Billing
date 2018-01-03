@@ -22,18 +22,18 @@
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim intCounter As Integer = 0
         Dim intRowIndex As Integer
-        ' Dim boolStatus, boolActive As Boolean
+        Dim boolFromMC As Boolean
         Dim strCompany As String = ""
         Dim lAccountManager, lAgreement, lBankAccount, lCompanyAccount As Integer
         'Dim dtFrom, dtTo As Date
         'Dim ds As New DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount)
+            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC)
 
             oColClients.Clear()
 
-            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount)
+            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC)
             If Not oColClients Is Nothing AndAlso Not oColClients.Count = 0 Then
                 For Each oClient As Client In oColClients
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -105,7 +105,7 @@
         oFrm.ShowDialog()
     End Sub
 
-    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer)
+    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer, ByRef boolFromMC As Boolean)
         Try
             If Me.chkAccountManager.Checked Then
                 lAccountManager = CInt(Me.cmbAccountManager.SelectedValue)
@@ -131,6 +131,11 @@
                 strCompany = Me.txtCompany.Text
             Else
                 strCompany = ""
+            End If
+            If Me.chkAddedFromMC.Checked Then
+                boolFromMC = True
+            Else
+                boolFromMC = False
             End If
         Catch ex As Exception
 

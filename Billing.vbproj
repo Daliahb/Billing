@@ -75,6 +75,9 @@
   <PropertyGroup>
     <ApplicationIcon>maple1_logo %281%29.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -172,6 +175,18 @@
     <Compile Include="DataSets\dsUser.vb">
       <DependentUpon>dsUser.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmWarningClientsFromMC.Designer.vb">
+      <DependentUpon>frmWarningClientsFromMC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWarningClientsFromMC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmClientStatementOfAccount.Designer.vb">
+      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClientStatementOfAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmStatementOfAccount.Designer.vb">
       <DependentUpon>frmStatementOfAccount.vb</DependentUpon>
     </Compile>
@@ -194,12 +209,6 @@
       <DependentUpon>frmEditProviderRate.vb</DependentUpon>
     </Compile>
     <Compile Include="Rates\frmEditProviderRate.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmClientStatementOfAccount.Designer.vb">
-      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmClientStatementOfAccount.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmEditPurchace.Designer.vb">
@@ -469,6 +478,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmWarningClientsFromMC.resx">
+      <DependentUpon>frmWarningClientsFromMC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmClientStatementOfAccount.resx">
+      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmStatementOfAccount.resx">
       <DependentUpon>frmStatementOfAccount.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,9 +495,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rates\frmEditProviderRate.resx">
       <DependentUpon>frmEditProviderRate.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmClientStatementOfAccount.resx">
-      <DependentUpon>frmClientStatementOfAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditPurchace.resx">
       <DependentUpon>frmEditPurchace.vb</DependentUpon>
@@ -701,6 +713,7 @@
     <None Include="DataSets\dsUser.xss">
       <DependentUpon>dsUser.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -754,15 +767,6 @@
   <ItemGroup>
     <COMReference Include="AccessibilityCplAdminLib">
       <Guid>{714DD4F6-7676-4BDE-925A-C2FEC2073F36}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="LCC11">
-      <Guid>{EDCD5812-6A06-43C3-AFAC-46EF5D14E22C}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
