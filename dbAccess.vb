@@ -22,7 +22,7 @@ Public Class DBAccess
         oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
 
         'Test  DB
-        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        '  oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
         'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
@@ -2325,6 +2325,41 @@ Public Class DBAccess
             oSelectCommand = New MySqlCommand
             oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
             oSelectCommand.CommandText = "GetStatementOfAccountForClient"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lClientID"
+                .Value = lClientID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetStatementOfAccountForClient_New(ByVal lClientID As Long) As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetStatementOfAccountForClient-seperated"
 
             oParam = New MySqlParameter
             With oParam

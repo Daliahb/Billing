@@ -17,7 +17,8 @@
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If Not Me.cmbClientCode.SelectedValue Is Nothing Then
             Dim oGenerate_Invoice As New Generate_Invoice
-            oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
+            '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
+            oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
             Me.Close()
         End If
 

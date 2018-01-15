@@ -17,6 +17,7 @@
         Dim lClientID As Long = 0
         Dim ds As DataSet
         Dim decBalance As Decimal = 0
+        Dim dblTotalCredit, dblTotalDebit, dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
         Try
             Me.DataGridView1.Rows.Clear()
             If Not Me.cmbClientCode.SelectedValue Is Nothing Then
@@ -38,22 +39,49 @@
                             .Cells(1).Value = intCounter + 1
                             .Cells(2).Value = dr.Item("Debit")
                             .Cells(3).Value = dr.Item("Credit")
-                            .Cells(4).Value = dr.Item("Note")
+                            .Cells(4).Value = dr.Item("BankFees").ToString
+                            .Cells(5).Value = dr.Item("Note")
                             Try
-                                .Cells(5).Value = CDate(dr.Item("Date")).ToString("yyyy-MM-dd")
+                                .Cells(6).Value = CDate(dr.Item("Date")).ToString("yyyy-MM-dd")
                             Catch ex As Exception
 
                             End Try
 
                             intCounter += 1
                             decBalance = CDec(Math.Round(decBalance + CDbl(dr.Item("Credit")) - CDbl(dr.Item("Debit")), 3))
-                            .Cells(6).Value = decBalance
-                            .Cells(7).Value = dr.Item("Bank")
+                            dblTotalCredit += CDbl(dr.Item("Credit"))
+                            dblTotalDebit += CDbl(dr.Item("Debit"))
+                            .Cells(7).Value = decBalance
+                            .Cells(8).Value = dr.Item("Bank")
                         End With
                     Catch ex As Exception
 
                     End Try
                 Next
+                Me.lblTotalCredit.Text = Math.Round(dblTotalCredit, 4).ToString
+                Me.lblTotalDebit.Text = Math.Round(dblTotalDebit).ToString
+
+                If Not ds.Tables.Count = 1 Then
+                    dblTotalClientPayment = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalClientPayments")), 4)
+                    dblTotalTransactionBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalTransactionsBankFees")), 4)
+                    dblTotalBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalBankFees")), 4)
+
+                    Me.lblClientPayments.Text = dblTotalClientPayment.ToString
+                    Me.lblTransactionBankFees.Text = dblTotalTransactionBankFees.ToString
+                    Me.lblBankFees.Text = dblTotalBankFees.ToString
+                    Me.lblNoClientOfPayments.Text = ds.Tables(1).Rows(0).Item("NoClientOfPayments").ToString
+                    Try
+                        If Not dblTotalClientPayment = 0 Then
+                            Me.lblPercentage.Text = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 4).ToString
+                        Else
+                            Me.lblPercentage.Text = "0"
+                        End If
+
+                    Catch ex As Exception
+
+                    End Try
+
+                End If
             End If
 
         Catch ex As Exception

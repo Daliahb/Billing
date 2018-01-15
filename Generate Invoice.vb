@@ -338,6 +338,8 @@ Public Class Generate_Invoice
             Dim dLastDate As Date
             Dim dblAmount As Double
             Dim ds As DataSet
+            Dim dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
+
             ds = odbaccess.GetStatementOfAccount()
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
                 '  GenerateExcelFile(ds)
@@ -356,14 +358,14 @@ Public Class Generate_Invoice
                     Dim x As Integer
                     x = ds.Tables(0).Rows.Count - 5
                     For i = 1 To x
-                        worksheet.Rows(4).Insert()
+                        worksheet.Rows(5).Insert()
                     Next
 
                 End If
 
                 Me.worksheet.Range("B" & 1).Value = "Statement Of Acount   " & Now.Date.ToString("dd-MM-yyyy")
 
-                i = 3
+                i = 4
                 For Each dr As DataRow In ds.Tables(0).Rows
                     With dr
                         If Not .Item("Company_Code") Is DBNull.Value Then
@@ -372,43 +374,72 @@ Public Class Generate_Invoice
                         If Not .Item("BeginingBalance") Is DBNull.Value Then
                             Me.worksheet.Range("C" & i).Value = .Item("BeginingBalance")
                         End If
-                        If Not .Item("Credit") Is DBNull.Value Then
-                            Me.worksheet.Range("D" & i).Value = .Item("Credit")
+                        'Credit
+                        If Not .Item("Purchase") Is DBNull.Value Then
+                            Me.worksheet.Range("D" & i).Value = .Item("Purchase")
                         End If
-                        If Not .Item("Debit") Is DBNull.Value Then
-                            Me.worksheet.Range("E" & i).Value = .Item("Debit")
+                        If Not .Item("ClientPayment") Is DBNull.Value Then
+                            Me.worksheet.Range("E" & i).Value = .Item("ClientPayment")
                         End If
+                        If Not .Item("VouchersCredit") Is DBNull.Value Then
+                            Me.worksheet.Range("F" & i).Value = .Item("VouchersCredit")
+                        End If
+                        'Debit
+                        If Not .Item("Invoice") Is DBNull.Value Then
+                            Me.worksheet.Range("G" & i).Value = .Item("Invoice")
+                        End If
+                        If Not .Item("MaplePayment") Is DBNull.Value Then
+                            Me.worksheet.Range("H" & i).Value = .Item("MaplePayment")
+                        End If
+                        If Not .Item("VouchersDebit") Is DBNull.Value Then
+                            Me.worksheet.Range("I" & i).Value = .Item("VouchersDebit")
+                        End If
+
+                        'get Bank Fees percentage from total client payments
+                        dblTotalClientPayment = Math.Round(CDbl(.Item("ClientPayment")), 4)
+                        dblTotalTransactionBankFees = Math.Round(CDbl(.Item("TotalTransactionsBankFees")), 4)
+                        dblTotalBankFees = Math.Round(CDbl(.Item("TotalBankFees")), 4)
+
+                        ' Me.lblClientPayments.Text = dblTotalClientPayment.ToString
+                        ' Me.lblTransactionBankFees.Text = dblTotalTransactionBankFees.ToString
+                        'Me.lblBankFees.Text = dblTotalBankFees.ToString
+                        Me.worksheet.Range("p" & i).Value = (dblTotalBankFees - dblTotalTransactionBankFees)
+
+                        Try
+                            If Not dblTotalClientPayment = 0 Then
+                                Me.worksheet.Range("q" & i).Value = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 4).ToString
+                            Else
+                                Me.worksheet.Range("q" & i).Value = "0"
+                            End If
+                            Me.worksheet.Range("r" & i).Value = .Item("NumberOfClientPayments")
+                        Catch ex As Exception
+
+                        End Try
+
                         Dim dblBalance As Double
-                        dblBalance = CDbl(.Item("BeginingBalance")) + CDbl(.Item("Credit")) - CDbl(.Item("Debit"))
-                        Dim f As String
-                        f = "=C" & i & "+D" & i & "-E" & i
-                        Me.worksheet.Range("F" & i).Formula = f
+                        dblBalance = (CDbl(.Item("BeginingBalance")) + CDbl(.Item("Purchase")) + CDbl(.Item("ClientPayment")) + CDbl(.Item("VouchersCredit")) - CDbl(.Item("Invoice")) - CDbl(.Item("MaplePayment")) - CDbl(.Item("VouchersDebit")))
+                        Dim j As String
+                        j = "=C" & i & "+D" & i & "+E" & i & "+F" & i & "-G" & i & "-" & "H" & i & "-I" & i
+                        Me.worksheet.Range("j" & i).Formula = j
 
                         getLastPaymentDate(ds.Tables(1), CInt(.Item("fk_client")), dLastDate, dblAmount)
 
-                        Me.worksheet.Range("G" & i).Value = dLastDate
-                        Me.worksheet.Range("H" & i).Value = dblAmount
+                        Me.worksheet.Range("K" & i).Value = dLastDate
+                        Me.worksheet.Range("L" & i).Value = dblAmount
 
                         If Not .Item("Credit_Limit") Is DBNull.Value Then
-                            Me.worksheet.Range("I" & i).Value = .Item("Credit_Limit")
+                            Me.worksheet.Range("M" & i).Value = .Item("Credit_Limit")
                         End If
 
                         Dim intDiff As Long
                         intDiff = DateDiff(DateInterval.Day, dLastDate, Now())
                         If intDiff > 21 And dblBalance < 0 Then
                             'Me.worksheet.Range("B" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("C" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("D" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("E" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("F" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("G" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            'Me.worksheet.Range("H" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-
-                            Me.worksheet.Range("J" & i).Value = intDiff
+                            Me.worksheet.Range("N" & i).Value = intDiff
                         End If
 
                         If Not .Item("AccountManager") Is DBNull.Value Then
-                            Me.worksheet.Range("K" & i).Value = .Item("AccountManager")
+                            Me.worksheet.Range("O" & i).Value = .Item("AccountManager")
                         End If
 
 
@@ -420,8 +451,8 @@ Public Class Generate_Invoice
                             .Cells(3).Value = dr.Item("Company_Code")
                             .Cells(4).Value = dr.Item("AccountManager")
                             .Cells(5).Value = dr.Item("BeginingBalance")
-                            .Cells(6).Value = dr.Item("Credit")
-                            .Cells(7).Value = dr.Item("Debit")
+                            '   .Cells(6).Value = dr.Item("Credit")
+                            '   .Cells(7).Value = dr.Item("Debit")
                             .Cells(8).Value = Math.Round(dblBalance, 3)
                             .Cells(9).Value = CDate(dLastDate).ToString("yyyy-MM-dd")
                             .Cells(10).Value = dblAmount
@@ -545,6 +576,126 @@ Public Class Generate_Invoice
                 ' ------------------------------------------------------------
 
                 strName = "SOA - " & strClientCode & " - " & Now.ToString("ddMMyyyy")
+                If My.Settings.RootDirectory.Length = 0 Then
+                    If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
+                        Dim folderDlg As New FolderBrowserDialog
+                        folderDlg.SelectedPath = My.Settings.RootDirectory
+                        folderDlg.ShowNewFolderButton = True
+                        folderDlg.Description = "Select a folder to save Invoices." & vbCrLf & "The current folder is: " & My.Settings.RootDirectory
+                        If (folderDlg.ShowDialog() = DialogResult.OK) Then
+
+                            '   Dim root As Environment.SpecialFolder = folderDlg.RootFolder
+                            My.Settings.RootDirectory = folderDlg.SelectedPath
+                        End If
+                    Else
+                        Return
+                    End If
+
+                End If
+                ''  worksheet.Protect("111111", False, True, False, True, True, True, True, True, True, True, True, True, True, True, True)
+                worksheet.SaveAs(Filename:=RootDirectory & "\" & strName)
+                ' excel.Workbooks.Close()
+                '  excel.Quit()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+    Public Sub GenerateStatementOfAccountReportForClient_New(ByVal lClientID As Integer, strClientCode As String)
+        Try
+            Dim ds As DataSet
+            ds = odbaccess.GetStatementOfAccountForClient_New(lClientID)
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                '  GenerateExcelFile(ds)
+
+                Dim strName As String
+                excel.Visible = True
+                Dim i As Integer
+                Dim ExcelPath As String = System.Windows.Forms.Application.StartupPath & "\Statement Of Account - Client.xlsx"
+                excel.Workbooks.Open(ExcelPath)
+                excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMaximized
+
+                worksheet = excel.Worksheets(1)
+
+                'If ds.Tables(0).Rows.Count > 5 Then
+                '    Dim x As Integer
+                '    x = ds.Tables(0).Rows.Count - 5
+                '    For i = 1 To x
+                '        worksheet.Rows(7).Insert()
+                '    Next
+
+                'End If
+
+                ' ------------------------------------------------------------
+                'Dim dblbeginingBalance As Double = CDbl(ds.Tables(0).Rows(0).Item("BeginingBalance")) '0.0
+                ' Dim strClientCode As String = ds.Tables(0).Rows(0).Item("Company_Code").ToString
+                'Dim strCompany As String
+                'If gCountry = "Jordan" Then
+                '    strCompany = "Maple"
+                'ElseIf gCountry = "Yerevan" Then
+                '    strCompany = "Maple Telecommunication FZE"
+                '    'End If
+
+                'Me.worksheet.Range("C" & 3).Value = strCompany
+                'Me.worksheet.Range("F" & 3).Value = strCompany
+                'Me.worksheet.Range("H" & 3).Value = strCompany
+                'Me.worksheet.Range("J" & 3).Value = strCompany
+
+
+
+                ''  Me.worksheet.Range("A" & 3).Value = ds.Tables(0).Rows(0).Item("DateFrom").ToString + "-" + ds.Tables(0).Rows(0).Item("DateTo").ToString
+                'Me.worksheet.Range("B" & 3).Value = dblbeginingBalance
+                'Me.worksheet.Range("D" & 3).Value = strClientCode
+                'Me.worksheet.Range("E" & 3).Value = strClientCode
+                'Me.worksheet.Range("G" & 3).Value = strClientCode
+                'Me.worksheet.Range("I" & 3).Value = strClientCode
+
+
+                i = 3
+                For Each dr As DataRow In ds.Tables(0).Rows
+                    With dr
+                        If Not .Item("Date").ToString = "" Then
+                            Me.worksheet.Range("A" & i).Value = CDate(.Item("Date")).ToString("yyyy/MM/dd")
+                        End If
+
+
+                        '  If i = 4 Then
+                        Me.worksheet.Range("B" & i).Value = .Item("Note").ToString
+                        'Else
+                        'Me.worksheet.Range("B" & i).Value = Me.worksheet.Range("K" & i - 1).Value
+                        'End If
+
+                        Me.worksheet.Range("C" & i).Value = .Item("InvoiceNo").ToString
+                        If Not .Item("Period_From").ToString = "" Then
+                            Me.worksheet.Range("D" & i).Value = CDate(.Item("Period_From")).ToString("yyyy/MM/dd")
+                        End If
+                        If Not .Item("Period_To").ToString = "" Then
+                            Me.worksheet.Range("E" & i).Value = CDate(.Item("Period_To")).ToString("yyyy/MM/dd")
+                        End If
+                        If Not .Item("Duration").ToString = "" Then
+                            Me.worksheet.Range("F" & i).Value = CDbl(.Item("Duration"))
+                        End If
+
+                        Me.worksheet.Range("G" & i).Value = CDbl(.Item("Debit")) - CDbl(.Item("Credit"))
+
+
+                        Dim k As String
+                        If i = 3 Then
+                            k = "=G" & i
+                        Else
+                            k = "=H" & i - 1 & "+G" & i '& "+D" & i & "+E" & i & "+F" & i & "+G" & i & "+H" & i & "+I" & i & "+J" & i
+                        End If
+
+                        Me.worksheet.Range("H" & i).Formula = k
+                        i += 1
+                    End With
+                Next
+
+                ' ------------------------------------------------------------
+
+                strName = strClientCode & " - SOA - " & Now.ToString("ddMMyyyy")
                 If My.Settings.RootDirectory.Length = 0 Then
                     If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
                         Dim folderDlg As New FolderBrowserDialog
