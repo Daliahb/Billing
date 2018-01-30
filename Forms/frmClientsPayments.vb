@@ -8,6 +8,8 @@
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
+        Me.Text = Me.Text & " - " & gCountry.ToString
+
         FillTypes()
     End Sub
 

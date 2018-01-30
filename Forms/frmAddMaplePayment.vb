@@ -33,9 +33,11 @@
         'FindClientBank()
 
         If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
-            Me.Text = "Edit Client Payment"
+            Me.Text = "Edit Client Payment - " & gCountry.ToString
 
             SetControls()
+        Else
+            Me.Text = Me.Text & " - " & gCountry.ToString
         End If
 
         'check permission

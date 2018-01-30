@@ -40,7 +40,7 @@
                             .Cells(2).Value = dr.Item("Debit")
                             .Cells(3).Value = dr.Item("Credit")
                             .Cells(4).Value = dr.Item("BankFees").ToString
-                            .Cells(5).Value = dr.Item("Note")
+                            .Cells(5).Value = dr.Item("Note").ToString
                             Try
                                 .Cells(6).Value = CDate(dr.Item("Date")).ToString("yyyy-MM-dd")
                             Catch ex As Exception

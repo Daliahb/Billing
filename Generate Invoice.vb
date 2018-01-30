@@ -650,10 +650,10 @@ Public Class Generate_Invoice
                 'Me.worksheet.Range("D" & 3).Value = strClientCode
                 'Me.worksheet.Range("E" & 3).Value = strClientCode
                 'Me.worksheet.Range("G" & 3).Value = strClientCode
-                'Me.worksheet.Range("I" & 3).Value = strClientCode
+                '
+                Me.worksheet.Range("A" & 1).Value = strClientCode & " SOA"
 
-
-                i = 3
+                i = 4
                 For Each dr As DataRow In ds.Tables(0).Rows
                     With dr
                         If Not .Item("Date").ToString = "" Then
@@ -682,7 +682,7 @@ Public Class Generate_Invoice
 
 
                         Dim k As String
-                        If i = 3 Then
+                        If i = 4 Then
                             k = "=G" & i
                         Else
                             k = "=H" & i - 1 & "+G" & i '& "+D" & i & "+E" & i & "+F" & i & "+G" & i & "+H" & i & "+I" & i & "+J" & i

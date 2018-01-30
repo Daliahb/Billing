@@ -7,6 +7,7 @@
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
+        Me.Text = Me.Text & " - " & gCountry.ToString
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         FillTypes()
     End Sub
@@ -42,9 +43,9 @@
                             .Cells(2).Value = dr.Item("CompanyCode")
                             .Cells(3).Value = dr.Item("ClientAmount")
                             .Cells(4).Value = dr.Item("RecievedAmount")
-                            .Cells(5).Value = dr.Item("Bank_Fees")
-                            .Cells(6).Value = dr.Item("Bank_Name")
-                            .Cells(7).Value = dr.Item("Note")
+                            .Cells(5).Value = dr.Item("Bank_Fees").ToString
+                            .Cells(6).Value = dr.Item("Bank_Name").ToString
+                            .Cells(7).Value = dr.Item("Note").ToString
                             .Cells(8).Value = CDate(dr.Item("insert_Date")).ToString("yyyy-MM-dd")
                             .Cells(9).Value = CBool(dr.Item("isBankFeesSentToVoucher"))
                             .Cells(10).Value = dr.Item("InsertBy")
