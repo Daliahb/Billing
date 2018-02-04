@@ -45,7 +45,7 @@ Public Class Generate_Invoice
         End If
     End Sub
 
-    Public Sub New(ByVal dInsertDate As Date)
+    Public Sub New(ByVal dInsertDate As Date, lClientId As Long)
 
         If My.Settings.RootDirectory.Length = 0 Then
             If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
@@ -69,38 +69,41 @@ Public Class Generate_Invoice
             System.IO.Directory.CreateDirectory(RootDirectory)
         End If
 
-        Dim lClientID As Long
         Me.dInsertDate = dInsertDate
         Dim ds As DataSet
-        ds = odbaccess.GetBillingClients(dInsertDate)
-        If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
-            Dim PBar As New frmProgressBar
-            PBar.Show()
 
-            Dim x As Double = 0
-            x = 100 / ds.Tables(0).Rows.Count
-            Dim dValue As Double = 0
+        If lClientId = 0 Then
+            ds = odbaccess.GetBillingClients(dInsertDate)
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Dim PBar As New frmProgressBar
+                PBar.Show()
 
-            PBar.ProgressBar1.Minimum = 0
-            PBar.ProgressBar1.Maximum = ds.Tables(0).Rows.Count
-            PBar.ProgressBar1.Value = 0
-            PBar.ProgressBar1.Step = 1
-            For Each dr As DataRow In ds.Tables(0).Rows
-                PBar.ProgressBar1.PerformStep()
+                Dim x As Double = 0
+                x = 100 / ds.Tables(0).Rows.Count
+                Dim dValue As Double = 0
 
-                lClientID = CLng(dr.Item("ID"))
-                GenerateClientInvoice(lClientID)
-                dValue += x
-                PBar.lblPercent.Text = Math.Round(dValue, 0).ToString + "%"
-            Next
+                PBar.ProgressBar1.Minimum = 0
+                PBar.ProgressBar1.Maximum = ds.Tables(0).Rows.Count
+                PBar.ProgressBar1.Value = 0
+                PBar.ProgressBar1.Step = 1
+                For Each dr As DataRow In ds.Tables(0).Rows
+                    PBar.ProgressBar1.PerformStep()
 
-            ' GenerateWeeklyReport(dInsertDate)
-            PBar.Close()
-            MsgBox("Operation done successfully.")
-        Else
-            MsgBox("No data found.")
+                    lClientId = CLng(dr.Item("ID"))
+                    GenerateClientInvoice(lClientId)
+                    dValue += x
+                    PBar.lblPercent.Text = Math.Round(dValue, 0).ToString + "%"
+                Next
+
+                ' GenerateWeeklyReport(dInsertDate)
+                PBar.Close()
+                MsgBox("Operation done successfully.")
+            Else
+                MsgBox("No data found.")
+            End If
+        Else 'if lclientID <> 0, then generate invoice for one specific client only
+            GenerateClientInvoice(lClientId)
         End If
-
     End Sub
 
     Public Sub GenerateClientInvoice(ByVal lClientID As Long)
@@ -331,7 +334,7 @@ Public Class Generate_Invoice
         End Try
     End Sub
 
-    Public Sub GenerateStatementOfAccountReport()
+    Public Sub GenerateStatementOfAccountReport(enumClientStatus As Enumerators.ClientStatus)
         Try
             Dim frmStatementOfAccount As New frmStatementOfAccount
             Dim intRowIndex, intCounter As Integer
@@ -340,7 +343,7 @@ Public Class Generate_Invoice
             Dim ds As DataSet
             Dim dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
 
-            ds = odbaccess.GetStatementOfAccount()
+            ds = odbaccess.GetStatementOfAccount(enumClientStatus)
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
                 '  GenerateExcelFile(ds)
 

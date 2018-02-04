@@ -68,6 +68,8 @@ Partial Class frmVouchers
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -78,8 +80,10 @@ Partial Class frmVouchers
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.chkStatus)
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.cmbType)
         Me.Panel1.Controls.Add(Me.chkType)
         Me.Panel1.Controls.Add(Me.cmbBanks)
@@ -110,7 +114,7 @@ Partial Class frmVouchers
         Me.cmbType.Enabled = False
         Me.cmbType.FormattingEnabled = True
         Me.cmbType.IntegralHeight = False
-        Me.cmbType.Location = New System.Drawing.Point(70, 68)
+        Me.cmbType.Location = New System.Drawing.Point(70, 70)
         Me.cmbType.Name = "cmbType"
         Me.cmbType.Size = New System.Drawing.Size(202, 24)
         Me.cmbType.TabIndex = 90
@@ -119,7 +123,7 @@ Partial Class frmVouchers
         'chkType
         '
         Me.chkType.AutoSize = True
-        Me.chkType.Location = New System.Drawing.Point(9, 70)
+        Me.chkType.Location = New System.Drawing.Point(9, 72)
         Me.chkType.Name = "chkType"
         Me.chkType.Size = New System.Drawing.Size(58, 20)
         Me.chkType.TabIndex = 91
@@ -214,8 +218,8 @@ Partial Class frmVouchers
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -421,6 +425,26 @@ Partial Class frmVouchers
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Location = New System.Drawing.Point(328, 72)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 94
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(421, 70)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(202, 24)
+        Me.cmbStatus.TabIndex = 93
+        '
         'frmVouchers
         '
         Me.AcceptButton = Me.btnSearch
@@ -480,5 +504,7 @@ Partial Class frmVouchers
     Friend WithEvents Inserted As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
 
 End Class

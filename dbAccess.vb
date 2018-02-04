@@ -193,6 +193,13 @@ Public Class DBAccess
             End With
             oSelectCommand.Parameters.Add(oParam)
 
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = oClient.Status
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
             If oConnection.State = ConnectionState.Closed Then
                 oConnection.Open()
             End If
@@ -408,6 +415,13 @@ Public Class DBAccess
             End With
             oSelectCommand.Parameters.Add(oParam)
 
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = oClient.Status
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
             If oConnection.State = ConnectionState.Closed Then
                 oConnection.Open()
             End If
@@ -424,7 +438,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer, boolFromMC As Boolean) As ColClient
+    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer, boolFromMC As Boolean, enumStatus As Integer) As ColClient
         ds = New DataSet
         Dim oColClient As New ColClient
 
@@ -479,6 +493,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "boolFromMC"
                 .Value = boolFromMC
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -1596,7 +1617,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetPurchasesSearch(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date) As DataSet
+    Public Function GetPurchasesSearch(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus) As DataSet
         ds = New DataSet
 
         Try
@@ -1643,6 +1664,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "dtInsertDate"
                 .Value = dtInsertDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -2291,12 +2319,40 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetStatementOfAccount() As DataSet
+    Public Function GetClientsStatus() As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetClientsStatus"
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetStatementOfAccount(enumClientStatus As Enumerators.ClientStatus) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
             oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
             oSelectCommand.CommandText = "GetStatementOfAccount"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumClientStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
 
             oParam = New MySqlParameter
             With oParam
@@ -2960,7 +3016,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetVouchers(ByVal boolClient As Boolean, ByVal lClientID As Integer, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, ByVal lType As Integer) As DataSet
+    Public Function GetVouchers(ByVal boolClient As Boolean, ByVal lClientID As Integer, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, ByVal lType As Integer, enumStatus As Enumerators.ClientStatus) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -3018,6 +3074,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
@@ -3037,7 +3100,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetClientsPayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer) As DataSet
+    Public Function GetClientsPayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -3088,6 +3151,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
@@ -3107,7 +3177,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetMaplePayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer) As DataSet
+    Public Function GetMaplePayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -3153,6 +3223,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "lBankID"
                 .Value = lBankID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
             End With
             oSelectCommand.Parameters.Add(oParam)
 

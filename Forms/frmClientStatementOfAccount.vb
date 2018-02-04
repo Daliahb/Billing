@@ -15,12 +15,24 @@
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        If Not Me.cmbClientCode.SelectedValue Is Nothing Then
+        Dim enumClientStatus As Enumerators.ClientStatus
+        If Me.rbAllClients.Checked Then
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumClientStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumClientStatus = 0
+            End If
             Dim oGenerate_Invoice As New Generate_Invoice
-            '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
-            oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
-            Me.Close()
+            oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus)
+        Else
+            If Not Me.cmbClientCode.SelectedValue Is Nothing Then
+                Dim oGenerate_Invoice As New Generate_Invoice
+                '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
+                oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
+                Me.Close()
+            End If
         End If
+
 
     End Sub
 
@@ -42,6 +54,11 @@
                     fillComboBoxes()
                 End If
             End If
+
+            Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+            Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            Me.cmbStatus.ValueMember = "Value"
+            Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
 
         End Try
@@ -55,6 +72,18 @@
 
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
+    End Sub
+
+    Private Sub rbAllClients_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbAllClients.CheckedChanged
+        Me.chkStatus.Enabled = rbAllClients.Checked
+    End Sub
+
+    Private Sub rbOneClient_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbOneClient.CheckedChanged
+        Me.cmbClientCode.Enabled = rbOneClient.Checked
+    End Sub
+
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = chkStatus.Checked
     End Sub
 End Class
 

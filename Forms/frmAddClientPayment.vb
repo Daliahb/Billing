@@ -9,13 +9,14 @@
     Public strNote, strBank As String
 
 
-    Public Sub New(ByVal enumEditAdd As Enumerators.EditAdd, Optional ByVal dgRow As DataGridViewRow = Nothing)
+    Public Sub New(ByVal enumEditAdd As Enumerators.EditAdd, lClientID As Long, Optional ByVal dgRow As DataGridViewRow = Nothing)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         Me.enumEditAdd = enumEditAdd
         Me.dgRow = dgRow
+        Me.lClientId = lClientID
     End Sub
 
     Private Sub frmAddBank_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -44,7 +45,9 @@
         If gUser.oColRoles.find(Enumerators.Roles.Manage_RecievedAmount) Then
             Me.Button1.Enabled = True
         End If
-
+        If Not Me.lClientId = 0 Then
+            Me.cmbClientCode.SelectedValue = lClientId
+        End If
         boolSaved = True
     End Sub
 
@@ -66,13 +69,11 @@
 
             If boolError Then
                 MsgBox("Operation done successfully.")
-                If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
-                    Me.Close()
-                Else
-                    Me.ResetForm()
-                End If
+
+                Me.Close()
+            
             Else
-                MsgBox("Error occured!")
+            MsgBox("Error occured!")
             End If
         Catch ex As Exception
             MsgBox(ex.Message & "  " & ex.StackTrace)
@@ -132,12 +133,12 @@
     Public Function CheckValidity() As Boolean
         Dim boolError = True
 
-        If Me.txtAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) OrElse CInt(Me.txtAmount.Text) = 0 Then
-            ErrorProvider1.SetError(txtAmount, "Insert a valid value.")
-            boolError = False
-        Else
-            ErrorProvider1.SetError(txtAmount, "")
-        End If
+        'If Me.txtAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) OrElse CInt(Me.txtAmount.Text) = 0 Then
+        '    ErrorProvider1.SetError(txtAmount, "Insert a valid value.")
+        '    boolError = False
+        'Else
+        '    ErrorProvider1.SetError(txtAmount, "")
+        'End If
         If Me.txtRecievedAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) Then
             ErrorProvider1.SetError(txtRecievedAmount, "Insert a valid value.")
             boolError = False

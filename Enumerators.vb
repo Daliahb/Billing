@@ -95,4 +95,10 @@
         BankFees = 2
         Dispute = 3
     End Enum
+
+    Public Enum ClientStatus
+        Active = 1
+        Disabled = 2
+        Potential = 3
+    End Enum
 End Class

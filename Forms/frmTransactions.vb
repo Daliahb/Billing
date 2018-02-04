@@ -1,5 +1,8 @@
 ﻿Public Class frmTransactions
 
+    Dim dsClientStatus As DataSet
+    Dim isLoaded As Boolean
+
 #Region "Controls Events"
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
@@ -7,8 +10,10 @@
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
+        Me.lblStatus.Text = ""
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         FillTypes()
+        isLoaded = True
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -119,6 +124,10 @@
                     FillTypes()
                 End If
             End If
+
+
+            dsClientStatus = odbaccess.GetClientsStatus
+
         Catch ex As Exception
 
         End Try
@@ -158,5 +167,20 @@
 
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
+    End Sub
+
+    Private Sub cmbClientCode_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbClientCode.SelectedIndexChanged
+        If isLoaded Then
+            If Not cmbClientCode.SelectedValue Is Nothing Then
+                If Not dsClientStatus Is Nothing AndAlso Not dsClientStatus.Tables.Count = 0 AndAlso Not dsClientStatus.Tables(0).Rows.Count = 0 Then
+                    For Each dr As DataRow In dsClientStatus.Tables(0).Rows
+                        If CLng(dr.Item("id")) = CLng(cmbClientCode.SelectedValue) Then
+                            Me.lblStatus.Text = CType(dr.Item("enumClientStatus"), Enumerators.ClientStatus).ToString
+                        End If
+                    Next
+                End If
+            End If
+        End If
+
     End Sub
 End Class

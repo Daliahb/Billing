@@ -8,6 +8,7 @@
     Public BillingEmail, CCEmail As String
     Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift, ABARouting As String
     Public Agreement As New Enumerators.Agreement
+    Public Status As New Enumerators.ClientStatus
 
     Public Sub SetProperties(ByVal dr As DataRow)
         Try
@@ -81,6 +82,9 @@
                 End If
                 If Not dr.Item("Agreement") Is DBNull.Value Then
                     Me.Agreement = CType(dr.Item("Agreement"), Enumerators.Agreement)
+                End If
+                If Not dr.Item("enumClientStatus") Is DBNull.Value Then
+                    Me.Status = CType(dr.Item("enumClientStatus"), Enumerators.ClientStatus)
                 End If
             End With
         Catch ex As Exception

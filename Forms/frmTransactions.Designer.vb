@@ -34,16 +34,25 @@ Partial Class frmTransactions
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTransactions))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblPercentage = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblTransactionBankFees = New System.Windows.Forms.Label()
+        Me.lblBankFees = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblNoClientOfPayments = New System.Windows.Forms.Label()
+        Me.lblTotalDebit = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblTotalCredit = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblClientPayments = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbClientCode = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -53,20 +62,13 @@ Partial Class frmTransactions
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.lblTotalCredit = New System.Windows.Forms.Label()
-        Me.lblClientPayments = New System.Windows.Forms.Label()
-        Me.lblTotalDebit = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblBankFees = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.lblTransactionBankFees = New System.Windows.Forms.Label()
-        Me.lblPercentage = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblNoClientOfPayments = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -79,6 +81,8 @@ Partial Class frmTransactions
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.lblStatus)
+        Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.lblPercentage)
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.lblTransactionBankFees)
@@ -102,6 +106,152 @@ Partial Class frmTransactions
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1061, 677)
         Me.Panel1.TabIndex = 0
+        '
+        'lblStatus
+        '
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblStatus.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatus.Location = New System.Drawing.Point(414, 20)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(52, 18)
+        Me.lblStatus.TabIndex = 89
+        Me.lblStatus.Text = "Label4"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(317, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(96, 16)
+        Me.Label4.TabIndex = 89
+        Me.Label4.Text = "Client Status:"
+        '
+        'lblPercentage
+        '
+        Me.lblPercentage.AutoSize = True
+        Me.lblPercentage.Location = New System.Drawing.Point(925, 75)
+        Me.lblPercentage.Name = "lblPercentage"
+        Me.lblPercentage.Size = New System.Drawing.Size(16, 16)
+        Me.lblPercentage.TabIndex = 88
+        Me.lblPercentage.Text = "0"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(836, 75)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(88, 16)
+        Me.Label13.TabIndex = 87
+        Me.Label13.Text = "Percentage:"
+        '
+        'lblTransactionBankFees
+        '
+        Me.lblTransactionBankFees.AutoSize = True
+        Me.lblTransactionBankFees.Location = New System.Drawing.Point(714, 75)
+        Me.lblTransactionBankFees.Name = "lblTransactionBankFees"
+        Me.lblTransactionBankFees.Size = New System.Drawing.Size(16, 16)
+        Me.lblTransactionBankFees.TabIndex = 86
+        Me.lblTransactionBankFees.Text = "0"
+        '
+        'lblBankFees
+        '
+        Me.lblBankFees.AutoSize = True
+        Me.lblBankFees.Location = New System.Drawing.Point(387, 75)
+        Me.lblBankFees.Name = "lblBankFees"
+        Me.lblBankFees.Size = New System.Drawing.Size(16, 16)
+        Me.lblBankFees.TabIndex = 86
+        Me.lblBankFees.Text = "0"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(10, 75)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(153, 16)
+        Me.Label7.TabIndex = 86
+        Me.Label7.Text = "Total Client Payments:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(513, 75)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(202, 16)
+        Me.Label10.TabIndex = 85
+        Me.Label10.Text = "Total bank fees paid by client:"
+        '
+        'lblNoClientOfPayments
+        '
+        Me.lblNoClientOfPayments.AutoSize = True
+        Me.lblNoClientOfPayments.Location = New System.Drawing.Point(676, 48)
+        Me.lblNoClientOfPayments.Name = "lblNoClientOfPayments"
+        Me.lblNoClientOfPayments.Size = New System.Drawing.Size(16, 16)
+        Me.lblNoClientOfPayments.TabIndex = 86
+        Me.lblNoClientOfPayments.Text = "0"
+        '
+        'lblTotalDebit
+        '
+        Me.lblTotalDebit.AutoSize = True
+        Me.lblTotalDebit.Location = New System.Drawing.Point(365, 48)
+        Me.lblTotalDebit.Name = "lblTotalDebit"
+        Me.lblTotalDebit.Size = New System.Drawing.Size(16, 16)
+        Me.lblTotalDebit.TabIndex = 86
+        Me.lblTotalDebit.Text = "0"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(276, 75)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(113, 16)
+        Me.Label8.TabIndex = 85
+        Me.Label8.Text = "Total Bank Fees:"
+        '
+        'lblTotalCredit
+        '
+        Me.lblTotalCredit.AutoSize = True
+        Me.lblTotalCredit.Location = New System.Drawing.Point(98, 48)
+        Me.lblTotalCredit.Name = "lblTotalCredit"
+        Me.lblTotalCredit.Size = New System.Drawing.Size(16, 16)
+        Me.lblTotalCredit.TabIndex = 86
+        Me.lblTotalCredit.Text = "0"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(513, 48)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(157, 16)
+        Me.Label3.TabIndex = 85
+        Me.Label3.Text = "No. of client payments:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(276, 48)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(83, 16)
+        Me.Label6.TabIndex = 85
+        Me.Label6.Text = "Total Debit:"
+        '
+        'lblClientPayments
+        '
+        Me.lblClientPayments.AutoSize = True
+        Me.lblClientPayments.Location = New System.Drawing.Point(161, 75)
+        Me.lblClientPayments.Name = "lblClientPayments"
+        Me.lblClientPayments.Size = New System.Drawing.Size(16, 16)
+        Me.lblClientPayments.TabIndex = 85
+        Me.lblClientPayments.Text = "0"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(10, 48)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(88, 16)
+        Me.Label2.TabIndex = 85
+        Me.Label2.Text = "Total Credit:"
         '
         'Label1
         '
@@ -161,53 +311,6 @@ Partial Class frmTransactions
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1053, 576)
         Me.DataGridView1.TabIndex = 37
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(126, 26)
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(918, 9)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(136, 34)
-        Me.btnSearch.TabIndex = 36
-        Me.btnSearch.Text = "Filter"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStripHideColumn
-        '
-        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
-        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.ContainerControl = Me
         '
         'clID
         '
@@ -285,131 +388,52 @@ Partial Class frmTransactions
         Me.Column6.ReadOnly = True
         Me.Column6.Width = 200
         '
-        'Label2
+        'ContextMenuStrip1
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 48)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(88, 16)
-        Me.Label2.TabIndex = 85
-        Me.Label2.Text = "Total Credit:"
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.ShowImageMargin = False
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(126, 26)
         '
-        'lblTotalCredit
+        'ExportToExcelToolStripMenuItem
         '
-        Me.lblTotalCredit.AutoSize = True
-        Me.lblTotalCredit.Location = New System.Drawing.Point(98, 48)
-        Me.lblTotalCredit.Name = "lblTotalCredit"
-        Me.lblTotalCredit.Size = New System.Drawing.Size(16, 16)
-        Me.lblTotalCredit.TabIndex = 86
-        Me.lblTotalCredit.Text = "0"
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
         '
-        'lblClientPayments
+        'btnSearch
         '
-        Me.lblClientPayments.AutoSize = True
-        Me.lblClientPayments.Location = New System.Drawing.Point(161, 75)
-        Me.lblClientPayments.Name = "lblClientPayments"
-        Me.lblClientPayments.Size = New System.Drawing.Size(16, 16)
-        Me.lblClientPayments.TabIndex = 85
-        Me.lblClientPayments.Text = "0"
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearch.Location = New System.Drawing.Point(918, 9)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(136, 34)
+        Me.btnSearch.TabIndex = 36
+        Me.btnSearch.Text = "Filter"
+        Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'lblTotalDebit
+        'ContextMenuStripHideColumn
         '
-        Me.lblTotalDebit.AutoSize = True
-        Me.lblTotalDebit.Location = New System.Drawing.Point(365, 48)
-        Me.lblTotalDebit.Name = "lblTotalDebit"
-        Me.lblTotalDebit.Size = New System.Drawing.Size(16, 16)
-        Me.lblTotalDebit.TabIndex = 86
-        Me.lblTotalDebit.Text = "0"
+        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
+        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
         '
-        'Label6
+        'HideColumnToolStripMenuItem
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(276, 48)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(83, 16)
-        Me.Label6.TabIndex = 85
-        Me.Label6.Text = "Total Debit:"
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
         '
-        'Label7
+        'ShowAllColumnsToolStripMenuItem
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(10, 75)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(153, 16)
-        Me.Label7.TabIndex = 86
-        Me.Label7.Text = "Total Client Payments:"
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
         '
-        'Label8
+        'ErrorProvider1
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(276, 75)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(113, 16)
-        Me.Label8.TabIndex = 85
-        Me.Label8.Text = "Total Bank Fees:"
-        '
-        'lblBankFees
-        '
-        Me.lblBankFees.AutoSize = True
-        Me.lblBankFees.Location = New System.Drawing.Point(387, 75)
-        Me.lblBankFees.Name = "lblBankFees"
-        Me.lblBankFees.Size = New System.Drawing.Size(16, 16)
-        Me.lblBankFees.TabIndex = 86
-        Me.lblBankFees.Text = "0"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(513, 75)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(202, 16)
-        Me.Label10.TabIndex = 85
-        Me.Label10.Text = "Total bank fees paid by client:"
-        '
-        'lblTransactionBankFees
-        '
-        Me.lblTransactionBankFees.AutoSize = True
-        Me.lblTransactionBankFees.Location = New System.Drawing.Point(714, 75)
-        Me.lblTransactionBankFees.Name = "lblTransactionBankFees"
-        Me.lblTransactionBankFees.Size = New System.Drawing.Size(16, 16)
-        Me.lblTransactionBankFees.TabIndex = 86
-        Me.lblTransactionBankFees.Text = "0"
-        '
-        'lblPercentage
-        '
-        Me.lblPercentage.AutoSize = True
-        Me.lblPercentage.Location = New System.Drawing.Point(925, 75)
-        Me.lblPercentage.Name = "lblPercentage"
-        Me.lblPercentage.Size = New System.Drawing.Size(16, 16)
-        Me.lblPercentage.TabIndex = 88
-        Me.lblPercentage.Text = "0"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(836, 75)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(88, 16)
-        Me.Label13.TabIndex = 87
-        Me.Label13.Text = "Percentage:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(513, 48)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(157, 16)
-        Me.Label3.TabIndex = 85
-        Me.Label3.Text = "No. of client payments:"
-        '
-        'lblNoClientOfPayments
-        '
-        Me.lblNoClientOfPayments.AutoSize = True
-        Me.lblNoClientOfPayments.Location = New System.Drawing.Point(676, 48)
-        Me.lblNoClientOfPayments.Name = "lblNoClientOfPayments"
-        Me.lblNoClientOfPayments.Size = New System.Drawing.Size(16, 16)
-        Me.lblNoClientOfPayments.TabIndex = 86
-        Me.lblNoClientOfPayments.Text = "0"
+        Me.ErrorProvider1.ContainerControl = Me
         '
         'frmTransactions
         '
@@ -469,5 +493,7 @@ Partial Class frmTransactions
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lblNoClientOfPayments As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents lblStatus As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 
 End Class

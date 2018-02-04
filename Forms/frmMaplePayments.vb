@@ -17,6 +17,7 @@
         Dim intRowIndex As Integer
         Dim lClientID As Long = 0
         Dim lBankID As Long = 0
+        Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
@@ -32,7 +33,13 @@
                 lBankID = 0
             End If
 
-            ds = odbaccess.GetMaplePayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID)
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumStatus = 0
+            End If
+
+            ds = odbaccess.GetMaplePayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, enumStatus)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     Try
@@ -102,6 +109,12 @@
             Catch ex As Exception
 
             End Try
+
+            Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+            Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+            Me.cmbStatus.ValueMember = "Value"
+            Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
 
         End Try
@@ -199,5 +212,9 @@
 
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
+    End Sub
+
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = Me.chkStatus.Checked
     End Sub
 End Class

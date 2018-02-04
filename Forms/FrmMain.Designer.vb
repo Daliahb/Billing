@@ -49,7 +49,6 @@ Partial Class FrmMain
         Me.PurchasesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.StatementOfAccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatementOfAccountoneClientToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.BeginingBalancesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,6 +68,7 @@ Partial Class FrmMain
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblCountry = New System.Windows.Forms.Label()
+        Me.PotentialClientsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,7 +76,7 @@ Partial Class FrmMain
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientsToolStripMenuItem, Me.BankAccountsToolStripMenuItem, Me.CompaniesToolStripMenuItem, Me.SoftwaresToolStripMenuItem, Me.AccountManagersToolStripMenuItem, Me.MapleAccountsToolStripMenuItem, Me.EmailBodyToolStripMenuItem, Me.ToolStripSeparator1, Me.MangeUsersToolStripMenuItem, Me.ResetPasswordToolStripMenuItem, Me.ToolStripSeparator6, Me.SetInvoicesFolderToolStripMenuItem, Me.SetTestEmailToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientsToolStripMenuItem, Me.PotentialClientsToolStripMenuItem, Me.BankAccountsToolStripMenuItem, Me.CompaniesToolStripMenuItem, Me.SoftwaresToolStripMenuItem, Me.AccountManagersToolStripMenuItem, Me.MapleAccountsToolStripMenuItem, Me.EmailBodyToolStripMenuItem, Me.ToolStripSeparator1, Me.MangeUsersToolStripMenuItem, Me.ResetPasswordToolStripMenuItem, Me.ToolStripSeparator6, Me.SetInvoicesFolderToolStripMenuItem, Me.SetTestEmailToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.SettingsToolStripMenuItem.Text = "Edit"
@@ -168,7 +168,7 @@ Partial Class FrmMain
         '
         'AccountingToolStripMenuItem1
         '
-        Me.AccountingToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddClientPaymentToolStripMenuItem, Me.AddMaplePaymentToolStripMenuItem, Me.AddVoucherToolStripMenuItem, Me.ToolStripSeparator3, Me.PaymentsToolStripMenuItem, Me.MaplePaymentsToolStripMenuItem, Me.AllVouchersToolStripMenuItem, Me.PurchasesToolStripMenuItem, Me.ToolStripSeparator4, Me.StatementOfAccountToolStripMenuItem, Me.StatementOfAccountoneClientToolStripMenuItem, Me.TransactionsToolStripMenuItem, Me.ToolStripSeparator5, Me.BeginingBalancesToolStripMenuItem, Me.ToolStripSeparator7, Me.PerformanceReportToolStripMenuItem, Me.CompanyPerformanceReportToolStripMenuItem, Me.CashflowReportToolStripMenuItem})
+        Me.AccountingToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddClientPaymentToolStripMenuItem, Me.AddMaplePaymentToolStripMenuItem, Me.AddVoucherToolStripMenuItem, Me.ToolStripSeparator3, Me.PaymentsToolStripMenuItem, Me.MaplePaymentsToolStripMenuItem, Me.AllVouchersToolStripMenuItem, Me.PurchasesToolStripMenuItem, Me.ToolStripSeparator4, Me.StatementOfAccountToolStripMenuItem, Me.TransactionsToolStripMenuItem, Me.ToolStripSeparator5, Me.BeginingBalancesToolStripMenuItem, Me.ToolStripSeparator7, Me.PerformanceReportToolStripMenuItem, Me.CompanyPerformanceReportToolStripMenuItem, Me.CashflowReportToolStripMenuItem})
         Me.AccountingToolStripMenuItem1.Name = "AccountingToolStripMenuItem1"
         Me.AccountingToolStripMenuItem1.Size = New System.Drawing.Size(81, 20)
         Me.AccountingToolStripMenuItem1.Text = "Accounting"
@@ -177,118 +177,111 @@ Partial Class FrmMain
         '
         Me.AddClientPaymentToolStripMenuItem.Enabled = False
         Me.AddClientPaymentToolStripMenuItem.Name = "AddClientPaymentToolStripMenuItem"
-        Me.AddClientPaymentToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.AddClientPaymentToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.AddClientPaymentToolStripMenuItem.Text = "Add Client Payment"
         '
         'AddMaplePaymentToolStripMenuItem
         '
         Me.AddMaplePaymentToolStripMenuItem.Enabled = False
         Me.AddMaplePaymentToolStripMenuItem.Name = "AddMaplePaymentToolStripMenuItem"
-        Me.AddMaplePaymentToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.AddMaplePaymentToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.AddMaplePaymentToolStripMenuItem.Text = "Add Maple Payment"
         '
         'AddVoucherToolStripMenuItem
         '
         Me.AddVoucherToolStripMenuItem.Enabled = False
         Me.AddVoucherToolStripMenuItem.Name = "AddVoucherToolStripMenuItem"
-        Me.AddVoucherToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.AddVoucherToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.AddVoucherToolStripMenuItem.Text = "Add Voucher"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(232, 6)
         '
         'PaymentsToolStripMenuItem
         '
         Me.PaymentsToolStripMenuItem.Enabled = False
         Me.PaymentsToolStripMenuItem.Name = "PaymentsToolStripMenuItem"
-        Me.PaymentsToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.PaymentsToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.PaymentsToolStripMenuItem.Text = "Client Payments"
         '
         'MaplePaymentsToolStripMenuItem
         '
         Me.MaplePaymentsToolStripMenuItem.Enabled = False
         Me.MaplePaymentsToolStripMenuItem.Name = "MaplePaymentsToolStripMenuItem"
-        Me.MaplePaymentsToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.MaplePaymentsToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.MaplePaymentsToolStripMenuItem.Text = "Maple Payments"
         '
         'AllVouchersToolStripMenuItem
         '
         Me.AllVouchersToolStripMenuItem.Enabled = False
         Me.AllVouchersToolStripMenuItem.Name = "AllVouchersToolStripMenuItem"
-        Me.AllVouchersToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.AllVouchersToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.AllVouchersToolStripMenuItem.Text = "Vouchers"
         '
         'PurchasesToolStripMenuItem
         '
         Me.PurchasesToolStripMenuItem.Enabled = False
         Me.PurchasesToolStripMenuItem.Name = "PurchasesToolStripMenuItem"
-        Me.PurchasesToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.PurchasesToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.PurchasesToolStripMenuItem.Text = "Purchases"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(232, 6)
         '
         'StatementOfAccountToolStripMenuItem
         '
         Me.StatementOfAccountToolStripMenuItem.Enabled = False
         Me.StatementOfAccountToolStripMenuItem.Name = "StatementOfAccountToolStripMenuItem"
-        Me.StatementOfAccountToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.StatementOfAccountToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.StatementOfAccountToolStripMenuItem.Text = "Statement of Account"
-        '
-        'StatementOfAccountoneClientToolStripMenuItem
-        '
-        Me.StatementOfAccountoneClientToolStripMenuItem.Enabled = False
-        Me.StatementOfAccountoneClientToolStripMenuItem.Name = "StatementOfAccountoneClientToolStripMenuItem"
-        Me.StatementOfAccountoneClientToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
-        Me.StatementOfAccountoneClientToolStripMenuItem.Text = "Statement of Account(one client)"
         '
         'TransactionsToolStripMenuItem
         '
         Me.TransactionsToolStripMenuItem.Enabled = False
         Me.TransactionsToolStripMenuItem.Name = "TransactionsToolStripMenuItem"
-        Me.TransactionsToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.TransactionsToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.TransactionsToolStripMenuItem.Text = "Transactions"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(232, 6)
         '
         'BeginingBalancesToolStripMenuItem
         '
         Me.BeginingBalancesToolStripMenuItem.Enabled = False
         Me.BeginingBalancesToolStripMenuItem.Name = "BeginingBalancesToolStripMenuItem"
-        Me.BeginingBalancesToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.BeginingBalancesToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.BeginingBalancesToolStripMenuItem.Text = "Begining Balances"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(247, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(232, 6)
         '
         'PerformanceReportToolStripMenuItem
         '
         Me.PerformanceReportToolStripMenuItem.Enabled = False
         Me.PerformanceReportToolStripMenuItem.Name = "PerformanceReportToolStripMenuItem"
-        Me.PerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.PerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.PerformanceReportToolStripMenuItem.Text = "Clients Performance Report"
         '
         'CompanyPerformanceReportToolStripMenuItem
         '
         Me.CompanyPerformanceReportToolStripMenuItem.Enabled = False
         Me.CompanyPerformanceReportToolStripMenuItem.Name = "CompanyPerformanceReportToolStripMenuItem"
-        Me.CompanyPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.CompanyPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.CompanyPerformanceReportToolStripMenuItem.Text = "Company Performance Report"
         '
         'CashflowReportToolStripMenuItem
         '
         Me.CashflowReportToolStripMenuItem.Enabled = False
         Me.CashflowReportToolStripMenuItem.Name = "CashflowReportToolStripMenuItem"
-        Me.CashflowReportToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
+        Me.CashflowReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.CashflowReportToolStripMenuItem.Text = "Cashflow Report"
         '
         'AccountingToolStripMenuItem
@@ -356,7 +349,7 @@ Partial Class FrmMain
         'PictureBox2
         '
         Me.PictureBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(72, Byte), Integer))
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(0, 25)
@@ -389,6 +382,12 @@ Partial Class FrmMain
         Me.lblCountry.Size = New System.Drawing.Size(52, 15)
         Me.lblCountry.TabIndex = 113
         Me.lblCountry.Text = "Yerevan"
+        '
+        'PotentialClientsToolStripMenuItem
+        '
+        Me.PotentialClientsToolStripMenuItem.Name = "PotentialClientsToolStripMenuItem"
+        Me.PotentialClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.PotentialClientsToolStripMenuItem.Text = "Potential Clients"
         '
         'FrmMain
         '
@@ -457,8 +456,8 @@ Partial Class FrmMain
     Friend WithEvents CashflowReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MaplePaymentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents StatementOfAccountoneClientToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddMaplePaymentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblCountry As System.Windows.Forms.Label
+    Friend WithEvents PotentialClientsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

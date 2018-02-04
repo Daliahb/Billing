@@ -234,9 +234,18 @@
         Else
             ErrorProvider1.SetError(cmbBillingDates, "")
         End If
-        If MsgBox("Are you sure you want generate excel files?", vbYesNo) = vbYes Then
-            Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date))
+        If Me.chkCode.Checked Then
+            If MsgBox("Are you sure you want generate excel file for " & cmbClientCode.Text & "?", vbYesNo) = vbYes Then
+                Dim lClientID As Long
+                lClientID = CLng(Me.cmbClientCode.SelectedValue)
+                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), lClientID)
+            End If
+        Else
+            If MsgBox("Are you sure you want generate excel files for all clients?", vbYesNo) = vbYes Then
+                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0)
+            End If
         End If
+
 
 
         '1- get all clients that have invoice this week

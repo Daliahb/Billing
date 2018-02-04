@@ -1,5 +1,7 @@
 ﻿Public Class frmClientsPayments
 
+
+
 #Region "Controls Events"
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
@@ -17,7 +19,8 @@
         Dim intCounter As Integer = 0
         Dim intRowIndex As Integer
         Dim lClientID As Long = 0
-        Dim lBankID As Long = 0
+        Dim lBankID As Integer = 0
+        Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
@@ -28,12 +31,18 @@
             End If
 
             If Me.chkBank.Checked AndAlso Not Me.cmbBanks.SelectedValue Is Nothing Then
-                lBankID = CLng(Me.cmbBanks.SelectedValue)
+                lBankID = CInt(Me.cmbBanks.SelectedValue)
             Else
                 lBankID = 0
             End If
 
-            ds = odbaccess.GetClientsPayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID)
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumStatus = 0
+            End If
+
+            ds = odbaccess.GetClientsPayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, enumStatus)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     Try
@@ -103,6 +112,12 @@
             Catch ex As Exception
 
             End Try
+
+            Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+            Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+            Me.cmbStatus.ValueMember = "Value"
+            Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
 
         End Try
@@ -155,13 +170,17 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Add)
+        Dim lClientID As Long
+        If Me.chkClient.Checked Then
+            lClientID = CLng(cmbClientCode.SelectedValue)
+        End If
+        Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Add, lClientID)
         frm.Show()
     End Sub
 
     Private Sub EditPaymentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditPaymentToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-            Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Edit, Me.DataGridView1.SelectedRows(0))
+            Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Edit, 0, Me.DataGridView1.SelectedRows(0))
             frm.ShowDialog()
             Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
             Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtAmount.Text
@@ -198,5 +217,9 @@
 
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
+    End Sub
+
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = Me.chkStatus.Checked
     End Sub
 End Class

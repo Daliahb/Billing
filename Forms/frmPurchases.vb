@@ -25,10 +25,11 @@
         Dim dtFrom, dtTo, dInsertDate As Date
         Dim dTotalDuration As Double = 0
         Dim dTotalCharges As Double = 0
+        Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate)
+            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus)
 
             'If Me.cmbBillingDates.SelectedIndex = 0 And Me.chkInsertDate.Checked Then
             '    Me.DataGridView1.Columns(2).Visible = True
@@ -36,7 +37,7 @@
             '    Me.DataGridView1.Columns(2).Visible = False
             'End If
 
-            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate)
+            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -107,7 +108,7 @@
 #End Region
 
 
-    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date)
+    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus)
         Try
             If Me.chkCode.Checked Then
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
@@ -127,6 +128,12 @@
                 dtInsertDate = CDate(Me.cmbBillingDates.SelectedValue.Date)
             Else
                 boolInsertDate = False
+            End If
+
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumStatus = 0
             End If
         Catch ex As Exception
 
@@ -155,6 +162,12 @@
                 Me.cmbBillingDates.DisplayMember = "Insert_Date"
                 Me.cmbBillingDates.ValueMember = "Insert_Date"
             End If
+
+            Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+            Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+            Me.cmbStatus.ValueMember = "Value"
+            Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
 
         End Try
@@ -249,5 +262,9 @@
                 Me.DataGridView1.SelectedRows(0).Cells(11).Value = frmEditNote.txtMessage.Text
             End If
         End If
+    End Sub
+
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = Me.chkStatus.Checked
     End Sub
 End Class

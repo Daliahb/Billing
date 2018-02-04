@@ -34,5 +34,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Host=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;Port=3337;Database=voip_billing_system_dev;Persist Security Info=True</Value>
     </Setting>
+    <Setting Name="voip_billing_system_devConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;user id=maple_db_user_dev;password=xee1lahnaeyoa0iethaeJoo7;persistsecurityinfo=True;port=3337;database=voip_billing_system_dev&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;user id=maple_db_user_dev;password=xee1lahnaeyoa0iethaeJoo7;persistsecurityinfo=True;port=3337;database=voip_billing_system_dev</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

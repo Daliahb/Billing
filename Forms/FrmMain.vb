@@ -57,7 +57,6 @@ Public Class FrmMain
                     Me.AllVouchersToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.View_StatementOfAccount
                     Me.StatementOfAccountToolStripMenuItem.Enabled = True
-                    Me.StatementOfAccountoneClientToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.View_ClientTransactions
                     Me.TransactionsToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.Manage_BeginingBalances
@@ -258,7 +257,7 @@ Public Class FrmMain
                 End If
             Next
         Else
-            Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Add)
+            Dim frm As New frmAddClientPayment(Enumerators.EditAdd.Add, 0)
             frm.Show()
         End If
     End Sub
@@ -303,8 +302,18 @@ Public Class FrmMain
     End Sub
 
     Private Sub StatementOfAccountToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StatementOfAccountToolStripMenuItem.Click
-        Dim oGenerate_Invoice As New Generate_Invoice
-            oGenerate_Invoice.GenerateStatementOfAccountReport()
+        'Dim oGenerate_Invoice As New Generate_Invoice
+        '    oGenerate_Invoice.GenerateStatementOfAccountReport()
+        If Application.OpenForms().OfType(Of frmClientStatementOfAccount).Any Then
+            For Each frm As Form In Application.OpenForms
+                If frm.Name.Equals("frmClientStatementOfAccount") Then
+                    frm.WindowState = FormWindowState.Normal
+                End If
+            Next
+        Else
+            Dim frm As New frmClientStatementOfAccount
+            frm.Show()
+        End If
     End Sub
 
     Private Sub BeginingBalancesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BeginingBalancesToolStripMenuItem.Click
@@ -348,7 +357,6 @@ Public Class FrmMain
       
     End Sub
 
-
     Private Sub ResetPasswordToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ResetPasswordToolStripMenuItem.Click
         If Application.OpenForms().OfType(Of frmChangePassword).Any Then
             For Each frm As Form In Application.OpenForms
@@ -360,7 +368,7 @@ Public Class FrmMain
             Dim frm As New frmChangePassword
             frm.Show()
         End If
-       
+
     End Sub
 
     Private Sub PerformanceReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PerformanceReportToolStripMenuItem.Click
@@ -404,7 +412,6 @@ Public Class FrmMain
         End If
     End Sub
 
-  
     Private Sub CompanyPerformanceReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompanyPerformanceReportToolStripMenuItem.Click
         If Application.OpenForms().OfType(Of frmCompanyPerformanceReport).Any Then
             For Each frm As Form In Application.OpenForms
@@ -458,17 +465,8 @@ Public Class FrmMain
         End If
     End Sub
 
-    Private Sub StatementOfAccountoneClientToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StatementOfAccountoneClientToolStripMenuItem.Click
-        If Application.OpenForms().OfType(Of frmClientStatementOfAccount).Any Then
-            For Each frm As Form In Application.OpenForms
-                If frm.Name.Equals("frmClientStatementOfAccount") Then
-                    frm.WindowState = FormWindowState.Normal
-                End If
-            Next
-        Else
-            Dim frm As New frmClientStatementOfAccount
-            frm.Show()
-        End If
+    Private Sub StatementOfAccountoneClientToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
     End Sub
 
     Private Sub AddMaplePaymentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddMaplePaymentToolStripMenuItem.Click
@@ -485,4 +483,16 @@ Public Class FrmMain
     End Sub
 
 
+    Private Sub PotentialClientsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PotentialClientsToolStripMenuItem.Click
+        If Application.OpenForms().OfType(Of frmPotentialClients).Any Then
+            For Each frm As Form In Application.OpenForms
+                If frm.Name.Equals("frmPotentialClients") Then
+                    frm.WindowState = FormWindowState.Normal
+                End If
+            Next
+        Else
+            Dim frm As New frmPotentialClients()
+            frm.Show()
+        End If
+    End Sub
 End Class

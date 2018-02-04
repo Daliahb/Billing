@@ -110,10 +110,25 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString)>  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Host=mapleteletech-to"& _ 
+            "ols.cyhrjka02xij.eu-west-1.rds.amazonaws.com;Port=3337;Database=voip_billing_sys"& _ 
+            "tem_dev;Persist Security Info=True")>  _
         Public ReadOnly Property voip_billing_system_devConnectionString1() As String
             Get
                 Return CType(Me("voip_billing_system_devConnectionString1"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;user id=maple"& _ 
+            "_db_user_dev;password=xee1lahnaeyoa0iethaeJoo7;persistsecurityinfo=True;port=333"& _ 
+            "7;database=voip_billing_system_dev")>  _
+        Public ReadOnly Property voip_billing_system_devConnectionString2() As String
+            Get
+                Return CType(Me("voip_billing_system_devConnectionString2"),String)
             End Get
         End Property
     End Class

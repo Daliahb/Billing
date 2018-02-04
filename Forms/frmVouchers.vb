@@ -16,6 +16,7 @@
         Dim intRowIndex As Integer
         Dim lClientID As Integer = 0
         Dim lBankID, lType As Integer
+        Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
@@ -36,7 +37,15 @@
             Else
                 lType = 0
             End If
-            ds = odbaccess.GetVouchers(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, lType)
+
+
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumStatus = 0
+            End If
+
+            ds = odbaccess.GetVouchers(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, lType, enumStatus)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     Try
@@ -114,6 +123,11 @@
             Me.cmbType.ValueMember = "Value"
             Me.cmbType.DisplayMember = "Name"
 
+            Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+            Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+            Me.cmbStatus.ValueMember = "Value"
+            Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
 
         End Try
@@ -193,4 +207,7 @@
     End Sub
 
 
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = Me.chkStatus.Checked
+    End Sub
 End Class

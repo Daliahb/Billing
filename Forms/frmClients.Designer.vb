@@ -29,9 +29,12 @@ Partial Class frmClients
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClients))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbClientCode = New System.Windows.Forms.ComboBox()
+        Me.chkAddedFromMC = New System.Windows.Forms.CheckBox()
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.chkAgreement = New System.Windows.Forms.CheckBox()
         Me.cmbAgreement = New System.Windows.Forms.ComboBox()
-        Me.txtCompany = New System.Windows.Forms.TextBox()
         Me.cmbAccountManager = New System.Windows.Forms.ComboBox()
         Me.AccountManagersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsAccountManagers = New WindowsApplication1.dsAccountManagers()
@@ -42,22 +45,6 @@ Partial Class frmClients
         Me.chkAccountManager = New System.Windows.Forms.CheckBox()
         Me.chkCompanyID = New System.Windows.Forms.CheckBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clMobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteRowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -70,7 +57,24 @@ Partial Class frmClients
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
-        Me.chkAddedFromMC = New System.Windows.Forms.CheckBox()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clMobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAccountManagers, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,10 +89,12 @@ Partial Class frmClients
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.cmbClientCode)
         Me.Panel1.Controls.Add(Me.chkAddedFromMC)
+        Me.Panel1.Controls.Add(Me.chkStatus)
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.chkAgreement)
         Me.Panel1.Controls.Add(Me.cmbAgreement)
-        Me.Panel1.Controls.Add(Me.txtCompany)
         Me.Panel1.Controls.Add(Me.cmbAccountManager)
         Me.Panel1.Controls.Add(Me.cmbContractMapleBank)
         Me.Panel1.Controls.Add(Me.cmbContractMapleName)
@@ -104,6 +110,51 @@ Partial Class frmClients
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1679, 696)
         Me.Panel1.TabIndex = 0
+        '
+        'cmbClientCode
+        '
+        Me.cmbClientCode.BackColor = System.Drawing.Color.LemonChiffon
+        Me.cmbClientCode.DisplayMember = "Country"
+        Me.cmbClientCode.DropDownHeight = 400
+        Me.cmbClientCode.DropDownWidth = 200
+        Me.cmbClientCode.Enabled = False
+        Me.cmbClientCode.FormattingEnabled = True
+        Me.cmbClientCode.IntegralHeight = False
+        Me.cmbClientCode.Location = New System.Drawing.Point(151, 2)
+        Me.cmbClientCode.Name = "cmbClientCode"
+        Me.cmbClientCode.Size = New System.Drawing.Size(228, 24)
+        Me.cmbClientCode.TabIndex = 85
+        Me.cmbClientCode.ValueMember = "ID"
+        '
+        'chkAddedFromMC
+        '
+        Me.chkAddedFromMC.AutoSize = True
+        Me.chkAddedFromMC.Location = New System.Drawing.Point(470, 65)
+        Me.chkAddedFromMC.Name = "chkAddedFromMC"
+        Me.chkAddedFromMC.Size = New System.Drawing.Size(127, 20)
+        Me.chkAddedFromMC.TabIndex = 84
+        Me.chkAddedFromMC.Text = "Added From MC"
+        Me.chkAddedFromMC.UseVisualStyleBackColor = True
+        '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Location = New System.Drawing.Point(964, 5)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 83
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(1038, 3)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(228, 24)
+        Me.cmbStatus.TabIndex = 82
         '
         'chkAgreement
         '
@@ -124,14 +175,6 @@ Partial Class frmClients
         Me.cmbAgreement.Name = "cmbAgreement"
         Me.cmbAgreement.Size = New System.Drawing.Size(228, 24)
         Me.cmbAgreement.TabIndex = 82
-        '
-        'txtCompany
-        '
-        Me.txtCompany.Enabled = False
-        Me.txtCompany.Location = New System.Drawing.Point(151, 4)
-        Me.txtCompany.Name = "txtCompany"
-        Me.txtCompany.Size = New System.Drawing.Size(106, 23)
-        Me.txtCompany.TabIndex = 79
         '
         'cmbAccountManager
         '
@@ -238,7 +281,7 @@ Partial Class frmClients
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.clName, Me.clEmail, Me.clMobile, Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column6, Me.Column11, Me.Column7, Me.Column8, Me.Column9, Me.Column10})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.clName, Me.clEmail, Me.Column12, Me.clMobile, Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column6, Me.Column11, Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.Column13})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.LemonChiffon
@@ -257,12 +300,93 @@ Partial Class frmClients
         Me.DataGridView1.Size = New System.Drawing.Size(1670, 600)
         Me.DataGridView1.TabIndex = 39
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.DeleteRowToolStripMenuItem, Me.ActivateToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(151, 98)
+        '
+        'EditToolStripMenuItem
+        '
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.EditToolStripMenuItem.Text = "Edit Record"
+        '
+        'DeleteRowToolStripMenuItem
+        '
+        Me.DeleteRowToolStripMenuItem.Name = "DeleteRowToolStripMenuItem"
+        Me.DeleteRowToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.DeleteRowToolStripMenuItem.Text = "Delete Record"
+        '
+        'ActivateToolStripMenuItem
+        '
+        Me.ActivateToolStripMenuItem.Name = "ActivateToolStripMenuItem"
+        Me.ActivateToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.ActivateToolStripMenuItem.Text = "Activate"
+        Me.ActivateToolStripMenuItem.Visible = False
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(147, 6)
+        '
+        'ExportToExcelToolStripMenuItem
+        '
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Location = New System.Drawing.Point(1572, 5)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(101, 34)
+        Me.btnSearch.TabIndex = 36
+        Me.btnSearch.Text = "Filter"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'btnAddCustomer
+        '
+        Me.btnAddCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAddCustomer.Location = New System.Drawing.Point(1498, 4)
+        Me.btnAddCustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddCustomer.Name = "btnAddCustomer"
+        Me.btnAddCustomer.Size = New System.Drawing.Size(64, 34)
+        Me.btnAddCustomer.TabIndex = 35
+        Me.btnAddCustomer.Text = "Add"
+        Me.btnAddCustomer.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'AccountManagersTableAdapter
+        '
+        Me.AccountManagersTableAdapter.ClearBeforeFill = True
+        '
         'clID
         '
         Me.clID.HeaderText = "ID"
         Me.clID.Name = "clID"
         Me.clID.ReadOnly = True
         Me.clID.Visible = False
+        Me.clID.Width = 28
         '
         'clNo
         '
@@ -286,6 +410,13 @@ Partial Class frmClients
         Me.clEmail.Name = "clEmail"
         Me.clEmail.ReadOnly = True
         Me.clEmail.Width = 101
+        '
+        'Column12
+        '
+        Me.Column12.HeaderText = "Status"
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        Me.Column12.Width = 76
         '
         'clMobile
         '
@@ -373,95 +504,12 @@ Partial Class frmClients
         Me.Column10.ReadOnly = True
         Me.Column10.Width = 109
         '
-        'ContextMenuStrip1
+        'Column13
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.DeleteRowToolStripMenuItem, Me.ActivateToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(151, 98)
-        '
-        'EditToolStripMenuItem
-        '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.EditToolStripMenuItem.Text = "Edit Record"
-        '
-        'DeleteRowToolStripMenuItem
-        '
-        Me.DeleteRowToolStripMenuItem.Name = "DeleteRowToolStripMenuItem"
-        Me.DeleteRowToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.DeleteRowToolStripMenuItem.Text = "Delete Record"
-        '
-        'ActivateToolStripMenuItem
-        '
-        Me.ActivateToolStripMenuItem.Name = "ActivateToolStripMenuItem"
-        Me.ActivateToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.ActivateToolStripMenuItem.Text = "Activate"
-        Me.ActivateToolStripMenuItem.Visible = False
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(147, 6)
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Location = New System.Drawing.Point(1572, 5)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(101, 34)
-        Me.btnSearch.TabIndex = 36
-        Me.btnSearch.Text = "Filter"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'btnAddCustomer
-        '
-        Me.btnAddCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddCustomer.Location = New System.Drawing.Point(1498, 4)
-        Me.btnAddCustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnAddCustomer.Name = "btnAddCustomer"
-        Me.btnAddCustomer.Size = New System.Drawing.Size(64, 34)
-        Me.btnAddCustomer.TabIndex = 35
-        Me.btnAddCustomer.Text = "Add"
-        Me.btnAddCustomer.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStrip2
-        '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'AccountManagersTableAdapter
-        '
-        Me.AccountManagersTableAdapter.ClearBeforeFill = True
-        '
-        'chkAddedFromMC
-        '
-        Me.chkAddedFromMC.AutoSize = True
-        Me.chkAddedFromMC.Location = New System.Drawing.Point(470, 65)
-        Me.chkAddedFromMC.Name = "chkAddedFromMC"
-        Me.chkAddedFromMC.Size = New System.Drawing.Size(127, 20)
-        Me.chkAddedFromMC.TabIndex = 84
-        Me.chkAddedFromMC.Text = "Added From MC"
-        Me.chkAddedFromMC.UseVisualStyleBackColor = True
+        Me.Column13.HeaderText = "Billing Email"
+        Me.Column13.Name = "Column13"
+        Me.Column13.ReadOnly = True
+        Me.Column13.Width = 96
         '
         'frmClients
         '
@@ -507,16 +555,20 @@ Partial Class frmClients
     Friend WithEvents cmbContractMapleName As System.Windows.Forms.ComboBox
     Friend WithEvents cmbContractMapleBank As System.Windows.Forms.ComboBox
     Friend WithEvents cmbAccountManager As System.Windows.Forms.ComboBox
-    Friend WithEvents txtCompany As System.Windows.Forms.TextBox
     Friend WithEvents cmbAgreement As System.Windows.Forms.ComboBox
     Friend WithEvents chkAgreement As System.Windows.Forms.CheckBox
     Friend WithEvents DsAccountManagers As WindowsApplication1.dsAccountManagers
     Friend WithEvents AccountManagersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents AccountManagersTableAdapter As WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter
+    Friend WithEvents chkAddedFromMC As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbClientCode As System.Windows.Forms.ComboBox
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
     Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clEmail As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clMobile As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -529,5 +581,5 @@ Partial Class frmClients
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents chkAddedFromMC As System.Windows.Forms.CheckBox
+    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

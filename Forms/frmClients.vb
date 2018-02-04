@@ -24,16 +24,16 @@
         Dim intRowIndex As Integer
         Dim boolFromMC As Boolean
         Dim strCompany As String = ""
-        Dim lAccountManager, lAgreement, lBankAccount, lCompanyAccount As Integer
+        Dim lAccountManager, lAgreement, lBankAccount, lCompanyAccount, lStatus As Integer
         'Dim dtFrom, dtTo As Date
         'Dim ds As New DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC)
+            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus)
 
             oColClients.Clear()
 
-            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC)
+            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus)
             If Not oColClients Is Nothing AndAlso Not oColClients.Count = 0 Then
                 For Each oClient As Client In oColClients
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -42,18 +42,20 @@
                         .Cells(1).Value = intCounter + 1
                         .Cells(2).Value = oClient.CompanyName
                         .Cells(3).Value = oClient.CompanyCode
-                        .Cells(4).Value = oClient.timezone
-                        .Cells(5).Value = oClient.Period.ToString + " Net " + oClient.Statement.ToString
-                        .Cells(6).Value = oClient.CreditLimit
-                        .Cells(7).Value = oClient.ContractMapleName
-                        .Cells(8).Value = oClient.ContractMapleBank
-                        .Cells(9).Value = oClient.AccountManagerName
-                        .Cells(10).Value = oClient.Agreement
-                        .Cells(11).Value = oClient.BankAccountName
-                        .Cells(12).Value = oClient.BankAccountNumber
-                        .Cells(13).Value = oClient.IBAN
-                        .Cells(14).Value = oClient.Swift
-                        .Cells(15).Value = oClient.ABARouting
+                        .Cells(4).Value = oClient.Status.ToString
+                        .Cells(5).Value = oClient.timezone
+                        .Cells(6).Value = oClient.Period.ToString + " Net " + oClient.Statement.ToString
+                        .Cells(7).Value = oClient.CreditLimit
+                        .Cells(8).Value = oClient.ContractMapleName
+                        .Cells(9).Value = oClient.ContractMapleBank
+                        .Cells(10).Value = oClient.AccountManagerName
+                        .Cells(11).Value = oClient.Agreement
+                        .Cells(12).Value = oClient.BankAccountName
+                        .Cells(13).Value = oClient.BankAccountNumber
+                        .Cells(14).Value = oClient.IBAN
+                        .Cells(15).Value = oClient.Swift
+                        .Cells(16).Value = oClient.ABARouting
+                        .Cells(17).Value = oClient.BillingEmail
                         intCounter += 1
                     End With
                 Next
@@ -78,18 +80,20 @@
                     '.Cells(1).Value = intCounter + 1
                     .Cells(2).Value = oclient.CompanyName
                     .Cells(3).Value = oclient.CompanyCode
-                    .Cells(4).Value = oclient.timezone
-                    .Cells(5).Value = oclient.Period.ToString + " Net " + oclient.Statement.ToString
-                    .Cells(6).Value = oclient.CreditLimit
-                    .Cells(7).Value = oclient.ContractMapleName
-                    .Cells(8).Value = oclient.ContractMapleBank
-                    .Cells(9).Value = oclient.AccountManagerName
-                    .Cells(10).Value = oclient.Agreement
-                    .Cells(11).Value = oclient.BankAccountName
-                    .Cells(12).Value = oclient.BankAccountNumber
-                    .Cells(13).Value = oclient.IBAN
-                    .Cells(14).Value = oclient.Swift
-                    .Cells(15).Value = oclient.ABARouting
+                    .Cells(4).Value = oclient.Status.ToString
+                    .Cells(5).Value = oclient.timezone
+                    .Cells(6).Value = oclient.Period.ToString + " Net " + oclient.Statement.ToString
+                    .Cells(7).Value = oclient.CreditLimit
+                    .Cells(8).Value = oclient.ContractMapleName
+                    .Cells(9).Value = oclient.ContractMapleBank
+                    .Cells(10).Value = oclient.AccountManagerName
+                    .Cells(11).Value = oclient.Agreement
+                    .Cells(12).Value = oclient.BankAccountName
+                    .Cells(13).Value = oclient.BankAccountNumber
+                    .Cells(14).Value = oclient.IBAN
+                    .Cells(15).Value = oclient.Swift
+                    .Cells(16).Value = oclient.ABARouting
+                    .Cells(17).Value = oclient.BillingEmail
                     '    intCounter += 1
                 End With
                 '  Me.btnSearch_Click(Me, New System.EventArgs)
@@ -105,7 +109,7 @@
         oFrm.ShowDialog()
     End Sub
 
-    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer, ByRef boolFromMC As Boolean)
+    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer, ByRef boolFromMC As Boolean, ByRef lStatus As Integer)
         Try
             If Me.chkAccountManager.Checked Then
                 lAccountManager = CInt(Me.cmbAccountManager.SelectedValue)
@@ -128,7 +132,7 @@
                 lCompanyAccount = 0
             End If
             If Me.chkCompanyID.Checked Then
-                strCompany = Me.txtCompany.Text
+                strCompany = Me.cmbClientCode.Text
             Else
                 strCompany = ""
             End If
@@ -136,6 +140,11 @@
                 boolFromMC = True
             Else
                 boolFromMC = False
+            End If
+            If Me.chkStatus.Checked Then
+                lStatus = CInt(Me.cmbStatus.SelectedItem.value)
+            Else
+                lstatus = 0
             End If
         Catch ex As Exception
 
@@ -204,6 +213,17 @@
     End Sub
 
     Public Sub FillData()
+        If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+            Me.cmbClientCode.DataSource = gDsMembers.Tables(0)
+            Me.cmbClientCode.DisplayMember = "CompanyCode"
+            Me.cmbClientCode.ValueMember = "ID"
+        Else
+            gDsMembers = odbaccess.GetClientsDS
+            If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+                FillData()
+            End If
+        End If
+
         Dim dsCompanies As DataSet
         Try
             dsCompanies = odbaccess.GetCompaniesDS
@@ -228,6 +248,12 @@
         Me.cmbAgreement.Items.Add(New Obj("Bilateral", Enumerators.Agreement.Bilateral))
         Me.cmbAgreement.ValueMember = "Value"
         Me.cmbAgreement.DisplayMember = "Name"
+
+        Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+        Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+        '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+        Me.cmbStatus.ValueMember = "Value"
+        Me.cmbStatus.DisplayMember = "Name"
     End Sub
 
     Public Sub CheckPermission()
@@ -269,23 +295,35 @@
         'End Try
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompanyID.CheckedChanged
-        Me.txtCompany.Enabled = Me.chkCompanyID.Checked
+    Private Sub chkCompanyID_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompanyID.CheckedChanged
+        Me.cmbClientCode.Enabled = Me.chkCompanyID.Checked
     End Sub
 
-    Private Sub CheckBox2_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAccountManager.CheckedChanged
+    Private Sub chkAccountManager_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAccountManager.CheckedChanged
         Me.cmbAccountManager.Enabled = Me.chkAccountManager.Checked
     End Sub
 
-    Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAgreement.CheckedChanged
+    Private Sub chkAgreement_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAgreement.CheckedChanged
         Me.cmbAgreement.Enabled = Me.chkAgreement.Checked
     End Sub
 
-    Private Sub CheckBox4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkContractWith.CheckedChanged
+    Private Sub chkStatus_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.cmbStatus.Enabled = Me.chkStatus.Checked
+    End Sub
+
+    Private Sub chkContractWith_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkContractWith.CheckedChanged
         Me.cmbContractMapleName.Enabled = Me.chkContractWith.Checked
     End Sub
 
-    Private Sub CheckBox3_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkBankAccount.CheckedChanged
+    Private Sub chkBankAccount_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkBankAccount.CheckedChanged
         Me.cmbContractMapleBank.Enabled = Me.chkBankAccount.Checked
+    End Sub
+
+    Private Sub cmbClientCode_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbClientCode.KeyUp
+        AutoCompleteCombo_KeyUp(Me.cmbClientCode, e)
+    End Sub
+
+    Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
+        AutoCompleteCombo_Leave(Me.cmbClientCode)
     End Sub
 End Class

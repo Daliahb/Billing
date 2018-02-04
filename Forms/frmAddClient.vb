@@ -19,8 +19,12 @@
     End Sub
 
     Private Sub frmAddClient_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DsAccountManagersTest.AccountManagers' table. You can move, or remove it, as needed.
+        Me.AccountManagersTableAdapter1.Fill(Me.DsAccountManagersTest.AccountManagers)
+        'TODO: This line of code loads data into the 'Voip_billing_system_devDataSet.AccountManagers' table. You can move, or remove it, as needed.
+        '   Me.AccountManagersTableAdapter1.Fill(Me.Voip_billing_system_devDataSet.AccountManagers)
         'TODO: This line of code loads data into the 'DsAccountManagers.AccountManagers' table. You can move, or remove it, as needed.
-        Me.AccountManagersTableAdapter.Fill(Me.DsAccountManagers.AccountManagers)
+        '   Me.AccountManagersTableAdapter.Fill(Me.DsAccountManagers.AccountManagers)
         '      'Me.BackColor = gBackColor
 
         If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
@@ -97,7 +101,7 @@
             oClient = New Client
         End If
         With Me.oClient
-
+            .Status = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
             .CompanyName = Me.txtCompanyName.Text
             .CompanyCode = Me.txtCode.Text
             .timezone = Me.txtTimeZone.Text
@@ -162,6 +166,12 @@
                         Exit For
                     End If
                 Next
+                For Each item In cmbStatus.Items
+                    If item.value = .Status Then
+                        cmbStatus.SelectedItem = item
+                        Exit For
+                    End If
+                Next
                 '  Me.cmbAgreement.SelectedItem.value = .Agreement
                 If Not dsOutboundNames Is Nothing AndAlso Not dsOutboundNames.Tables.Count = 0 AndAlso Not dsOutboundNames.Tables(0).Rows.Count = 0 Then
                     Dim intRowIndex As Integer
@@ -214,6 +224,18 @@
         Me.cmbAgreement.Items.Add(New Obj("Bilateral", Enumerators.Agreement.Bilateral))
         Me.cmbAgreement.ValueMember = "Value"
         Me.cmbAgreement.DisplayMember = "Name"
+
+        Me.cmbStatus.DataSource = Nothing
+        Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
+        Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+        ' Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
+        Me.cmbStatus.ValueMember = "Value"
+        Me.cmbStatus.DisplayMember = "Name"
+
+        ''DsAccountManagers = New Global.WindowsApplication1.dsAccountManagers
+        ''cmbAccountManager.DataSource = DsAccountManagers.AccountManagers
+        ''cmbAccountManager.DisplayMember = "Name"
+        ''cmbAccountManager.ValueMember = "ID"
     End Sub
 
 
@@ -262,6 +284,12 @@
                 boolError = True
             Else
                 ErrorProvider1.SetError(cmbAgreement, "")
+            End If
+            If Me.cmbStatus.SelectedItem Is Nothing OrElse Me.cmbStatus.SelectedItem.value = -1 Then
+                ErrorProvider1.SetError(Me.cmbStatus, "Please select Client Status.")
+                boolError = True
+            Else
+                ErrorProvider1.SetError(cmbStatus, "")
             End If
             If boolError = False And Me.enumEditAdd = Enumerators.EditAdd.Add Then
                 If isClientExists(Me.txtCode.Text) Then

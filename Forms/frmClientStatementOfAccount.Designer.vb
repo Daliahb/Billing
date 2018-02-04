@@ -25,11 +25,14 @@ Partial Class frmClientStatementOfAccount
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientStatementOfAccount))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbClientCode = New System.Windows.Forms.ComboBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
+        Me.rbAllClients = New System.Windows.Forms.RadioButton()
+        Me.rbOneClient = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -37,26 +40,20 @@ Partial Class frmClientStatementOfAccount
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Controls.Add(Me.Label1)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.rbOneClient)
+        Me.Panel1.Controls.Add(Me.rbAllClients)
+        Me.Panel1.Controls.Add(Me.chkStatus)
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.cmbClientCode)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.btnClose)
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(319, 156)
+        Me.Panel1.Size = New System.Drawing.Size(331, 178)
         Me.Panel1.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 43)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(80, 16)
-        Me.Label1.TabIndex = 42
-        Me.Label1.Text = "Client Code"
         '
         'cmbClientCode
         '
@@ -64,10 +61,11 @@ Partial Class frmClientStatementOfAccount
         Me.cmbClientCode.DisplayMember = "Country"
         Me.cmbClientCode.DropDownHeight = 400
         Me.cmbClientCode.DropDownWidth = 200
+        Me.cmbClientCode.Enabled = False
         Me.cmbClientCode.FormattingEnabled = True
         Me.cmbClientCode.IntegralHeight = False
         Me.cmbClientCode.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
-        Me.cmbClientCode.Location = New System.Drawing.Point(95, 40)
+        Me.cmbClientCode.Location = New System.Drawing.Point(105, 84)
         Me.cmbClientCode.Name = "cmbClientCode"
         Me.cmbClientCode.Size = New System.Drawing.Size(213, 24)
         Me.cmbClientCode.TabIndex = 41
@@ -76,7 +74,7 @@ Partial Class frmClientStatementOfAccount
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.Location = New System.Drawing.Point(81, 117)
+        Me.btnSave.Location = New System.Drawing.Point(81, 139)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
         Me.btnSave.TabIndex = 6
@@ -86,7 +84,7 @@ Partial Class frmClientStatementOfAccount
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnClose.Location = New System.Drawing.Point(172, 117)
+        Me.btnClose.Location = New System.Drawing.Point(172, 139)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 30)
         Me.btnClose.TabIndex = 5
@@ -97,12 +95,55 @@ Partial Class frmClientStatementOfAccount
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Enabled = False
+        Me.chkStatus.Location = New System.Drawing.Point(29, 48)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 96
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(105, 46)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(213, 24)
+        Me.cmbStatus.TabIndex = 95
+        '
+        'rbAllClients
+        '
+        Me.rbAllClients.AutoSize = True
+        Me.rbAllClients.Location = New System.Drawing.Point(11, 19)
+        Me.rbAllClients.Name = "rbAllClients"
+        Me.rbAllClients.Size = New System.Drawing.Size(89, 20)
+        Me.rbAllClients.TabIndex = 97
+        Me.rbAllClients.TabStop = True
+        Me.rbAllClients.Text = "All Clients"
+        Me.rbAllClients.UseVisualStyleBackColor = True
+        '
+        'rbOneClient
+        '
+        Me.rbOneClient.AutoSize = True
+        Me.rbOneClient.Location = New System.Drawing.Point(11, 86)
+        Me.rbOneClient.Name = "rbOneClient"
+        Me.rbOneClient.Size = New System.Drawing.Size(91, 20)
+        Me.rbOneClient.TabIndex = 97
+        Me.rbOneClient.TabStop = True
+        Me.rbOneClient.Text = "One Client"
+        Me.rbOneClient.UseVisualStyleBackColor = True
+        '
         'frmClientStatementOfAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(323, 161)
+        Me.ClientSize = New System.Drawing.Size(335, 183)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -111,7 +152,7 @@ Partial Class frmClientStatementOfAccount
         Me.MaximizeBox = False
         Me.Name = "frmClientStatementOfAccount"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmClient Statement Of Account"
+        Me.Text = "Statement Of Account"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -122,7 +163,10 @@ Partial Class frmClientStatementOfAccount
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmbClientCode As System.Windows.Forms.ComboBox
+    Friend WithEvents rbOneClient As System.Windows.Forms.RadioButton
+    Friend WithEvents rbAllClients As System.Windows.Forms.RadioButton
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
 
 End Class

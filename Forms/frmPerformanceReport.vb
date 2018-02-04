@@ -27,7 +27,7 @@ Public Class frmPerformanceReport
             contcolumn = New DataGridViewTextBoxColumn
             With contcolumn
                 .HeaderText = "No."
-                .Name = "1"
+                .Name = "no"
             End With
             DataGridView1.Columns.Add(contcolumn)
             contcolumn.Width = 70
@@ -40,6 +40,21 @@ Public Class frmPerformanceReport
             DataGridView1.Columns.Add(contcolumn)
             contcolumn.Width = 120
 
+            contcolumn = New DataGridViewTextBoxColumn
+            With contcolumn
+                .HeaderText = "Status"
+                .Name = "Status"
+            End With
+            DataGridView1.Columns.Add(contcolumn)
+            contcolumn.Width = 120
+
+            contcolumn = New DataGridViewTextBoxColumn
+            With contcolumn
+                .HeaderText = "Account Manager"
+                .Name = "AccountManager"
+            End With
+            DataGridView1.Columns.Add(contcolumn)
+            contcolumn.Width = 150
 
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 2 AndAlso Not ds.Tables(1).Rows.Count = 0 Then
                 For Each dr As DataRow In ds.Tables(1).Rows
@@ -53,23 +68,17 @@ Public Class frmPerformanceReport
                     '  contcolumn.SortMode = DataGridViewColumnSortMode.NotSortable
                     DataGridView1.Columns.Add(contcolumn) 'Insert(1, contcolumn)
 
-                    contcolumn = New DataGridViewTextBoxColumn
-                    With contcolumn
-                        .HeaderText = "Account Manager"
-                        .Name = "4"
-                    End With
-                    DataGridView1.Columns.Add(contcolumn)
-                    contcolumn.Width = 120
+                    'contcolumn = New DataGridViewTextBoxColumn
+                    'With contcolumn
+                    '    .HeaderText = "Account Manager"
+                    '    .Name = "4"
+                    'End With
+                    'DataGridView1.Columns.Add(contcolumn)
+                    'contcolumn.Width = 120
                 Next
             End If
 
-            contcolumn = New DataGridViewTextBoxColumn
-            With contcolumn
-                .HeaderText = "Total"
-                .Name = "2"
-            End With
-            DataGridView1.Columns.Add(contcolumn) 'GetType(Integer)
-            lTotalColumn = contcolumn.Index
+
 
             DataGridView1.RowHeadersVisible = False
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 2 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
@@ -77,11 +86,22 @@ Public Class frmPerformanceReport
                     intRowIndex = Me.DataGridView1.Rows.Add
                     DataGridView1.Rows(intRowIndex).Cells(0).Value = intCounter
                     DataGridView1.Rows(intRowIndex).Cells(1).Value = dr.Item("code").ToString
+                    DataGridView1.Rows(intRowIndex).Cells(2).Value = CType(dr.Item("enumClientstatus"), Enumerators.ClientStatus).ToString
+                    DataGridView1.Rows(intRowIndex).Cells(3).Value = dr.Item("AccountManager").ToString
                     DataGridView1.Rows(intRowIndex).DefaultCellStyle.BackColor = Color.LemonChiffon
 
                     intCounter += 1
                 Next
             End If
+
+            contcolumn = New DataGridViewTextBoxColumn
+            With contcolumn
+                .HeaderText = "Total"
+                .Name = "2"
+                .DefaultCellStyle.BackColor = Color.FromArgb("255", "192", "192")
+            End With
+            DataGridView1.Columns.Add(contcolumn) 'GetType(Integer)
+            lTotalColumn = contcolumn.Index
 
         Catch ex As Exception
 
@@ -97,10 +117,10 @@ Public Class frmPerformanceReport
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 4 AndAlso Not ds.Tables(2).Rows.Count = 0 Then
                 For Each dr As DataRow In ds.Tables(2).Rows
                     If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
-                        For j = 2 To Me.DataGridView1.Columns.Count - 1
+                        For j = 4 To Me.DataGridView1.Columns.Count - 1
                             If Me.DataGridView1.Columns(j).HeaderText = CDate(dr.Item("Date")).ToString("dd/MM/yyyy") Then
                                 Me.DataGridView1.Rows(r).Cells(j).Value = dr.Item("Amount").ToString
-                                Me.DataGridView1.Rows(r).Cells(j + 1).Value = dr.Item("AccountManager").ToString
+                                '      Me.DataGridView1.Rows(r).Cells(j + 1).Value = dr.Item("AccountManager").ToString
                                 Exit For
                             End If
                         Next
@@ -111,6 +131,7 @@ Public Class frmPerformanceReport
                     For Each dr As DataRow In ds.Tables(3).Rows
                         If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
                             Me.DataGridView1.Rows(r).Cells(lTotalColumn).Value = dr.Item("TotalAmount").ToString
+                            ' Me.DataGridView1.Rows(r).Cells(lTotalColumn).DataGridViewCellStyle2 = Color.FromArgb("255", "192", "192") 'Color.(255, 192, 192)
                             Exit For
                         End If
                     Next
@@ -122,7 +143,7 @@ Public Class frmPerformanceReport
 
     Public Sub ClearDataGridCells()
         Dim i As Integer
-        For i = 2 To Me.DataGridView1.Columns.Count - 1
+        For i = 4 To Me.DataGridView1.Columns.Count - 1
             For j As Integer = 0 To Me.DataGridView1.Rows.Count - 1
                 DataGridView1.Rows(j).Cells(i).Value = Nothing
             Next

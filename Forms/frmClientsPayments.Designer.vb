@@ -41,6 +41,18 @@ Partial Class frmClientsPayments
         Me.cmbBanks = New System.Windows.Forms.ComboBox()
         Me.cmbClientCode = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditPaymentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -56,18 +68,8 @@ Partial Class frmClientsPayments
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -78,8 +80,10 @@ Partial Class frmClientsPayments
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.chkStatus)
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.dtpToDate)
@@ -95,14 +99,14 @@ Partial Class frmClientsPayments
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(956, 472)
+        Me.Panel1.Size = New System.Drawing.Size(1128, 614)
         Me.Panel1.TabIndex = 0
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(719, 9)
+        Me.Button1.Location = New System.Drawing.Point(891, 9)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(89, 33)
@@ -113,7 +117,7 @@ Partial Class frmClientsPayments
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(396, 40)
+        Me.Label1.Location = New System.Drawing.Point(438, 40)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(23, 16)
         Me.Label1.TabIndex = 85
@@ -124,7 +128,7 @@ Partial Class frmClientsPayments
         Me.dtpToDate.CustomFormat = "dddd  dd/MM/yyyy"
         Me.dtpToDate.Enabled = False
         Me.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpToDate.Location = New System.Drawing.Point(421, 38)
+        Me.dtpToDate.Location = New System.Drawing.Point(463, 38)
         Me.dtpToDate.Name = "dtpToDate"
         Me.dtpToDate.Size = New System.Drawing.Size(200, 23)
         Me.dtpToDate.TabIndex = 84
@@ -134,7 +138,7 @@ Partial Class frmClientsPayments
         Me.dtpFromDate.CustomFormat = "dddd  dd/MM/yyyy"
         Me.dtpFromDate.Enabled = False
         Me.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpFromDate.Location = New System.Drawing.Point(421, 9)
+        Me.dtpFromDate.Location = New System.Drawing.Point(463, 9)
         Me.dtpFromDate.Name = "dtpFromDate"
         Me.dtpFromDate.Size = New System.Drawing.Size(200, 23)
         Me.dtpFromDate.TabIndex = 84
@@ -149,7 +153,7 @@ Partial Class frmClientsPayments
         Me.cmbBanks.Enabled = False
         Me.cmbBanks.FormattingEnabled = True
         Me.cmbBanks.IntegralHeight = False
-        Me.cmbBanks.Location = New System.Drawing.Point(70, 38)
+        Me.cmbBanks.Location = New System.Drawing.Point(83, 38)
         Me.cmbBanks.Name = "cmbBanks"
         Me.cmbBanks.Size = New System.Drawing.Size(202, 24)
         Me.cmbBanks.TabIndex = 83
@@ -164,7 +168,7 @@ Partial Class frmClientsPayments
         Me.cmbClientCode.Enabled = False
         Me.cmbClientCode.FormattingEnabled = True
         Me.cmbClientCode.IntegralHeight = False
-        Me.cmbClientCode.Location = New System.Drawing.Point(70, 8)
+        Me.cmbClientCode.Location = New System.Drawing.Point(83, 8)
         Me.cmbClientCode.Name = "cmbClientCode"
         Me.cmbClientCode.Size = New System.Drawing.Size(202, 24)
         Me.cmbClientCode.TabIndex = 83
@@ -176,8 +180,8 @@ Partial Class frmClientsPayments
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -197,124 +201,14 @@ Partial Class frmClientsPayments
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 68)
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 101)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(948, 400)
+        Me.DataGridView1.Size = New System.Drawing.Size(1120, 509)
         Me.DataGridView1.TabIndex = 37
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(187, 82)
-        '
-        'EditPaymentToolStripMenuItem
-        '
-        Me.EditPaymentToolStripMenuItem.Name = "EditPaymentToolStripMenuItem"
-        Me.EditPaymentToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.EditPaymentToolStripMenuItem.Text = "Edit Payment"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(183, 6)
-        '
-        'AddAsDebitToolStripMenuItem
-        '
-        Me.AddAsDebitToolStripMenuItem.Name = "AddAsDebitToolStripMenuItem"
-        Me.AddAsDebitToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.AddAsDebitToolStripMenuItem.Text = "Add Bank Fees as voucher"
-        Me.AddAsDebitToolStripMenuItem.Visible = False
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(183, 6)
-        Me.ToolStripSeparator2.Visible = False
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(816, 8)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(136, 34)
-        Me.btnSearch.TabIndex = 36
-        Me.btnSearch.Text = "Filter"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'chkBank
-        '
-        Me.chkBank.AutoSize = True
-        Me.chkBank.Location = New System.Drawing.Point(9, 41)
-        Me.chkBank.Name = "chkBank"
-        Me.chkBank.Size = New System.Drawing.Size(58, 20)
-        Me.chkBank.TabIndex = 86
-        Me.chkBank.Text = "Bank"
-        Me.chkBank.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(380, 12)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(39, 16)
-        Me.Label3.TabIndex = 85
-        Me.Label3.Text = "From"
-        '
-        'chkClient
-        '
-        Me.chkClient.AutoSize = True
-        Me.chkClient.Location = New System.Drawing.Point(9, 11)
-        Me.chkClient.Name = "chkClient"
-        Me.chkClient.Size = New System.Drawing.Size(63, 20)
-        Me.chkClient.TabIndex = 86
-        Me.chkClient.Text = "Client"
-        Me.chkClient.UseVisualStyleBackColor = True
-        '
-        'chkDate
-        '
-        Me.chkDate.AutoSize = True
-        Me.chkDate.Location = New System.Drawing.Point(328, 10)
-        Me.chkDate.Name = "chkDate"
-        Me.chkDate.Size = New System.Drawing.Size(58, 20)
-        Me.chkDate.TabIndex = 87
-        Me.chkDate.Text = "Date"
-        Me.chkDate.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStripHideColumn
-        '
-        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
-        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.ContainerControl = Me
         '
         'clID
         '
@@ -414,13 +308,143 @@ Partial Class frmClientsPayments
         Me.Column7.ReadOnly = True
         Me.Column7.Width = 90
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.ShowImageMargin = False
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(187, 82)
+        '
+        'EditPaymentToolStripMenuItem
+        '
+        Me.EditPaymentToolStripMenuItem.Name = "EditPaymentToolStripMenuItem"
+        Me.EditPaymentToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.EditPaymentToolStripMenuItem.Text = "Edit Payment"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(183, 6)
+        '
+        'AddAsDebitToolStripMenuItem
+        '
+        Me.AddAsDebitToolStripMenuItem.Name = "AddAsDebitToolStripMenuItem"
+        Me.AddAsDebitToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.AddAsDebitToolStripMenuItem.Text = "Add Bank Fees as voucher"
+        Me.AddAsDebitToolStripMenuItem.Visible = False
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(183, 6)
+        Me.ToolStripSeparator2.Visible = False
+        '
+        'ExportToExcelToolStripMenuItem
+        '
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearch.Location = New System.Drawing.Point(988, 8)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(136, 34)
+        Me.btnSearch.TabIndex = 36
+        Me.btnSearch.Text = "Filter"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'chkBank
+        '
+        Me.chkBank.AutoSize = True
+        Me.chkBank.Location = New System.Drawing.Point(9, 41)
+        Me.chkBank.Name = "chkBank"
+        Me.chkBank.Size = New System.Drawing.Size(58, 20)
+        Me.chkBank.TabIndex = 86
+        Me.chkBank.Text = "Bank"
+        Me.chkBank.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(422, 12)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(39, 16)
+        Me.Label3.TabIndex = 85
+        Me.Label3.Text = "From"
+        '
+        'chkClient
+        '
+        Me.chkClient.AutoSize = True
+        Me.chkClient.Location = New System.Drawing.Point(9, 11)
+        Me.chkClient.Name = "chkClient"
+        Me.chkClient.Size = New System.Drawing.Size(63, 20)
+        Me.chkClient.TabIndex = 86
+        Me.chkClient.Text = "Client"
+        Me.chkClient.UseVisualStyleBackColor = True
+        '
+        'chkDate
+        '
+        Me.chkDate.AutoSize = True
+        Me.chkDate.Location = New System.Drawing.Point(370, 10)
+        Me.chkDate.Name = "chkDate"
+        Me.chkDate.Size = New System.Drawing.Size(58, 20)
+        Me.chkDate.TabIndex = 87
+        Me.chkDate.Text = "Date"
+        Me.chkDate.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStripHideColumn
+        '
+        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
+        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Location = New System.Drawing.Point(9, 72)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 90
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(83, 70)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(202, 24)
+        Me.cmbStatus.TabIndex = 89
+        '
         'frmClientsPayments
         '
         Me.AcceptButton = Me.btnSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(960, 477)
+        Me.ClientSize = New System.Drawing.Size(1132, 619)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -474,5 +498,7 @@ Partial Class frmClientsPayments
     Friend WithEvents aaa As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Inser As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
 
 End Class

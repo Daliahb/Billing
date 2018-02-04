@@ -66,13 +66,13 @@
 
             If boolError Then
                 MsgBox("Operation done successfully.")
-                If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
-                    Me.Close()
-                Else
-                    Me.ResetForm()
-                End If
+                '  If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
+                Me.Close()
+                'Else
+                '    Me.ResetForm()
+                'End If
             Else
-                MsgBox("Error occured!")
+            MsgBox("Error occured!")
             End If
         Catch ex As Exception
             MsgBox(ex.Message & "  " & ex.StackTrace)
@@ -138,12 +138,12 @@
     Public Function CheckValidity() As Boolean
         Dim boolError = True
 
-        If Me.txtAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) OrElse CInt(Me.txtAmount.Text) = 0 Then
-            ErrorProvider1.SetError(txtAmount, "Insert a valid value.")
-            boolError = False
-        Else
-            ErrorProvider1.SetError(txtAmount, "")
-        End If
+        'If Me.txtAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) OrElse CInt(Me.txtAmount.Text) = 0 Then
+        '    ErrorProvider1.SetError(txtAmount, "Insert a valid value.")
+        '    boolError = False
+        'Else
+        '    ErrorProvider1.SetError(txtAmount, "")
+        'End If
         If Me.txtRecievedAmount.Text.Length = 0 OrElse Not IsNumeric(Me.txtAmount.Text) Then
             ErrorProvider1.SetError(txtRecievedAmount, "Insert a valid value.")
             boolError = False
