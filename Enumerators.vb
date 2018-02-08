@@ -101,4 +101,15 @@
         Disabled = 2
         Potential = 3
     End Enum
+
+    Public Enum Priority
+        Low = 1
+        Medium = 2
+        High = 3
+    End Enum
+
+    Public Enum OPTP
+        OP = 1
+        TP = 2
+    End Enum
 End Class

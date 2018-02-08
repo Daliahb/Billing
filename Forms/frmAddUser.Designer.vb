@@ -26,22 +26,21 @@ Partial Class frmAddUser
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddUser))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.cmbAcountManagerAdd = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cmbCategories = New System.Windows.Forms.ComboBox()
         Me.AccountManagersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsAccountManagers = New WindowsApplication1.dsAccountManagers()
-        Me.rbAccountManagerAdd = New System.Windows.Forms.RadioButton()
-        Me.rbAdminAdd = New System.Windows.Forms.RadioButton()
+        Me.cmbAcountManagerAdd = New System.Windows.Forms.ComboBox()
         Me.btnAddUser = New System.Windows.Forms.Button()
         Me.txtAddUserName = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtAddPassword = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtAddPasswrod2 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.cmbAccountManagersEdit = New System.Windows.Forms.ComboBox()
-        Me.rbAccountManagerEdit = New System.Windows.Forms.RadioButton()
-        Me.rbAdminEdit = New System.Windows.Forms.RadioButton()
         Me.btnDeleteUser = New System.Windows.Forms.Button()
         Me.btnEditUser = New System.Windows.Forms.Button()
         Me.cmbEditUserName = New System.Windows.Forms.ComboBox()
@@ -58,6 +57,7 @@ Partial Class frmAddUser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.chkImportRates = New System.Windows.Forms.CheckBox()
+        Me.chbEditProviderPrice = New System.Windows.Forms.CheckBox()
         Me.chkEditNonCLI = New System.Windows.Forms.CheckBox()
         Me.chkViewRatesReports = New System.Windows.Forms.CheckBox()
         Me.chkAddUsers = New System.Windows.Forms.CheckBox()
@@ -93,7 +93,9 @@ Partial Class frmAddUser
         Me.chkClearAll = New System.Windows.Forms.CheckBox()
         Me.UsersTableAdapter = New WindowsApplication1.dsUserTableAdapters.UsersTableAdapter()
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
-        Me.chbEditProviderPrice = New System.Windows.Forms.CheckBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cmbCategoryEdit = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +113,7 @@ Partial Class frmAddUser
         'TabControl1
         '
         Me.TabControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(3, 4)
@@ -123,12 +125,13 @@ Partial Class frmAddUser
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.Transparent
+        Me.TabPage1.Controls.Add(Me.Label9)
+        Me.TabPage1.Controls.Add(Me.cmbCategories)
         Me.TabPage1.Controls.Add(Me.cmbAcountManagerAdd)
-        Me.TabPage1.Controls.Add(Me.rbAccountManagerAdd)
-        Me.TabPage1.Controls.Add(Me.rbAdminAdd)
         Me.TabPage1.Controls.Add(Me.btnAddUser)
         Me.TabPage1.Controls.Add(Me.txtAddUserName)
         Me.TabPage1.Controls.Add(Me.Label5)
+        Me.TabPage1.Controls.Add(Me.Label10)
         Me.TabPage1.Controls.Add(Me.Label6)
         Me.TabPage1.Controls.Add(Me.txtAddPassword)
         Me.TabPage1.Controls.Add(Me.Label7)
@@ -140,18 +143,27 @@ Partial Class frmAddUser
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Add User"
         '
-        'cmbAcountManagerAdd
+        'Label9
         '
-        Me.cmbAcountManagerAdd.DataSource = Me.AccountManagersBindingSource
-        Me.cmbAcountManagerAdd.DisplayMember = "Name"
-        Me.cmbAcountManagerAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbAcountManagerAdd.Enabled = False
-        Me.cmbAcountManagerAdd.FormattingEnabled = True
-        Me.cmbAcountManagerAdd.Location = New System.Drawing.Point(237, 87)
-        Me.cmbAcountManagerAdd.Name = "cmbAcountManagerAdd"
-        Me.cmbAcountManagerAdd.Size = New System.Drawing.Size(152, 24)
-        Me.cmbAcountManagerAdd.TabIndex = 31
-        Me.cmbAcountManagerAdd.ValueMember = "ID"
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(4, 83)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(68, 16)
+        Me.Label9.TabIndex = 34
+        Me.Label9.Text = "Category"
+        '
+        'cmbCategories
+        '
+        Me.cmbCategories.DataSource = Me.AccountManagersBindingSource
+        Me.cmbCategories.DisplayMember = "Name"
+        Me.cmbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCategories.FormattingEnabled = True
+        Me.cmbCategories.Location = New System.Drawing.Point(78, 79)
+        Me.cmbCategories.Name = "cmbCategories"
+        Me.cmbCategories.Size = New System.Drawing.Size(152, 24)
+        Me.cmbCategories.TabIndex = 33
+        Me.cmbCategories.ValueMember = "ID"
         '
         'AccountManagersBindingSource
         '
@@ -163,31 +175,22 @@ Partial Class frmAddUser
         Me.DsAccountManagers.DataSetName = "dsAccountManagers"
         Me.DsAccountManagers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'rbAccountManagerAdd
+        'cmbAcountManagerAdd
         '
-        Me.rbAccountManagerAdd.AutoSize = True
-        Me.rbAccountManagerAdd.Location = New System.Drawing.Point(90, 89)
-        Me.rbAccountManagerAdd.Name = "rbAccountManagerAdd"
-        Me.rbAccountManagerAdd.Size = New System.Drawing.Size(141, 20)
-        Me.rbAccountManagerAdd.TabIndex = 27
-        Me.rbAccountManagerAdd.TabStop = True
-        Me.rbAccountManagerAdd.Text = "Account Manager"
-        Me.rbAccountManagerAdd.UseVisualStyleBackColor = True
-        '
-        'rbAdminAdd
-        '
-        Me.rbAdminAdd.AutoSize = True
-        Me.rbAdminAdd.Location = New System.Drawing.Point(7, 89)
-        Me.rbAdminAdd.Name = "rbAdminAdd"
-        Me.rbAdminAdd.Size = New System.Drawing.Size(66, 20)
-        Me.rbAdminAdd.TabIndex = 26
-        Me.rbAdminAdd.TabStop = True
-        Me.rbAdminAdd.Text = "Admin"
-        Me.rbAdminAdd.UseVisualStyleBackColor = True
+        Me.cmbAcountManagerAdd.DataSource = Me.AccountManagersBindingSource
+        Me.cmbAcountManagerAdd.DisplayMember = "Name"
+        Me.cmbAcountManagerAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbAcountManagerAdd.Enabled = False
+        Me.cmbAcountManagerAdd.FormattingEnabled = True
+        Me.cmbAcountManagerAdd.Location = New System.Drawing.Point(399, 79)
+        Me.cmbAcountManagerAdd.Name = "cmbAcountManagerAdd"
+        Me.cmbAcountManagerAdd.Size = New System.Drawing.Size(152, 24)
+        Me.cmbAcountManagerAdd.TabIndex = 31
+        Me.cmbAcountManagerAdd.ValueMember = "ID"
         '
         'btnAddUser
         '
-        Me.btnAddUser.Location = New System.Drawing.Point(563, 85)
+        Me.btnAddUser.Location = New System.Drawing.Point(563, 77)
         Me.btnAddUser.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAddUser.Name = "btnAddUser"
         Me.btnAddUser.Size = New System.Drawing.Size(74, 28)
@@ -212,6 +215,16 @@ Partial Class frmAddUser
         Me.Label5.Size = New System.Drawing.Size(76, 16)
         Me.Label5.TabIndex = 22
         Me.Label5.Text = "User Name"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(274, 83)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(123, 16)
+        Me.Label10.TabIndex = 21
+        Me.Label10.Text = "Account Manager"
         '
         'Label6
         '
@@ -254,9 +267,10 @@ Partial Class frmAddUser
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.Transparent
+        Me.TabPage2.Controls.Add(Me.Label12)
+        Me.TabPage2.Controls.Add(Me.Label11)
+        Me.TabPage2.Controls.Add(Me.cmbCategoryEdit)
         Me.TabPage2.Controls.Add(Me.cmbAccountManagersEdit)
-        Me.TabPage2.Controls.Add(Me.rbAccountManagerEdit)
-        Me.TabPage2.Controls.Add(Me.rbAdminEdit)
         Me.TabPage2.Controls.Add(Me.btnDeleteUser)
         Me.TabPage2.Controls.Add(Me.btnEditUser)
         Me.TabPage2.Controls.Add(Me.cmbEditUserName)
@@ -281,37 +295,15 @@ Partial Class frmAddUser
         Me.cmbAccountManagersEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbAccountManagersEdit.Enabled = False
         Me.cmbAccountManagersEdit.FormattingEnabled = True
-        Me.cmbAccountManagersEdit.Location = New System.Drawing.Point(237, 87)
+        Me.cmbAccountManagersEdit.Location = New System.Drawing.Point(319, 87)
         Me.cmbAccountManagersEdit.Name = "cmbAccountManagersEdit"
         Me.cmbAccountManagersEdit.Size = New System.Drawing.Size(152, 24)
         Me.cmbAccountManagersEdit.TabIndex = 30
         Me.cmbAccountManagersEdit.ValueMember = "ID"
         '
-        'rbAccountManagerEdit
-        '
-        Me.rbAccountManagerEdit.AutoSize = True
-        Me.rbAccountManagerEdit.Location = New System.Drawing.Point(90, 89)
-        Me.rbAccountManagerEdit.Name = "rbAccountManagerEdit"
-        Me.rbAccountManagerEdit.Size = New System.Drawing.Size(141, 20)
-        Me.rbAccountManagerEdit.TabIndex = 29
-        Me.rbAccountManagerEdit.TabStop = True
-        Me.rbAccountManagerEdit.Text = "Account Manager"
-        Me.rbAccountManagerEdit.UseVisualStyleBackColor = True
-        '
-        'rbAdminEdit
-        '
-        Me.rbAdminEdit.AutoSize = True
-        Me.rbAdminEdit.Location = New System.Drawing.Point(7, 89)
-        Me.rbAdminEdit.Name = "rbAdminEdit"
-        Me.rbAdminEdit.Size = New System.Drawing.Size(66, 20)
-        Me.rbAdminEdit.TabIndex = 28
-        Me.rbAdminEdit.TabStop = True
-        Me.rbAdminEdit.Text = "Admin"
-        Me.rbAdminEdit.UseVisualStyleBackColor = True
-        '
         'btnDeleteUser
         '
-        Me.btnDeleteUser.Location = New System.Drawing.Point(537, 85)
+        Me.btnDeleteUser.Location = New System.Drawing.Point(562, 85)
         Me.btnDeleteUser.Name = "btnDeleteUser"
         Me.btnDeleteUser.Size = New System.Drawing.Size(102, 28)
         Me.btnDeleteUser.TabIndex = 18
@@ -320,7 +312,7 @@ Partial Class frmAddUser
         '
         'btnEditUser
         '
-        Me.btnEditUser.Location = New System.Drawing.Point(450, 85)
+        Me.btnEditUser.Location = New System.Drawing.Point(475, 85)
         Me.btnEditUser.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditUser.Name = "btnEditUser"
         Me.btnEditUser.Size = New System.Drawing.Size(82, 28)
@@ -452,6 +444,16 @@ Partial Class frmAddUser
         Me.chkImportRates.Text = "Import Rates"
         Me.chkImportRates.UseVisualStyleBackColor = True
         '
+        'chbEditProviderPrice
+        '
+        Me.chbEditProviderPrice.AutoSize = True
+        Me.chbEditProviderPrice.Location = New System.Drawing.Point(6, 82)
+        Me.chbEditProviderPrice.Name = "chbEditProviderPrice"
+        Me.chbEditProviderPrice.Size = New System.Drawing.Size(146, 20)
+        Me.chbEditProviderPrice.TabIndex = 14
+        Me.chbEditProviderPrice.Text = "Edit Provider Price"
+        Me.chbEditProviderPrice.UseVisualStyleBackColor = True
+        '
         'chkEditNonCLI
         '
         Me.chkEditNonCLI.AutoSize = True
@@ -477,7 +479,7 @@ Partial Class frmAddUser
         Me.chkAddUsers.AutoSize = True
         Me.chkAddUsers.Location = New System.Drawing.Point(5, 169)
         Me.chkAddUsers.Name = "chkAddUsers"
-        Me.chkAddUsers.Size = New System.Drawing.Size(53, 17)
+        Me.chkAddUsers.Size = New System.Drawing.Size(63, 20)
         Me.chkAddUsers.TabIndex = 23
         Me.chkAddUsers.Text = "Users"
         Me.chkAddUsers.UseVisualStyleBackColor = True
@@ -726,7 +728,7 @@ Partial Class frmAddUser
         Me.chkEditClients.AutoSize = True
         Me.chkEditClients.Location = New System.Drawing.Point(5, 19)
         Me.chkEditClients.Name = "chkEditClients"
-        Me.chkEditClients.Size = New System.Drawing.Size(58, 17)
+        Me.chkEditClients.Size = New System.Drawing.Size(70, 20)
         Me.chkEditClients.TabIndex = 3
         Me.chkEditClients.Text = "Clients"
         Me.chkEditClients.UseVisualStyleBackColor = True
@@ -736,7 +738,7 @@ Partial Class frmAddUser
         Me.chkEditEmailBody.AutoSize = True
         Me.chkEditEmailBody.Location = New System.Drawing.Point(5, 147)
         Me.chkEditEmailBody.Name = "chkEditEmailBody"
-        Me.chkEditEmailBody.Size = New System.Drawing.Size(77, 17)
+        Me.chkEditEmailBody.Size = New System.Drawing.Size(95, 20)
         Me.chkEditEmailBody.TabIndex = 8
         Me.chkEditEmailBody.Text = "Email Body"
         Me.chkEditEmailBody.UseVisualStyleBackColor = True
@@ -746,7 +748,7 @@ Partial Class frmAddUser
         Me.chkEditMapleAccounts.AutoSize = True
         Me.chkEditMapleAccounts.Location = New System.Drawing.Point(5, 125)
         Me.chkEditMapleAccounts.Name = "chkEditMapleAccounts"
-        Me.chkEditMapleAccounts.Size = New System.Drawing.Size(101, 17)
+        Me.chkEditMapleAccounts.Size = New System.Drawing.Size(130, 20)
         Me.chkEditMapleAccounts.TabIndex = 8
         Me.chkEditMapleAccounts.Text = "Maple Accounts"
         Me.chkEditMapleAccounts.UseVisualStyleBackColor = True
@@ -756,7 +758,7 @@ Partial Class frmAddUser
         Me.chkManageCompanies.AutoSize = True
         Me.chkManageCompanies.Location = New System.Drawing.Point(5, 82)
         Me.chkManageCompanies.Name = "chkManageCompanies"
-        Me.chkManageCompanies.Size = New System.Drawing.Size(78, 17)
+        Me.chkManageCompanies.Size = New System.Drawing.Size(96, 20)
         Me.chkManageCompanies.TabIndex = 6
         Me.chkManageCompanies.Text = "Companies"
         Me.chkManageCompanies.UseVisualStyleBackColor = True
@@ -766,7 +768,7 @@ Partial Class frmAddUser
         Me.chkEditSoftwares.AutoSize = True
         Me.chkEditSoftwares.Location = New System.Drawing.Point(5, 103)
         Me.chkEditSoftwares.Name = "chkEditSoftwares"
-        Me.chkEditSoftwares.Size = New System.Drawing.Size(75, 17)
+        Me.chkEditSoftwares.Size = New System.Drawing.Size(94, 20)
         Me.chkEditSoftwares.TabIndex = 6
         Me.chkEditSoftwares.Text = "Softwares"
         Me.chkEditSoftwares.UseVisualStyleBackColor = True
@@ -776,7 +778,7 @@ Partial Class frmAddUser
         Me.chkEditAccountManager.AutoSize = True
         Me.chkEditAccountManager.Location = New System.Drawing.Point(5, 61)
         Me.chkEditAccountManager.Name = "chkEditAccountManager"
-        Me.chkEditAccountManager.Size = New System.Drawing.Size(115, 17)
+        Me.chkEditAccountManager.Size = New System.Drawing.Size(149, 20)
         Me.chkEditAccountManager.TabIndex = 5
         Me.chkEditAccountManager.Text = "Account Managers"
         Me.chkEditAccountManager.UseVisualStyleBackColor = True
@@ -786,7 +788,7 @@ Partial Class frmAddUser
         Me.chkEditBankAccounts.AutoSize = True
         Me.chkEditBankAccounts.Location = New System.Drawing.Point(5, 40)
         Me.chkEditBankAccounts.Name = "chkEditBankAccounts"
-        Me.chkEditBankAccounts.Size = New System.Drawing.Size(96, 17)
+        Me.chkEditBankAccounts.Size = New System.Drawing.Size(123, 20)
         Me.chkEditBankAccounts.TabIndex = 4
         Me.chkEditBankAccounts.Text = "Bank Accounts"
         Me.chkEditBankAccounts.UseVisualStyleBackColor = True
@@ -823,15 +825,37 @@ Partial Class frmAddUser
         '
         Me.AccountManagersTableAdapter.ClearBeforeFill = True
         '
-        'chbEditProviderPrice
+        'Label11
         '
-        Me.chbEditProviderPrice.AutoSize = True
-        Me.chbEditProviderPrice.Location = New System.Drawing.Point(6, 82)
-        Me.chbEditProviderPrice.Name = "chbEditProviderPrice"
-        Me.chbEditProviderPrice.Size = New System.Drawing.Size(146, 20)
-        Me.chbEditProviderPrice.TabIndex = 14
-        Me.chbEditProviderPrice.Text = "Edit Provider Price"
-        Me.chbEditProviderPrice.UseVisualStyleBackColor = True
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(-2, 91)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(68, 16)
+        Me.Label11.TabIndex = 36
+        Me.Label11.Text = "Category"
+        '
+        'cmbCategoryEdit
+        '
+        Me.cmbCategoryEdit.DataSource = Me.AccountManagersBindingSource
+        Me.cmbCategoryEdit.DisplayMember = "Name"
+        Me.cmbCategoryEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCategoryEdit.FormattingEnabled = True
+        Me.cmbCategoryEdit.Location = New System.Drawing.Point(72, 87)
+        Me.cmbCategoryEdit.Name = "cmbCategoryEdit"
+        Me.cmbCategoryEdit.Size = New System.Drawing.Size(152, 24)
+        Me.cmbCategoryEdit.TabIndex = 35
+        Me.cmbCategoryEdit.ValueMember = "ID"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(317, 68)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(128, 16)
+        Me.Label12.TabIndex = 37
+        Me.Label12.Text = "Account Manager:"
         '
         'frmAddUser
         '
@@ -937,11 +961,7 @@ Partial Class frmAddUser
     Friend WithEvents chkClientPerformanceReport As System.Windows.Forms.CheckBox
     Friend WithEvents chkManagerRecievedAmount As System.Windows.Forms.CheckBox
     Friend WithEvents cmbAcountManagerAdd As System.Windows.Forms.ComboBox
-    Friend WithEvents rbAccountManagerAdd As System.Windows.Forms.RadioButton
-    Friend WithEvents rbAdminAdd As System.Windows.Forms.RadioButton
     Friend WithEvents cmbAccountManagersEdit As System.Windows.Forms.ComboBox
-    Friend WithEvents rbAccountManagerEdit As System.Windows.Forms.RadioButton
-    Friend WithEvents rbAdminEdit As System.Windows.Forms.RadioButton
     Friend WithEvents DsAccountManagers As Global.WindowsApplication1.dsAccountManagers
     Friend WithEvents AccountManagersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents AccountManagersTableAdapter As Global.WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter
@@ -949,5 +969,11 @@ Partial Class frmAddUser
     Friend WithEvents chkCashflowReport As System.Windows.Forms.CheckBox
     Friend WithEvents chkCompanyPerformanceReport As System.Windows.Forms.CheckBox
     Friend WithEvents chbEditProviderPrice As System.Windows.Forms.CheckBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents cmbCategories As System.Windows.Forms.ComboBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents cmbCategoryEdit As System.Windows.Forms.ComboBox
 
 End Class

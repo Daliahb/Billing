@@ -17,6 +17,23 @@
         Me.oColUsers = odbaccess.GetUsers()
 
         booloaded = True
+
+        Dim ds As DataSet
+        ds = odbaccess.GetUserCategoriesDS()
+        If Not ds Is Nothing Then
+            Me.cmbCategories.DataSource = ds.Tables(0)
+            Me.cmbCategories.DisplayMember = "Category"
+            Me.cmbCategories.ValueMember = "ID"
+        End If
+
+        ds = Nothing
+        ds = odbaccess.GetUserCategoriesDS()
+        If Not ds Is Nothing Then
+            Me.cmbCategoryEdit.DataSource = ds.Tables(0)
+            Me.cmbCategoryEdit.DisplayMember = "Category"
+            Me.cmbCategoryEdit.ValueMember = "ID"
+        End If
+
     End Sub
 
     Private Sub btnAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddUser.Click
@@ -73,13 +90,6 @@
                 ErrorProvider1.SetError(txtAddPasswrod2, "")
             End If
 
-            If Me.rbAccountManagerAdd.Checked = False And Me.rbAdminAdd.Checked = False Then
-                ErrorProvider1.SetError(rbAdminAdd, "Choose User type.")
-                boolError = False
-            Else
-                ErrorProvider1.SetError(rbAdminAdd, "")
-            End If
-
         ElseIf enumAddEdit = Enumerators.EditAdd.Edit Then
             If txtEditUserName.Text.Length = 0 Then
                 ErrorProvider1.SetError(txtEditUserName, "Insert a valid UserName")
@@ -108,18 +118,18 @@
             Else
                 ErrorProvider1.SetError(cmbEditUserName, "")
             End If
-            If Me.rbAccountManagerEdit.Checked = False And Me.rbAdminEdit.Checked = False Then
-                ErrorProvider1.SetError(rbAdminEdit, "Choose User type.")
-                boolError = False
-            Else
-                ErrorProvider1.SetError(rbAdminEdit, "")
-            End If
-            If Me.rbAccountManagerEdit.Checked And Me.cmbAccountManagersEdit.SelectedValue Is Nothing Then
-                ErrorProvider1.SetError(cmbAccountManagersEdit, "Please choose Account Manager from the list.")
-                boolError = False
-            Else
-                ErrorProvider1.SetError(cmbAccountManagersEdit, "")
-            End If
+            'If Me.rbAccountManagerEdit.Checked = False And Me.rbAdminEdit.Checked = False Then
+            '    ErrorProvider1.SetError(rbAdminEdit, "Choose User type.")
+            '    boolError = False
+            'Else
+            '    ErrorProvider1.SetError(rbAdminEdit, "")
+            'End If
+            'If Me.rbAccountManagerEdit.Checked And Me.cmbAccountManagersEdit.SelectedValue Is Nothing Then
+            '    ErrorProvider1.SetError(cmbAccountManagersEdit, "Please choose Account Manager from the list.")
+            '    boolError = False
+            'Else
+            '    ErrorProvider1.SetError(cmbAccountManagersEdit, "")
+            'End If
         End If
 
         Return boolError
@@ -134,25 +144,27 @@
                 .UserName = Me.txtAddUserName.Text
                 .Password = Me.txtAddPassword.Text
             End With
-            If rbAccountManagerAdd.Checked Then
+            If CInt(Me.cmbCategories.SelectedValue) = 2 AndAlso Not Me.cmbAcountManagerAdd.SelectedValue Is Nothing Then
                 oUser.lAccountManager = CInt(Me.cmbAcountManagerAdd.SelectedValue)
                 oUser.IsAccountManager = True
             Else
                 oUser.lAccountManager = 0
                 oUser.IsAccountManager = False
             End If
+            oUser.UserCategory = CInt(Me.cmbCategories.SelectedValue)
         Else
             With oUser
                 .Id = CLng(cmbEditUserName.SelectedValue)
                 .UserName = Me.txtEditUserName.Text
                 .Password = Me.txtEditPassword.Text
-                If rbAccountManagerEdit.Checked Then
+                If CInt(Me.cmbCategoryEdit.SelectedValue) = 2 AndAlso Not Me.cmbAccountManagersEdit.SelectedValue Is Nothing Then
                     .lAccountManager = CInt(Me.cmbAccountManagersEdit.SelectedValue)
                     .IsAccountManager = True
                 Else
                     .lAccountManager = 0
                     .IsAccountManager = False
                 End If
+                oUser.UserCategory = CInt(Me.cmbCategoryEdit.SelectedValue)
             End With
           
         End If
@@ -363,23 +375,24 @@
                     Exit For
                 End If
             Next
-
+            Me.cmbCategoryEdit.SelectedValue = oUser.lUserCategory
+           
             Me.txtEditUserName.Text = Me.cmbEditUserName.Text
             Me.txtEditPassword.Text = oUser.Password
             Me.txtEditPassword2.Text = oUser.Password
-            If oUser.IsAccountManager Then
+            If oUser.lUserCategory = 2 Then
                 Me.cmbAccountManagersEdit.Enabled = True
                 Me.cmbAccountManagersEdit.SelectedValue = oUser.lAccountManager
-                Me.rbAccountManagerEdit.Checked = True
+                '   Me.rbAccountManagerEdit.Checked = True
+                Me.cmbAccountManagersEdit.Enabled = True
             Else
-                Me.rbAdminEdit.Checked = True
+                '   Me.rbAdminEdit.Checked = True
                 Me.cmbAccountManagersEdit.Enabled = False
             End If
             Me.chkClearAll.Checked = True
             setRoles()
 
         End If
-
 
     End Sub
 
@@ -542,14 +555,6 @@
         End If
     End Sub
 
-    Private Sub rbAccountManagerAdd_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbAccountManagerAdd.CheckedChanged
-        Me.cmbAcountManagerAdd.Enabled = Me.rbAccountManagerAdd.Checked
-    End Sub
-
-    Private Sub rbAccountManagerEdit_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbAccountManagerEdit.CheckedChanged
-        Me.cmbAccountManagersEdit.Enabled = Me.rbAccountManagerEdit.Checked
-    End Sub
-
     Private Sub cmbAccountManagersEdit_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbAccountManagersEdit.SelectedIndexChanged
         Dim boolFound As Boolean
         For Each oUser As User In Me.oColUsers
@@ -562,7 +567,7 @@
         If boolFound Then
             ErrorProvider1.SetError(cmbAccountManagersEdit, "The selected 'Account Manager' is already used for another User")
             boolFound = False
-            Else
+        Else
             ErrorProvider1.SetError(cmbAccountManagersEdit, "")
         End If
 
@@ -584,6 +589,22 @@
             ErrorProvider1.SetError(cmbAcountManagerAdd, "")
         End If
 
+    End Sub
+
+    Private Sub cmbCategories_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbCategories.SelectedIndexChanged
+        If CInt(cmbCategories.SelectedValue) = 2 Then
+            Me.cmbAcountManagerAdd.Enabled = True
+        Else
+            Me.cmbAcountManagerAdd.Enabled = False
+        End If
+    End Sub
+
+    Private Sub cmbCategoryEdit_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbCategoryEdit.SelectedIndexChanged
+        If CInt(cmbCategoryEdit.SelectedValue) = 2 Then
+            Me.cmbAccountManagersEdit.Enabled = True
+        Else
+            Me.cmbAccountManagersEdit.Enabled = False
+        End If
     End Sub
 
 End Class

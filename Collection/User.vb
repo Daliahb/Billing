@@ -5,6 +5,7 @@
     Private strPassword As String
     Public IsAccountManager As Boolean
     Public lAccountManager As Integer
+    Public lUserCategory As Integer
     Public oColRoles As New ColRole
 
 
@@ -45,6 +46,15 @@
         End Set
     End Property
 
+    Public Property UserCategory() As Integer
+        Get
+            Return lUserCategory
+        End Get
+        Set(ByVal value As Integer)
+            lUserCategory = value
+        End Set
+    End Property
+
     Public Sub setProperties(ByVal dr As DataRow, ByVal dt As DataTable)
         Dim oRol As Role
 
@@ -63,7 +73,9 @@
             If Not dr.Item("FK_AccountManager") Is DBNull.Value Then
                 Me.lAccountManager = CInt(dr.Item("FK_AccountManager"))
             End If
-
+            If Not dr.Item("FK_Category") Is DBNull.Value Then
+                Me.lUserCategory = CInt(dr.Item("FK_Category"))
+            End If
             'fill roles
             If dt.Rows.Count > 0 Then
                 For Each dr2 As DataRow In dt.Rows

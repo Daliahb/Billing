@@ -495,4 +495,9 @@ Public Class FrmMain
             frm.Show()
         End If
     End Sub
+
+    Private Sub InquiriesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InquiriesToolStripMenuItem.Click
+        Dim frm As New frmInquiries
+        frm.Show()
+    End Sub
 End Class

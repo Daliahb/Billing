@@ -26,6 +26,7 @@ Partial Class FrmMain
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PotentialClientsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BankAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompaniesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SoftwaresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,7 +69,8 @@ Partial Class FrmMain
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblCountry = New System.Windows.Forms.Label()
-        Me.PotentialClientsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.InquiriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,6 +89,12 @@ Partial Class FrmMain
         Me.ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem"
         Me.ClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.ClientsToolStripMenuItem.Text = "Clients"
+        '
+        'PotentialClientsToolStripMenuItem
+        '
+        Me.PotentialClientsToolStripMenuItem.Name = "PotentialClientsToolStripMenuItem"
+        Me.PotentialClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.PotentialClientsToolStripMenuItem.Text = "Potential Clients"
         '
         'BankAccountsToolStripMenuItem
         '
@@ -333,7 +341,7 @@ Partial Class FrmMain
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.AccountingToolStripMenuItem1, Me.AccountingToolStripMenuItem, Me.InvoicingToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.AccountingToolStripMenuItem1, Me.AccountingToolStripMenuItem, Me.InvoicingToolStripMenuItem, Me.InquiriesToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(362, 24)
@@ -383,11 +391,20 @@ Partial Class FrmMain
         Me.lblCountry.TabIndex = 113
         Me.lblCountry.Text = "Yerevan"
         '
-        'PotentialClientsToolStripMenuItem
+        'Button1
         '
-        Me.PotentialClientsToolStripMenuItem.Name = "PotentialClientsToolStripMenuItem"
-        Me.PotentialClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
-        Me.PotentialClientsToolStripMenuItem.Text = "Potential Clients"
+        Me.Button1.Location = New System.Drawing.Point(260, 62)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 114
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'InquiriesToolStripMenuItem
+        '
+        Me.InquiriesToolStripMenuItem.Name = "InquiriesToolStripMenuItem"
+        Me.InquiriesToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
+        Me.InquiriesToolStripMenuItem.Text = "Inquiries"
         '
         'FrmMain
         '
@@ -395,6 +412,7 @@ Partial Class FrmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ClientSize = New System.Drawing.Size(362, 221)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblCountry)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.PictureBox2)
@@ -460,4 +478,6 @@ Partial Class FrmMain
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblCountry As System.Windows.Forms.Label
     Friend WithEvents PotentialClientsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents InquiriesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -214,8 +214,10 @@ Public Class SendEmails
                 filename = "Invoice-" + .Item("ClientCode").ToString + "-" + CDate(.Item("InsertDate")).ToString("ddMMyyyy")
                 Dim attachment As New Net.Mail.Attachment(strRootDirectory & "\" & filename & ".pdf") 'create the attachment
 
-                mail.Attachments.Add(attachment) 'add the attachment
+                'mail.Attachments.Add(attachment) 'add the attachment
+                'attachment = New Net.Mail.Attachment("C:\Users\Maple\Downloads\Bank Account Change.pdf") '.xlsx") 'create the attachment
 
+                mail.Attachments.Add(attachment) 'add the attachment
                 Dim smtp As New SmtpClient("smtp.gmail.com")
                 smtp.Credentials = New Net.NetworkCredential(.Item("smtpEamil").ToString, .Item("smtpPassword").ToString)
                 smtp.Port = 587
@@ -274,6 +276,10 @@ Public Class SendEmails
                 Dim attachment As New Net.Mail.Attachment(strRootDirectory & "\" & filename & ".pdf") '.xlsx") 'create the attachment
 
                 mail.Attachments.Add(attachment) 'add the attachment
+
+                'attachment = New Net.Mail.Attachment("C:\Users\Maple\Downloads\Bank Account Change.pdf") '.xlsx") 'create the attachment
+
+                'mail.Attachments.Add(attachment) 'add the attachment
 
                 Dim smtp As New SmtpClient("smtp.gmail.com")
                 smtp.Credentials = New Net.NetworkCredential(.Item("smtpEamil").ToString, .Item("smtpPassword").ToString)

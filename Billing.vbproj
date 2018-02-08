@@ -126,6 +126,7 @@
     <Compile Include="Collection\Company.vb" />
     <Compile Include="Collection\Obj.vb" />
     <Compile Include="Collection\Role.vb" />
+    <Compile Include="Collection\Task.vb" />
     <Compile Include="Collection\User.vb" />
     <Compile Include="DataSets\DataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -182,10 +183,36 @@
     <Compile Include="DataSets\dsUser.vb">
       <DependentUpon>dsUser.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsUsersCategories.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUsersCategories.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsUsersCategories.vb">
+      <DependentUpon>dsUsersCategories.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddInquiry.Designer.vb">
+      <DependentUpon>frmAddInquiry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddInquiry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInquiries.Designer.vb">
+      <DependentUpon>frmInquiries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInquiries.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmPotentialClients.designer.vb">
       <DependentUpon>frmPotentialClients.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPotentialClients.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReadInquiry.Designer.vb">
+      <DependentUpon>frmReadInquiry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReadInquiry.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmWarningClientsFromMC.Designer.vb">
@@ -491,8 +518,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmAddInquiry.resx">
+      <DependentUpon>frmAddInquiry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInquiries.resx">
+      <DependentUpon>frmInquiries.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPotentialClients.resx">
       <DependentUpon>frmPotentialClients.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReadInquiry.resx">
+      <DependentUpon>frmReadInquiry.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmWarningClientsFromMC.resx">
       <DependentUpon>frmWarningClientsFromMC.vb</DependentUpon>
@@ -739,6 +775,17 @@
     </None>
     <None Include="DataSets\dsUser.xss">
       <DependentUpon>dsUser.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsUsersCategories.xsc">
+      <DependentUpon>dsUsersCategories.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsUsersCategories.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUsersCategories.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsUsersCategories.xss">
+      <DependentUpon>dsUsersCategories.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
