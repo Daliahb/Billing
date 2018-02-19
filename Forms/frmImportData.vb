@@ -23,7 +23,6 @@ Public Class frmImportData
         FillSoftwares()
     End Sub
 
-
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         Dim boolError = False
         Try
@@ -60,10 +59,10 @@ Public Class frmImportData
             If boolError = False Then
                 Dim boolInvoice As Boolean
                 'check if data is already existed
-                If odbaccess.CheckDataExists(CLng(Me.cmbSoftwareID.SelectedValue), Me.dtpFromDate.Value.Date, Me.dtpToDate.Value.Date, boolInvoice) Then
+                If odbaccess.CheckDataExists(CLng(Me.cmbSoftwareID.SelectedValue), Me.dtpFromDate.Value.Date, Me.dtpToDate.Value.Date, CInt(Me.cmbPeriod.Text), boolInvoice) Then
                     If boolInvoice = False Then 'no invoices yet
                         If MsgBox("The data is already imported from " + Me.cmbSoftwareID.Text + " for period from " + Me.dtpFromDate.Value.ToString("yyyy-MM-dd") + " to " + Me.dtpToDate.Value.ToString("yyyy-MM-dd") + ". Do you want to replace data?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                            If odbaccess.DeleteImportedData(CLng(Me.cmbSoftwareID.SelectedValue), Me.dtpFromDate.Value.Date, Me.dtpToDate.Value.Date) Then
+                            If odbaccess.DeleteImportedData(CLng(Me.cmbSoftwareID.SelectedValue), Me.dtpFromDate.Value.Date, Me.dtpToDate.Value.Date, CInt(Me.cmbPeriod.Text)) Then
                                 Me.btnSave.Enabled = False
                                 If Me.cmbSoftwareID.Text.ToLower.Contains("vos") Then
                                     ImportDataFromVos()
@@ -74,9 +73,9 @@ Public Class frmImportData
                             Else
                                 MsgBox("An error occured!")
                             End If
-                            Else
-                                Return
-                            End If
+                        Else
+                            Return
+                        End If
                     Else 'if boolinvoice = true
                         MsgBox("The data is already imported and the invoices posted.")
                     End If
@@ -105,8 +104,6 @@ Public Class frmImportData
         End Try
     End Sub
 
-
-
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
         Me.Close()
@@ -123,24 +120,32 @@ Public Class frmImportData
 
     Private Sub ImportDataFromMediaCorePayments()
         Try
-            Dim dFromDate, dToDate, dToday As String
+
+            Me.lblInsertOutbound.Enabled = True
+            Me.lblInsertOutbound.ForeColor = Color.Red
+            Me.lblInsertInvoices.Font = New Font(Label1.Font, FontStyle.Bold)
+            Me.lblInsertInvoices.ForeColor = Color.Black
+
+            Dim dFromDate, dToDate, dInvoiceDate As String
             Dim lSoftware As Long
-            Dim ClientCode, AreaName, AreaCode, CountryCol, DurationCol, CostOutCol As String
-            Dim TotalCharge, TotalDuration As Double
+            Dim ClientCode, AreaName, AreaCode, CountryCol, DurationCol, CostOutCol, MarginCol, ProfitCol As String
+            Dim TotalCharge, TotalDuration, Profit, Margin As Double
             Dim boolError, boolRead As Boolean
             Dim sql As New System.Text.StringBuilder
             excel.Visible = True
+            Dim intPeriod As Integer
             Dim ExcelPath As String = filename
             Dim htNumberAlpahbit As Hashtable = GetHashtable()
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
             worksheet = excel.Worksheets(1)
 
-            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by,InOutBound) VALUES")
+            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by,InOutBound,InvoicePeriod,Margin,Profit) VALUES")
             dFromDate = "'" + Me.dtpFromDate.Value.ToString("yyyy-MM-dd") + "'"
             dToDate = "'" + Me.dtpToDate.Value.ToString("yyyy-MM-dd") + "'"
-            dToday = "'" + Me.dtpInvoiceDate.Value.ToString("yyyy-MM-dd") + "'"
+            dInvoiceDate = "'" + Me.dtpInvoiceDate.Value.ToString("yyyy-MM-dd") + "'"
             lSoftware = CLng(Me.cmbSoftwareID.SelectedValue)
+            intPeriod = CInt(cmbPeriod.Text)
 
             Dim x As Double
             x = 100 / Me.worksheet.UsedRange.Rows.Count
@@ -158,6 +163,10 @@ Public Class frmImportData
                                         DurationCol = htNumberAlpahbit(col).ToString
                                     Case "Cost OUT".ToLower
                                         CostOutCol = htNumberAlpahbit(col).ToString
+                                    Case "Margin".ToLower
+                                        MarginCol = htNumberAlpahbit(col).ToString
+                                    Case "Profit".ToLower
+                                        ProfitCol = htNumberAlpahbit(col).ToString
                                 End Select
                             Catch ex As Exception
 
@@ -179,6 +188,14 @@ Public Class frmImportData
             End If
             If CostOutCol Is Nothing Then
                 MsgBox("There is no 'Cost Out' column in the excel file.")
+                Return
+            End If
+            If MarginCol Is Nothing Then
+                MsgBox("There is no 'Margin' column in the excel file.")
+                Return
+            End If
+            If ProfitCol Is Nothing Then
+                MsgBox("There is no 'Profit' column in the excel file.")
                 Return
             End If
             ' -------------------------- end ----------------------------------
@@ -238,8 +255,11 @@ Public Class frmImportData
 
                                 TotalDuration = getDurationInSeconds(Me.worksheet.Range(DurationCol & row).Value())
 
+                                Profit = Math.Round(CDec(Me.worksheet.Range(ProfitCol & row).Value().ToString.TrimEnd(CChar("%"))), 3)
+                                Margin = Math.Round(CDec(Me.worksheet.Range(MarginCol & row).Value()), 3)
 
-                                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dToday & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",2),")
+
+                                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dInvoiceDate & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",2," & intPeriod & "," & Margin & "," & Profit & "),")
                             Else
                                 boolRead = False
                                 row -= 1
@@ -259,10 +279,34 @@ Public Class frmImportData
             Me.ProgressBar1.Value = 100
             excel.Workbooks.Close()
             excel.Quit()
-            boolError = odbaccess.importdata(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
 
             If boolError Then
+                Me.lblInsertAim.Enabled = True
+                Me.lblInsertAim.ForeColor = Color.Red
+                '  Me.lblInsertOutbound.Font = New Font(Label1.Font, FontStyle.Bold)
+                Me.lblInsertOutbound.ForeColor = Color.Black
+
+                If intPeriod = 7 Then
+                    odbaccess.FillAimTable(dtpInvoiceDate.Value)
+                End If
+
+                Me.lblClean.Enabled = True
+                Me.lblClean.ForeColor = Color.FromArgb(255, 255, 0, 0)
+                '    Me.lblInsertAim.Font = New Font(Label1.Font, FontStyle.Bold)
+                Me.lblInsertAim.ForeColor = Color.Black
+
+                odbaccess.CheckRightInvoicePeriodInBilling(intPeriod, dtpInvoiceDate.Value, lSoftware)
+
+                '   Me.lblClean.Font = New Font(Label1.Font, FontStyle.Bold)
+                Me.lblClean.ForeColor = Color.Black
+
                 MsgBox("Inbound and Outbound data imported successfully.")
+                Me.lblClean.Enabled = False
+                Me.lblInsertAim.Enabled = False
+                Me.lblInsertInvoices.Enabled = False
+                Me.lblInsertOutbound.Enabled = False
+
                 odbaccess.InsertHistory("Imported Outbound Media Core Data", 11)
                 filename = ""
                 Me.txtFileName.Text = ""
@@ -278,24 +322,29 @@ Public Class frmImportData
 
     Private Sub ImportDataFromMediaCoreInvoices()
         Try
+            Me.lblInsertInvoices.enabled = True
+            Me.lblInsertInvoices.ForeColor = Color.Red
+
             Dim dFromDate, dToDate, dToday As String
             Dim lSoftware As Long
-            Dim ClientCode, AreaName, AreaCode, CountryCol, DurationCol, CostINCol As String
-            Dim TotalCharge, TotalDuration As Double
+            Dim ClientCode, AreaName, AreaCode, CountryCol, DurationCol, CostINCol, MarginCol, ProfitCol As String
+            Dim TotalCharge, TotalDuration, Profit, Margin As Double
             Dim boolError, boolRead As Boolean
             Dim sql As New System.Text.StringBuilder
             excel.Visible = True
             Dim ExcelPath As String = filename
+            Dim intPeriod As Integer
             Dim htNumberAlpahbit As Hashtable = GetHashtable()
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
             worksheet = excel.Worksheets(1)
 
-            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by,InOutBound) VALUES")
+            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by,InOutBound,InvoicePeriod,Margin,Profit) VALUES")
             dFromDate = "'" + Me.dtpFromDate.Value.ToString("yyyy-MM-dd") + "'"
             dToDate = "'" + Me.dtpToDate.Value.ToString("yyyy-MM-dd") + "'"
             dToday = "'" + Me.dtpInvoiceDate.Value.ToString("yyyy-MM-dd") + "'"
             lSoftware = CLng(Me.cmbSoftwareID.SelectedValue)
+            intPeriod = CInt(cmbPeriod.Text)
 
             Dim x As Double
             x = 100 / Me.worksheet.UsedRange.Rows.Count
@@ -313,6 +362,10 @@ Public Class frmImportData
                                         DurationCol = htNumberAlpahbit(col).ToString
                                     Case "Cost IN".ToLower
                                         CostINCol = htNumberAlpahbit(col).ToString
+                                    Case "Margin".ToLower
+                                        MarginCol = htNumberAlpahbit(col).ToString
+                                    Case "Profit".ToLower
+                                        ProfitCol = htNumberAlpahbit(col).ToString
                                 End Select
                             Catch ex As Exception
 
@@ -334,6 +387,14 @@ Public Class frmImportData
             End If
             If CostINCol Is Nothing Then
                 MsgBox("There is no 'Cost In' column in the excel file.")
+                Return
+            End If
+            If MarginCol Is Nothing Then
+                MsgBox("There is no 'Margin' column in the excel file.")
+                Return
+            End If
+            If ProfitCol Is Nothing Then
+                MsgBox("There is no 'Profit' column in the excel file.")
                 Return
             End If
             ' -------------------------- end ----------------------------------
@@ -391,8 +452,10 @@ Public Class frmImportData
 
                                 TotalDuration = getDurationInSeconds(Me.worksheet.Range(DurationCol & row).Value())
 
+                                Profit = Math.Round(CDec(Me.worksheet.Range(ProfitCol & row).Value().ToString.TrimEnd(CChar("%"))), 3)
+                                Margin = Math.Round(CDec(Me.worksheet.Range(MarginCol & row).Value()), 3)
 
-                                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dToday & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",1),")
+                                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dToday & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",1," & intPeriod & "," & Margin & "," & Profit & "),")
                             Else
                                 boolRead = False
                                 row -= 1
@@ -412,7 +475,7 @@ Public Class frmImportData
             Me.ProgressBar1.Value = 100
             excel.Workbooks.Close()
             excel.Quit()
-            boolError = odbaccess.importdata(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
 
             If boolError Then
                 '  MsgBox("Inbound data imported successfully.")
@@ -431,7 +494,7 @@ Public Class frmImportData
 
     Private Sub ImportDataFromVos()
         Try
-            Dim dFromDate, dToDate, dToday As String
+            Dim dFromDate, dToDate, dInvoiceDate As String
             Dim lSoftware As Long
             Dim ClientCode, AreaName, AreaCode As String
             Dim TotalCharge, TotalDuration As Double
@@ -439,17 +502,18 @@ Public Class frmImportData
             Dim sql As New System.Text.StringBuilder
             excel.Visible = True
             Dim ExcelPath As String = filename
+            Dim intPeriod As Integer
             Dim htNumberAlpahbit As Hashtable = GetHashtable()
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
             worksheet = excel.Worksheets(1)
 
-            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by) VALUES")
+            sql.Append("INSERT INTO billing (FK_Client,client_Code, Area_Name, Area_Code, Total_Charges, Total_Duration, Insert_Date, Billing_Period_From, Billing_Period_To,FK_Software,inst_by,InvoicePeriod,Margin,Profit) VALUES")
             dFromDate = "'" + Me.dtpFromDate.Value.ToString("yyyy-MM-dd") + "'"
             dToDate = "'" + Me.dtpToDate.Value.ToString("yyyy-MM-dd") + "'"
-            dToday = "'" + Me.dtpInvoiceDate.Value.ToString("yyyy-MM-dd") + "'"
+            dInvoiceDate = "'" + Me.dtpInvoiceDate.Value.ToString("yyyy-MM-dd") + "'"
             lSoftware = CLng(Me.cmbSoftwareID.SelectedValue)
-
+            intPeriod = CInt(cmbPeriod.Text)
             Dim x As Double
             x = 100 / Me.worksheet.UsedRange.Rows.Count
 
@@ -530,15 +594,16 @@ Public Class frmImportData
                     TotalDuration = 0
                 End If
 
-                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dToday & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & "),")
+                sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dInvoiceDate & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & "," & intPeriod & "),")
             Next
             '  MsgBox(sql.ToString)
             Me.ProgressBar1.Value = 100
             excel.Workbooks.Close()
             excel.Quit()
-            boolError = odbaccess.importdata(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
 
             If boolError Then
+                odbaccess.CheckRightInvoicePeriodInBilling(intPeriod, dInvoiceDate, lSoftware)
                 MsgBox("Operation done successfully.")
                 odbaccess.InsertHistory("Imported VOS Data", 11)
                 filename = ""
@@ -619,5 +684,41 @@ Public Class frmImportData
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Me.dtpInvoiceDate.Enabled = True
+    End Sub
+
+    Private Sub cmbPeriod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPeriod.SelectedIndexChanged
+        If cmbPeriod.Text = "7" Then
+            Me.dtpFromDate.Value = Now.Date.AddDays(-7)
+            Me.dtpToDate.Value = Now.Date.AddDays(-1)
+        ElseIf cmbPeriod.Text = "15" Then
+            If Now.Day = 16 Then
+                Me.dtpFromDate.Value = CDate(Now.Date.Year & "-" & Now.Date.Month & "-01") ' from first day of the month
+                Me.dtpToDate.Value = CDate(Now.Date.Year & "-" & Now.Date.Month & "-15") ' 15th of the month
+            ElseIf Now.Day = 1 Then
+                Dim dDate As Date
+                dDate = Now()
+                dDate = dDate.AddMonths(-1)
+                dDate = CDate(dDate.Year & "-" & dDate.Month & "-16") '.ToString("")
+                Me.dtpFromDate.Value = dDate
+                dDate = Now()
+                dDate = dDate.AddMonths(-1)
+                dDate = CDate(dDate.Year & "-" & dDate.Month & "-" & Now.DaysInMonth(Now.Year, Now.AddMonths(-1).Month))
+
+                Me.dtpToDate.Value = dDate
+            End If
+        ElseIf cmbPeriod.Text = 30 Then ' period=30
+            Dim dDate As Date
+            dDate = Now()
+            dDate = dDate.AddMonths(-1)
+            dDate = CDate(dDate.Year & "-" & dDate.Month & "-" & "1") '.ToString("")
+            Me.dtpFromDate.Value = dDate
+            dDate = Now()
+            dDate = dDate.AddMonths(-1)
+            dDate = CDate(dDate.Year & "-" & dDate.Month & "-" & Now.DaysInMonth(Now.Year, Now.AddMonths(-1).Month))
+
+            Me.dtpToDate.Value = dDate
+        Else
+
+        End If
     End Sub
 End Class

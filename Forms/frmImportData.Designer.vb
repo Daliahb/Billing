@@ -44,17 +44,25 @@ Partial Class frmImportData
         Me.Label1 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblInsertInvoices = New System.Windows.Forms.Label()
+        Me.lblInsertOutbound = New System.Windows.Forms.Label()
+        Me.lblInsertAim = New System.Windows.Forms.Label()
+        Me.lblClean = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Panel3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.ProgressBar1)
         Me.Panel1.Controls.Add(Me.txtFileName)
@@ -73,7 +81,7 @@ Partial Class frmImportData
         Me.Panel1.Location = New System.Drawing.Point(0, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(389, 289)
+        Me.Panel1.Size = New System.Drawing.Size(633, 289)
         Me.Panel1.TabIndex = 0
         '
         'Button2
@@ -245,12 +253,74 @@ Partial Class frmImportData
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Panel3
+        '
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.lblClean)
+        Me.Panel3.Controls.Add(Me.lblInsertAim)
+        Me.Panel3.Controls.Add(Me.lblInsertOutbound)
+        Me.Panel3.Controls.Add(Me.lblInsertInvoices)
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Location = New System.Drawing.Point(424, 9)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(203, 152)
+        Me.Panel3.TabIndex = 128
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(14, 6)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(138, 16)
+        Me.Label3.TabIndex = 76
+        Me.Label3.Text = "Importing Process..."
+        '
+        'lblInsertInvoices
+        '
+        Me.lblInsertInvoices.AutoSize = True
+        Me.lblInsertInvoices.Enabled = False
+        Me.lblInsertInvoices.Location = New System.Drawing.Point(5, 33)
+        Me.lblInsertInvoices.Name = "lblInsertInvoices"
+        Me.lblInsertInvoices.Size = New System.Drawing.Size(161, 16)
+        Me.lblInsertInvoices.TabIndex = 76
+        Me.lblInsertInvoices.Text = "- Insert Inbound data..."
+        '
+        'lblInsertOutbound
+        '
+        Me.lblInsertOutbound.AutoSize = True
+        Me.lblInsertOutbound.Enabled = False
+        Me.lblInsertOutbound.Location = New System.Drawing.Point(5, 60)
+        Me.lblInsertOutbound.Name = "lblInsertOutbound"
+        Me.lblInsertOutbound.Size = New System.Drawing.Size(171, 16)
+        Me.lblInsertOutbound.TabIndex = 76
+        Me.lblInsertOutbound.Text = "- Insert Outbound data..."
+        '
+        'lblInsertAim
+        '
+        Me.lblInsertAim.AutoSize = True
+        Me.lblInsertAim.Enabled = False
+        Me.lblInsertAim.Location = New System.Drawing.Point(5, 87)
+        Me.lblInsertAim.Name = "lblInsertAim"
+        Me.lblInsertAim.Size = New System.Drawing.Size(181, 16)
+        Me.lblInsertAim.TabIndex = 76
+        Me.lblInsertAim.Text = "- Insert Aim Report data..."
+        '
+        'lblClean
+        '
+        Me.lblClean.AutoSize = True
+        Me.lblClean.Enabled = False
+        Me.lblClean.Location = New System.Drawing.Point(5, 114)
+        Me.lblClean.Name = "lblClean"
+        Me.lblClean.Size = New System.Drawing.Size(100, 16)
+        Me.lblClean.TabIndex = 76
+        Me.lblClean.Text = "- Clean Data..."
+        '
         'frmImportData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(391, 291)
+        Me.ClientSize = New System.Drawing.Size(635, 291)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -263,6 +333,8 @@ Partial Class frmImportData
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -286,4 +358,10 @@ Partial Class frmImportData
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents dtpInvoiceDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents lblClean As System.Windows.Forms.Label
+    Friend WithEvents lblInsertAim As System.Windows.Forms.Label
+    Friend WithEvents lblInsertOutbound As System.Windows.Forms.Label
+    Friend WithEvents lblInsertInvoices As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

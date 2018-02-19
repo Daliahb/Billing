@@ -17,6 +17,8 @@
     Private Sub FrmCountries_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'DsPotentialClients.potential_clients' table. You can move, or remove it, as needed.
         Me.Potential_clientsTableAdapter.Fill(Me.DsPotentialClients.potential_clients)
+        'TODO: This line of code loads data into the 'DsPotentialClients.potential_clients' table. You can move, or remove it, as needed.
+        Me.Potential_clientsTableAdapter.Fill(Me.DsPotentialClients.potential_clients)
         'TODO: This line of code loads data into the 'DsAccountManagers.AccountManagers' table. You can move, or remove it, as needed.
         '   Me.AccountManagersTableAdapter.Fill(Me.DsAccountManagers.AccountManagers)
 

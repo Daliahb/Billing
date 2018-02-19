@@ -8,8 +8,6 @@
     Public lUserCategory As Integer
     Public oColRoles As New ColRole
 
-
-
     Public Property Id() As Long
         Get
             Return lId

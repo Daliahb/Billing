@@ -1,7 +1,7 @@
 ﻿Public Class Client
     Public ID, ContractMapleNameID, ContractMapleBankID, AccountManagerID As Long
     Public CompanyName, ContractMapleName, ContractMapleBank, AccountManagerName As String
-    Public CompanyCode, strOutboundNames As String
+    Public CompanyCode, strOutboundNames, DisableReason As String
     Public timezone As String
     Public Address As String
     Public Period, Statement, CreditLimit As Integer
@@ -79,6 +79,9 @@
                 End If
                 If Not dr.Item("AccountManagerName") Is DBNull.Value Then
                     Me.AccountManagerName = dr.Item("AccountManagerName").ToString
+                End If
+                If Not dr.Item("DisableReason") Is DBNull.Value Then
+                    Me.DisableReason = dr.Item("DisableReason").ToString
                 End If
                 If Not dr.Item("Agreement") Is DBNull.Value Then
                     Me.Agreement = CType(dr.Item("Agreement"), Enumerators.Agreement)

@@ -69,6 +69,8 @@ Partial Class frmTransactions
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblBalance = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -90,10 +92,12 @@ Partial Class frmTransactions
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.lblNoClientOfPayments)
+        Me.Panel1.Controls.Add(Me.lblBalance)
         Me.Panel1.Controls.Add(Me.lblTotalDebit)
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.lblTotalCredit)
         Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.lblClientPayments)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -435,6 +439,24 @@ Partial Class frmTransactions
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(836, 47)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 16)
+        Me.Label5.TabIndex = 85
+        Me.Label5.Text = "Balance:"
+        '
+        'lblBalance
+        '
+        Me.lblBalance.AutoSize = True
+        Me.lblBalance.Location = New System.Drawing.Point(925, 47)
+        Me.lblBalance.Name = "lblBalance"
+        Me.lblBalance.Size = New System.Drawing.Size(16, 16)
+        Me.lblBalance.TabIndex = 86
+        Me.lblBalance.Text = "0"
+        '
         'frmTransactions
         '
         Me.AcceptButton = Me.btnSearch
@@ -495,5 +517,7 @@ Partial Class frmTransactions
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lblBalance As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class

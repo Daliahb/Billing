@@ -19,10 +19,10 @@ Public Class DBAccess
 
     Public Sub New()
         'Real Online  DB
-        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
+        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
 
-        'Test  DB
-        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        ''Test  DB
+        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
         'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
@@ -63,7 +63,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer, boolFromMC As Boolean, enumStatus As Integer) As ColClient
+    Public Function GetClients(ByVal strCompany As String, ByVal lAccountManager As Integer, ByVal lAgreement As Integer, ByVal lBankAccount As Integer, ByVal lCompanyAccount As Integer, boolFromMC As Boolean, enumStatus As Integer, lPeriod As Integer) As ColClient
         ds = New DataSet
         Dim oColClient As New ColClient
 
@@ -125,6 +125,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "enumStatus"
                 .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lPeriod"
+                .Value = lPeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -435,7 +442,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetBillingClients(ByVal dInsertedDate As Date) As DataSet
+    Public Function GetBillingClients(ByVal dInsertedDate As Date, intPeriod As Integer) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -446,6 +453,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "dInsertDate"
                 .Value = dInsertedDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -492,7 +506,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetBillingSearch(ByRef lClientID As Long, ByRef lSoftware As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByVal boolInbound As Boolean) As DataSet
+    Public Function GetBillingSearch(ByRef lClientID As Long, ByRef lSoftware As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByVal boolInbound As Boolean, intPeriod As Integer) As DataSet
         ds = New DataSet
 
         Try
@@ -558,6 +572,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
@@ -577,7 +598,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetInvoicesSearch(ByRef lClientID As Long, ByRef boolEmail As Boolean, ByRef boolSent As Boolean, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date) As DataSet
+    Public Function GetInvoicesSearch(ByRef lClientID As Long, ByRef boolEmail As Boolean, ByRef boolSent As Boolean, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, intPeriod As Integer) As DataSet
         ds = New DataSet
         Dim oColCompany As New ColCompany
 
@@ -644,6 +665,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
@@ -663,7 +691,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetPurchasesSearch(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus) As DataSet
+    Public Function GetPurchasesSearch(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus, ByRef intPeriod As Integer) As DataSet
         ds = New DataSet
 
         Try
@@ -717,6 +745,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "enumStatus"
                 .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -970,7 +1005,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetEmailsInfo(ByVal dInstDate As Date) As DataSet
+    Public Function GetEmailsInfo(ByVal dInstDate As Date, intInvoicePeriod As Integer) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -981,6 +1016,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "dInstDate"
                 .Value = dInstDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intInvoicePeriod"
+                .Value = intInvoicePeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -1190,12 +1232,12 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function getPerformanctReport(ByVal lCount As Integer) As DataSet
+    Public Function getClientPerformanctReport(ByVal lCount As Integer, ByVal enumStatus As Integer, ByVal intAccountManager As Integer) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
             oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
-            oSelectCommand.CommandText = "getPerformanceReport"
+            oSelectCommand.CommandText = "getClientPerformanctReport"
 
             oParam = New MySqlParameter
             With oParam
@@ -1206,11 +1248,188 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intAccountManager"
+                .Value = intAccountManager
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
             End With
             oSelectCommand.Parameters.Add(oParam)
 
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return ds
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function getAimPerformanctReport(ByVal lCount As Integer, enumStatus As Integer, intAccountManager As Integer) As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetAimPerformanceReport"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lCount"
+                .Value = lCount
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intAccountManager"
+                .Value = intAccountManager
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return ds
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetChartsClientPerformance(ByVal lCount As Integer, enumStatus As Integer, intInOut As Integer, intAccountManager As Integer) As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetChartsClientPerformance"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lCount"
+                .Value = lCount
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intInOut"
+                .Value = intInOut
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intAccountManager"
+                .Value = intAccountManager
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return ds
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetChartsAimPerformance(ByVal lCount As Integer, enumStatus As Integer, intInOut As Integer, intAccountManager As Integer) As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetChartsAimPerformance"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lCount"
+                .Value = lCount
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "enumStatus"
+                .Value = enumStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intInOut"
+                .Value = intInOut
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intAccountManager"
+                .Value = intAccountManager
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
 
             oDataAdapter.SelectCommand = oSelectCommand
             oSelectCommand.Connection = Me.oConnection
@@ -1734,7 +1953,34 @@ Public Class DBAccess
         End Try
     End Function
 
+    Public Function getPotentialClients() As DataSet
+        ds = New DataSet
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "getPotentialClients"
 
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
 #End Region
 
 #Region "Insert"
@@ -1785,6 +2031,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "Statement"
                 .Value = oClient.Statement
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "DisableReason"
+                .Value = oClient.DisableReason
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -2783,6 +3036,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "Statement"
                 .Value = oClient.Statement
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "DisableReason"
+                .Value = oClient.DisableReason
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -3956,7 +4216,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function DeleteImportedData(ByVal lSoftware As Long, ByVal dPeriodFrom As Date, ByVal dPeriodTo As Date) As Boolean
+    Public Function DeleteImportedData(ByVal lSoftware As Long, ByVal dPeriodFrom As Date, ByVal dPeriodTo As Date, intInvoicePeriod As Integer) As Boolean
         Try
             oSelectCommand = New MySqlCommand
             oSelectCommand.CommandType = CommandType.StoredProcedure
@@ -3981,6 +4241,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "dPeriodTo"
                 .Value = dPeriodTo
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intInvoicePeriod"
+                .Value = intInvoicePeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -4075,11 +4342,48 @@ Public Class DBAccess
         End Try
     End Function
 
+    Public Function DeleteInquiry(ByVal lID As Long) As Boolean
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "DeleteInquiry"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lID"
+                .Value = lID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return False
+
+        End Try
+    End Function
+
 #End Region
 
 #Region "Others"
 
-    Public Function importdata(ByVal sql As String) As Boolean
+    Public Function ExecuteSQL(ByVal sql As String) As Boolean
         Try
             ' Dim uploadQry As String = "LOAD DATA INFILE " + path + " INSERT INTO TABLE billing FIELDS TERMINATED BY ',' LINES TERMINATED BY '\\n' IGNORE 1 LINES"
 
@@ -4104,7 +4408,7 @@ Public Class DBAccess
 
     End Function
 
-    Public Function CheckDataExists(ByVal lSoftware As Long, ByVal dPeriodFrom As Date, ByVal dPeriodTo As Date, ByRef boolInvoice As Boolean) As Boolean
+    Public Function CheckDataExists(ByVal lSoftware As Long, ByVal dPeriodFrom As Date, ByVal dPeriodTo As Date, intPeriod As Integer, ByRef boolInvoice As Boolean) As Boolean
         ds = New DataSet
         Dim boolfoundData As Boolean
         Try
@@ -4116,6 +4420,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "lSoftware"
                 .Value = lSoftware
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -4158,7 +4469,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function ApproveInvoices(ByVal dInvoiceDate As Date) As DataSet
+    Public Function ApproveInvoices(ByVal dInvoiceDate As Date, intInvoicePeriod As Integer) As DataSet
         Dim ds As New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -4177,6 +4488,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "dInvoiceDate"
                 .Value = dInvoiceDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intInvoicePeriod"
+                .Value = intInvoicePeriod
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -4388,6 +4706,117 @@ Public Class DBAccess
             Return ds
         Catch ex As Exception
             Return Nothing
+        End Try
+    End Function
+
+    Public Function SetInquiryAsDone(ByVal lID As Long) As Boolean
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "SetInquiryAsDone"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lID"
+                .Value = lID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return False
+
+        End Try
+    End Function
+
+    Public Function CheckRightInvoicePeriodInBilling(intPeriod, dInvoiceDate, lSoftware) As Boolean
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "CheckRightInvoicePeriodInBilling"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "intPeriod"
+                .Value = intPeriod
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "dDate"
+                .Value = dInvoiceDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lSoftware"
+                .Value = lSoftware
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return False
+
+        End Try
+    End Function
+
+    Public Function FillAimTable(dDate As Date) As Boolean
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "FillAimTable"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "dDate"
+                .Value = dDate
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return False
+
         End Try
     End Function
 #End Region

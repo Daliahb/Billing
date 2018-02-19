@@ -45,18 +45,6 @@ Partial Class frmClients
         Me.chkAccountManager = New System.Windows.Forms.CheckBox()
         Me.chkCompanyID = New System.Windows.Forms.CheckBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteRowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ActivateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnAddCustomer = New System.Windows.Forms.Button()
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
         Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -75,6 +63,20 @@ Partial Class frmClients
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteRowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ActivateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.btnAddCustomer = New System.Windows.Forms.Button()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
+        Me.chkPeriod = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAccountManagers, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,9 +90,12 @@ Partial Class frmClients
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.cmbPeriod)
         Me.Panel1.Controls.Add(Me.cmbClientCode)
         Me.Panel1.Controls.Add(Me.chkAddedFromMC)
+        Me.Panel1.Controls.Add(Me.chkPeriod)
         Me.Panel1.Controls.Add(Me.chkStatus)
         Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.chkAgreement)
@@ -139,7 +144,7 @@ Partial Class frmClients
         'chkStatus
         '
         Me.chkStatus.AutoSize = True
-        Me.chkStatus.Location = New System.Drawing.Point(964, 5)
+        Me.chkStatus.Location = New System.Drawing.Point(962, 5)
         Me.chkStatus.Name = "chkStatus"
         Me.chkStatus.Size = New System.Drawing.Size(70, 20)
         Me.chkStatus.TabIndex = 83
@@ -151,7 +156,7 @@ Partial Class frmClients
         Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbStatus.Enabled = False
         Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(1038, 3)
+        Me.cmbStatus.Location = New System.Drawing.Point(1079, 3)
         Me.cmbStatus.Name = "cmbStatus"
         Me.cmbStatus.Size = New System.Drawing.Size(228, 24)
         Me.cmbStatus.TabIndex = 82
@@ -300,86 +305,6 @@ Partial Class frmClients
         Me.DataGridView1.Size = New System.Drawing.Size(1670, 600)
         Me.DataGridView1.TabIndex = 39
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.DeleteRowToolStripMenuItem, Me.ActivateToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(151, 98)
-        '
-        'EditToolStripMenuItem
-        '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.EditToolStripMenuItem.Text = "Edit Record"
-        '
-        'DeleteRowToolStripMenuItem
-        '
-        Me.DeleteRowToolStripMenuItem.Name = "DeleteRowToolStripMenuItem"
-        Me.DeleteRowToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.DeleteRowToolStripMenuItem.Text = "Delete Record"
-        '
-        'ActivateToolStripMenuItem
-        '
-        Me.ActivateToolStripMenuItem.Name = "ActivateToolStripMenuItem"
-        Me.ActivateToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.ActivateToolStripMenuItem.Text = "Activate"
-        Me.ActivateToolStripMenuItem.Visible = False
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(147, 6)
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Location = New System.Drawing.Point(1572, 5)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(101, 34)
-        Me.btnSearch.TabIndex = 36
-        Me.btnSearch.Text = "Filter"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'btnAddCustomer
-        '
-        Me.btnAddCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddCustomer.Location = New System.Drawing.Point(1498, 4)
-        Me.btnAddCustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnAddCustomer.Name = "btnAddCustomer"
-        Me.btnAddCustomer.Size = New System.Drawing.Size(64, 34)
-        Me.btnAddCustomer.TabIndex = 35
-        Me.btnAddCustomer.Text = "Add"
-        Me.btnAddCustomer.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStrip2
-        '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'AccountManagersTableAdapter
-        '
-        Me.AccountManagersTableAdapter.ClearBeforeFill = True
-        '
         'clID
         '
         Me.clID.HeaderText = "ID"
@@ -511,6 +436,108 @@ Partial Class frmClients
         Me.Column13.ReadOnly = True
         Me.Column13.Width = 96
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.DeleteRowToolStripMenuItem, Me.ActivateToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(151, 98)
+        '
+        'EditToolStripMenuItem
+        '
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.EditToolStripMenuItem.Text = "Edit Record"
+        '
+        'DeleteRowToolStripMenuItem
+        '
+        Me.DeleteRowToolStripMenuItem.Name = "DeleteRowToolStripMenuItem"
+        Me.DeleteRowToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.DeleteRowToolStripMenuItem.Text = "Delete Record"
+        '
+        'ActivateToolStripMenuItem
+        '
+        Me.ActivateToolStripMenuItem.Name = "ActivateToolStripMenuItem"
+        Me.ActivateToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.ActivateToolStripMenuItem.Text = "Activate"
+        Me.ActivateToolStripMenuItem.Visible = False
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(147, 6)
+        '
+        'ExportToExcelToolStripMenuItem
+        '
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Location = New System.Drawing.Point(1572, 5)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(101, 34)
+        Me.btnSearch.TabIndex = 36
+        Me.btnSearch.Text = "Filter"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'btnAddCustomer
+        '
+        Me.btnAddCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAddCustomer.Location = New System.Drawing.Point(1498, 4)
+        Me.btnAddCustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddCustomer.Name = "btnAddCustomer"
+        Me.btnAddCustomer.Size = New System.Drawing.Size(64, 34)
+        Me.btnAddCustomer.TabIndex = 35
+        Me.btnAddCustomer.Text = "Add"
+        Me.btnAddCustomer.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'AccountManagersTableAdapter
+        '
+        Me.AccountManagersTableAdapter.ClearBeforeFill = True
+        '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(1079, 34)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(97, 24)
+        Me.cmbPeriod.TabIndex = 87
+        Me.cmbPeriod.ValueMember = "id"
+        '
+        'chkPeriod
+        '
+        Me.chkPeriod.AutoSize = True
+        Me.chkPeriod.Location = New System.Drawing.Point(962, 38)
+        Me.chkPeriod.Name = "chkPeriod"
+        Me.chkPeriod.Size = New System.Drawing.Size(119, 20)
+        Me.chkPeriod.TabIndex = 83
+        Me.chkPeriod.Text = "Invoice Period"
+        Me.chkPeriod.UseVisualStyleBackColor = True
+        '
         'frmClients
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -582,4 +609,6 @@ Partial Class frmClients
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
+    Friend WithEvents chkPeriod As System.Windows.Forms.CheckBox
 End Class

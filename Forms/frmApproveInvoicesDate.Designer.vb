@@ -31,6 +31,8 @@ Partial Class frmApproveInvoicesDate
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -38,9 +40,11 @@ Partial Class frmApproveInvoicesDate
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.cmbPeriod)
         Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.cmbBillingDates)
         Me.Panel1.Controls.Add(Me.btnSave)
@@ -48,7 +52,7 @@ Partial Class frmApproveInvoicesDate
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(283, 156)
+        Me.Panel1.Size = New System.Drawing.Size(280, 190)
         Me.Panel1.TabIndex = 0
         '
         'Label2
@@ -56,7 +60,7 @@ Partial Class frmApproveInvoicesDate
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(9, 19)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(193, 21)
+        Me.Label2.Size = New System.Drawing.Size(148, 16)
         Me.Label2.TabIndex = 58
         Me.Label2.Text = "Approve invoices for:"
         '
@@ -65,7 +69,7 @@ Partial Class frmApproveInvoicesDate
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(9, 58)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(115, 21)
+        Me.Label1.Size = New System.Drawing.Size(87, 16)
         Me.Label1.TabIndex = 58
         Me.Label1.Text = "Import Date"
         '
@@ -78,16 +82,16 @@ Partial Class frmApproveInvoicesDate
         Me.cmbBillingDates.DropDownWidth = 200
         Me.cmbBillingDates.FormattingEnabled = True
         Me.cmbBillingDates.IntegralHeight = False
-        Me.cmbBillingDates.Location = New System.Drawing.Point(102, 55)
+        Me.cmbBillingDates.Location = New System.Drawing.Point(111, 55)
         Me.cmbBillingDates.Name = "cmbBillingDates"
-        Me.cmbBillingDates.Size = New System.Drawing.Size(122, 27)
+        Me.cmbBillingDates.Size = New System.Drawing.Size(122, 24)
         Me.cmbBillingDates.TabIndex = 57
         Me.cmbBillingDates.ValueMember = "ID"
         '
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.Location = New System.Drawing.Point(58, 117)
+        Me.btnSave.Location = New System.Drawing.Point(58, 151)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
         Me.btnSave.TabIndex = 6
@@ -97,7 +101,7 @@ Partial Class frmApproveInvoicesDate
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnClose.Location = New System.Drawing.Point(149, 117)
+        Me.btnClose.Location = New System.Drawing.Point(149, 151)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 30)
         Me.btnClose.TabIndex = 5
@@ -108,12 +112,33 @@ Partial Class frmApproveInvoicesDate
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(111, 91)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(122, 24)
+        Me.cmbPeriod.TabIndex = 91
+        Me.cmbPeriod.ValueMember = "id"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(9, 95)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(100, 16)
+        Me.Label3.TabIndex = 58
+        Me.Label3.Text = "Invoice Period"
+        '
         'frmApproveInvoicesDate
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(287, 161)
+        Me.ClientSize = New System.Drawing.Size(284, 195)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -136,5 +161,7 @@ Partial Class frmApproveInvoicesDate
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmbBillingDates As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class

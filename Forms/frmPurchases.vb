@@ -8,6 +8,7 @@
 
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         Me.cmbClientCode.SelectedIndex = 0
+        Me.cmbPeriod.SelectedIndex = 0
     End Sub
 
 #Region "Controls Events"
@@ -25,11 +26,12 @@
         Dim dtFrom, dtTo, dInsertDate As Date
         Dim dTotalDuration As Double = 0
         Dim dTotalCharges As Double = 0
+        Dim intPeriod As Integer
         Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus)
+            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
 
             'If Me.cmbBillingDates.SelectedIndex = 0 And Me.chkInsertDate.Checked Then
             '    Me.DataGridView1.Columns(2).Visible = True
@@ -37,7 +39,7 @@
             '    Me.DataGridView1.Columns(2).Visible = False
             'End If
 
-            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus)
+            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -50,14 +52,15 @@
                         .Cells(5).Value = dr.Item("Duration")
                         .Cells(6).Value = CDate(dr.Item("Billing_Period_From")).ToString("yyyy-MM-dd")
                         .Cells(7).Value = CDate(dr.Item("Billing_Period_To")).ToString("yyyy-MM-dd")
-                        .Cells(8).Value = dr.Item("AccountManager").ToString
-                        .Cells(9).Value = dr.Item("Bank_Name")
+                        .Cells(8).Value = dr.Item("InvoicePeriod").ToString
+                        .Cells(9).Value = dr.Item("AccountManager").ToString
+                        .Cells(10).Value = dr.Item("Bank_Name")
                         If Not dr.Item("isConfirmed") Is DBNull.Value Then
-                            .Cells(10).Value = CBool(dr.Item("isConfirmed"))
+                            .Cells(11).Value = CBool(dr.Item("isConfirmed"))
                         Else
-                            .Cells(10).Value = False
+                            .Cells(11).Value = False
                         End If
-                        .Cells(11).Value = dr.Item("Note")
+                        .Cells(12).Value = dr.Item("Note")
                         dTotalDuration += CDbl(dr.Item("Duration"))
                         dTotalCharges += CDbl(dr.Item("Amount"))
                         intCounter += 1
@@ -108,7 +111,7 @@
 #End Region
 
 
-    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus)
+    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus, ByRef intPeriod As Integer)
         Try
             If Me.chkCode.Checked Then
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
@@ -134,6 +137,12 @@
                 enumStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
             Else
                 enumStatus = 0
+            End If
+
+            If Me.chkPeriod.Checked Then
+                intPeriod = CInt(Me.cmbPeriod.Text)
+            Else
+                intPeriod = 0
             End If
         Catch ex As Exception
 
@@ -266,5 +275,9 @@
 
     Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
         Me.cmbStatus.Enabled = Me.chkStatus.Checked
+    End Sub
+
+    Private Sub chkPeriod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPeriod.CheckedChanged
+        Me.cmbPeriod.Enabled = Me.chkPeriod.Checked
     End Sub
 End Class

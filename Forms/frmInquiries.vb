@@ -14,133 +14,6 @@
         Me.chkStatus.Checked = True
     End Sub
 
-    Private Sub dataGridView1_CellClick(ByVal sender As System.Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        ' Ignore clicks that are not in our 
-
-        If e.ColumnIndex = 13 And e.RowIndex >= 0 Then
-            Dim lInquiryID As Long
-            lInquiryID = CLng(Me.DataGridView1.Rows(e.RowIndex).Cells(0).Value)
-            If Me.DataGridView1.Rows(e.RowIndex).Cells(9).Value.ToString = "" Then
-                Dim boolGetInquiry As Boolean
-                Dim ds As DataSet
-
-                ds = odbaccess.CheckInquiryHandled(lInquiryID)
-                If Not ds Is Nothing Then
-                    Dim lHandledID As Long = CLng(ds.Tables(0).Rows(0).Item("lUserID"))
-                    Dim strHandledBy As String = ds.Tables(0).Rows(0).Item("UserName").ToString
-                    Me.DataGridView1.Rows(e.RowIndex).Cells(9).Value = strHandledBy
-                    If Not lHandledID = gUser.Id Then
-                        MsgBox("This inquiry is handled by " & strHandledBy)
-                    End If
-                End If
-            End If
-
-            Dim frm As New frmReadInquiry(lInquiryID)
-            frm.ShowDialog()
-        End If
-    End Sub
-
-    Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExportToExcelToolStripMenuItem.Click
-        ExportToExcel(Me.DataGridView1)
-    End Sub
-
-    Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Right Then
-            Dim ht As DataGridView.HitTestInfo
-            ht = Me.DataGridView1.HitTest(e.X, e.Y)
-            If ht.Type = DataGridViewHitTestType.Cell Then
-                DataGridView1.ContextMenuStrip = ContextMenuStrip1
-            ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
-                Me.intColumnIndex = ht.ColumnIndex
-                DataGridView1.ContextMenuStrip = ContextMenuStrip2
-            Else
-                DataGridView1.ContextMenuStrip = ContextMenuStrip1
-            End If
-        End If
-    End Sub
-
-    Private Sub HideColumnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideColumnToolStripMenuItem.Click
-        Me.DataGridView1.Columns(intColumnIndex).Visible = False
-    End Sub
-
-    Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
-        For i As Integer = 0 To Me.DataGridView1.Columns.Count - 1
-            Me.DataGridView1.Columns(i).Visible = True
-        Next
-    End Sub
-
-    Private Sub DataGridView1_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Sorted
-        Try
-            Dim i As Integer
-            For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
-            Next
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub chkDate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkDate.CheckedChanged
-        Me.dtpDateFrom.Enabled = Me.chkDate.Checked
-        Me.dtpDateTo.Enabled = Me.chkDate.Checked
-    End Sub
-
-    Private Sub ViewStudentInfoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditInquiryToolStripMenuItem.Click
-        Dim lId As Long
-        Try
-            If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-                lFromUserID = CLng(Me.DataGridView1.SelectedRows(0).Cells("clmUserID").Value)
-                If lFromUserID = gUser.Id Then
-                    lId = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
-                    Dim frm As New frmAddInquiry(Enumerators.EditAdd.Edit, lId)
-                    frm.ShowDialog()
-                Else
-                    MsgBox("You cannot edit Inquiry inserted by another User.", MsgBoxStyle.Exclamation)
-                End If
-
-                'Dim oInquiry = New Inquiry
-                'oInquiry = odbaccess.GetInquiry(lId)
-
-                'Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.dtpNextMonitor.Value.ToString("yyyy/MM/dd")
-                'Me.DataGridView1.SelectedRows(0).Cells(11).Value = frm.cmbInquiryForm.Text
-
-            End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub DeleteInquiryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteInquiryToolStripMenuItem.Click
-        Dim lId As Long
-        Try
-            If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-                lId = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
-                If MsgBox("Are you sure you want to delete this Inquiry?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    'If odbaccess.DeleteInquiry(lId) Then
-                    '    Me.DataGridView1.Rows.Remove(Me.DataGridView1.SelectedRows(0))
-                    'Else
-                    '    MsgBox("An error occured, please try again later.")
-                    'End If
-                End If
-            End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub btnClose_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Close()
-    End Sub
-
-    Private Sub chkName_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkName.CheckedChanged
-        Me.cmbUsers.Enabled = Me.chkName.Checked
-    End Sub
-
-    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
-        Dim frm As New frmAddInquiry(Enumerators.EditAdd.Add)
-        frm.Show()
-    End Sub
-
     Public Sub CheckPermission()
         For Each oRole As Role In gUser.oColRoles
             'If CType(oRole.ID, Enumerators.Roles) = Enumerators.Roles.EditInquiry Then
@@ -198,10 +71,6 @@
         End If
     End Function
 
-    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
-        Me.GroupBox1.Enabled = chkStatus.Checked
-    End Sub
-
     Private Sub btnFilter_Click(sender As System.Object, e As System.EventArgs) Handles btnFilter.Click
         Dim intCounter As Integer = 0
         Dim intRowIndex As Integer
@@ -246,7 +115,12 @@
                             .Cells(11).Value = "Not Done"
                         End If
                         .Cells(12).Value = getToUsers(ds.Tables(1), CLng(dr.Item("id")))
-                        .Cells(13).Value = "Actions"
+                        If Not dr.Item("HandledBy") Is DBNull.Value Then
+                            .Cells(13).Value = "Actions"
+                        Else
+                            .Cells(13).Value = "Get"
+                        End If
+
                         Me.DataGridView1.Rows(intRowIndex).Height = 50
                         intRowIndex += 1
                         intCounter += 1
@@ -259,5 +133,151 @@
         End Try
     End Sub
 
-  
+    Private Sub dataGridView1_CellClick(ByVal sender As System.Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.ColumnIndex = 13 And e.RowIndex >= 0 Then
+            Dim lInquiryID As Long
+            lInquiryID = CLng(Me.DataGridView1.Rows(e.RowIndex).Cells(0).Value)
+            If Me.DataGridView1.Rows(e.RowIndex).Cells(9).Value.ToString = "" Then
+                Dim ds As DataSet
+
+                ds = odbaccess.CheckInquiryHandled(lInquiryID)
+                If Not ds Is Nothing Then
+                    Dim lHandledID As Long = CLng(ds.Tables(0).Rows(0).Item("lUserID"))
+                    Dim strHandledBy As String = ds.Tables(0).Rows(0).Item("UserName").ToString
+                    Me.DataGridView1.Rows(e.RowIndex).Cells(9).Value = strHandledBy
+                    If Not lHandledID = 0 AndAlso Not lHandledID = gUser.Id Then
+                        MsgBox("This inquiry is handled by " & strHandledBy)
+                    End If
+                End If
+            End If
+
+            Dim frm As New frmReadInquiry(lInquiryID)
+            frm.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        ExportToExcel(Me.DataGridView1)
+    End Sub
+
+    Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            Dim ht As DataGridView.HitTestInfo
+            ht = Me.DataGridView1.HitTest(e.X, e.Y)
+            If ht.Type = DataGridViewHitTestType.Cell Then
+                DataGridView1.ContextMenuStrip = ContextMenuStrip1
+            ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
+                Me.intColumnIndex = ht.ColumnIndex
+                DataGridView1.ContextMenuStrip = ContextMenuStrip2
+            Else
+                DataGridView1.ContextMenuStrip = ContextMenuStrip1
+            End If
+        End If
+    End Sub
+
+    Private Sub HideColumnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideColumnToolStripMenuItem.Click
+        Me.DataGridView1.Columns(intColumnIndex).Visible = False
+    End Sub
+
+    Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
+        For i As Integer = 0 To Me.DataGridView1.Columns.Count - 1
+            Me.DataGridView1.Columns(i).Visible = True
+        Next
+    End Sub
+
+    Private Sub DataGridView1_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Sorted
+        Try
+            Dim i As Integer
+            For i = 0 To Me.DataGridView1.Rows.Count - 1
+                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub chkDate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkDate.CheckedChanged
+        Me.dtpDateFrom.Enabled = Me.chkDate.Checked
+        Me.dtpDateTo.Enabled = Me.chkDate.Checked
+    End Sub
+
+    Private Sub EditInquiryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditInquiryToolStripMenuItem.Click
+        Dim lId As Long
+        Try
+            If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+                lFromUserID = CLng(Me.DataGridView1.SelectedRows(0).Cells("clmUserID").Value)
+                If lFromUserID = gUser.Id Then
+                    lId = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+                    Dim frm As New frmAddInquiry(Enumerators.EditAdd.Edit, lId)
+                    frm.ShowDialog()
+                Else
+                    MsgBox("You cannot edit Inquiry inserted by another User.", MsgBoxStyle.Exclamation)
+                End If
+
+                'Dim oInquiry = New Inquiry
+                'oInquiry = odbaccess.GetInquiry(lId)
+
+                'Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.dtpNextMonitor.Value.ToString("yyyy/MM/dd")
+                'Me.DataGridView1.SelectedRows(0).Cells(11).Value = frm.cmbInquiryForm.Text
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub DeleteInquiryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteInquiryToolStripMenuItem.Click
+        Dim lId As Long
+            Try
+                If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+                    lFromUserID = CLng(Me.DataGridView1.SelectedRows(0).Cells("clmUserID").Value)
+                    If lFromUserID = gUser.Id Then
+                        lId = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+                        If MsgBox("Are you sure you want to delete this Inquiry?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        If odbaccess.DeleteInquiry(lId) Then
+                            Me.DataGridView1.Rows.Remove(Me.DataGridView1.SelectedRows(0))
+                        Else
+                            MsgBox("An error occured, please try again later.")
+                        End If
+
+                    End If
+                Else
+                    MsgBox("You cannot delete Inquiry inserted by another User.", MsgBoxStyle.Exclamation)
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btnClose_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Me.Close()
+    End Sub
+
+    Private Sub chkName_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkName.CheckedChanged
+        Me.cmbUsers.Enabled = Me.chkName.Checked
+    End Sub
+
+    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
+        Dim frm As New frmAddInquiry(Enumerators.EditAdd.Add)
+        frm.Show()
+    End Sub
+
+    Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
+        Me.GroupBox1.Enabled = chkStatus.Checked
+    End Sub
+
+
+    Private Sub SetAsDoneToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SetAsDoneToolStripMenuItem.Click
+
+        If MsgBox("Are you sure you want to set this Inquiry as Done?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Dim lId As Long = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+            If odbaccess.SetInquiryAsDone(lId) Then
+                Me.DataGridView1.SelectedRows(0).Cells(11).Value = "Done"
+            Else
+                MsgBox("An error occured, please try again later.")
+            End If
+
+        End If
+    End Sub
 End Class

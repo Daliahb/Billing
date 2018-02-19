@@ -15,10 +15,10 @@
         If MsgBox("Are you sure you are approving the invoices for " + Me.cmbBillingDates.Text + "?", vbYesNo) = vbYes Then
             Dim ds As DataSet
             Me.Hide()
-            ds = odbaccess.ApproveInvoices(CDate(Me.cmbBillingDates.SelectedValue.Date))
-            'ds = odbaccess.GetEmailsInfo("2017-01-16")
+            ds = odbaccess.ApproveInvoices(CDate(Me.cmbBillingDates.SelectedValue.Date), CInt(cmbPeriod.Text))
+
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
-                '  SendEmails(ds)
+
                 MsgBox("Operation done successfuly." & vbCrLf & "Invoices are posted.")
             Else
 
@@ -44,6 +44,8 @@
                 Me.cmbBillingDates.DisplayMember = "Insert_Date"
                 Me.cmbBillingDates.ValueMember = "Insert_Date"
             End If
+
+            Me.cmbPeriod.SelectedIndex = 0
         Catch ex As Exception
 
         End Try

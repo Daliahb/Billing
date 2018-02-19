@@ -30,12 +30,15 @@ Partial Class frmAddClient
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cmbAccountManager = New System.Windows.Forms.ComboBox()
+        Me.AccountManagersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsAccountManagersTest = New WindowsApplication1.dsAccountManagers()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.cmbContractMapleBank = New System.Windows.Forms.ComboBox()
         Me.cmbContractMapleName = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.cmbAgreement = New System.Windows.Forms.ComboBox()
@@ -58,7 +61,6 @@ Partial Class frmAddClient
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtStatement = New System.Windows.Forms.TextBox()
         Me.txtCreditLimit = New System.Windows.Forms.TextBox()
-        Me.txtPeriod = New System.Windows.Forms.TextBox()
         Me.txtCCEmails = New System.Windows.Forms.TextBox()
         Me.txtABARouting = New System.Windows.Forms.TextBox()
         Me.txtSwift = New System.Windows.Forms.TextBox()
@@ -80,17 +82,17 @@ Partial Class frmAddClient
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.DsAccountManagersTest = New WindowsApplication1.dsAccountManagers()
-        Me.AccountManagersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AccountManagersTableAdapter1 = New dsAccountManagersTableAdapters.AccountManagersTableAdapter()
+        Me.AccountManagersTableAdapter1 = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
+        Me.txtDisableReason = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsAccountManagersTest, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgOutboundNames, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsAccountManagersTest, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -105,7 +107,7 @@ Partial Class frmAddClient
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(736, 555)
+        Me.Panel1.Size = New System.Drawing.Size(794, 577)
         Me.Panel1.TabIndex = 0
         '
         'GroupBox2
@@ -117,9 +119,9 @@ Partial Class frmAddClient
         Me.GroupBox2.Controls.Add(Me.cmbContractMapleName)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 417)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 438)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(707, 87)
+        Me.GroupBox2.Size = New System.Drawing.Size(785, 87)
         Me.GroupBox2.TabIndex = 80
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Contract"
@@ -135,6 +137,16 @@ Partial Class frmAddClient
         Me.cmbAccountManager.Size = New System.Drawing.Size(228, 24)
         Me.cmbAccountManager.TabIndex = 77
         Me.cmbAccountManager.ValueMember = "id"
+        '
+        'AccountManagersBindingSource
+        '
+        Me.AccountManagersBindingSource.DataMember = "AccountManagers"
+        Me.AccountManagersBindingSource.DataSource = Me.DsAccountManagersTest
+        '
+        'DsAccountManagersTest
+        '
+        Me.DsAccountManagersTest.DataSetName = "dsAccountManagersTest"
+        Me.DsAccountManagersTest.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label16
         '
@@ -188,6 +200,7 @@ Partial Class frmAddClient
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.cmbPeriod)
         Me.GroupBox1.Controls.Add(Me.Label20)
         Me.GroupBox1.Controls.Add(Me.cmbStatus)
         Me.GroupBox1.Controls.Add(Me.cmbAgreement)
@@ -195,6 +208,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.dgOutboundNames)
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.txtCompanyName)
+        Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Label12)
@@ -209,7 +223,6 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.txtStatement)
         Me.GroupBox1.Controls.Add(Me.txtCreditLimit)
-        Me.GroupBox1.Controls.Add(Me.txtPeriod)
         Me.GroupBox1.Controls.Add(Me.txtCCEmails)
         Me.GroupBox1.Controls.Add(Me.txtABARouting)
         Me.GroupBox1.Controls.Add(Me.txtSwift)
@@ -218,6 +231,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.txtIBAN)
         Me.GroupBox1.Controls.Add(Me.txtBankAccountNumber)
         Me.GroupBox1.Controls.Add(Me.txtBankAccountName)
+        Me.GroupBox1.Controls.Add(Me.txtDisableReason)
         Me.GroupBox1.Controls.Add(Me.txtBillingEmail)
         Me.GroupBox1.Controls.Add(Me.txtTimeZone)
         Me.GroupBox1.Controls.Add(Me.Label19)
@@ -228,15 +242,27 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(718, 408)
+        Me.GroupBox1.Size = New System.Drawing.Size(781, 429)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Client Info"
         '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(187, 97)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(97, 24)
+        Me.cmbPeriod.TabIndex = 81
+        Me.cmbPeriod.ValueMember = "id"
+        '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(512, 171)
+        Me.Label20.Location = New System.Drawing.Point(512, 166)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(51, 16)
         Me.Label20.TabIndex = 79
@@ -246,24 +272,24 @@ Partial Class frmAddClient
         '
         Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(595, 168)
+        Me.cmbStatus.Location = New System.Drawing.Point(618, 163)
         Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(106, 24)
+        Me.cmbStatus.Size = New System.Drawing.Size(145, 24)
         Me.cmbStatus.TabIndex = 80
         '
         'cmbAgreement
         '
         Me.cmbAgreement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbAgreement.FormattingEnabled = True
-        Me.cmbAgreement.Location = New System.Drawing.Point(595, 125)
+        Me.cmbAgreement.Location = New System.Drawing.Point(618, 120)
         Me.cmbAgreement.Name = "cmbAgreement"
-        Me.cmbAgreement.Size = New System.Drawing.Size(106, 24)
+        Me.cmbAgreement.Size = New System.Drawing.Size(145, 24)
         Me.cmbAgreement.TabIndex = 80
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(512, 128)
+        Me.Label18.Location = New System.Drawing.Point(512, 123)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(81, 16)
         Me.Label18.TabIndex = 79
@@ -285,7 +311,7 @@ Partial Class frmAddClient
         Me.dgOutboundNames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgOutboundNames.ColumnHeadersVisible = False
         Me.dgOutboundNames.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1})
-        Me.dgOutboundNames.Location = New System.Drawing.Point(518, 256)
+        Me.dgOutboundNames.Location = New System.Drawing.Point(518, 281)
         Me.dgOutboundNames.Name = "dgOutboundNames"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
@@ -298,7 +324,7 @@ Partial Class frmAddClient
         Me.dgOutboundNames.RowHeadersVisible = False
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         Me.dgOutboundNames.RowsDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgOutboundNames.Size = New System.Drawing.Size(165, 138)
+        Me.dgOutboundNames.Size = New System.Drawing.Size(228, 134)
         Me.dgOutboundNames.TabIndex = 78
         Me.dgOutboundNames.Visible = False
         '
@@ -311,7 +337,7 @@ Partial Class frmAddClient
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(513, 229)
+        Me.Label17.Location = New System.Drawing.Point(513, 256)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(122, 16)
         Me.Label17.TabIndex = 77
@@ -381,9 +407,9 @@ Partial Class frmAddClient
         '
         'txtCode
         '
-        Me.txtCode.Location = New System.Drawing.Point(595, 21)
+        Me.txtCode.Location = New System.Drawing.Point(618, 21)
         Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(106, 23)
+        Me.txtCode.Size = New System.Drawing.Size(145, 23)
         Me.txtCode.TabIndex = 1
         '
         'Label4
@@ -424,7 +450,7 @@ Partial Class frmAddClient
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(512, 101)
+        Me.Label3.Location = New System.Drawing.Point(512, 96)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(81, 16)
         Me.Label3.TabIndex = 76
@@ -439,17 +465,10 @@ Partial Class frmAddClient
         '
         'txtCreditLimit
         '
-        Me.txtCreditLimit.Location = New System.Drawing.Point(595, 97)
+        Me.txtCreditLimit.Location = New System.Drawing.Point(618, 92)
         Me.txtCreditLimit.Name = "txtCreditLimit"
-        Me.txtCreditLimit.Size = New System.Drawing.Size(106, 23)
+        Me.txtCreditLimit.Size = New System.Drawing.Size(145, 23)
         Me.txtCreditLimit.TabIndex = 6
-        '
-        'txtPeriod
-        '
-        Me.txtPeriod.Location = New System.Drawing.Point(187, 97)
-        Me.txtPeriod.Name = "txtPeriod"
-        Me.txtPeriod.Size = New System.Drawing.Size(68, 23)
-        Me.txtPeriod.TabIndex = 4
         '
         'txtCCEmails
         '
@@ -517,9 +536,9 @@ Partial Class frmAddClient
         '
         'txtTimeZone
         '
-        Me.txtTimeZone.Location = New System.Drawing.Point(595, 50)
+        Me.txtTimeZone.Location = New System.Drawing.Point(618, 50)
         Me.txtTimeZone.Name = "txtTimeZone"
-        Me.txtTimeZone.Size = New System.Drawing.Size(106, 23)
+        Me.txtTimeZone.Size = New System.Drawing.Size(145, 23)
         Me.txtTimeZone.TabIndex = 3
         '
         'Label19
@@ -582,7 +601,7 @@ Partial Class frmAddClient
         Me.Panel2.Controls.Add(Me.btnCancel)
         Me.Panel2.Controls.Add(Me.btnSave)
         Me.Panel2.Controls.Add(Me.btnReset)
-        Me.Panel2.Location = New System.Drawing.Point(211, 515)
+        Me.Panel2.Location = New System.Drawing.Point(269, 537)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(254, 35)
         Me.Panel2.TabIndex = 78
@@ -620,26 +639,33 @@ Partial Class frmAddClient
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'DsAccountManagersTest
-        '
-        Me.DsAccountManagersTest.DataSetName = "dsAccountManagersTest"
-        Me.DsAccountManagersTest.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AccountManagersBindingSource
-        '
-        Me.AccountManagersBindingSource.DataMember = "AccountManagers"
-        Me.AccountManagersBindingSource.DataSource = Me.DsAccountManagersTest
-        '
         'AccountManagersTableAdapter1
         '
         Me.AccountManagersTableAdapter1.ClearBeforeFill = True
+        '
+        'txtDisableReason
+        '
+        Me.txtDisableReason.Location = New System.Drawing.Point(618, 194)
+        Me.txtDisableReason.Multiline = True
+        Me.txtDisableReason.Name = "txtDisableReason"
+        Me.txtDisableReason.Size = New System.Drawing.Size(145, 55)
+        Me.txtDisableReason.TabIndex = 3
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(512, 193)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(106, 16)
+        Me.Label21.TabIndex = 21
+        Me.Label21.Text = "Disable Reason"
         '
         'frmAddClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(740, 557)
+        Me.ClientSize = New System.Drawing.Size(798, 579)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -652,13 +678,13 @@ Partial Class frmAddClient
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsAccountManagersTest, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.dgOutboundNames, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsAccountManagersTest, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -689,7 +715,6 @@ Partial Class frmAddClient
     Friend WithEvents cmbContractMapleName As System.Windows.Forms.ComboBox
     Friend WithEvents txtStatement As System.Windows.Forms.TextBox
     Friend WithEvents txtCreditLimit As System.Windows.Forms.TextBox
-    Friend WithEvents txtPeriod As System.Windows.Forms.TextBox
     Friend WithEvents txtCCEmails As System.Windows.Forms.TextBox
     Friend WithEvents txtBankAccountName As System.Windows.Forms.TextBox
     Friend WithEvents txtBillingEmail As System.Windows.Forms.TextBox
@@ -720,4 +745,7 @@ Partial Class frmAddClient
     Friend WithEvents DsAccountManagersTest As WindowsApplication1.dsAccountManagers
     Friend WithEvents AccountManagersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents AccountManagersTableAdapter1 As dsAccountManagersTableAdapters.AccountManagersTableAdapter
+    Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents txtDisableReason As System.Windows.Forms.TextBox
 End Class

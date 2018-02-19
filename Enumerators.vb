@@ -76,6 +76,7 @@
         Manage = 11
         Purchase = 12
         MaplePayment = 13
+        Inquiry = 14
     End Enum
 
     Public Enum HistoryAction
@@ -99,7 +100,7 @@
     Public Enum ClientStatus
         Active = 1
         Disabled = 2
-        Potential = 3
+        Maple_Accounts = 3
     End Enum
 
     Public Enum Priority

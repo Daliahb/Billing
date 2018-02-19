@@ -57,8 +57,10 @@
 
             Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
             Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
+            Me.cmbStatus.Items.Add(New Obj("Maple Accounts", Enumerators.ClientStatus.Maple_Accounts))
             Me.cmbStatus.ValueMember = "Value"
             Me.cmbStatus.DisplayMember = "Name"
+            Me.cmbStatus.SelectedIndex = 0
         Catch ex As Exception
 
         End Try

@@ -24,7 +24,7 @@ Partial Class frmPurchases
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -34,8 +34,11 @@ Partial Class frmPurchases
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPurchases))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.cmbBillingDates = New System.Windows.Forms.ComboBox()
         Me.lblTotalDuration = New System.Windows.Forms.Label()
         Me.lblTotalCharges = New System.Windows.Forms.Label()
@@ -46,18 +49,6 @@ Partial Class frmPurchases
         Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.chkPeriodDate = New System.Windows.Forms.CheckBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ss = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ConfirmTotalChargesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetAsNotConfirmedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -74,8 +65,21 @@ Partial Class frmPurchases
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.chkStatus = New System.Windows.Forms.CheckBox()
-        Me.cmbStatus = New System.Windows.Forms.ComboBox()
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
+        Me.chkPeriod = New System.Windows.Forms.CheckBox()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ss = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -88,6 +92,8 @@ Partial Class frmPurchases
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.cmbPeriod)
+        Me.Panel1.Controls.Add(Me.chkPeriod)
         Me.Panel1.Controls.Add(Me.chkStatus)
         Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.cmbBillingDates)
@@ -107,8 +113,28 @@ Partial Class frmPurchases
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1117, 472)
+        Me.Panel1.Size = New System.Drawing.Size(1348, 599)
         Me.Panel1.TabIndex = 0
+        '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Location = New System.Drawing.Point(4, 42)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 96
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(92, 40)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(234, 24)
+        Me.cmbStatus.TabIndex = 95
         '
         'cmbBillingDates
         '
@@ -122,7 +148,7 @@ Partial Class frmPurchases
         Me.cmbBillingDates.IntegralHeight = False
         Me.cmbBillingDates.Location = New System.Drawing.Point(479, 45)
         Me.cmbBillingDates.Name = "cmbBillingDates"
-        Me.cmbBillingDates.Size = New System.Drawing.Size(113, 24)
+        Me.cmbBillingDates.Size = New System.Drawing.Size(122, 24)
         Me.cmbBillingDates.TabIndex = 55
         Me.cmbBillingDates.ValueMember = "ID"
         '
@@ -169,7 +195,7 @@ Partial Class frmPurchases
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(599, 15)
+        Me.Label1.Location = New System.Drawing.Point(611, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(23, 16)
         Me.Label1.TabIndex = 50
@@ -180,9 +206,9 @@ Partial Class frmPurchases
         Me.dtpTo.CustomFormat = "dd/MM/yyyy"
         Me.dtpTo.Enabled = False
         Me.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpTo.Location = New System.Drawing.Point(622, 12)
+        Me.dtpTo.Location = New System.Drawing.Point(634, 12)
         Me.dtpTo.Name = "dtpTo"
-        Me.dtpTo.Size = New System.Drawing.Size(113, 23)
+        Me.dtpTo.Size = New System.Drawing.Size(119, 23)
         Me.dtpTo.TabIndex = 49
         '
         'dtpFrom
@@ -192,7 +218,7 @@ Partial Class frmPurchases
         Me.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFrom.Location = New System.Drawing.Point(479, 12)
         Me.dtpFrom.Name = "dtpFrom"
-        Me.dtpFrom.Size = New System.Drawing.Size(113, 23)
+        Me.dtpFrom.Size = New System.Drawing.Size(122, 23)
         Me.dtpFrom.TabIndex = 48
         '
         'chkPeriodDate
@@ -222,23 +248,164 @@ Partial Class frmPurchases
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Category, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.ss, Me.Column7, Me.Column4, Me.Column8})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Category, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.Column9, Me.ss, Me.Column7, Me.Column4, Me.Column8})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.LemonChiffon
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.LemonChiffon
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView1.Location = New System.Drawing.Point(4, 99)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1109, 369)
+        Me.DataGridView1.Size = New System.Drawing.Size(1340, 496)
         Me.DataGridView1.TabIndex = 37
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfirmTotalChargesToolStripMenuItem, Me.SetAsNotConfirmedToolStripMenuItem, Me.ToolStripSeparator1, Me.EditTotalChargesToolStripMenuItem, Me.EditNoteToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.ShowImageMargin = False
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 126)
+        '
+        'ConfirmTotalChargesToolStripMenuItem
+        '
+        Me.ConfirmTotalChargesToolStripMenuItem.Name = "ConfirmTotalChargesToolStripMenuItem"
+        Me.ConfirmTotalChargesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ConfirmTotalChargesToolStripMenuItem.Text = "Confirm Total Charges"
+        '
+        'SetAsNotConfirmedToolStripMenuItem
+        '
+        Me.SetAsNotConfirmedToolStripMenuItem.Name = "SetAsNotConfirmedToolStripMenuItem"
+        Me.SetAsNotConfirmedToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.SetAsNotConfirmedToolStripMenuItem.Text = "Set as Unconfirmed"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(165, 6)
+        '
+        'EditTotalChargesToolStripMenuItem
+        '
+        Me.EditTotalChargesToolStripMenuItem.Name = "EditTotalChargesToolStripMenuItem"
+        Me.EditTotalChargesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.EditTotalChargesToolStripMenuItem.Text = "Edit Total Charges"
+        '
+        'EditNoteToolStripMenuItem
+        '
+        Me.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem"
+        Me.EditNoteToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.EditNoteToolStripMenuItem.Text = "Edit Note"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(165, 6)
+        '
+        'ExportToExcelToolStripMenuItem
+        '
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearch.Location = New System.Drawing.Point(1195, 8)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(144, 34)
+        Me.btnSearch.TabIndex = 36
+        Me.btnSearch.Text = "Filter"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'cmbClientCode
+        '
+        Me.cmbClientCode.BackColor = System.Drawing.Color.LemonChiffon
+        Me.cmbClientCode.DisplayMember = "Country"
+        Me.cmbClientCode.DropDownHeight = 400
+        Me.cmbClientCode.DropDownWidth = 200
+        Me.cmbClientCode.Enabled = False
+        Me.cmbClientCode.FormattingEnabled = True
+        Me.cmbClientCode.IntegralHeight = False
+        Me.cmbClientCode.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
+        Me.cmbClientCode.Location = New System.Drawing.Point(92, 10)
+        Me.cmbClientCode.Name = "cmbClientCode"
+        Me.cmbClientCode.Size = New System.Drawing.Size(234, 24)
+        Me.cmbClientCode.TabIndex = 40
+        Me.cmbClientCode.ValueMember = "ID"
+        '
+        'chkCode
+        '
+        Me.chkCode.AutoSize = True
+        Me.chkCode.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.chkCode.Location = New System.Drawing.Point(4, 12)
+        Me.chkCode.Name = "chkCode"
+        Me.chkCode.Size = New System.Drawing.Size(87, 21)
+        Me.chkCode.TabIndex = 45
+        Me.chkCode.Text = "Client ID"
+        Me.chkCode.UseVisualStyleBackColor = True
+        '
+        'chkInsertDate
+        '
+        Me.chkInsertDate.AutoSize = True
+        Me.chkInsertDate.Location = New System.Drawing.Point(371, 47)
+        Me.chkInsertDate.Name = "chkInsertDate"
+        Me.chkInsertDate.Size = New System.Drawing.Size(97, 20)
+        Me.chkInsertDate.TabIndex = 46
+        Me.chkInsertDate.Text = "Issue Date"
+        Me.chkInsertDate.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStripHideColumn
+        '
+        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
+        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.Enabled = False
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(751, 47)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(61, 24)
+        Me.cmbPeriod.TabIndex = 98
+        Me.cmbPeriod.ValueMember = "id"
+        '
+        'chkPeriod
+        '
+        Me.chkPeriod.AutoSize = True
+        Me.chkPeriod.Location = New System.Drawing.Point(634, 49)
+        Me.chkPeriod.Name = "chkPeriod"
+        Me.chkPeriod.Size = New System.Drawing.Size(119, 20)
+        Me.chkPeriod.TabIndex = 97
+        Me.chkPeriod.Text = "Invoice Period"
+        Me.chkPeriod.UseVisualStyleBackColor = True
         '
         'clID
         '
@@ -309,10 +476,17 @@ Partial Class frmPurchases
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
-        'ss
+        'Column9
         '
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ss.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Column9.HeaderText = "Invoice Period"
+        Me.Column9.Name = "Column9"
+        '
+        'ss
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ss.DefaultCellStyle = DataGridViewCellStyle11
         Me.ss.HeaderText = "Account Manager"
         Me.ss.Name = "ss"
         Me.ss.ReadOnly = True
@@ -337,151 +511,13 @@ Partial Class frmPurchases
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfirmTotalChargesToolStripMenuItem, Me.SetAsNotConfirmedToolStripMenuItem, Me.ToolStripSeparator1, Me.EditTotalChargesToolStripMenuItem, Me.EditNoteToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 126)
-        '
-        'ConfirmTotalChargesToolStripMenuItem
-        '
-        Me.ConfirmTotalChargesToolStripMenuItem.Name = "ConfirmTotalChargesToolStripMenuItem"
-        Me.ConfirmTotalChargesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.ConfirmTotalChargesToolStripMenuItem.Text = "Confirm Total Charges"
-        '
-        'SetAsNotConfirmedToolStripMenuItem
-        '
-        Me.SetAsNotConfirmedToolStripMenuItem.Name = "SetAsNotConfirmedToolStripMenuItem"
-        Me.SetAsNotConfirmedToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.SetAsNotConfirmedToolStripMenuItem.Text = "Set as Unconfirmed"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(165, 6)
-        '
-        'EditTotalChargesToolStripMenuItem
-        '
-        Me.EditTotalChargesToolStripMenuItem.Name = "EditTotalChargesToolStripMenuItem"
-        Me.EditTotalChargesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.EditTotalChargesToolStripMenuItem.Text = "Edit Total Charges"
-        '
-        'EditNoteToolStripMenuItem
-        '
-        Me.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem"
-        Me.EditNoteToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.EditNoteToolStripMenuItem.Text = "Edit Note"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(165, 6)
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(964, 8)
-        Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(144, 34)
-        Me.btnSearch.TabIndex = 36
-        Me.btnSearch.Text = "Filter"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'cmbClientCode
-        '
-        Me.cmbClientCode.BackColor = System.Drawing.Color.LemonChiffon
-        Me.cmbClientCode.DisplayMember = "Country"
-        Me.cmbClientCode.DropDownHeight = 400
-        Me.cmbClientCode.DropDownWidth = 200
-        Me.cmbClientCode.Enabled = False
-        Me.cmbClientCode.FormattingEnabled = True
-        Me.cmbClientCode.IntegralHeight = False
-        Me.cmbClientCode.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
-        Me.cmbClientCode.Location = New System.Drawing.Point(92, 10)
-        Me.cmbClientCode.Name = "cmbClientCode"
-        Me.cmbClientCode.Size = New System.Drawing.Size(234, 24)
-        Me.cmbClientCode.TabIndex = 40
-        Me.cmbClientCode.ValueMember = "ID"
-        '
-        'chkCode
-        '
-        Me.chkCode.AutoSize = True
-        Me.chkCode.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chkCode.Location = New System.Drawing.Point(4, 12)
-        Me.chkCode.Name = "chkCode"
-        Me.chkCode.Size = New System.Drawing.Size(87, 21)
-        Me.chkCode.TabIndex = 45
-        Me.chkCode.Text = "Client ID"
-        Me.chkCode.UseVisualStyleBackColor = True
-        '
-        'chkInsertDate
-        '
-        Me.chkInsertDate.AutoSize = True
-        Me.chkInsertDate.Location = New System.Drawing.Point(371, 47)
-        Me.chkInsertDate.Name = "chkInsertDate"
-        Me.chkInsertDate.Size = New System.Drawing.Size(97, 20)
-        Me.chkInsertDate.TabIndex = 46
-        Me.chkInsertDate.Text = "Issue Date"
-        Me.chkInsertDate.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStripHideColumn
-        '
-        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
-        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.ContainerControl = Me
-        '
-        'chkStatus
-        '
-        Me.chkStatus.AutoSize = True
-        Me.chkStatus.Location = New System.Drawing.Point(4, 42)
-        Me.chkStatus.Name = "chkStatus"
-        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
-        Me.chkStatus.TabIndex = 96
-        Me.chkStatus.Text = "Status"
-        Me.chkStatus.UseVisualStyleBackColor = True
-        '
-        'cmbStatus
-        '
-        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbStatus.Enabled = False
-        Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(92, 40)
-        Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(234, 24)
-        Me.cmbStatus.TabIndex = 95
-        '
         'frmPurchases
         '
         Me.AcceptButton = Me.btnSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(1121, 477)
+        Me.ClientSize = New System.Drawing.Size(1352, 604)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -527,6 +563,10 @@ Partial Class frmPurchases
     Friend WithEvents SetAsNotConfirmedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents EditNoteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
+    Friend WithEvents chkPeriod As System.Windows.Forms.CheckBox
     Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -535,11 +575,10 @@ Partial Class frmPurchases
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ss As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
-    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
 
 End Class

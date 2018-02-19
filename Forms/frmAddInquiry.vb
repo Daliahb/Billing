@@ -35,7 +35,7 @@
     Public Function CheckValidity() As Boolean
         Dim boolError = True
 
-        If Me.cmbClientCode.SelectedValue Is Nothing Then
+        If Me.chkClient.Checked AndAlso Me.cmbClientCode.SelectedValue Is Nothing Then
             ErrorProvider1.SetError(cmbClientCode, "Select client from the list.")
             boolError = False
         Else
@@ -74,6 +74,7 @@
                 FillDatasets()
             End If
         End If
+        Me.cmbClientCode.SelectedIndex = -1
 
         Dim ds As DataSet
         ds = odbaccess.GetUserCategoriesDS()
@@ -154,7 +155,12 @@
                     End If
                 Next
 
-                Me.cmbClientCode.SelectedValue = CLng(dr.Item("FK_Client"))
+                If CLng(dr.Item("FK_Client")) > 0 Then
+                    Me.chkClient.Checked = True
+                    Me.cmbClientCode.Enabled = True
+                    Me.cmbClientCode.SelectedValue = CLng(dr.Item("FK_Client"))
+                End If
+
 
                 Me.chkCompanyPoints.Checked = False
                 If CInt(dr.Item("FK_OP")) > 0 Then
@@ -324,5 +330,9 @@
             chkUsersList.SetItemChecked(i, False)
         Next
         Me.chkClearAll.Checked = False
+    End Sub
+
+    Private Sub chkClient_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkClient.CheckedChanged
+        Me.cmbClientCode.Enabled = chkClient.Checked
     End Sub
 End Class

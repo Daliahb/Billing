@@ -24,16 +24,16 @@
         Dim intRowIndex As Integer
         Dim boolFromMC As Boolean
         Dim strCompany As String = ""
-        Dim lAccountManager, lAgreement, lBankAccount, lCompanyAccount, lStatus As Integer
+        Dim lAccountManager, lAgreement, lBankAccount, lCompanyAccount, lStatus, lPeriod As Integer
         'Dim dtFrom, dtTo As Date
         'Dim ds As New DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus)
+            generateSearchCrytiria(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus, lPeriod)
 
             oColClients.Clear()
 
-            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus)
+            oColClients = odbaccess.GetClients(strCompany, lAccountManager, lAgreement, lBankAccount, lCompanyAccount, boolFromMC, lStatus, lPeriod)
             If Not oColClients Is Nothing AndAlso Not oColClients.Count = 0 Then
                 For Each oClient As Client In oColClients
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -109,7 +109,7 @@
         oFrm.ShowDialog()
     End Sub
 
-    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer, ByRef boolFromMC As Boolean, ByRef lStatus As Integer)
+    Public Sub generateSearchCrytiria(ByRef strCompany As String, ByRef lAccountManager As Integer, ByRef lAgreement As Integer, ByRef lBankAccount As Integer, ByRef lCompanyAccount As Integer, ByRef boolFromMC As Boolean, ByRef lStatus As Integer, ByRef lPeriod As Integer)
         Try
             If Me.chkAccountManager.Checked Then
                 lAccountManager = CInt(Me.cmbAccountManager.SelectedValue)
@@ -144,7 +144,12 @@
             If Me.chkStatus.Checked Then
                 lStatus = CInt(Me.cmbStatus.SelectedItem.value)
             Else
-                lstatus = 0
+                lStatus = 0
+            End If
+            If Me.chkPeriod.Checked Then
+                lPeriod = CInt(Me.cmbPeriod.Text)
+            Else
+                lPeriod = 0
             End If
         Catch ex As Exception
 
@@ -307,7 +312,7 @@
         Me.cmbAgreement.Enabled = Me.chkAgreement.Checked
     End Sub
 
-    Private Sub chkStatus_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkStatus.CheckedChanged
+    Private Sub chkStatus_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkStatus.CheckedChanged, chkPeriod.CheckedChanged
         Me.cmbStatus.Enabled = Me.chkStatus.Checked
     End Sub
 

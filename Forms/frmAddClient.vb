@@ -26,13 +26,14 @@
         'TODO: This line of code loads data into the 'DsAccountManagers.AccountManagers' table. You can move, or remove it, as needed.
         '   Me.AccountManagersTableAdapter.Fill(Me.DsAccountManagers.AccountManagers)
         '      'Me.BackColor = gBackColor
-
+        Me.cmbPeriod.SelectedIndex = 2
         If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
             Me.Text = "Edit Client"
             dsOutboundNames = odbaccess.getOutboundNames(oClient.ID)
             SetControls()
 
         End If
+
         'boolSaved = True
     End Sub
 
@@ -78,7 +79,7 @@
         Me.txtCode.Text = ""
         Me.txtTimeZone.Text = ""
         Me.txtAddress.Text = ""
-        Me.txtPeriod.Text = ""
+        Me.cmbPeriod.SelectedIndex = 0
         Me.txtStatement.Text = ""
         Me.txtBillingEmail.Text = ""
         Me.txtCCEmails.Text = ""
@@ -106,7 +107,7 @@
             .CompanyCode = Me.txtCode.Text
             .timezone = Me.txtTimeZone.Text
             .Address = Me.txtAddress.Text
-            .Period = CInt(Me.txtPeriod.Text)
+            .Period = CInt(Me.cmbPeriod.Text)
             .Statement = CInt(Me.txtStatement.Text)
             .BillingEmail = Me.txtBillingEmail.Text
             .CCEmail = Me.txtCCEmails.Text
@@ -124,6 +125,7 @@
             .ContractMapleBank = Me.cmbContractMapleBank.Text
             .ContractMapleName = Me.cmbContractMapleName.Text
             .AccountManagerName = Me.cmbAccountManager.Text
+            .DisableReason = Me.txtDisableReason.Text
             .Agreement = CType(Me.cmbAgreement.SelectedItem.value, Enumerators.Agreement)
 
             Dim strOutboundNames As String = ""
@@ -145,7 +147,13 @@
                 Me.txtCode.Text = .CompanyCode
                 Me.txtTimeZone.Text = .timezone
                 Me.txtAddress.Text = .Address
-                Me.txtPeriod.Text = .Period.ToString
+                For i = 0 To cmbPeriod.Items.Count - 1
+                    If cmbPeriod.Items(i).ToString = .Period.ToString Then
+                        cmbPeriod.SelectedIndex = i
+                        Exit For
+                    End If
+                Next
+
                 Me.txtStatement.Text = .Statement.ToString
                 Me.txtBillingEmail.Text = .BillingEmail
                 Me.txtCCEmails.Text = .CCEmail
@@ -160,6 +168,7 @@
                 Me.cmbContractMapleName.SelectedValue = .ContractMapleNameID
                 Me.cmbContractMapleBank.SelectedValue = .ContractMapleBankID
                 Me.cmbAccountManager.SelectedValue = .AccountManagerID
+                Me.txtDisableReason.Text = .DisableReason
                 For Each item In cmbAgreement.Items
                     If item.value = .Agreement Then
                         cmbAgreement.SelectedItem = item
@@ -242,12 +251,6 @@
     Public Function CheckValidity() As Boolean
         Dim boolError As Boolean = False
         Try
-            If Not IsNumeric(Me.txtPeriod.Text) Then
-                ErrorProvider1.SetError(txtPeriod, "Please insert a valid value.")
-                boolError = True
-            Else
-                ErrorProvider1.SetError(txtPeriod, "")
-            End If
             If Not IsNumeric(Me.txtStatement.Text) Then
                 ErrorProvider1.SetError(txtStatement, "Please insert a valid value.")
                 boolError = True
@@ -315,7 +318,7 @@
     End Function
 
 
-    Private Sub txtCreditLimit_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCreditLimit.KeyPress, txtStatement.KeyPress, txtPeriod.KeyPress
+    Private Sub txtCreditLimit_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCreditLimit.KeyPress, txtStatement.KeyPress
         If Not Char.IsControl(e.KeyChar) AndAlso Not IsNumeric(e.KeyChar) Then
             e.Handled = True
         End If

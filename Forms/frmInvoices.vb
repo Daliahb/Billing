@@ -15,8 +15,8 @@
         fillComboBoxes()
 
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
-        Me.cmbClientCode.SelectedIndex = 0
-
+        Me.cmbClientCode.SelectedIndex = -1
+        Me.cmbPeriod.SelectedIndex = 0
         Try
             Me.cmbBillingDates.SelectedIndex = 0
             Me.chkInsertDate.Checked = True
@@ -41,11 +41,12 @@
         Dim dtFrom, dtTo, dInsertDate As Date
         Dim dTotalDuration As Double = 0
         Dim dTotalCharges As Double = 0
+        Dim intPeriod As Integer
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
             chkClearAll_CheckedChanged(Me, New System.EventArgs)
-            generateSearchCrytiria(lClientID, boolEmail, boolSent, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate)
+            generateSearchCrytiria(lClientID, boolEmail, boolSent, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, intPeriod)
 
             If Me.chkInsertDate.Checked Then
                 Me.DataGridView1.Columns(2).Visible = True
@@ -53,7 +54,7 @@
                 Me.DataGridView1.Columns(2).Visible = False
             End If
 
-            ds = odbaccess.GetInvoicesSearch(lClientID, boolEmail, boolSent, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate)
+            ds = odbaccess.GetInvoicesSearch(lClientID, boolEmail, boolSent, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, intPeriod)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -66,9 +67,10 @@
                         .Cells(6).Value = dr.Item("Duration")
                         .Cells(7).Value = CDate(dr.Item("Billing_Period_From")).ToString("yyyy-MM-dd")
                         .Cells(8).Value = CDate(dr.Item("Billing_Period_To")).ToString("yyyy-MM-dd")
-                        .Cells(9).Value = dr.Item("AccountManager").ToString
-                        .Cells(10).Value = dr.Item("Bank_Name")
-                        .Cells(11).Value = dr.Item("isSentEmail")
+                        .Cells(9).Value = dr.Item("InvoicePeriod").ToString
+                        .Cells(10).Value = dr.Item("AccountManager").ToString
+                        .Cells(11).Value = dr.Item("Bank_Name")
+                        .Cells(12).Value = dr.Item("isSentEmail")
 
                         dTotalDuration += CDbl(dr.Item("Duration"))
                         dTotalCharges += CDbl(dr.Item("Amount"))
@@ -136,7 +138,7 @@
 #End Region
 
 
-    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolEmail As Boolean, ByRef boolSent As Boolean, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date)
+    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolEmail As Boolean, ByRef boolSent As Boolean, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef intPeriod As Integer)
         Try
             If Me.chkCode.Checked Then
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
@@ -167,6 +169,12 @@
                 dtInsertDate = CDate(Me.cmbBillingDates.SelectedValue.Date)
             Else
                 boolInsertDate = False
+            End If
+
+            If Me.chkPeriod.Checked Then
+                intPeriod = CInt(Me.cmbPeriod.Text)
+            Else
+                intPeriod = 0
             End If
         Catch ex As Exception
 
@@ -304,5 +312,9 @@
         Else
             MsgBox("Please select the invoices you want to send by email.")
         End If
+    End Sub
+
+    Private Sub chkPeriod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPeriod.CheckedChanged
+        Me.cmbPeriod.Enabled = Me.chkPeriod.Checked
     End Sub
 End Class

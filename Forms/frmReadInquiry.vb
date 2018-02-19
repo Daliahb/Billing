@@ -15,7 +15,7 @@
     End Sub
 
     Private Sub frmReadAssignment_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Text = "Assignment"
+
         Dim ds As DataSet = odbaccess.GetInquiryComment(lID)
         SetControls(ds)
 
@@ -46,6 +46,8 @@
 
     Public Sub SetControls(ds As DataSet)
         If Not ds Is Nothing Then
+            oTask.Note = ds.Tables(0).Rows(0).Item("Comments").ToString
+            oTask.task = ds.Tables(0).Rows(0).Item("Task").ToString
             Me.txtTask.Text = ds.Tables(0).Rows(0).Item("Task").ToString & vbCrLf & ds.Tables(0).Rows(0).Item("Comments").ToString
             ' Me.cmbUsers.SelectedValue = oTask.ToUserID
             Me.lblDate.Text = "Date: " & CDate(ds.Tables(0).Rows(0).Item("DueDate")).ToString("yyyy/MM/dd")
@@ -73,12 +75,12 @@
     Public Sub FillObject()
         With oTask
             If Not Me.txtNote.Text.Length = 0 Then
-                .Note = Me.txtTask.Text & vbCrLf & gUser.UserName & " " & Now().ToString("yyyy-MM-dd") & " :" & vbCrLf & Me.txtNote.Text
-
+                .Note = Me.oTask.Note & vbCrLf & vbCrLf & gUser.UserName & " " & Now().ToString("yyyy-MM-dd") & " :" & vbCrLf & Me.txtNote.Text
+                '.Note = gUser.UserName & " " & Now().ToString("yyyy-MM-dd") & " :" & vbCrLf & Me.txtNote.Text
                 ' .Note = Me.txtNote.Text
 
             Else
-                .Note = Me.txtTask.Text
+                .Note = Me.oTask.Note
             End If
             ' .TaskDate = Me.DateTimePicker1.Value.Date
 
@@ -95,11 +97,12 @@
         Me.txtNote.Text = ""
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Dim frm As New frmTaskRecurrence(Enumerators.EditAdd.Add)
-        'frm.Show()
+    Public Sub CenterButtons()
+        Me.Panel2.Left = CInt((Me.ClientSize.Width / 2) - (Panel2.Width / 2))
     End Sub
 
-
+    Private Sub FrmCountries_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        CenterButtons()
+    End Sub
 
 End Class

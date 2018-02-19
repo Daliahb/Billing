@@ -372,14 +372,14 @@ Public Class FrmMain
     End Sub
 
     Private Sub PerformanceReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PerformanceReportToolStripMenuItem.Click
-        If Application.OpenForms().OfType(Of frmPerformanceReport).Any Then
+        If Application.OpenForms().OfType(Of frmClientPerformanceReport).Any Then
             For Each frm As Form In Application.OpenForms
                 If frm.Name.Equals("frmPerformanceReport") Then
                     frm.WindowState = FormWindowState.Maximized
                 End If
             Next
         Else
-            Dim frm As New frmPerformanceReport
+            Dim frm As New frmClientPerformanceReport
             frm.Show()
         End If
        
@@ -484,14 +484,14 @@ Public Class FrmMain
 
 
     Private Sub PotentialClientsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PotentialClientsToolStripMenuItem.Click
-        If Application.OpenForms().OfType(Of frmPotentialClients).Any Then
+        If Application.OpenForms().OfType(Of frmPotentialClients2).Any Then
             For Each frm As Form In Application.OpenForms
-                If frm.Name.Equals("frmPotentialClients") Then
-                    frm.WindowState = FormWindowState.Normal
+                If frm.Name.Equals("frmPotentialClients2") Then
+                    frm.WindowState = FormWindowState.Minimized
                 End If
             Next
         Else
-            Dim frm As New frmPotentialClients()
+            Dim frm As New frmPotentialClients2()
             frm.Show()
         End If
     End Sub
@@ -499,5 +499,23 @@ Public Class FrmMain
     Private Sub InquiriesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InquiriesToolStripMenuItem.Click
         Dim frm As New frmInquiries
         frm.Show()
+    End Sub
+
+    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Dim frm As New Form2
+        frm.Show()
+    End Sub
+
+    Private Sub AimPerformanceReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AimPerformanceReportToolStripMenuItem.Click
+        If Application.OpenForms().OfType(Of frmAimPerformanceReport).Any Then
+            For Each frm As Form In Application.OpenForms
+                If frm.Name.Equals("frmAimPerformanceReport") Then
+                    frm.WindowState = FormWindowState.Maximized
+                End If
+            Next
+        Else
+            Dim frm As New frmAimPerformanceReport
+            frm.Show()
+        End If
     End Sub
 End Class

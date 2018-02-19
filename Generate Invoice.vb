@@ -45,7 +45,7 @@ Public Class Generate_Invoice
         End If
     End Sub
 
-    Public Sub New(ByVal dInsertDate As Date, lClientId As Long)
+    Public Sub New(ByVal dInsertDate As Date, lClientId As Long, intPeriod As Integer)
 
         If My.Settings.RootDirectory.Length = 0 Then
             If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
@@ -64,7 +64,7 @@ Public Class Generate_Invoice
 
         End If
         'create a folder with today's date
-        RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy")
+        RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
         If (Not System.IO.Directory.Exists(RootDirectory)) Then
             System.IO.Directory.CreateDirectory(RootDirectory)
         End If
@@ -73,7 +73,7 @@ Public Class Generate_Invoice
         Dim ds As DataSet
 
         If lClientId = 0 Then
-            ds = odbaccess.GetBillingClients(dInsertDate)
+            ds = odbaccess.GetBillingClients(dInsertDate, intPeriod)
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
                 Dim PBar As New frmProgressBar
                 PBar.Show()
@@ -90,7 +90,7 @@ Public Class Generate_Invoice
                     PBar.ProgressBar1.PerformStep()
 
                     lClientId = CLng(dr.Item("ID"))
-                    GenerateClientInvoice(lClientId)
+                    GenerateClientInvoice(lClientId, intPeriod)
                     dValue += x
                     PBar.lblPercent.Text = Math.Round(dValue, 0).ToString + "%"
                 Next
@@ -102,19 +102,19 @@ Public Class Generate_Invoice
                 MsgBox("No data found.")
             End If
         Else 'if lclientID <> 0, then generate invoice for one specific client only
-            GenerateClientInvoice(lClientId)
+            GenerateClientInvoice(lClientId, intPeriod)
         End If
     End Sub
 
-    Public Sub GenerateClientInvoice(ByVal lClientID As Long)
+    Public Sub GenerateClientInvoice(ByVal lClientID As Long, intPeriod As Integer)
         Dim ds As DataSet
         ds = odbaccess.GetInvoiceDetails(lClientID, dInsertDate)
         If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
-            GenerateExcelFile(ds)
+            GenerateExcelFile(ds, intPeriod)
         End If
     End Sub
 
-    Public Sub GenerateExcelFile(ByVal ds As DataSet)
+    Public Sub GenerateExcelFile(ByVal ds As DataSet, intPeriod As Integer)
         Try
             Dim strName As String
             excel.Visible = True
@@ -122,8 +122,8 @@ Public Class Generate_Invoice
             Dim ExcelPath As String = System.Windows.Forms.Application.StartupPath & "\Invoice.xlsx"
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
-            RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy")
-          Dim LogoPath As String
+            RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
+            Dim LogoPath As String
 
 
             worksheet = excel.Worksheets(1)
@@ -227,7 +227,7 @@ Public Class Generate_Invoice
             '
             worksheet.SaveAs(Filename:=RootDirectory & "\" & strName)
 
-          
+
 
             ' ---- Generate PDF File ------
 
@@ -236,8 +236,8 @@ Public Class Generate_Invoice
             Me.worksheet.PageSetup.FitToPagesTall = 1
             Me.worksheet.PageSetup.Zoom = False
             oWorkBook = excel.Workbooks(1)
-            If Not oWorkbook Is Nothing Then
-                oWorkbook.ExportAsFixedFormat(pFormatType, PDFFile, pQuality, _
+            If Not oWorkBook Is Nothing Then
+                oWorkBook.ExportAsFixedFormat(pFormatType, PDFFile, pQuality, _
                                               pIncludeDocProperties, _
                                               pIgnorePrintAreas, _
                                               pFrom, pTo, pOpenAfterPublish)
@@ -361,14 +361,14 @@ Public Class Generate_Invoice
                     Dim x As Integer
                     x = ds.Tables(0).Rows.Count - 5
                     For i = 1 To x
-                        worksheet.Rows(5).Insert()
+                        worksheet.Rows(6).Insert()
                     Next
 
                 End If
 
                 Me.worksheet.Range("B" & 1).Value = "Statement Of Acount   " & Now.Date.ToString("dd-MM-yyyy")
 
-                i = 4
+                i = 5
                 For Each dr As DataRow In ds.Tables(0).Rows
                     With dr
                         If Not .Item("Company_Code") Is DBNull.Value Then
@@ -473,8 +473,18 @@ Public Class Generate_Invoice
                     End With
                 Next
                 frmStatementOfAccount.Show()
-
-                strName = "Statement Of Account - " & Now.ToString("ddMMyyyy")
+                Dim strStatus As String
+                Select Case CType(enumClientStatus, Enumerators.ClientStatus)
+                    Case Enumerators.ClientStatus.Active
+                        strStatus = "Active - "
+                    Case Enumerators.ClientStatus.Disabled
+                        strStatus = "Disabled - "
+                    Case Enumerators.ClientStatus.Maple_Accounts
+                        strStatus = "Maple Accounts - "
+                    Case Else
+                        strStatus = ""
+                End Select
+                strName = "Statement Of Account - " & strStatus & Now.ToString("ddMMyyyy")
                 If My.Settings.RootDirectory.Length = 0 Then
                     If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
                         Dim folderDlg As New FolderBrowserDialog

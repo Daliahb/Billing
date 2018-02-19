@@ -66,14 +66,15 @@ Partial Class FrmMain
         Me.GetAllRatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.InvoicingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.InquiriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblCountry = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.InquiriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.AimPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SettingsToolStripMenuItem
@@ -176,7 +177,7 @@ Partial Class FrmMain
         '
         'AccountingToolStripMenuItem1
         '
-        Me.AccountingToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddClientPaymentToolStripMenuItem, Me.AddMaplePaymentToolStripMenuItem, Me.AddVoucherToolStripMenuItem, Me.ToolStripSeparator3, Me.PaymentsToolStripMenuItem, Me.MaplePaymentsToolStripMenuItem, Me.AllVouchersToolStripMenuItem, Me.PurchasesToolStripMenuItem, Me.ToolStripSeparator4, Me.StatementOfAccountToolStripMenuItem, Me.TransactionsToolStripMenuItem, Me.ToolStripSeparator5, Me.BeginingBalancesToolStripMenuItem, Me.ToolStripSeparator7, Me.PerformanceReportToolStripMenuItem, Me.CompanyPerformanceReportToolStripMenuItem, Me.CashflowReportToolStripMenuItem})
+        Me.AccountingToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddClientPaymentToolStripMenuItem, Me.AddMaplePaymentToolStripMenuItem, Me.AddVoucherToolStripMenuItem, Me.ToolStripSeparator3, Me.PaymentsToolStripMenuItem, Me.MaplePaymentsToolStripMenuItem, Me.AllVouchersToolStripMenuItem, Me.PurchasesToolStripMenuItem, Me.ToolStripSeparator4, Me.StatementOfAccountToolStripMenuItem, Me.TransactionsToolStripMenuItem, Me.ToolStripSeparator5, Me.BeginingBalancesToolStripMenuItem, Me.ToolStripSeparator7, Me.PerformanceReportToolStripMenuItem, Me.CompanyPerformanceReportToolStripMenuItem, Me.AimPerformanceReportToolStripMenuItem, Me.CashflowReportToolStripMenuItem})
         Me.AccountingToolStripMenuItem1.Name = "AccountingToolStripMenuItem1"
         Me.AccountingToolStripMenuItem1.Size = New System.Drawing.Size(81, 20)
         Me.AccountingToolStripMenuItem1.Text = "Accounting"
@@ -354,29 +355,11 @@ Partial Class FrmMain
         Me.InvoicingToolStripMenuItem.Size = New System.Drawing.Size(68, 20)
         Me.InvoicingToolStripMenuItem.Text = "Invoicing"
         '
-        'PictureBox2
+        'InquiriesToolStripMenuItem
         '
-        Me.PictureBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(72, Byte), Integer))
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(0, 25)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(362, 79)
-        Me.PictureBox2.TabIndex = 111
-        Me.PictureBox2.TabStop = False
-        Me.PictureBox2.Visible = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 25)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(363, 199)
-        Me.PictureBox1.TabIndex = 112
-        Me.PictureBox1.TabStop = False
+        Me.InquiriesToolStripMenuItem.Name = "InquiriesToolStripMenuItem"
+        Me.InquiriesToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
+        Me.InquiriesToolStripMenuItem.Text = "Inquiries"
         '
         'lblCountry
         '
@@ -393,18 +376,43 @@ Partial Class FrmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(260, 62)
+        Me.Button1.Location = New System.Drawing.Point(286, 171)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 114
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
-        'InquiriesToolStripMenuItem
+        'PictureBox1
         '
-        Me.InquiriesToolStripMenuItem.Name = "InquiriesToolStripMenuItem"
-        Me.InquiriesToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
-        Me.InquiriesToolStripMenuItem.Text = "Inquiries"
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 25)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(363, 199)
+        Me.PictureBox1.TabIndex = 112
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(72, Byte), Integer))
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 25)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(362, 79)
+        Me.PictureBox2.TabIndex = 111
+        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.Visible = False
+        '
+        'AimPerformanceReportToolStripMenuItem
+        '
+        Me.AimPerformanceReportToolStripMenuItem.Name = "AimPerformanceReportToolStripMenuItem"
+        Me.AimPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
+        Me.AimPerformanceReportToolStripMenuItem.Text = "Aim Performance Report"
         '
         'FrmMain
         '
@@ -423,11 +431,11 @@ Partial Class FrmMain
         Me.MaximizeBox = False
         Me.Name = "FrmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Invoicing System - "
+        Me.Text = "Maple Management System"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -478,6 +486,7 @@ Partial Class FrmMain
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblCountry As System.Windows.Forms.Label
     Friend WithEvents PotentialClientsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents InquiriesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents AimPerformanceReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

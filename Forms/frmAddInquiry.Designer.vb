@@ -28,6 +28,7 @@ Partial Class frmAddInquiry
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.chkClearAll = New System.Windows.Forms.CheckBox()
         Me.chkSelectAll = New System.Windows.Forms.CheckBox()
+        Me.chkClient = New System.Windows.Forms.CheckBox()
         Me.chkCompanyPoints = New System.Windows.Forms.CheckBox()
         Me.chkUsersList = New System.Windows.Forms.CheckedListBox()
         Me.rbTP = New System.Windows.Forms.RadioButton()
@@ -40,7 +41,6 @@ Partial Class frmAddInquiry
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtTask = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -71,6 +71,7 @@ Partial Class frmAddInquiry
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.chkClearAll)
         Me.Panel1.Controls.Add(Me.chkSelectAll)
+        Me.Panel1.Controls.Add(Me.chkClient)
         Me.Panel1.Controls.Add(Me.chkCompanyPoints)
         Me.Panel1.Controls.Add(Me.chkUsersList)
         Me.Panel1.Controls.Add(Me.rbTP)
@@ -83,7 +84,6 @@ Partial Class frmAddInquiry
         Me.Panel1.Controls.Add(Me.DateTimePicker1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.txtTask)
-        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Label3)
@@ -113,6 +113,16 @@ Partial Class frmAddInquiry
         Me.chkSelectAll.TabIndex = 85
         Me.chkSelectAll.Text = "Select All"
         Me.chkSelectAll.UseVisualStyleBackColor = True
+        '
+        'chkClient
+        '
+        Me.chkClient.AutoSize = True
+        Me.chkClient.Location = New System.Drawing.Point(10, 44)
+        Me.chkClient.Name = "chkClient"
+        Me.chkClient.Size = New System.Drawing.Size(63, 20)
+        Me.chkClient.TabIndex = 84
+        Me.chkClient.Text = "Client"
+        Me.chkClient.UseVisualStyleBackColor = True
         '
         'chkCompanyPoints
         '
@@ -224,6 +234,7 @@ Partial Class frmAddInquiry
         Me.cmbClientCode.DisplayMember = "Country"
         Me.cmbClientCode.DropDownHeight = 400
         Me.cmbClientCode.DropDownWidth = 200
+        Me.cmbClientCode.Enabled = False
         Me.cmbClientCode.FormattingEnabled = True
         Me.cmbClientCode.IntegralHeight = False
         Me.cmbClientCode.Location = New System.Drawing.Point(146, 40)
@@ -257,15 +268,6 @@ Partial Class frmAddInquiry
         Me.txtTask.Name = "txtTask"
         Me.txtTask.Size = New System.Drawing.Size(373, 80)
         Me.txtTask.TabIndex = 6
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 43)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 16)
-        Me.Label2.TabIndex = 81
-        Me.Label2.Text = "Client"
         '
         'Label12
         '
@@ -351,7 +353,6 @@ Partial Class frmAddInquiry
     End Sub
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents cmbClientCode As System.Windows.Forms.ComboBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label12 As System.Windows.Forms.Label
@@ -373,4 +374,5 @@ Partial Class frmAddInquiry
     Friend WithEvents chkCompanyPoints As System.Windows.Forms.CheckBox
     Friend WithEvents chkClearAll As System.Windows.Forms.CheckBox
     Friend WithEvents chkSelectAll As System.Windows.Forms.CheckBox
+    Friend WithEvents chkClient As System.Windows.Forms.CheckBox
 End Class

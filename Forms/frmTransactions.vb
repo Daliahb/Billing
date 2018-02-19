@@ -65,6 +65,7 @@
                 Next
                 Me.lblTotalCredit.Text = Math.Round(dblTotalCredit, 4).ToString
                 Me.lblTotalDebit.Text = Math.Round(dblTotalDebit).ToString
+                Me.lblBalance.Text = decBalance
 
                 If Not ds.Tables.Count = 1 Then
                     dblTotalClientPayment = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalClientPayments")), 4)

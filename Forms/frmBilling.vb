@@ -14,7 +14,7 @@
         Next
 
         fillComboBoxes()
-
+        Me.cmbPeriod.SelectedIndex = 0
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         Try
             Me.cmbClientCode.SelectedIndex = 0
@@ -34,7 +34,7 @@
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         '  Dim oColEvents As New ColEvents
         Dim intCounter As Integer = 0
-        Dim intRowIndex As Integer
+        Dim intRowIndex, intPeriod As Integer
 
         Dim lClientID, lSoftware As Long
         Dim boolPeriodDate, boolInsertDate, boolInbound As Boolean
@@ -46,8 +46,8 @@
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(lClientID, lSoftware, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, boolInbound)
-            ds = odbaccess.GetBillingSearch(lClientID, lSoftware, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, boolInbound)
+            generateSearchCrytiria(lClientID, lSoftware, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, boolInbound, intPeriod)
+            ds = odbaccess.GetBillingSearch(lClientID, lSoftware, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, boolInbound, intPeriod)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
@@ -69,8 +69,11 @@
                         .Cells(9).Value = CDate(dr.Item("Billing_Period_To")).ToString("dd-MM-yyyy")
                         .Cells(10).Value = dr.Item("Software")
                         .Cells(11).Value = CDate(dr.Item("Insert_Date")).ToString("dd-MM-yyyy")
+                        .Cells(12).Value = CInt(dr.Item("InvoicePeriod"))
+
                         dTotalDuration += CDec(dr.Item("Total_Duration"))
                         dTotalCharges += CDec(dr.Item("Total_Charges"))
+
                         intCounter += 1
                     End With
                 Next
@@ -123,7 +126,7 @@
 #End Region
 
 
-    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef lSoftware As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef boolInbound As Boolean)
+    Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef lSoftware As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef boolInbound As Boolean, ByRef intPeriod As Integer)
         Try
             If Me.chkCode.Checked Then
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
@@ -152,6 +155,11 @@
                 dtInsertDate = CDate(Me.cmbBillingDates.SelectedValue.Date)
             Else
                 boolInsertDate = False
+            End If
+            If Me.chkPeriod.Checked Then
+                intPeriod = CInt(cmbPeriod.Text)
+            Else
+                intPeriod = 0
             End If
         Catch ex As Exception
 
@@ -238,11 +246,11 @@
             If MsgBox("Are you sure you want generate excel file for " & cmbClientCode.Text & "?", vbYesNo) = vbYes Then
                 Dim lClientID As Long
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
-                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), lClientID)
+                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), lClientID, CInt(Me.cmbPeriod.Text))
             End If
         Else
             If MsgBox("Are you sure you want generate excel files for all clients?", vbYesNo) = vbYes Then
-                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0)
+                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0, CInt(Me.cmbPeriod.Text))
             End If
         End If
 
@@ -268,4 +276,9 @@
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
     End Sub
+
+    Private Sub chkPeriod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPeriod.CheckedChanged
+        Me.cmbPeriod.Enabled = chkPeriod.Checked
+    End Sub
+
 End Class
