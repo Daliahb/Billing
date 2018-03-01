@@ -19,13 +19,13 @@ Public Class DBAccess
 
     Public Sub New()
         'Real Online  DB
-        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
+        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
 
         ''Test  DB
-        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
-        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
+        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
 
         'Armenia Test
         'oConnection.ConnectionString = "server=localhost;User Id=root;Password=root;Persist Security Info=false;database=voip_billing_system_mapleexpress_yerevan"
@@ -4816,6 +4816,37 @@ Public Class DBAccess
             MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
+
+        End Try
+    End Function
+
+    Public Function CheckNewInquiries() As Integer
+        Dim intCount As Integer = 0
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "CheckNewInquiries"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lUserID"
+                .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            intCount = oSelectCommand.ExecuteScalar
+            oConnection.Close()
+
+            Return intCount
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return 0
 
         End Try
     End Function

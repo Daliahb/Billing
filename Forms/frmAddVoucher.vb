@@ -154,6 +154,9 @@
         Me.cmbType.DataSource = Nothing
         Me.cmbType.Items.Add(New Obj("Dispute", Enumerators.VoucherTypes.Dispute))
         Me.cmbType.Items.Add(New Obj("Voucher", Enumerators.VoucherTypes.Voucher))
+        If Me.enumEditAdd = Enumerators.EditAdd.Edit Then
+            Me.cmbType.Items.Add(New Obj("Bank Fees", Enumerators.VoucherTypes.BankFees))
+        End If
         Me.cmbType.ValueMember = "Value"
         Me.cmbType.DisplayMember = "Name"
     End Sub

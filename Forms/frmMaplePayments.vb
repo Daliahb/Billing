@@ -130,13 +130,14 @@
             If ht.Type = DataGridViewHitTestType.Cell Then
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
                 If ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = False Then
+                    ContextMenuStrip1.Items(1).Visible = True
                     ContextMenuStrip1.Items(2).Visible = True
-                    ContextMenuStrip1.Items(3).Visible = True
                     ContextMenuStrip1.Items(4).Visible = True
                 Else
+                    ContextMenuStrip1.Items(1).Visible = False
                     ContextMenuStrip1.Items(2).Visible = False
-                    ContextMenuStrip1.Items(3).Visible = False
-                    ContextMenuStrip1.Items(4).Visible = False
+                    ' ContextMenuStrip1.Items(3).Visible = True
+                    ContextMenuStrip1.Items(4).Visible = True
                 End If
             ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
                 Me.intColumnIndex = ht.ColumnIndex

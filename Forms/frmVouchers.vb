@@ -1,6 +1,17 @@
 ﻿Public Class frmVouchers
 
 #Region "Controls Events"
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        FillTypes()
+    End Sub
+
+
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
@@ -8,10 +19,10 @@
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
-        FillTypes()
+        ' FillTypes()
     End Sub
 
-    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+    Public Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim intCounter As Integer = 0
         Dim intRowIndex As Integer
         Dim lClientID As Integer = 0
@@ -125,7 +136,6 @@
 
             Me.cmbStatus.Items.Add(New Obj("Active", Enumerators.ClientStatus.Active))
             Me.cmbStatus.Items.Add(New Obj("Disabled", Enumerators.ClientStatus.Disabled))
-            '  Me.cmbStatus.Items.Add(New Obj("Potential", Enumerators.ClientStatus.Potential))
             Me.cmbStatus.ValueMember = "Value"
             Me.cmbStatus.DisplayMember = "Name"
         Catch ex As Exception
@@ -184,13 +194,15 @@
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             Dim frm As New frmAddVoucher(Enumerators.EditAdd.Edit, Me.DataGridView1.SelectedRows(0))
             frm.ShowDialog()
-            Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
-            Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtDebit.Text
-            Me.DataGridView1.SelectedRows(0).Cells(4).Value = frm.txtCredit.Text
-            Me.DataGridView1.SelectedRows(0).Cells(5).Value = frm.strBank
-            Me.DataGridView1.SelectedRows(0).Cells(6).Value = frm.txtNote.Text
-            Me.DataGridView1.SelectedRows(0).Cells(7).Value = frm.DateTimePicker1.Value.ToString("yyyy-MM-dd")
-            Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.cmbType.SelectedItem.Name
+            If frm.boolSaved Then
+                Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
+                Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtDebit.Text
+                Me.DataGridView1.SelectedRows(0).Cells(4).Value = frm.txtCredit.Text
+                Me.DataGridView1.SelectedRows(0).Cells(5).Value = frm.strBank
+                Me.DataGridView1.SelectedRows(0).Cells(6).Value = frm.txtNote.Text
+                Me.DataGridView1.SelectedRows(0).Cells(7).Value = frm.DateTimePicker1.Value.ToString("yyyy-MM-dd")
+                Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.cmbType.SelectedItem.Name
+            End If
         End If
     End Sub
 

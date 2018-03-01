@@ -134,12 +134,19 @@
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
                 If ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = False Then
                     ContextMenuStrip1.Items(2).Visible = True
+                    ContextMenuStrip1.Items(3).Visible = False
+                    ContextMenuStrip1.Items(4).Visible = True
+                    ContextMenuStrip1.Items(5).Visible = True
+                ElseIf ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = True Then
+                    ContextMenuStrip1.Items(2).Visible = False
                     ContextMenuStrip1.Items(3).Visible = True
                     ContextMenuStrip1.Items(4).Visible = True
+                    ContextMenuStrip1.Items(5).Visible = True
                 Else
                     ContextMenuStrip1.Items(2).Visible = False
                     ContextMenuStrip1.Items(3).Visible = False
                     ContextMenuStrip1.Items(4).Visible = False
+                    ContextMenuStrip1.Items(5).Visible = True
                 End If
             ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
                 Me.intColumnIndex = ht.ColumnIndex
@@ -192,7 +199,6 @@
         End If
     End Sub
 
-
     Private Sub AddAsDebitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddAsDebitToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             Dim lId As Integer
@@ -206,6 +212,7 @@
             End If
         End If
     End Sub
+
 
     Private Sub chkBank_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkBank.CheckedChanged
         Me.cmbBanks.Enabled = Me.chkBank.Checked
@@ -221,5 +228,19 @@
 
     Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
         Me.cmbStatus.Enabled = Me.chkStatus.Checked
+    End Sub
+
+
+    Private Sub EditBankFeesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EditBankFeesToolStripMenuItem.Click
+        Dim frm As New frmVouchers
+        frm.cmbClientCode.Text = Me.DataGridView1.SelectedRows(0).Cells(2).Value.ToString
+        frm.chkDate.Checked = True
+        frm.dtpFromDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)
+        frm.dtpToDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)
+        frm.Show()
+        frm.chkType.Checked = True
+        frm.cmbType.SelectedItem = frm.cmbType.Items(0)
+        frm.btnSearch_Click(Me, New System.EventArgs)
+
     End Sub
 End Class

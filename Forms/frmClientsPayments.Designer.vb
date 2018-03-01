@@ -34,6 +34,8 @@ Partial Class frmClientsPayments
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientsPayments))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.chkStatus = New System.Windows.Forms.CheckBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtpToDate = New System.Windows.Forms.DateTimePicker()
@@ -57,6 +59,7 @@ Partial Class frmClientsPayments
         Me.EditPaymentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.AddAsDebitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditBankFeesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -68,8 +71,6 @@ Partial Class frmClientsPayments
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.chkStatus = New System.Windows.Forms.CheckBox()
-        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -101,6 +102,26 @@ Partial Class frmClientsPayments
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1128, 614)
         Me.Panel1.TabIndex = 0
+        '
+        'chkStatus
+        '
+        Me.chkStatus.AutoSize = True
+        Me.chkStatus.Location = New System.Drawing.Point(9, 72)
+        Me.chkStatus.Name = "chkStatus"
+        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
+        Me.chkStatus.TabIndex = 90
+        Me.chkStatus.Text = "Status"
+        Me.chkStatus.UseVisualStyleBackColor = True
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.Enabled = False
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(83, 70)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(202, 24)
+        Me.cmbStatus.TabIndex = 89
         '
         'Button1
         '
@@ -310,39 +331,46 @@ Partial Class frmClientsPayments
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.EditBankFeesToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(187, 82)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(205, 126)
         '
         'EditPaymentToolStripMenuItem
         '
         Me.EditPaymentToolStripMenuItem.Name = "EditPaymentToolStripMenuItem"
-        Me.EditPaymentToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.EditPaymentToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.EditPaymentToolStripMenuItem.Text = "Edit Payment"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(183, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(201, 6)
         '
         'AddAsDebitToolStripMenuItem
         '
         Me.AddAsDebitToolStripMenuItem.Name = "AddAsDebitToolStripMenuItem"
-        Me.AddAsDebitToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.AddAsDebitToolStripMenuItem.Text = "Add Bank Fees as voucher"
+        Me.AddAsDebitToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.AddAsDebitToolStripMenuItem.Text = "Add Bank Fees as Voucher"
         Me.AddAsDebitToolStripMenuItem.Visible = False
+        '
+        'EditBankFeesToolStripMenuItem
+        '
+        Me.EditBankFeesToolStripMenuItem.Name = "EditBankFeesToolStripMenuItem"
+        Me.EditBankFeesToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.EditBankFeesToolStripMenuItem.Text = "Edit Bank Fees from Vouchers"
+        Me.EditBankFeesToolStripMenuItem.Visible = False
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(183, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(201, 6)
         Me.ToolStripSeparator2.Visible = False
         '
         'ExportToExcelToolStripMenuItem
         '
         Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
         '
         'btnSearch
@@ -418,26 +446,6 @@ Partial Class frmClientsPayments
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'chkStatus
-        '
-        Me.chkStatus.AutoSize = True
-        Me.chkStatus.Location = New System.Drawing.Point(9, 72)
-        Me.chkStatus.Name = "chkStatus"
-        Me.chkStatus.Size = New System.Drawing.Size(70, 20)
-        Me.chkStatus.TabIndex = 90
-        Me.chkStatus.Text = "Status"
-        Me.chkStatus.UseVisualStyleBackColor = True
-        '
-        'cmbStatus
-        '
-        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbStatus.Enabled = False
-        Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(83, 70)
-        Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(202, 24)
-        Me.cmbStatus.TabIndex = 89
-        '
         'frmClientsPayments
         '
         Me.AcceptButton = Me.btnSearch
@@ -500,5 +508,6 @@ Partial Class frmClientsPayments
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
     Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents EditBankFeesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

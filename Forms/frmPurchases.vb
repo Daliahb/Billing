@@ -240,7 +240,7 @@
             If MsgBox("Are you sure you want to change the status of the purchase to Confirmed?", MsgBoxStyle.YesNo) = vbYes Then
                 If odbaccess.SetPurchaseAsConfirmed(CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value), True) Then
                     'MsgBox("Confirmed.")
-                    Me.DataGridView1.SelectedRows(0).Cells(10).Value = True
+                    Me.DataGridView1.SelectedRows(0).Cells(11).Value = True
                 Else
                     MsgBox("An error occured.")
                 End If
@@ -253,7 +253,7 @@
             If MsgBox("Are you sure you want to change the status of the purchase to Unconfirmed?", MsgBoxStyle.YesNo) = vbYes Then
                 If odbaccess.SetPurchaseAsConfirmed(CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value), False) Then
                     '  MsgBox("Confirmed.")
-                    Me.DataGridView1.SelectedRows(0).Cells(10).Value = False
+                    Me.DataGridView1.SelectedRows(0).Cells(11).Value = False
                 Else
                     MsgBox("An error occured.")
                 End If
@@ -264,11 +264,11 @@
     Private Sub EditNoteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditNoteToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             Dim lid As Integer = CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
-            Dim strNote As String = Me.DataGridView1.SelectedRows(0).Cells(11).Value.ToString
+            Dim strNote As String = Me.DataGridView1.SelectedRows(0).Cells(12).Value.ToString
             Dim frmEditNote As New frmPurchaseNote(strNote, lid)
             frmEditNote.ShowDialog()
             If frmEditNote.boolDone Then
-                Me.DataGridView1.SelectedRows(0).Cells(11).Value = frmEditNote.txtMessage.Text
+                Me.DataGridView1.SelectedRows(0).Cells(12).Value = frmEditNote.txtMessage.Text
             End If
         End If
     End Sub

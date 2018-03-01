@@ -56,6 +56,7 @@ Partial Class FrmMain
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.PerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompanyPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AimPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashflowReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccountingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportOfferToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,7 +72,8 @@ Partial Class FrmMain
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.AimPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.lbl1 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -286,6 +288,12 @@ Partial Class FrmMain
         Me.CompanyPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.CompanyPerformanceReportToolStripMenuItem.Text = "Company Performance Report"
         '
+        'AimPerformanceReportToolStripMenuItem
+        '
+        Me.AimPerformanceReportToolStripMenuItem.Name = "AimPerformanceReportToolStripMenuItem"
+        Me.AimPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
+        Me.AimPerformanceReportToolStripMenuItem.Text = "Aim Performance Report"
+        '
         'CashflowReportToolStripMenuItem
         '
         Me.CashflowReportToolStripMenuItem.Enabled = False
@@ -357,6 +365,7 @@ Partial Class FrmMain
         '
         'InquiriesToolStripMenuItem
         '
+        Me.InquiriesToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
         Me.InquiriesToolStripMenuItem.Name = "InquiriesToolStripMenuItem"
         Me.InquiriesToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
         Me.InquiriesToolStripMenuItem.Text = "Inquiries"
@@ -408,11 +417,15 @@ Partial Class FrmMain
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
         '
-        'AimPerformanceReportToolStripMenuItem
+        'lbl1
         '
-        Me.AimPerformanceReportToolStripMenuItem.Name = "AimPerformanceReportToolStripMenuItem"
-        Me.AimPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
-        Me.AimPerformanceReportToolStripMenuItem.Text = "Aim Performance Report"
+        Me.lbl1.AutoSize = True
+        Me.lbl1.Location = New System.Drawing.Point(322, 6)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Size = New System.Drawing.Size(39, 13)
+        Me.lbl1.TabIndex = 115
+        Me.lbl1.Text = "Label1"
+        Me.lbl1.Visible = False
         '
         'FrmMain
         '
@@ -420,6 +433,7 @@ Partial Class FrmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ClientSize = New System.Drawing.Size(362, 221)
+        Me.Controls.Add(Me.lbl1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblCountry)
         Me.Controls.Add(Me.PictureBox1)
@@ -431,7 +445,7 @@ Partial Class FrmMain
         Me.MaximizeBox = False
         Me.Name = "FrmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Maple Management System"
+        Me.Text = "Maple Management System - "
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -489,4 +503,6 @@ Partial Class FrmMain
     Friend WithEvents InquiriesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents AimPerformanceReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents lbl1 As System.Windows.Forms.Label
 End Class

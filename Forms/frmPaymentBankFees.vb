@@ -4,6 +4,7 @@
     Dim dblFees As Double
     Public isClientPayment, boolDone As Boolean
 
+
     Public Sub New(ByVal lID As Integer, ByVal dblFees As Double, ByVal isClientPayment As Boolean)
         ' This call is required by the designer.
         InitializeComponent()
@@ -55,6 +56,7 @@
 
     Private Sub frmChangePassword_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
+       
     End Sub
 
     Private Sub txtCredit_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCredit.KeyPress, txtDebit.KeyPress

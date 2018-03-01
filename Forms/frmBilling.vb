@@ -77,8 +77,14 @@
                         intCounter += 1
                     End With
                 Next
-                Me.lblTotalCharges.Text = Math.Round(dTotalCharges, 3).ToString
-                Me.lblTotalDuration.Text = dTotalDuration.ToString
+
+                If Not ds.Tables.Count < 2 Then
+                    Me.lblTotalCharges.Text = ds.Tables(1).Rows(0).Item("TotalCharges").ToString
+                    Me.lblTotalDuration.Text = ds.Tables(1).Rows(0).Item("TotalDurations").ToString
+
+                    Me.lblTotalChargesNoMaple.Text = ds.Tables(2).Rows(0).Item("TotalChargesNoMaple").ToString
+                    Me.lblTotalDurationNoMaple.Text = ds.Tables(2).Rows(0).Item("TotalDurationsNoMaple").ToString
+                End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

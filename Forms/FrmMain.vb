@@ -2,13 +2,20 @@
 Imports Microsoft.Office.Interop
 Imports System.IO
 Imports System.Deployment.Application
+Imports System.Timers
 
 Public Class FrmMain
+
+    Dim oCheckInquiryThread As Threading.Thread
 
     Private Sub FrmMain_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         My.Settings.UserName = gUser.UserName
         odbaccess.LogOut()
         Application.Exit()
+    End Sub
+
+    Private Sub FrmMain_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        oCheckInquiryThread.Abort()
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -21,6 +28,12 @@ Public Class FrmMain
             Dim frm As New frmWarningClientsFromMC
             frm.Show()
         End If
+
+
+
+        Me.CheckForIllegalCrossThreadCalls = False
+        oCheckInquiryThread = New Threading.Thread(AddressOf CheckNewInquiries)
+        oCheckInquiryThread.Start()
     End Sub
 
     Public Sub CheckPermission()
@@ -79,6 +92,33 @@ Public Class FrmMain
             End Select
         Next
     End Sub
+
+    Public Sub CheckNewInquiries()
+        Dim int, i As Integer
+
+        i = 0
+        Do
+            int = odbaccess.CheckNewInquiries()
+            If int > 0 Then
+                Me.InquiriesToolStripMenuItem.BackColor = Color.LightCoral
+            Else
+                Me.InquiriesToolStripMenuItem.BackColor = Color.Transparent
+            End If
+            i += 1
+            lbl1.Text = i
+            Threading.Thread.Sleep(600000)
+
+        Loop
+
+    End Sub
+
+    'Private Sub BackgroundWorker1_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+    '    CheckNewInquiries()
+    '    System.Threading.Thread.Sleep(120000)
+    'End Sub
+
+#Region "Controls event handlers"
+
 
     Private Sub ClientsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClientsToolStripMenuItem.Click
         If Application.OpenForms().OfType(Of frmClients).Any Then
@@ -482,7 +522,6 @@ Public Class FrmMain
         End If
     End Sub
 
-
     Private Sub PotentialClientsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PotentialClientsToolStripMenuItem.Click
         If Application.OpenForms().OfType(Of frmPotentialClients2).Any Then
             For Each frm As Form In Application.OpenForms
@@ -502,8 +541,9 @@ Public Class FrmMain
     End Sub
 
     Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        Dim frm As New Form2
-        frm.Show()
+
+      
+
     End Sub
 
     Private Sub AimPerformanceReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AimPerformanceReportToolStripMenuItem.Click
@@ -518,4 +558,7 @@ Public Class FrmMain
             frm.Show()
         End If
     End Sub
+
+#End Region
+
 End Class
