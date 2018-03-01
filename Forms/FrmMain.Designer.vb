@@ -292,7 +292,7 @@ Partial Class FrmMain
         '
         Me.AimPerformanceReportToolStripMenuItem.Name = "AimPerformanceReportToolStripMenuItem"
         Me.AimPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
-        Me.AimPerformanceReportToolStripMenuItem.Text = "Aim Performance Report"
+        Me.AimPerformanceReportToolStripMenuItem.Text = "AM Performance Report"
         '
         'CashflowReportToolStripMenuItem
         '

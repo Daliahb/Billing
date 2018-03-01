@@ -46,28 +46,19 @@ Partial Class frmBilling
         Me.rbOutbound = New System.Windows.Forms.RadioButton()
         Me.btnWeeklyReport = New System.Windows.Forms.Button()
         Me.cmbBillingDates = New System.Windows.Forms.ComboBox()
+        Me.lblTotalDurationNoMaple = New System.Windows.Forms.Label()
         Me.lblTotalDuration = New System.Windows.Forms.Label()
+        Me.lblTotalChargesNoMaple = New System.Windows.Forms.Label()
         Me.lblTotalCharges = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtpTo = New System.Windows.Forms.DateTimePicker()
         Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.chkPeriodDate = New System.Windows.Forms.CheckBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clGender = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnGenerateInvoices = New System.Windows.Forms.Button()
@@ -81,10 +72,19 @@ Partial Class frmBilling
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblTotalChargesNoMaple = New System.Windows.Forms.Label()
-        Me.lblTotalDurationNoMaple = New System.Windows.Forms.Label()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clGender = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -217,6 +217,17 @@ Partial Class frmBilling
         Me.cmbBillingDates.TabIndex = 55
         Me.cmbBillingDates.ValueMember = "ID"
         '
+        'lblTotalDurationNoMaple
+        '
+        Me.lblTotalDurationNoMaple.AutoSize = True
+        Me.lblTotalDurationNoMaple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblTotalDurationNoMaple.ForeColor = System.Drawing.Color.Maroon
+        Me.lblTotalDurationNoMaple.Location = New System.Drawing.Point(255, 118)
+        Me.lblTotalDurationNoMaple.Name = "lblTotalDurationNoMaple"
+        Me.lblTotalDurationNoMaple.Size = New System.Drawing.Size(78, 18)
+        Me.lblTotalDurationNoMaple.TabIndex = 52
+        Me.lblTotalDurationNoMaple.Text = "0.0000000"
+        '
         'lblTotalDuration
         '
         Me.lblTotalDuration.AutoSize = True
@@ -228,25 +239,54 @@ Partial Class frmBilling
         Me.lblTotalDuration.TabIndex = 52
         Me.lblTotalDuration.Text = "0.0000000"
         '
+        'lblTotalChargesNoMaple
+        '
+        Me.lblTotalChargesNoMaple.AutoSize = True
+        Me.lblTotalChargesNoMaple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblTotalChargesNoMaple.ForeColor = System.Drawing.Color.Maroon
+        Me.lblTotalChargesNoMaple.Location = New System.Drawing.Point(628, 119)
+        Me.lblTotalChargesNoMaple.Name = "lblTotalChargesNoMaple"
+        Me.lblTotalChargesNoMaple.Size = New System.Drawing.Size(78, 18)
+        Me.lblTotalChargesNoMaple.TabIndex = 54
+        Me.lblTotalChargesNoMaple.Text = "0.0000000"
+        '
         'lblTotalCharges
         '
         Me.lblTotalCharges.AutoSize = True
         Me.lblTotalCharges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTotalCharges.ForeColor = System.Drawing.Color.Maroon
-        Me.lblTotalCharges.Location = New System.Drawing.Point(306, 85)
+        Me.lblTotalCharges.Location = New System.Drawing.Point(488, 86)
         Me.lblTotalCharges.Name = "lblTotalCharges"
         Me.lblTotalCharges.Size = New System.Drawing.Size(78, 18)
         Me.lblTotalCharges.TabIndex = 54
         Me.lblTotalCharges.Text = "0.0000000"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(386, 119)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(244, 16)
+        Me.Label5.TabIndex = 53
+        Me.Label5.Text = "Total Charges without Maple clients:"
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(204, 86)
+        Me.Label4.Location = New System.Drawing.Point(386, 87)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(102, 16)
         Me.Label4.TabIndex = 53
         Me.Label4.Text = "Total Charges:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(9, 119)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(247, 16)
+        Me.Label3.TabIndex = 51
+        Me.Label3.Text = "Total Duration without Maple clients:"
         '
         'Label2
         '
@@ -331,119 +371,6 @@ Partial Class frmBilling
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1403, 555)
         Me.DataGridView1.TabIndex = 37
-        '
-        'clID
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.ReadOnly = True
-        Me.clID.Visible = False
-        '
-        'clNo
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clNo.HeaderText = "No."
-        Me.clNo.Name = "clNo"
-        Me.clNo.ReadOnly = True
-        Me.clNo.Width = 40
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "Found in Database"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column7.Width = 80
-        '
-        'Category
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Category.HeaderText = "Client ID"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 130
-        '
-        'clEmail
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clEmail.DefaultCellStyle = DataGridViewCellStyle5
-        Me.clEmail.HeaderText = "Area Name"
-        Me.clEmail.Name = "clEmail"
-        Me.clEmail.ReadOnly = True
-        Me.clEmail.Width = 190
-        '
-        'clGender
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clGender.DefaultCellStyle = DataGridViewCellStyle6
-        Me.clGender.HeaderText = "Area Code"
-        Me.clGender.Name = "clGender"
-        Me.clGender.ReadOnly = True
-        Me.clGender.Width = 130
-        '
-        'Column1
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Column1.HeaderText = "Total Charges"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 90
-        '
-        'Column2
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Column2.HeaderText = "Total Duration"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 80
-        '
-        'Column5
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle9
-        Me.Column5.HeaderText = "Period from"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column3
-        '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Column3.HeaderText = "Period To"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle11
-        Me.Column4.HeaderText = "Imported From"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 150
-        '
-        'Column6
-        '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle12
-        Me.Column6.HeaderText = "Imported Date"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Width = 150
-        '
-        'Column8
-        '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle13
-        Me.Column8.HeaderText = "Invoice Period"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
         '
         'ContextMenuStrip1
         '
@@ -569,45 +496,118 @@ Partial Class frmBilling
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Label3
+        'clID
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 119)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(247, 16)
-        Me.Label3.TabIndex = 51
-        Me.Label3.Text = "Total Duration without Maple clients:"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
+        Me.clID.ReadOnly = True
+        Me.clID.Visible = False
         '
-        'Label5
+        'clNo
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(386, 119)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(244, 16)
-        Me.Label5.TabIndex = 53
-        Me.Label5.Text = "Total Charges without Maple clients:"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clNo.HeaderText = "No."
+        Me.clNo.Name = "clNo"
+        Me.clNo.ReadOnly = True
+        Me.clNo.Width = 40
         '
-        'lblTotalChargesNoMaple
+        'Column7
         '
-        Me.lblTotalChargesNoMaple.AutoSize = True
-        Me.lblTotalChargesNoMaple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblTotalChargesNoMaple.ForeColor = System.Drawing.Color.Maroon
-        Me.lblTotalChargesNoMaple.Location = New System.Drawing.Point(628, 119)
-        Me.lblTotalChargesNoMaple.Name = "lblTotalChargesNoMaple"
-        Me.lblTotalChargesNoMaple.Size = New System.Drawing.Size(78, 18)
-        Me.lblTotalChargesNoMaple.TabIndex = 54
-        Me.lblTotalChargesNoMaple.Text = "0.0000000"
+        Me.Column7.HeaderText = "Found in Database"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column7.Width = 80
         '
-        'lblTotalDurationNoMaple
+        'Category
         '
-        Me.lblTotalDurationNoMaple.AutoSize = True
-        Me.lblTotalDurationNoMaple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblTotalDurationNoMaple.ForeColor = System.Drawing.Color.Maroon
-        Me.lblTotalDurationNoMaple.Location = New System.Drawing.Point(255, 118)
-        Me.lblTotalDurationNoMaple.Name = "lblTotalDurationNoMaple"
-        Me.lblTotalDurationNoMaple.Size = New System.Drawing.Size(78, 18)
-        Me.lblTotalDurationNoMaple.TabIndex = 52
-        Me.lblTotalDurationNoMaple.Text = "0.0000000"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Category.HeaderText = "Client ID"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 130
+        '
+        'clEmail
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clEmail.DefaultCellStyle = DataGridViewCellStyle5
+        Me.clEmail.HeaderText = "Area Name"
+        Me.clEmail.Name = "clEmail"
+        Me.clEmail.ReadOnly = True
+        Me.clEmail.Width = 190
+        '
+        'clGender
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clGender.DefaultCellStyle = DataGridViewCellStyle6
+        Me.clGender.HeaderText = "Area Code"
+        Me.clGender.Name = "clGender"
+        Me.clGender.ReadOnly = True
+        Me.clGender.Width = 130
+        '
+        'Column1
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Column1.HeaderText = "Total Charges"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 90
+        '
+        'Column2
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column2.HeaderText = "Total Duration"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 80
+        '
+        'Column5
+        '
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle9
+        Me.Column5.HeaderText = "Period from"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column3
+        '
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Column3.HeaderText = "Period To"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle11
+        Me.Column4.HeaderText = "Imported From"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 150
+        '
+        'Column6
+        '
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Column6.HeaderText = "Imported Date"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Width = 150
+        '
+        'Column8
+        '
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column8.DefaultCellStyle = DataGridViewCellStyle13
+        Me.Column8.HeaderText = "Invoice Period"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
         '
         'frmBilling
         '
@@ -666,6 +666,10 @@ Partial Class frmBilling
     Friend WithEvents rbOutbound As System.Windows.Forms.RadioButton
     Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
     Friend WithEvents chkPeriod As System.Windows.Forms.CheckBox
+    Friend WithEvents lblTotalDurationNoMaple As System.Windows.Forms.Label
+    Friend WithEvents lblTotalChargesNoMaple As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewCheckBoxColumn
@@ -679,9 +683,5 @@ Partial Class frmBilling
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents lblTotalDurationNoMaple As System.Windows.Forms.Label
-    Friend WithEvents lblTotalChargesNoMaple As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class

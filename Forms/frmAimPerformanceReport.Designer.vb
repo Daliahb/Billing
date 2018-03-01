@@ -49,6 +49,8 @@ Partial Class frmAimPerformanceReport
         Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsAccountManagers, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,6 +66,8 @@ Partial Class frmAimPerformanceReport
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.lblTotal)
+        Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.btnInCharts)
         Me.Panel1.Controls.Add(Me.btnOutCharts)
         Me.Panel1.Controls.Add(Me.btnSearch)
@@ -121,16 +125,16 @@ Partial Class frmAimPerformanceReport
         'lblTotalOut
         '
         Me.lblTotalOut.AutoSize = True
-        Me.lblTotalOut.Location = New System.Drawing.Point(260, 59)
+        Me.lblTotalOut.Location = New System.Drawing.Point(277, 59)
         Me.lblTotalOut.Name = "lblTotalOut"
-        Me.lblTotalOut.Size = New System.Drawing.Size(50, 16)
+        Me.lblTotalOut.Size = New System.Drawing.Size(16, 16)
         Me.lblTotalOut.TabIndex = 1
-        Me.lblTotalOut.Text = "Label1"
+        Me.lblTotalOut.Text = "0"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(191, 59)
+        Me.Label2.Location = New System.Drawing.Point(208, 59)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 16)
         Me.Label2.TabIndex = 2
@@ -141,9 +145,9 @@ Partial Class frmAimPerformanceReport
         Me.lblTotalIn.AutoSize = True
         Me.lblTotalIn.Location = New System.Drawing.Point(68, 59)
         Me.lblTotalIn.Name = "lblTotalIn"
-        Me.lblTotalIn.Size = New System.Drawing.Size(50, 16)
+        Me.lblTotalIn.Size = New System.Drawing.Size(16, 16)
         Me.lblTotalIn.TabIndex = 4
-        Me.lblTotalIn.Text = "Label4"
+        Me.lblTotalIn.Text = "0"
         '
         'chkAccountManager
         '
@@ -292,6 +296,24 @@ Partial Class frmAimPerformanceReport
         '
         Me.AccountManagersTableAdapter.ClearBeforeFill = True
         '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(521, 59)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(16, 16)
+        Me.lblTotal.TabIndex = 93
+        Me.lblTotal.Text = "0"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(408, 59)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(117, 16)
+        Me.Label4.TabIndex = 94
+        Me.Label4.Text = "Total In and Out:"
+        '
         'frmAimPerformanceReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -304,7 +326,7 @@ Partial Class frmAimPerformanceReport
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmAimPerformanceReport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Aim Performance"
+        Me.Text = "AM Performance"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -338,4 +360,6 @@ Partial Class frmAimPerformanceReport
     Friend WithEvents btnInCharts As System.Windows.Forms.Button
     Friend WithEvents btnOutCharts As System.Windows.Forms.Button
     Friend WithEvents btnSearch As System.Windows.Forms.Button
+    Friend WithEvents lblTotal As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

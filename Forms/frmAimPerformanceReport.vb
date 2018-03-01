@@ -4,7 +4,7 @@ Imports Microsoft.Office.Interop
 Public Class frmAimPerformanceReport
     Public ds As DataSet
     Public lTotalColumn As Integer
-    Public dblTotalIn, dblTotalOut As Double
+    Public dblTotalIn, dblTotalOut, dblTotal As Double
     Dim intStatus, intAccountManager, lCount As Integer
 
     Private Sub frmSchedual_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -58,7 +58,7 @@ Public Class frmAimPerformanceReport
                 .Name = "InOut"
             End With
             DataGridView1.Columns.Add(contcolumn)
-            contcolumn.Width = 120
+            contcolumn.Width = 100
 
             contcolumn = New DataGridViewTextBoxColumn
             With contcolumn
@@ -66,7 +66,7 @@ Public Class frmAimPerformanceReport
                 .Name = "Status"
             End With
             DataGridView1.Columns.Add(contcolumn)
-            contcolumn.Width = 120
+            contcolumn.Width = 100
 
             contcolumn = New DataGridViewTextBoxColumn
             With contcolumn
@@ -74,7 +74,23 @@ Public Class frmAimPerformanceReport
                 .Name = "AccountManager"
             End With
             DataGridView1.Columns.Add(contcolumn)
-            contcolumn.Width = 150
+            contcolumn.Width = 100
+
+            contcolumn = New DataGridViewTextBoxColumn
+            With contcolumn
+                .HeaderText = "Total Margin"
+                .Name = "TotalMargin"
+            End With
+            DataGridView1.Columns.Add(contcolumn)
+            ' contcolumn.Width = 150
+
+            contcolumn = New DataGridViewTextBoxColumn
+            With contcolumn
+                .HeaderText = "Total Margin In/Out"
+                .Name = "SubTotal"
+            End With
+            DataGridView1.Columns.Add(contcolumn)
+            ' contcolumn.Width = 150
 
             ' add all dates as columns (Table(1))
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 2 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
@@ -154,7 +170,7 @@ Public Class frmAimPerformanceReport
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 4 AndAlso Not ds.Tables(2).Rows.Count = 0 Then
                 For Each dr As DataRow In ds.Tables(2).Rows
                     If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
-                        For j = 5 To Me.DataGridView1.Columns.Count - 1 Step 3
+                        For j = 7 To Me.DataGridView1.Columns.Count - 1 Step 3
                             If Me.DataGridView1.Columns(j).Name = CDate(dr.Item("Insert_Date")).ToString("dd/MM/yyyy") Then
                                 Me.DataGridView1.Rows(r).Cells(j).Value = dr.Item("Total_Charges").ToString
                                 Me.DataGridView1.Rows(r).Cells(j + 1).Value = dr.Item("Margin").ToString
@@ -164,25 +180,37 @@ Public Class frmAimPerformanceReport
                         Next
                     End If
                 Next
-                'get total
-                'If Not ds.Tables(3).Rows.Count = 0 Then
-                '    For Each dr As DataRow In ds.Tables(3).Rows
-                '        If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
-                '            Me.DataGridView1.Rows(r).Cells(lTotalColumn).Value = dr.Item("TotalAmount").ToString
-                '            dblTotalIn += CDbl(dr.Item("TotalAmount"))
-                '            Exit For
-                '        End If
-                '    Next
-                'End If
+                ' get total
+                If Not ds.Tables(4).Rows.Count = 0 Then
+                    For Each dr As DataRow In ds.Tables(4).Rows
+                        If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
+                            Me.DataGridView1.Rows(r).Cells("TotalMargin").Value = dr.Item("TotalMarginIn").ToString
+                            dblTotalIn += CDbl(dr.Item("TotalMarginIn"))
+                            Exit For
+                        End If
+                    Next
+                End If
             End If
+
+            'get total In + Out
+            If Not ds.Tables(6).Rows.Count = 0 Then
+                For Each dr As DataRow In ds.Tables(6).Rows
+                    If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
+                        Me.DataGridView1.Rows(r).Cells("SubTotal").Value = dr.Item("TotalMargin").ToString
+                        dblTotal += CDbl(dr.Item("TotalMargin"))
+                        Exit For
+                    End If
+                Next
+            End If
+            Me.DataGridView1.Rows(r + 1).Cells("SubTotal").Style.BackColor = Color.LemonChiffon
         Next
 
-        'fill Amounts from Purchases (Table 4)
+        'fill Amounts from Purchases (Table 3)
         For r = 1 To Me.DataGridView1.Rows.Count - 1 Step 2
             If Not ds Is Nothing AndAlso Not ds.Tables.Count < 4 AndAlso Not ds.Tables(3).Rows.Count = 0 Then
                 For Each dr As DataRow In ds.Tables(3).Rows
                     If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
-                        For j = 5 To Me.DataGridView1.Columns.Count - 1 Step 3
+                        For j = 7 To Me.DataGridView1.Columns.Count - 1 Step 3
                             If Me.DataGridView1.Columns(j).Name = CDate(dr.Item("Insert_Date")).ToString("dd/MM/yyyy") Then
                                 Me.DataGridView1.Rows(r).Cells(j).Value = dr.Item("Total_Charges").ToString
                                 Me.DataGridView1.Rows(r).Cells(j + 1).Value = dr.Item("Margin").ToString
@@ -192,20 +220,22 @@ Public Class frmAimPerformanceReport
                         Next
                     End If
                 Next
-                'get total
-                'If Not ds.Tables(5).Rows.Count = 0 Then
-                '    For Each dr As DataRow In ds.Tables(5).Rows
-                '        If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
-                '            Me.DataGridView1.Rows(r).Cells(lTotalColumn).Value = dr.Item("TotalAmount").ToString
-                '            dblTotalOut += CDbl(dr.Item("TotalAmount"))
-                '            Exit For
-                '        End If
-                '    Next
-                'End If
+                ' get total
+                If Not ds.Tables(5).Rows.Count = 0 Then
+                    For Each dr As DataRow In ds.Tables(5).Rows
+                        If Me.DataGridView1.Rows(r).Cells(1).Value.ToString = dr.Item("code").ToString Then
+                            Me.DataGridView1.Rows(r).Cells("TotalMargin").Value = dr.Item("TotalMarginOut").ToString
+                            dblTotalOut += CDbl(dr.Item("TotalMarginOut"))
+                            Exit For
+                        End If
+                    Next
+                End If
             End If
         Next
+        Me.DataGridView1.SelectedRows(0).Selected = False
         Me.lblTotalIn.Text = dblTotalIn.ToString
         Me.lblTotalOut.Text = dblTotalOut.ToString
+        Me.lblTotal.Text = dblTotal.ToString
     End Sub
 
     Public Sub ClearDataGridCells()
@@ -298,10 +328,10 @@ Public Class frmAimPerformanceReport
             Dim j As Integer = 0
             While j < ds.Tables(0).Rows.Count * 3
                 Dim r1 As Rectangle = Me.DataGridView1.GetCellDisplayRectangle(j, -1, True)
-                r1.X = Me.DataGridView1.GetCellDisplayRectangle(5 + j, -1, True).X
+                r1.X = Me.DataGridView1.GetCellDisplayRectangle(7 + j, -1, True).X
                 Dim w2 As Integer = 0 '=  Me.DataGridView1.GetCellDisplayRectangle(j + 1, -1, True).Width * 4
                 For i = 0 To 2
-                    w2 += Me.DataGridView1.GetCellDisplayRectangle((5 + (j)) + i, -1, True).Width
+                    w2 += Me.DataGridView1.GetCellDisplayRectangle((7 + (j)) + i, -1, True).Width
                 Next
                 r1.X += 1
                 r1.Y += 1

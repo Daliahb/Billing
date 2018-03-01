@@ -24,8 +24,9 @@ Partial Class frmInquiries
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbUsers = New System.Windows.Forms.ComboBox()
         Me.UsersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -41,6 +42,17 @@ Partial Class frmInquiries
         Me.dtpDateFrom = New System.Windows.Forms.DateTimePicker()
         Me.dtpDateTo = New System.Windows.Forms.DateTimePicker()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EditInquiryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteInquiryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SetAsDoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.chkDate = New System.Windows.Forms.CheckBox()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.chkGroupClass = New System.Windows.Forms.CheckBox()
+        Me.dtpCallingDateFrom = New System.Windows.Forms.DateTimePicker()
+        Me.UsersTableAdapter = New WindowsApplication1.dsUserTableAdapters.UsersTableAdapter()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,17 +68,6 @@ Partial Class frmInquiries
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnInquiryAction = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.clmUserID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EditInquiryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteInquiryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.chkDate = New System.Windows.Forms.CheckBox()
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.chkGroupClass = New System.Windows.Forms.CheckBox()
-        Me.dtpCallingDateFrom = New System.Windows.Forms.DateTimePicker()
-        Me.UsersTableAdapter = New WindowsApplication1.dsUserTableAdapters.UsersTableAdapter()
-        Me.SetAsDoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         CType(Me.UsersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsUser, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -231,6 +232,7 @@ Partial Class frmInquiries
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowDrop = True
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
@@ -248,14 +250,14 @@ Partial Class frmInquiries
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.Column4, Me.Column6, Me.clMobile, Me.clName, Me.Column9, Me.Column8, Me.Catero, Me.Column1, Me.Column7, Me.Column5, Me.Column2, Me.Column10, Me.btnInquiryAction, Me.clmUserID})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LemonChiffon
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.LemonChiffon
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.Location = New System.Drawing.Point(3, 58)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
@@ -264,6 +266,84 @@ Partial Class frmInquiries
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1424, 634)
         Me.DataGridView1.TabIndex = 39
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditInquiryToolStripMenuItem, Me.DeleteInquiryToolStripMenuItem, Me.SetAsDoneToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(148, 70)
+        '
+        'EditInquiryToolStripMenuItem
+        '
+        Me.EditInquiryToolStripMenuItem.Name = "EditInquiryToolStripMenuItem"
+        Me.EditInquiryToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.EditInquiryToolStripMenuItem.Text = "Edit Inquiry"
+        Me.EditInquiryToolStripMenuItem.Visible = False
+        '
+        'DeleteInquiryToolStripMenuItem
+        '
+        Me.DeleteInquiryToolStripMenuItem.Name = "DeleteInquiryToolStripMenuItem"
+        Me.DeleteInquiryToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.DeleteInquiryToolStripMenuItem.Text = "Delete Inquiry"
+        '
+        'SetAsDoneToolStripMenuItem
+        '
+        Me.SetAsDoneToolStripMenuItem.Name = "SetAsDoneToolStripMenuItem"
+        Me.SetAsDoneToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.SetAsDoneToolStripMenuItem.Text = "Set as Done"
+        '
+        'chkDate
+        '
+        Me.chkDate.AutoSize = True
+        Me.chkDate.Location = New System.Drawing.Point(642, 15)
+        Me.chkDate.Name = "chkDate"
+        Me.chkDate.Size = New System.Drawing.Size(58, 20)
+        Me.chkDate.TabIndex = 67
+        Me.chkDate.Text = "Date"
+        Me.chkDate.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'chkGroupClass
+        '
+        Me.chkGroupClass.AutoSize = True
+        Me.chkGroupClass.Location = New System.Drawing.Point(4, 13)
+        Me.chkGroupClass.Name = "chkGroupClass"
+        Me.chkGroupClass.Size = New System.Drawing.Size(178, 20)
+        Me.chkGroupClass.TabIndex = 70
+        Me.chkGroupClass.Text = "Company/Person Name"
+        Me.chkGroupClass.UseVisualStyleBackColor = True
+        '
+        'dtpCallingDateFrom
+        '
+        Me.dtpCallingDateFrom.CustomFormat = "dd/MM/yyyy"
+        Me.dtpCallingDateFrom.Enabled = False
+        Me.dtpCallingDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpCallingDateFrom.Location = New System.Drawing.Point(627, 12)
+        Me.dtpCallingDateFrom.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpCallingDateFrom.Name = "dtpCallingDateFrom"
+        Me.dtpCallingDateFrom.Size = New System.Drawing.Size(123, 20)
+        Me.dtpCallingDateFrom.TabIndex = 65
+        '
+        'UsersTableAdapter
+        '
+        Me.UsersTableAdapter.ClearBeforeFill = True
         '
         'Column3
         '
@@ -326,10 +406,12 @@ Partial Class frmInquiries
         Me.Column1.HeaderText = "Date"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 120
+        Me.Column1.Width = 150
         '
         'Column7
         '
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column7.HeaderText = "Handled by"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
@@ -369,83 +451,6 @@ Partial Class frmInquiries
         Me.clmUserID.Name = "clmUserID"
         Me.clmUserID.ReadOnly = True
         Me.clmUserID.Visible = False
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditInquiryToolStripMenuItem, Me.DeleteInquiryToolStripMenuItem, Me.SetAsDoneToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 92)
-        '
-        'EditInquiryToolStripMenuItem
-        '
-        Me.EditInquiryToolStripMenuItem.Name = "EditInquiryToolStripMenuItem"
-        Me.EditInquiryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.EditInquiryToolStripMenuItem.Text = "Edit Inquiry"
-        '
-        'DeleteInquiryToolStripMenuItem
-        '
-        Me.DeleteInquiryToolStripMenuItem.Name = "DeleteInquiryToolStripMenuItem"
-        Me.DeleteInquiryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DeleteInquiryToolStripMenuItem.Text = "Delete Inquiry"
-        '
-        'chkDate
-        '
-        Me.chkDate.AutoSize = True
-        Me.chkDate.Location = New System.Drawing.Point(642, 15)
-        Me.chkDate.Name = "chkDate"
-        Me.chkDate.Size = New System.Drawing.Size(58, 20)
-        Me.chkDate.TabIndex = 67
-        Me.chkDate.Text = "Date"
-        Me.chkDate.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStrip2
-        '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'chkGroupClass
-        '
-        Me.chkGroupClass.AutoSize = True
-        Me.chkGroupClass.Location = New System.Drawing.Point(4, 13)
-        Me.chkGroupClass.Name = "chkGroupClass"
-        Me.chkGroupClass.Size = New System.Drawing.Size(178, 20)
-        Me.chkGroupClass.TabIndex = 70
-        Me.chkGroupClass.Text = "Company/Person Name"
-        Me.chkGroupClass.UseVisualStyleBackColor = True
-        '
-        'dtpCallingDateFrom
-        '
-        Me.dtpCallingDateFrom.CustomFormat = "dd/MM/yyyy"
-        Me.dtpCallingDateFrom.Enabled = False
-        Me.dtpCallingDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpCallingDateFrom.Location = New System.Drawing.Point(627, 12)
-        Me.dtpCallingDateFrom.Margin = New System.Windows.Forms.Padding(4)
-        Me.dtpCallingDateFrom.Name = "dtpCallingDateFrom"
-        Me.dtpCallingDateFrom.Size = New System.Drawing.Size(123, 20)
-        Me.dtpCallingDateFrom.TabIndex = 65
-        '
-        'UsersTableAdapter
-        '
-        Me.UsersTableAdapter.ClearBeforeFill = True
-        '
-        'SetAsDoneToolStripMenuItem
-        '
-        Me.SetAsDoneToolStripMenuItem.Name = "SetAsDoneToolStripMenuItem"
-        Me.SetAsDoneToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SetAsDoneToolStripMenuItem.Text = "Set as Done"
         '
         'frmInquiries
         '
@@ -498,6 +503,7 @@ Partial Class frmInquiries
     Friend WithEvents DsUser As WindowsApplication1.dsUser
     Friend WithEvents UsersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents UsersTableAdapter As WindowsApplication1.dsUserTableAdapters.UsersTableAdapter
+    Friend WithEvents SetAsDoneToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -513,5 +519,4 @@ Partial Class frmInquiries
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnInquiryAction As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents clmUserID As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SetAsDoneToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

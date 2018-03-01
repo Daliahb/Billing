@@ -99,21 +99,26 @@
                             .Cells(6).Value = dr.Item("TP").ToString
                         End If
                         ' .Cells(7).Value = dr.Item("Category").ToString
-                        .Cells(8).Value = CDate(dr.Item("DueDate")).ToString("yyyy/MM/dd")
+                        .Cells(8).Value = CDate(dr.Item("DueDate")).ToString("yyyy/MM/dd hh:mm")
 
-                        If Not dr.Item("HandledBy") Is DBNull.Value Then
-                            .Cells(9).Value = dr.Item("HandledBy").ToString
-                        Else
-                            .Cells(9).Value = ""
-                        End If
+
                         If Not dr.Item("Comments") Is DBNull.Value Then
                             .Cells(10).Value = dr.Item("Comments").ToString
                         End If
                         If CBool(dr.Item("isDone")) Then
                             .Cells(11).Value = "Done"
+                            .DefaultCellStyle.BackColor = Color.LightSkyBlue
                         Else
                             .Cells(11).Value = "Not Done"
                         End If
+
+                        If Not dr.Item("HandledBy") Is DBNull.Value Then
+                            .Cells(9).Value = dr.Item("HandledBy").ToString
+                            .Cells(9).Style.BackColor = Color.FromArgb(255, 192, 192)
+                        Else
+                            .Cells(9).Value = ""
+                        End If
+
                         .Cells(12).Value = getToUsers(ds.Tables(1), CLng(dr.Item("id")))
                         If Not dr.Item("HandledBy") Is DBNull.Value Then
                             .Cells(13).Value = "Actions"
@@ -122,10 +127,13 @@
                         End If
 
                         Me.DataGridView1.Rows(intRowIndex).Height = 50
+
                         intRowIndex += 1
                         intCounter += 1
                     End With
                 Next
+
+                Me.DataGridView1.SelectedRows(0).Selected = False
             End If
 
         Catch ex As Exception
@@ -158,21 +166,6 @@
 
     Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ExportToExcel(Me.DataGridView1)
-    End Sub
-
-    Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Right Then
-            Dim ht As DataGridView.HitTestInfo
-            ht = Me.DataGridView1.HitTest(e.X, e.Y)
-            If ht.Type = DataGridViewHitTestType.Cell Then
-                DataGridView1.ContextMenuStrip = ContextMenuStrip1
-            ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
-                Me.intColumnIndex = ht.ColumnIndex
-                DataGridView1.ContextMenuStrip = ContextMenuStrip2
-            Else
-                DataGridView1.ContextMenuStrip = ContextMenuStrip1
-            End If
-        End If
     End Sub
 
     Private Sub HideColumnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideColumnToolStripMenuItem.Click
@@ -267,7 +260,6 @@
         Me.GroupBox1.Enabled = chkStatus.Checked
     End Sub
 
-
     Private Sub SetAsDoneToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SetAsDoneToolStripMenuItem.Click
 
         If MsgBox("Are you sure you want to set this Inquiry as Done?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
@@ -278,6 +270,59 @@
                 MsgBox("An error occured, please try again later.")
             End If
 
+        End If
+    End Sub
+
+    Private fromIndex As Integer
+    Private dragIndex As Integer
+    Private dragRect As Rectangle
+
+    Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            Dim ht As DataGridView.HitTestInfo
+            ht = Me.DataGridView1.HitTest(e.X, e.Y)
+            If ht.Type = DataGridViewHitTestType.Cell Then
+                DataGridView1.ContextMenuStrip = ContextMenuStrip1
+            ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
+                Me.intColumnIndex = ht.ColumnIndex
+                DataGridView1.ContextMenuStrip = ContextMenuStrip2
+            Else
+                DataGridView1.ContextMenuStrip = ContextMenuStrip1
+            End If
+        ElseIf e.Button = Windows.Forms.MouseButtons.Left Then
+
+            fromIndex = DataGridView1.HitTest(e.X, e.Y).RowIndex
+            If fromIndex > -1 Then
+                Dim dragSize As Size = SystemInformation.DragSize
+                dragRect = New Rectangle(New Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize)
+            Else
+                dragRect = Rectangle.Empty
+            End If
+        End If
+
+    End Sub
+    Private Sub DataGridView1_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles DataGridView1.DragDrop
+        Dim p As Point = DataGridView1.PointToClient(New Point(e.X, e.Y))
+        dragIndex = DataGridView1.HitTest(p.X, p.Y).RowIndex
+        If (e.Effect = DragDropEffects.Move) Then
+            Dim dragRow As DataGridViewRow = e.Data.GetData(GetType(DataGridViewRow))
+            DataGridView1.Rows.RemoveAt(fromIndex)
+            DataGridView1.Rows.Insert(dragIndex, dragRow)
+        End If
+    End Sub
+
+    Private Sub DataGridView1_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles DataGridView1.DragOver
+        e.Effect = DragDropEffects.Move
+    End Sub
+
+  
+
+    Private Sub DataGridView1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles DataGridView1.MouseMove
+        If (e.Button And MouseButtons.Left) = MouseButtons.Left Then
+            If (dragRect <> Rectangle.Empty _
+            AndAlso Not dragRect.Contains(e.X, e.Y)) Then
+                DataGridView1.DoDragDrop(DataGridView1.Rows(fromIndex), DragDropEffects.Move)
+            End If
         End If
     End Sub
 End Class
