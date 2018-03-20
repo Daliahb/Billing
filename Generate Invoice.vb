@@ -339,7 +339,7 @@ Public Class Generate_Invoice
             Dim frmStatementOfAccount As New frmStatementOfAccount
             Dim intRowIndex, intCounter As Integer
             Dim dLastDate As Date
-            Dim dblAmount As Double
+            Dim dblAmount, dblCredit, dblDebit As Double
             Dim ds As DataSet
             Dim dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
 
@@ -425,6 +425,12 @@ Public Class Generate_Invoice
                         j = "=C" & i & "+D" & i & "+E" & i & "+F" & i & "-G" & i & "-" & "H" & i & "-I" & i
                         Me.worksheet.Range("j" & i).Formula = j
 
+                        If Me.worksheet.Range("j" & i).Value < 0 Then
+                            dblCredit += Me.worksheet.Range("j" & i).Value
+                        Else
+                            dblDebit += Me.worksheet.Range("j" & i).Value
+                        End If
+
                         getLastPaymentDate(ds.Tables(1), CInt(.Item("fk_client")), dLastDate, dblAmount)
 
                         Me.worksheet.Range("K" & i).Value = dLastDate
@@ -472,6 +478,9 @@ Public Class Generate_Invoice
                         i += 1
                     End With
                 Next
+                Me.worksheet.Range("l2").Value = dblCredit
+                Me.worksheet.Range("l3").Value = dblDebit
+
                 frmStatementOfAccount.Show()
                 Dim strStatus As String
                 Select Case CType(enumClientStatus, Enumerators.ClientStatus)
@@ -614,7 +623,6 @@ Public Class Generate_Invoice
 
         End Try
     End Sub
-
 
     Public Sub GenerateStatementOfAccountReportForClient_New(ByVal lClientID As Integer, strClientCode As String)
         Try

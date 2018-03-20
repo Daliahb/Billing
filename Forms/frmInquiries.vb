@@ -30,7 +30,7 @@
     Public Sub GenerateSearchCrytiria()
         If Me.chkDate.Checked Then
             dFromDate = Me.dtpDateFrom.Value
-            dToDate = Me.dtpDateTo.Value
+            dToDate = Me.dtpDateTo.Value.AddDays(1)
             boolDate = True
         Else
             boolDate = False

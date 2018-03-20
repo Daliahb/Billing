@@ -322,6 +322,11 @@
             oRole.ID = Enumerators.Roles.Company_Performance_Report
             oColRole.Add(oRole)
         End If
+        If Me.chkAMPerformanceReport.Checked Then
+            oRole = New Role
+            oRole.ID = Enumerators.Roles.AM_Performance_Report
+            oColRole.Add(oRole)
+        End If
         If Me.chkCashflowReport.Checked Then
             oRole = New Role
             oRole.ID = Enumerators.Roles.Cashflow_Report
@@ -529,6 +534,8 @@
                     Me.chkClientPerformanceReport.Checked = True
                 Case Enumerators.Roles.Company_Performance_Report
                     Me.chkCompanyPerformanceReport.Checked = True
+                Case Enumerators.Roles.AM_Performance_Report
+                    Me.chkAMPerformanceReport.Checked = True
                 Case Enumerators.Roles.Cashflow_Report
                     Me.chkCashflowReport.Checked = True
                 Case Enumerators.Roles.Manage_RecievedAmount

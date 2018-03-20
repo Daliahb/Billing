@@ -47,6 +47,7 @@ Partial Class frmAddClient
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtCompanyName = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -69,6 +70,7 @@ Partial Class frmAddClient
         Me.txtIBAN = New System.Windows.Forms.TextBox()
         Me.txtBankAccountNumber = New System.Windows.Forms.TextBox()
         Me.txtBankAccountName = New System.Windows.Forms.TextBox()
+        Me.txtDisableReason = New System.Windows.Forms.TextBox()
         Me.txtBillingEmail = New System.Windows.Forms.TextBox()
         Me.txtTimeZone = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -83,8 +85,8 @@ Partial Class frmAddClient
         Me.btnReset = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.AccountManagersTableAdapter1 = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
-        Me.txtDisableReason = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtRatingEmail = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -218,6 +220,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.txtCode)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.lblCompanyName)
+        Me.GroupBox1.Controls.Add(Me.Label22)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtAddress)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -232,6 +235,7 @@ Partial Class frmAddClient
         Me.GroupBox1.Controls.Add(Me.txtBankAccountNumber)
         Me.GroupBox1.Controls.Add(Me.txtBankAccountName)
         Me.GroupBox1.Controls.Add(Me.txtDisableReason)
+        Me.GroupBox1.Controls.Add(Me.txtRatingEmail)
         Me.GroupBox1.Controls.Add(Me.txtBillingEmail)
         Me.GroupBox1.Controls.Add(Me.txtTimeZone)
         Me.GroupBox1.Controls.Add(Me.Label19)
@@ -351,6 +355,15 @@ Partial Class frmAddClient
         Me.txtCompanyName.Size = New System.Drawing.Size(297, 23)
         Me.txtCompanyName.TabIndex = 0
         '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(512, 193)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(106, 16)
+        Me.Label21.TabIndex = 21
+        Me.Label21.Text = "Disable Reason"
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -363,7 +376,7 @@ Partial Class frmAddClient
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(15, 284)
+        Me.Label13.Location = New System.Drawing.Point(15, 313)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(154, 16)
         Me.Label13.TabIndex = 76
@@ -372,7 +385,7 @@ Partial Class frmAddClient
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(15, 256)
+        Me.Label12.Location = New System.Drawing.Point(15, 286)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(39, 16)
         Me.Label12.TabIndex = 76
@@ -381,7 +394,7 @@ Partial Class frmAddClient
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(15, 228)
+        Me.Label11.Location = New System.Drawing.Point(15, 259)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(150, 16)
         Me.Label11.TabIndex = 76
@@ -390,7 +403,7 @@ Partial Class frmAddClient
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(15, 200)
+        Me.Label9.Location = New System.Drawing.Point(15, 232)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(136, 16)
         Me.Label9.TabIndex = 76
@@ -415,7 +428,7 @@ Partial Class frmAddClient
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 159)
+        Me.Label4.Location = New System.Drawing.Point(15, 155)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(67, 16)
         Me.Label4.TabIndex = 76
@@ -472,7 +485,7 @@ Partial Class frmAddClient
         '
         'txtCCEmails
         '
-        Me.txtCCEmails.Location = New System.Drawing.Point(187, 153)
+        Me.txtCCEmails.Location = New System.Drawing.Point(187, 152)
         Me.txtCCEmails.Multiline = True
         Me.txtCCEmails.Name = "txtCCEmails"
         Me.txtCCEmails.Size = New System.Drawing.Size(297, 39)
@@ -480,52 +493,60 @@ Partial Class frmAddClient
         '
         'txtABARouting
         '
-        Me.txtABARouting.Location = New System.Drawing.Point(187, 366)
+        Me.txtABARouting.Location = New System.Drawing.Point(187, 391)
         Me.txtABARouting.Name = "txtABARouting"
         Me.txtABARouting.Size = New System.Drawing.Size(297, 23)
         Me.txtABARouting.TabIndex = 14
         '
         'txtSwift
         '
-        Me.txtSwift.Location = New System.Drawing.Point(187, 337)
+        Me.txtSwift.Location = New System.Drawing.Point(187, 364)
         Me.txtSwift.Name = "txtSwift"
         Me.txtSwift.Size = New System.Drawing.Size(297, 23)
         Me.txtSwift.TabIndex = 14
         '
         'txtBeneficiaryBankAdd
         '
-        Me.txtBeneficiaryBankAdd.Location = New System.Drawing.Point(187, 309)
+        Me.txtBeneficiaryBankAdd.Location = New System.Drawing.Point(187, 337)
         Me.txtBeneficiaryBankAdd.Name = "txtBeneficiaryBankAdd"
         Me.txtBeneficiaryBankAdd.Size = New System.Drawing.Size(297, 23)
         Me.txtBeneficiaryBankAdd.TabIndex = 13
         '
         'txtBeneficiaryBankName
         '
-        Me.txtBeneficiaryBankName.Location = New System.Drawing.Point(187, 281)
+        Me.txtBeneficiaryBankName.Location = New System.Drawing.Point(187, 310)
         Me.txtBeneficiaryBankName.Name = "txtBeneficiaryBankName"
         Me.txtBeneficiaryBankName.Size = New System.Drawing.Size(297, 23)
         Me.txtBeneficiaryBankName.TabIndex = 12
         '
         'txtIBAN
         '
-        Me.txtIBAN.Location = New System.Drawing.Point(187, 253)
+        Me.txtIBAN.Location = New System.Drawing.Point(187, 283)
         Me.txtIBAN.Name = "txtIBAN"
         Me.txtIBAN.Size = New System.Drawing.Size(297, 23)
         Me.txtIBAN.TabIndex = 11
         '
         'txtBankAccountNumber
         '
-        Me.txtBankAccountNumber.Location = New System.Drawing.Point(187, 225)
+        Me.txtBankAccountNumber.Location = New System.Drawing.Point(187, 256)
         Me.txtBankAccountNumber.Name = "txtBankAccountNumber"
         Me.txtBankAccountNumber.Size = New System.Drawing.Size(297, 23)
         Me.txtBankAccountNumber.TabIndex = 10
         '
         'txtBankAccountName
         '
-        Me.txtBankAccountName.Location = New System.Drawing.Point(187, 197)
+        Me.txtBankAccountName.Location = New System.Drawing.Point(187, 229)
         Me.txtBankAccountName.Name = "txtBankAccountName"
         Me.txtBankAccountName.Size = New System.Drawing.Size(297, 23)
         Me.txtBankAccountName.TabIndex = 9
+        '
+        'txtDisableReason
+        '
+        Me.txtDisableReason.Location = New System.Drawing.Point(618, 194)
+        Me.txtDisableReason.Multiline = True
+        Me.txtDisableReason.Name = "txtDisableReason"
+        Me.txtDisableReason.Size = New System.Drawing.Size(145, 55)
+        Me.txtDisableReason.TabIndex = 3
         '
         'txtBillingEmail
         '
@@ -544,7 +565,7 @@ Partial Class frmAddClient
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(15, 369)
+        Me.Label19.Location = New System.Drawing.Point(15, 394)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(118, 16)
         Me.Label19.TabIndex = 76
@@ -562,7 +583,7 @@ Partial Class frmAddClient
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(15, 340)
+        Me.Label15.Location = New System.Drawing.Point(15, 367)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(105, 16)
         Me.Label15.TabIndex = 76
@@ -580,7 +601,7 @@ Partial Class frmAddClient
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(15, 312)
+        Me.Label14.Location = New System.Drawing.Point(15, 340)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(173, 16)
         Me.Label14.TabIndex = 76
@@ -643,22 +664,21 @@ Partial Class frmAddClient
         '
         Me.AccountManagersTableAdapter1.ClearBeforeFill = True
         '
-        'txtDisableReason
+        'txtRatingEmail
         '
-        Me.txtDisableReason.Location = New System.Drawing.Point(618, 194)
-        Me.txtDisableReason.Multiline = True
-        Me.txtDisableReason.Name = "txtDisableReason"
-        Me.txtDisableReason.Size = New System.Drawing.Size(145, 55)
-        Me.txtDisableReason.TabIndex = 3
+        Me.txtRatingEmail.Location = New System.Drawing.Point(187, 195)
+        Me.txtRatingEmail.Name = "txtRatingEmail"
+        Me.txtRatingEmail.Size = New System.Drawing.Size(297, 23)
+        Me.txtRatingEmail.TabIndex = 7
         '
-        'Label21
+        'Label22
         '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(512, 193)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(106, 16)
-        Me.Label21.TabIndex = 21
-        Me.Label21.Text = "Disable Reason"
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(15, 199)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(93, 16)
+        Me.Label22.TabIndex = 76
+        Me.Label22.Text = "Rating Emails"
         '
         'frmAddClient
         '
@@ -748,4 +768,6 @@ Partial Class frmAddClient
     Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents txtDisableReason As System.Windows.Forms.TextBox
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents txtRatingEmail As System.Windows.Forms.TextBox
 End Class

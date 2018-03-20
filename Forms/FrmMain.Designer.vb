@@ -70,10 +70,11 @@ Partial Class FrmMain
         Me.InquiriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblCountry = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.lbl1 = New System.Windows.Forms.Label()
+        Me.SetPurchasePercentageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,7 +82,7 @@ Partial Class FrmMain
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientsToolStripMenuItem, Me.PotentialClientsToolStripMenuItem, Me.BankAccountsToolStripMenuItem, Me.CompaniesToolStripMenuItem, Me.SoftwaresToolStripMenuItem, Me.AccountManagersToolStripMenuItem, Me.MapleAccountsToolStripMenuItem, Me.EmailBodyToolStripMenuItem, Me.ToolStripSeparator1, Me.MangeUsersToolStripMenuItem, Me.ResetPasswordToolStripMenuItem, Me.ToolStripSeparator6, Me.SetInvoicesFolderToolStripMenuItem, Me.SetTestEmailToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientsToolStripMenuItem, Me.PotentialClientsToolStripMenuItem, Me.BankAccountsToolStripMenuItem, Me.CompaniesToolStripMenuItem, Me.SoftwaresToolStripMenuItem, Me.AccountManagersToolStripMenuItem, Me.MapleAccountsToolStripMenuItem, Me.EmailBodyToolStripMenuItem, Me.ToolStripSeparator1, Me.MangeUsersToolStripMenuItem, Me.ResetPasswordToolStripMenuItem, Me.ToolStripSeparator6, Me.SetInvoicesFolderToolStripMenuItem, Me.SetTestEmailToolStripMenuItem, Me.SetPurchasePercentageToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.SettingsToolStripMenuItem.Text = "Edit"
@@ -90,91 +91,91 @@ Partial Class FrmMain
         '
         Me.ClientsToolStripMenuItem.Enabled = False
         Me.ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem"
-        Me.ClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.ClientsToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ClientsToolStripMenuItem.Text = "Clients"
         '
         'PotentialClientsToolStripMenuItem
         '
         Me.PotentialClientsToolStripMenuItem.Name = "PotentialClientsToolStripMenuItem"
-        Me.PotentialClientsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.PotentialClientsToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.PotentialClientsToolStripMenuItem.Text = "Potential Clients"
         '
         'BankAccountsToolStripMenuItem
         '
         Me.BankAccountsToolStripMenuItem.Enabled = False
         Me.BankAccountsToolStripMenuItem.Name = "BankAccountsToolStripMenuItem"
-        Me.BankAccountsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.BankAccountsToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.BankAccountsToolStripMenuItem.Text = "Bank Accounts"
         '
         'CompaniesToolStripMenuItem
         '
         Me.CompaniesToolStripMenuItem.Enabled = False
         Me.CompaniesToolStripMenuItem.Name = "CompaniesToolStripMenuItem"
-        Me.CompaniesToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.CompaniesToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.CompaniesToolStripMenuItem.Text = "Companies"
         '
         'SoftwaresToolStripMenuItem
         '
         Me.SoftwaresToolStripMenuItem.Enabled = False
         Me.SoftwaresToolStripMenuItem.Name = "SoftwaresToolStripMenuItem"
-        Me.SoftwaresToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.SoftwaresToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.SoftwaresToolStripMenuItem.Text = "Softwares"
         '
         'AccountManagersToolStripMenuItem
         '
         Me.AccountManagersToolStripMenuItem.Enabled = False
         Me.AccountManagersToolStripMenuItem.Name = "AccountManagersToolStripMenuItem"
-        Me.AccountManagersToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.AccountManagersToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.AccountManagersToolStripMenuItem.Text = "Account Managers"
         '
         'MapleAccountsToolStripMenuItem
         '
         Me.MapleAccountsToolStripMenuItem.Enabled = False
         Me.MapleAccountsToolStripMenuItem.Name = "MapleAccountsToolStripMenuItem"
-        Me.MapleAccountsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.MapleAccountsToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.MapleAccountsToolStripMenuItem.Text = "Maple Accounts"
         '
         'EmailBodyToolStripMenuItem
         '
         Me.EmailBodyToolStripMenuItem.Enabled = False
         Me.EmailBodyToolStripMenuItem.Name = "EmailBodyToolStripMenuItem"
-        Me.EmailBodyToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.EmailBodyToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.EmailBodyToolStripMenuItem.Text = "Email Body"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(171, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(223, 6)
         '
         'MangeUsersToolStripMenuItem
         '
         Me.MangeUsersToolStripMenuItem.Enabled = False
         Me.MangeUsersToolStripMenuItem.Name = "MangeUsersToolStripMenuItem"
-        Me.MangeUsersToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.MangeUsersToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.MangeUsersToolStripMenuItem.Text = "Mange Users"
         '
         'ResetPasswordToolStripMenuItem
         '
         Me.ResetPasswordToolStripMenuItem.Name = "ResetPasswordToolStripMenuItem"
-        Me.ResetPasswordToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.ResetPasswordToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ResetPasswordToolStripMenuItem.Text = "Reset Password"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(171, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(223, 6)
         '
         'SetInvoicesFolderToolStripMenuItem
         '
         Me.SetInvoicesFolderToolStripMenuItem.Name = "SetInvoicesFolderToolStripMenuItem"
-        Me.SetInvoicesFolderToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.SetInvoicesFolderToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.SetInvoicesFolderToolStripMenuItem.Text = "Set Invoices Folder"
         '
         'SetTestEmailToolStripMenuItem
         '
         Me.SetTestEmailToolStripMenuItem.Enabled = False
         Me.SetTestEmailToolStripMenuItem.Name = "SetTestEmailToolStripMenuItem"
-        Me.SetTestEmailToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.SetTestEmailToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.SetTestEmailToolStripMenuItem.Text = "Set Test Email"
         '
         'AccountingToolStripMenuItem1
@@ -290,6 +291,7 @@ Partial Class FrmMain
         '
         'AimPerformanceReportToolStripMenuItem
         '
+        Me.AimPerformanceReportToolStripMenuItem.Enabled = False
         Me.AimPerformanceReportToolStripMenuItem.Name = "AimPerformanceReportToolStripMenuItem"
         Me.AimPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.AimPerformanceReportToolStripMenuItem.Text = "AM Performance Report"
@@ -393,6 +395,23 @@ Partial Class FrmMain
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
+        'lbl1
+        '
+        Me.lbl1.AutoSize = True
+        Me.lbl1.Location = New System.Drawing.Point(322, 6)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Size = New System.Drawing.Size(39, 13)
+        Me.lbl1.TabIndex = 115
+        Me.lbl1.Text = "Label1"
+        Me.lbl1.Visible = False
+        '
+        'SetPurchasePercentageToolStripMenuItem
+        '
+        Me.SetPurchasePercentageToolStripMenuItem.Name = "SetPurchasePercentageToolStripMenuItem"
+        Me.SetPurchasePercentageToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.SetPurchasePercentageToolStripMenuItem.Text = "Set Purchase Edit Percentage"
+        Me.SetPurchasePercentageToolStripMenuItem.Visible = False
+        '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
@@ -416,16 +435,6 @@ Partial Class FrmMain
         Me.PictureBox2.TabIndex = 111
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
-        '
-        'lbl1
-        '
-        Me.lbl1.AutoSize = True
-        Me.lbl1.Location = New System.Drawing.Point(322, 6)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(39, 13)
-        Me.lbl1.TabIndex = 115
-        Me.lbl1.Text = "Label1"
-        Me.lbl1.Visible = False
         '
         'FrmMain
         '
@@ -505,4 +514,5 @@ Partial Class FrmMain
     Friend WithEvents AimPerformanceReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lbl1 As System.Windows.Forms.Label
+    Friend WithEvents SetPurchasePercentageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -9,13 +9,14 @@
     Public strNote, strBank As String
 
 
-    Public Sub New(ByVal enumEditAdd As Enumerators.EditAdd, Optional ByVal dgRow As DataGridViewRow = Nothing)
+    Public Sub New(ByVal enumEditAdd As Enumerators.EditAdd, lClientID As Long, Optional ByVal dgRow As DataGridViewRow = Nothing)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         Me.enumEditAdd = enumEditAdd
         Me.dgRow = dgRow
+        Me.lClientId = lClientID
     End Sub
 
     Private Sub frmAddBank_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -44,7 +45,9 @@
         If gUser.oColRoles.find(Enumerators.Roles.Manage_RecievedAmount) Then
             Me.Button1.Enabled = True
         End If
-
+        If Not Me.lClientId = 0 Then
+            Me.cmbClientCode.SelectedValue = lClientId
+        End If
         boolSaved = True
     End Sub
 

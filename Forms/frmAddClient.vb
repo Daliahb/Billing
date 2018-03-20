@@ -83,6 +83,7 @@
         Me.txtStatement.Text = ""
         Me.txtBillingEmail.Text = ""
         Me.txtCCEmails.Text = ""
+        Me.txtRatingEmail.Text = ""
         Me.txtBankAccountName.Text = ""
         Me.txtBankAccountNumber.Text = ""
         Me.txtIBAN.text = ""
@@ -111,6 +112,7 @@
             .Statement = CInt(Me.txtStatement.Text)
             .BillingEmail = Me.txtBillingEmail.Text
             .CCEmail = Me.txtCCEmails.Text
+            .RatingEmail = Me.txtRatingEmail.Text
             .BankAccountName = Me.txtBankAccountName.Text
             .BankAccountNumber = Me.txtBankAccountNumber.Text
             .IBAN = Me.txtIBAN.Text
@@ -157,6 +159,7 @@
                 Me.txtStatement.Text = .Statement.ToString
                 Me.txtBillingEmail.Text = .BillingEmail
                 Me.txtCCEmails.Text = .CCEmail
+                Me.txtRatingEmail.Text = .RatingEmail
                 Me.txtBankAccountName.Text = .BankAccountName
                 Me.txtBankAccountNumber.Text = .BankAccountNumber
                 Me.txtIBAN.Text = .IBAN

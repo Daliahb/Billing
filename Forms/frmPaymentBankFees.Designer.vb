@@ -34,27 +34,29 @@ Partial Class frmPaymentBankFees
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.PanelMaplePayment = New System.Windows.Forms.Panel()
+        Me.PanelClientPayment = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelMaplePayment.SuspendLayout()
+        Me.PanelClientPayment.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.PanelClientPayment)
+        Me.Panel1.Controls.Add(Me.PanelMaplePayment)
         Me.Panel1.Controls.Add(Me.lblFees)
-        Me.Panel1.Controls.Add(Me.txtDebit)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.txtCredit)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.btnClose)
-        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(237, 148)
+        Me.Panel1.Size = New System.Drawing.Size(244, 162)
         Me.Panel1.TabIndex = 0
         '
         'lblFees
@@ -68,15 +70,16 @@ Partial Class frmPaymentBankFees
         '
         'txtDebit
         '
-        Me.txtDebit.Location = New System.Drawing.Point(172, 36)
+        Me.txtDebit.Location = New System.Drawing.Point(168, 3)
         Me.txtDebit.Name = "txtDebit"
         Me.txtDebit.Size = New System.Drawing.Size(49, 23)
         Me.txtDebit.TabIndex = 8
+        Me.txtDebit.Text = "0.0"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 39)
+        Me.Label3.Location = New System.Drawing.Point(1, 6)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(167, 16)
         Me.Label3.TabIndex = 11
@@ -84,10 +87,11 @@ Partial Class frmPaymentBankFees
         '
         'txtCredit
         '
-        Me.txtCredit.Location = New System.Drawing.Point(172, 65)
+        Me.txtCredit.Location = New System.Drawing.Point(166, 1)
         Me.txtCredit.Name = "txtCredit"
         Me.txtCredit.Size = New System.Drawing.Size(49, 23)
         Me.txtCredit.TabIndex = 9
+        Me.txtCredit.Text = "0.0"
         '
         'Label1
         '
@@ -101,7 +105,7 @@ Partial Class frmPaymentBankFees
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.Location = New System.Drawing.Point(40, 109)
+        Me.btnSave.Location = New System.Drawing.Point(40, 123)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
         Me.btnSave.TabIndex = 6
@@ -111,7 +115,7 @@ Partial Class frmPaymentBankFees
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnClose.Location = New System.Drawing.Point(121, 109)
+        Me.btnClose.Location = New System.Drawing.Point(121, 123)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 30)
         Me.btnClose.TabIndex = 5
@@ -121,22 +125,42 @@ Partial Class frmPaymentBankFees
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 68)
+        Me.Label2.Location = New System.Drawing.Point(-2, 4)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(47, 16)
+        Me.Label2.Size = New System.Drawing.Size(162, 16)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Credit"
+        Me.Label2.Text = "Credit (Maple is paying)"
         '
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
+        '
+        'PanelMaplePayment
+        '
+        Me.PanelMaplePayment.Controls.Add(Me.txtDebit)
+        Me.PanelMaplePayment.Controls.Add(Me.Label3)
+        Me.PanelMaplePayment.Location = New System.Drawing.Point(6, 49)
+        Me.PanelMaplePayment.Name = "PanelMaplePayment"
+        Me.PanelMaplePayment.Size = New System.Drawing.Size(220, 29)
+        Me.PanelMaplePayment.TabIndex = 13
+        Me.PanelMaplePayment.Visible = False
+        '
+        'PanelClientPayment
+        '
+        Me.PanelClientPayment.Controls.Add(Me.Label2)
+        Me.PanelClientPayment.Controls.Add(Me.txtCredit)
+        Me.PanelClientPayment.Location = New System.Drawing.Point(6, 62)
+        Me.PanelClientPayment.Name = "PanelClientPayment"
+        Me.PanelClientPayment.Size = New System.Drawing.Size(228, 34)
+        Me.PanelClientPayment.TabIndex = 14
+        Me.PanelClientPayment.Visible = False
         '
         'frmPaymentBankFees
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(241, 153)
+        Me.ClientSize = New System.Drawing.Size(248, 167)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -149,6 +173,10 @@ Partial Class frmPaymentBankFees
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelMaplePayment.ResumeLayout(False)
+        Me.PanelMaplePayment.PerformLayout()
+        Me.PanelClientPayment.ResumeLayout(False)
+        Me.PanelClientPayment.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -162,5 +190,7 @@ Partial Class frmPaymentBankFees
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents lblFees As System.Windows.Forms.Label
+    Friend WithEvents PanelClientPayment As System.Windows.Forms.Panel
+    Friend WithEvents PanelMaplePayment As System.Windows.Forms.Panel
 
 End Class

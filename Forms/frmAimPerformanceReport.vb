@@ -232,7 +232,11 @@ Public Class frmAimPerformanceReport
                 End If
             End If
         Next
-        Me.DataGridView1.SelectedRows(0).Selected = False
+        If Me.DataGridView1.SelectedRows.Count > 0 Then
+            Me.DataGridView1.SelectedRows(0).Selected = False
+        End If
+
+
         Me.lblTotalIn.Text = dblTotalIn.ToString
         Me.lblTotalOut.Text = dblTotalOut.ToString
         Me.lblTotal.Text = dblTotal.ToString

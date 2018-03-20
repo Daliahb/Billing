@@ -25,7 +25,7 @@ Public Class DBAccess
         oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
-        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
+        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
 
         'Armenia Test
         'oConnection.ConnectionString = "server=localhost;User Id=root;Password=root;Persist Security Info=false;database=voip_billing_system_mapleexpress_yerevan"
@@ -2057,6 +2057,13 @@ Public Class DBAccess
 
             oParam = New MySqlParameter
             With oParam
+                .ParameterName = "RatingEmail"
+                .Value = oClient.RatingEmail
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
                 .ParameterName = "BankAccountName"
                 .Value = oClient.BankAccountName
             End With
@@ -3057,6 +3064,13 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "CCEmail"
                 .Value = oClient.CCEmail
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "RatingEmail"
+                .Value = oClient.RatingEmail
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -4101,6 +4115,36 @@ Public Class DBAccess
         End Try
     End Function
 
+    Public Function SetPurchaceEditPurcentage(ByVal dblPercentage As Double) As Boolean
+        Try
+
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "SetPurchaceEditPurcentage"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "dblPercentage"
+                .Value = dblPercentage
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.StackTrace)
+            'oConnection.Close()
+            Return False
+        End Try
+
+    End Function
 #End Region
 
 #Region "Delete"

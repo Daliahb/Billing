@@ -10,6 +10,7 @@
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
+        Me.Text = Me.Text & " - " & gCountry.ToString
         Me.lblStatus.Text = ""
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         FillTypes()

@@ -14,6 +14,12 @@
         Me.isClientPayment = isClientPayment
 
         Me.lblFees.Text = dblFees.ToString
+
+        If isClientPayment Then
+            Me.PanelClientPayment.Visible = True
+        Else
+            Me.PanelMaplePayment.Visible = True
+        End If
     End Sub
 
 
@@ -45,7 +51,8 @@
 
     Public Function CheckValidation() As Boolean
        
-        If Not (CDbl(Me.txtCredit.Text) + CDbl(Me.txtDebit.Text) = Me.dblFees) Then
+        '  If Not (CDbl(Me.txtCredit.Text) + CDbl(Me.txtDebit.Text) = Me.dblFees) Then
+        If (CDbl(Me.txtCredit.Text) > Me.dblFees) Then
             ErrorProvider1.SetError(lblFees, "Credit and Debit values together should equal Bank Fees.")
             Return False
         Else
@@ -69,14 +76,14 @@
         If Me.txtDebit.Text = "" Then
             Me.txtDebit.Text = "0"
         End If
-        Me.txtCredit.Text = CStr(Math.Round(Me.dblFees - CDbl(txtDebit.Text), 3))
+        'Me.txtCredit.Text = CStr(Math.Round(Me.dblFees - CDbl(txtDebit.Text), 3))
     End Sub
 
     Private Sub txtCredit_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCredit.TextChanged
         If Me.txtCredit.Text = "" Then
             Me.txtCredit.Text = "0"
         End If
-        Me.txtDebit.Text = CStr(Math.Round(Me.dblFees - CDbl(txtCredit.Text), 3))
+        '   Me.txtDebit.Text = CStr(Math.Round(Me.dblFees - CDbl(txtCredit.Text), 3))
     End Sub
 End Class
 

@@ -53,8 +53,8 @@ Partial Class frmAddMaplePayment
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.cmbBanks)
@@ -260,6 +260,7 @@ Partial Class frmAddMaplePayment
         Me.txtNote.Name = "txtNote"
         Me.txtNote.Size = New System.Drawing.Size(219, 80)
         Me.txtNote.TabIndex = 7
+        Me.txtNote.Text = "System: Check recieved amount."
         '
         'ErrorProvider1
         '

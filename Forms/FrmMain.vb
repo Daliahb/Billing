@@ -29,7 +29,9 @@ Public Class FrmMain
             frm.Show()
         End If
 
-
+        If gUser.UserName.ToLower = "saher" Then
+            SetPurchasePercentageToolStripMenuItem.Visible = True
+        End If
 
         Me.CheckForIllegalCrossThreadCalls = False
         oCheckInquiryThread = New Threading.Thread(AddressOf CheckNewInquiries)
@@ -82,6 +84,8 @@ Public Class FrmMain
                     Me.PerformanceReportToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.Company_Performance_Report
                     Me.CompanyPerformanceReportToolStripMenuItem.Enabled = True
+                Case Enumerators.Roles.AM_Performance_Report
+                    Me.AimPerformanceReportToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.Cashflow_Report
                     Me.CashflowReportToolStripMenuItem.Enabled = True
                 Case Enumerators.Roles.View_Rates_Reports
@@ -517,7 +521,7 @@ Public Class FrmMain
                 End If
             Next
         Else
-            Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Add)
+            Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Add, 0)
             frm.Show()
         End If
     End Sub
@@ -561,4 +565,16 @@ Public Class FrmMain
 
 #End Region
 
+    Private Sub SetPurchasePercentageToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SetPurchasePercentageToolStripMenuItem.Click
+        If Application.OpenForms().OfType(Of frmSetPurchaceEditPercentage).Any Then
+            For Each frm As Form In Application.OpenForms
+                If frm.Name.Equals("frmSetPurchaceEditPercentage") Then
+                    frm.WindowState = FormWindowState.Maximized
+                End If
+            Next
+        Else
+            Dim frm As New frmSetPurchaceEditPercentage
+            frm.Show()
+        End If
+    End Sub
 End Class

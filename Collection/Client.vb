@@ -5,7 +5,7 @@
     Public timezone As String
     Public Address As String
     Public Period, Statement, CreditLimit As Integer
-    Public BillingEmail, CCEmail As String
+    Public BillingEmail, CCEmail, RatingEmail As String
     Public BankAccountName, BankAccountNumber, IBAN, BeneficiaryBankName, BeneficiaryBankAddress, Swift, ABARouting As String
     Public Agreement As New Enumerators.Agreement
     Public Status As New Enumerators.ClientStatus
@@ -37,6 +37,9 @@
                 End If
                 If Not dr.Item("CCEmails") Is DBNull.Value Then
                     Me.CCEmail = dr.Item("CCEmails").ToString
+                End If
+                If Not dr.Item("Rates_Email") Is DBNull.Value Then
+                    Me.RatingEmail = dr.Item("Rates_Email").ToString
                 End If
                 If Not dr.Item("BankAccountName") Is DBNull.Value Then
                     Me.BankAccountName = dr.Item("BankAccountName").ToString

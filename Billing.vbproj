@@ -192,6 +192,12 @@
     <Compile Include="DataSets\dsUsersCategories.vb">
       <DependentUpon>dsUsersCategories.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSetPurchaceEditPercentage.Designer.vb">
+      <DependentUpon>frmSetPurchaceEditPercentage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetPurchaceEditPercentage.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmAimPerformanceReport.Designer.vb">
       <DependentUpon>frmAimPerformanceReport.vb</DependentUpon>
     </Compile>
@@ -549,6 +555,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmSetPurchaceEditPercentage.resx">
+      <DependentUpon>frmSetPurchaceEditPercentage.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAimPerformanceReport.resx">
       <DependentUpon>frmAimPerformanceReport.vb</DependentUpon>
     </EmbeddedResource>

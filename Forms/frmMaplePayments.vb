@@ -125,19 +125,31 @@
 
     Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
+            If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+                Me.DataGridView1.SelectedRows(0).Selected = False
+            End If
+
+
             Dim ht As DataGridView.HitTestInfo
             ht = Me.DataGridView1.HitTest(e.X, e.Y)
             If ht.Type = DataGridViewHitTestType.Cell Then
+                Me.DataGridView1.Rows(ht.RowIndex).Selected = True
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
                 If ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = False Then
-                    ContextMenuStrip1.Items(1).Visible = True
                     ContextMenuStrip1.Items(2).Visible = True
+                    ContextMenuStrip1.Items(3).Visible = False
                     ContextMenuStrip1.Items(4).Visible = True
-                Else
-                    ContextMenuStrip1.Items(1).Visible = False
+                    ContextMenuStrip1.Items(5).Visible = True
+                ElseIf ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = True Then
                     ContextMenuStrip1.Items(2).Visible = False
-                    ' ContextMenuStrip1.Items(3).Visible = True
+                    ContextMenuStrip1.Items(3).Visible = True
                     ContextMenuStrip1.Items(4).Visible = True
+                    ContextMenuStrip1.Items(5).Visible = True
+                Else
+                    ContextMenuStrip1.Items(2).Visible = False
+                    ContextMenuStrip1.Items(3).Visible = False
+                    ContextMenuStrip1.Items(4).Visible = False
+                    ContextMenuStrip1.Items(5).Visible = True
                 End If
             ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
                 Me.intColumnIndex = ht.ColumnIndex
@@ -146,6 +158,28 @@
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
             End If
         End If
+        'If e.Button = Windows.Forms.MouseButtons.Right Then
+        '    Dim ht As DataGridView.HitTestInfo
+        '    ht = Me.DataGridView1.HitTest(e.X, e.Y)
+        '    If ht.Type = DataGridViewHitTestType.Cell Then
+        '        DataGridView1.ContextMenuStrip = ContextMenuStrip1
+        '        If ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = False Then
+        '            ContextMenuStrip1.Items(1).Visible = True
+        '            ContextMenuStrip1.Items(2).Visible = True
+        '            ContextMenuStrip1.Items(4).Visible = True
+        '        Else
+        '            ContextMenuStrip1.Items(1).Visible = False
+        '            ContextMenuStrip1.Items(2).Visible = False
+        '            ' ContextMenuStrip1.Items(3).Visible = True
+        '            ContextMenuStrip1.Items(4).Visible = True
+        '        End If
+        '    ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
+        '        Me.intColumnIndex = ht.ColumnIndex
+        '        DataGridView1.ContextMenuStrip = ContextMenuStripHideColumn
+        '    Else
+        '        DataGridView1.ContextMenuStrip = ContextMenuStrip1
+        '    End If
+        'End If
     End Sub
 
     Private Sub HideColumnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideColumnToolStripMenuItem.Click
@@ -168,13 +202,17 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Add)
+        Dim lClientID As Long
+        If Me.chkClient.Checked Then
+            lClientID = CLng(cmbClientCode.SelectedValue)
+        End If
+        Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Add, lClientID)
         frm.Show()
     End Sub
 
     Private Sub EditPaymentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditPaymentToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-            Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Edit, Me.DataGridView1.SelectedRows(0))
+            Dim frm As New frmAddMaplePayment(Enumerators.EditAdd.Edit, 0, Me.DataGridView1.SelectedRows(0))
             frm.ShowDialog()
             Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
             Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtAmount.Text
@@ -217,5 +255,17 @@
 
     Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
         Me.cmbStatus.Enabled = Me.chkStatus.Checked
+    End Sub
+
+    Private Sub EditBankFeesFromVouchersToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EditBankFeesFromVouchersToolStripMenuItem.Click
+        Dim frm As New frmVouchers
+        frm.cmbClientCode.Text = Me.DataGridView1.SelectedRows(0).Cells(2).Value.ToString
+        frm.chkDate.Checked = True
+        frm.dtpFromDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)
+        frm.dtpToDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)
+        frm.Show()
+        frm.chkType.Checked = True
+        frm.cmbType.SelectedItem = frm.cmbType.Items(0)
+        frm.btnSearch_Click(Me, New System.EventArgs)
     End Sub
 End Class

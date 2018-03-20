@@ -55,6 +55,7 @@
         Company_Performance_Report = 28
         Cashflow_Report = 29
         Edit_provide_price = 30
+        AM_Performance_Report = 31
     End Enum
 
     Public Enum DebitCredit

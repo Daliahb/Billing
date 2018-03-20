@@ -691,10 +691,10 @@ Public Class frmImportData
             Me.dtpFromDate.Value = Now.Date.AddDays(-7)
             Me.dtpToDate.Value = Now.Date.AddDays(-1)
         ElseIf cmbPeriod.Text = "15" Then
-            If Now.Day = 16 Then
+            If Now.Day >= 16 Then
                 Me.dtpFromDate.Value = CDate(Now.Date.Year & "-" & Now.Date.Month & "-01") ' from first day of the month
                 Me.dtpToDate.Value = CDate(Now.Date.Year & "-" & Now.Date.Month & "-15") ' 15th of the month
-            ElseIf Now.Day = 1 Then
+            ElseIf Now.Day < 16 Then
                 Dim dDate As Date
                 dDate = Now()
                 dDate = dDate.AddMonths(-1)

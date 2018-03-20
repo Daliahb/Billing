@@ -128,9 +128,13 @@
 
     Private Sub DataGridView1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
+            If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+                Me.DataGridView1.SelectedRows(0).Selected = False
+            End If
             Dim ht As DataGridView.HitTestInfo
             ht = Me.DataGridView1.HitTest(e.X, e.Y)
             If ht.Type = DataGridViewHitTestType.Cell Then
+                Me.DataGridView1.Rows(ht.RowIndex).Selected = True
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
                 If ht.ColumnIndex = 5 And CBool(DataGridView1.Rows(ht.RowIndex).Cells(9).Value) = False Then
                     ContextMenuStrip1.Items(2).Visible = True

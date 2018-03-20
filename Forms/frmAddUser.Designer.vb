@@ -40,6 +40,9 @@ Partial Class frmAddUser
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtAddPasswrod2 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cmbCategoryEdit = New System.Windows.Forms.ComboBox()
         Me.cmbAccountManagersEdit = New System.Windows.Forms.ComboBox()
         Me.btnDeleteUser = New System.Windows.Forms.Button()
         Me.btnEditUser = New System.Windows.Forms.Button()
@@ -93,9 +96,7 @@ Partial Class frmAddUser
         Me.chkClearAll = New System.Windows.Forms.CheckBox()
         Me.UsersTableAdapter = New WindowsApplication1.dsUserTableAdapters.UsersTableAdapter()
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.cmbCategoryEdit = New System.Windows.Forms.ComboBox()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.chkAMPerformanceReport = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.AccountManagersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -287,6 +288,38 @@ Partial Class frmAddUser
         Me.TabPage2.Size = New System.Drawing.Size(672, 121)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Edit User"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(317, 68)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(128, 16)
+        Me.Label12.TabIndex = 37
+        Me.Label12.Text = "Account Manager:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(-2, 91)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(68, 16)
+        Me.Label11.TabIndex = 36
+        Me.Label11.Text = "Category"
+        '
+        'cmbCategoryEdit
+        '
+        Me.cmbCategoryEdit.DataSource = Me.AccountManagersBindingSource
+        Me.cmbCategoryEdit.DisplayMember = "Name"
+        Me.cmbCategoryEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCategoryEdit.FormattingEnabled = True
+        Me.cmbCategoryEdit.Location = New System.Drawing.Point(72, 87)
+        Me.cmbCategoryEdit.Name = "cmbCategoryEdit"
+        Me.cmbCategoryEdit.Size = New System.Drawing.Size(152, 24)
+        Me.cmbCategoryEdit.TabIndex = 35
+        Me.cmbCategoryEdit.ValueMember = "ID"
         '
         'cmbAccountManagersEdit
         '
@@ -507,7 +540,7 @@ Partial Class frmAddUser
         'chkPurchases
         '
         Me.chkPurchases.AutoSize = True
-        Me.chkPurchases.Location = New System.Drawing.Point(4, 195)
+        Me.chkPurchases.Location = New System.Drawing.Point(4, 196)
         Me.chkPurchases.Name = "chkPurchases"
         Me.chkPurchases.Size = New System.Drawing.Size(129, 20)
         Me.chkPurchases.TabIndex = 13
@@ -517,7 +550,7 @@ Partial Class frmAddUser
         'chkViewVouchers
         '
         Me.chkViewVouchers.AutoSize = True
-        Me.chkViewVouchers.Location = New System.Drawing.Point(4, 173)
+        Me.chkViewVouchers.Location = New System.Drawing.Point(4, 174)
         Me.chkViewVouchers.Name = "chkViewVouchers"
         Me.chkViewVouchers.Size = New System.Drawing.Size(123, 20)
         Me.chkViewVouchers.TabIndex = 13
@@ -527,7 +560,7 @@ Partial Class frmAddUser
         'chkViewPayments
         '
         Me.chkViewPayments.AutoSize = True
-        Me.chkViewPayments.Location = New System.Drawing.Point(4, 151)
+        Me.chkViewPayments.Location = New System.Drawing.Point(4, 152)
         Me.chkViewPayments.Name = "chkViewPayments"
         Me.chkViewPayments.Size = New System.Drawing.Size(126, 20)
         Me.chkViewPayments.TabIndex = 13
@@ -537,7 +570,7 @@ Partial Class frmAddUser
         'chkTransactions
         '
         Me.chkTransactions.AutoSize = True
-        Me.chkTransactions.Location = New System.Drawing.Point(4, 128)
+        Me.chkTransactions.Location = New System.Drawing.Point(4, 129)
         Me.chkTransactions.Name = "chkTransactions"
         Me.chkTransactions.Size = New System.Drawing.Size(185, 20)
         Me.chkTransactions.TabIndex = 13
@@ -601,6 +634,7 @@ Partial Class frmAddUser
         Me.GroupBox2.Controls.Add(Me.chkGenerateInvoices)
         Me.GroupBox2.Controls.Add(Me.chkViewInvoices)
         Me.GroupBox2.Controls.Add(Me.chkSendEmails)
+        Me.GroupBox2.Controls.Add(Me.chkAMPerformanceReport)
         Me.GroupBox2.Controls.Add(Me.chkCompanyPerformanceReport)
         Me.GroupBox2.Controls.Add(Me.chkImportInvoices)
         Me.GroupBox2.Controls.Add(Me.chkGenerateWeeklyReport)
@@ -617,7 +651,7 @@ Partial Class frmAddUser
         'chkCashflowReport
         '
         Me.chkCashflowReport.AutoSize = True
-        Me.chkCashflowReport.Location = New System.Drawing.Point(6, 187)
+        Me.chkCashflowReport.Location = New System.Drawing.Point(6, 207)
         Me.chkCashflowReport.Name = "chkCashflowReport"
         Me.chkCashflowReport.Size = New System.Drawing.Size(134, 20)
         Me.chkCashflowReport.TabIndex = 21
@@ -825,37 +859,15 @@ Partial Class frmAddUser
         '
         Me.AccountManagersTableAdapter.ClearBeforeFill = True
         '
-        'Label11
+        'chkAMPerformanceReport
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(-2, 91)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(68, 16)
-        Me.Label11.TabIndex = 36
-        Me.Label11.Text = "Category"
-        '
-        'cmbCategoryEdit
-        '
-        Me.cmbCategoryEdit.DataSource = Me.AccountManagersBindingSource
-        Me.cmbCategoryEdit.DisplayMember = "Name"
-        Me.cmbCategoryEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbCategoryEdit.FormattingEnabled = True
-        Me.cmbCategoryEdit.Location = New System.Drawing.Point(72, 87)
-        Me.cmbCategoryEdit.Name = "cmbCategoryEdit"
-        Me.cmbCategoryEdit.Size = New System.Drawing.Size(152, 24)
-        Me.cmbCategoryEdit.TabIndex = 35
-        Me.cmbCategoryEdit.ValueMember = "ID"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(317, 68)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(128, 16)
-        Me.Label12.TabIndex = 37
-        Me.Label12.Text = "Account Manager:"
+        Me.chkAMPerformanceReport.AutoSize = True
+        Me.chkAMPerformanceReport.Location = New System.Drawing.Point(6, 187)
+        Me.chkAMPerformanceReport.Name = "chkAMPerformanceReport"
+        Me.chkAMPerformanceReport.Size = New System.Drawing.Size(184, 20)
+        Me.chkAMPerformanceReport.TabIndex = 20
+        Me.chkAMPerformanceReport.Text = "AM Performance Report"
+        Me.chkAMPerformanceReport.UseVisualStyleBackColor = True
         '
         'frmAddUser
         '
@@ -975,5 +987,6 @@ Partial Class frmAddUser
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cmbCategoryEdit As System.Windows.Forms.ComboBox
+    Friend WithEvents chkAMPerformanceReport As System.Windows.Forms.CheckBox
 
 End Class
