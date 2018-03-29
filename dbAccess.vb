@@ -58,7 +58,7 @@ Public Class DBAccess
 
             Return oClient
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -145,7 +145,7 @@ Public Class DBAccess
 
             Return oColClient
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -183,7 +183,7 @@ Public Class DBAccess
 
             Return oColBank
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -209,7 +209,7 @@ Public Class DBAccess
 
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -241,7 +241,7 @@ Public Class DBAccess
 
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -271,7 +271,7 @@ Public Class DBAccess
 
             Return oCompany
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -309,7 +309,7 @@ Public Class DBAccess
 
             Return oColCompany
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -328,7 +328,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -345,7 +345,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -362,7 +362,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -379,7 +379,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -403,7 +403,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -420,7 +420,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -437,7 +437,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -475,7 +475,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -501,7 +501,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -593,7 +593,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -686,7 +686,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -771,7 +771,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -804,7 +804,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -839,7 +839,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -874,7 +874,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -895,7 +895,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -930,7 +930,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -965,7 +965,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1000,7 +1000,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1031,7 +1031,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1094,7 +1094,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1123,7 +1123,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1152,7 +1152,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1181,7 +1181,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1203,7 +1203,38 @@ Public Class DBAccess
             End If
             Return ""
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetClientStatemntNotes(lClientID) As DataSet
+        ds = New DataSet
+        ' Dim strNote As String
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetClientStatemntNotes"
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lClientID"
+                .Value = lClientID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+
+            oDataAdapter.SelectCommand = oSelectCommand
+            oSelectCommand.Connection = Me.oConnection
+            oDataAdapter.Fill(ds)
+
+            If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 AndAlso Not ds.Tables(0).Rows.Count = 0 Then
+                Return ds
+            End If
+            Return Nothing
+
+        Catch ex As Exception
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1227,7 +1258,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1278,7 +1309,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1328,7 +1359,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1384,7 +1415,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1440,7 +1471,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1481,7 +1512,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1565,7 +1596,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1642,7 +1673,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1719,7 +1750,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1748,7 +1779,7 @@ Public Class DBAccess
             End If
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1777,7 +1808,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1855,7 +1886,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1884,7 +1915,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1919,7 +1950,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1948,7 +1979,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -1977,7 +2008,7 @@ Public Class DBAccess
             End If
             Return Nothing
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -2176,7 +2207,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             '    oConnection.Close()
             Return False
 
@@ -2263,7 +2294,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2307,7 +2338,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2373,7 +2404,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2424,7 +2455,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2483,7 +2514,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2534,7 +2565,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2606,7 +2637,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2678,7 +2709,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2764,7 +2795,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2815,7 +2846,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -2893,7 +2924,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            '  MsgBox(ex.Message & ex.StackTrace)
+            '  'MsgBox(ex.Message & ex.StackTrace)
             Return False
         End Try
 
@@ -2978,7 +3009,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3188,7 +3219,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             '    oConnection.Close()
             Return False
 
@@ -3232,7 +3263,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3284,7 +3315,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3378,7 +3409,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3451,7 +3482,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3502,7 +3533,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3546,7 +3577,45 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
+            oConnection.Close()
+            Return False
+
+        End Try
+    End Function
+
+    Public Function EditClientTransactionNote(lClientID As Long, strNote As String) As Boolean
+        Try
+            oSelectCommand = New MySqlCommand
+            oSelectCommand.CommandType = CommandType.StoredProcedure
+            oSelectCommand.CommandText = "EditClientStatmentNotes"
+            oSelectCommand.Connection = oConnection
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lClientID"
+                .Value = lClientID
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "strNote"
+                .Value = strNote
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+
+            If oConnection.State = ConnectionState.Closed Then
+                oConnection.Open()
+            End If
+
+            oSelectCommand.ExecuteNonQuery()
+            oConnection.Close()
+
+            Return True
+        Catch ex As Exception
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3626,7 +3695,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3706,7 +3775,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3799,7 +3868,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3850,7 +3919,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3894,7 +3963,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -3980,7 +4049,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            '  MsgBox(ex.Message & ex.StackTrace)
+            '  'MsgBox(ex.Message & ex.StackTrace)
             'oConnection.Close()
             Return False
         End Try
@@ -4108,7 +4177,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4139,7 +4208,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             'oConnection.Close()
             Return False
         End Try
@@ -4179,7 +4248,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4216,7 +4285,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4253,7 +4322,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4304,7 +4373,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4342,7 +4411,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4379,7 +4448,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4416,7 +4485,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4445,7 +4514,7 @@ Public Class DBAccess
             oConnection.Close()
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
         End Try
@@ -4508,7 +4577,7 @@ Public Class DBAccess
                 Return Nothing
             End If
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -4549,7 +4618,7 @@ Public Class DBAccess
             Return ds
 
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return Nothing
 
@@ -4583,7 +4652,7 @@ Public Class DBAccess
             oDataAdapter.Fill(ds)
             Return ds
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -4602,22 +4671,29 @@ Public Class DBAccess
 
             Return CBool(oSelectCommand.ExecuteScalar)
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             Return Nothing
         End Try
     End Function
 
-    Public Function SetPurchaseAsConfirmed(ByVal lPurchaseID As Long, ByVal boolStatus As Boolean) As Boolean
+    Public Function SetOperationAsConfirmed(TransactionType As Enumerators.TransactionType, ByVal lID As Long, ByVal boolStatus As Boolean) As Boolean
         Try
             oSelectCommand = New MySqlCommand
             oSelectCommand.CommandType = CommandType.StoredProcedure
-            oSelectCommand.CommandText = "SetPurchaseAsConfirmed"
+            oSelectCommand.CommandText = "SetOperationAsConfirmed"
             oSelectCommand.Connection = oConnection
 
             oParam = New MySqlParameter
             With oParam
-                .ParameterName = "lPurchaseID"
-                .Value = lPurchaseID
+                .ParameterName = "TransactionType"
+                .Value = CInt(TransactionType)
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "lID"
+                .Value = lID
             End With
             oSelectCommand.Parameters.Add(oParam)
 
@@ -4644,7 +4720,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4681,7 +4757,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4712,7 +4788,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4783,7 +4859,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4827,7 +4903,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4857,7 +4933,7 @@ Public Class DBAccess
 
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return False
 
@@ -4888,7 +4964,7 @@ Public Class DBAccess
 
             Return intCount
         Catch ex As Exception
-            MsgBox(ex.Message & ex.StackTrace)
+            'MsgBox(ex.Message & ex.StackTrace)
             oConnection.Close()
             Return 0
 

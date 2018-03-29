@@ -1,5 +1,10 @@
 ﻿Public Class Enumerators
 
+    Public Enum Country
+        Jordan
+        Armenia
+    End Enum
+
     Public Enum EditAdd
         Edit
         Add

@@ -40,6 +40,19 @@ Partial Class frmStatementOfAccount
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStatementOfAccount))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmbClientCode = New System.Windows.Forms.ComboBox()
+        Me.chkCode = New System.Windows.Forms.CheckBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.chkClearAll = New System.Windows.Forms.CheckBox()
+        Me.btnSendTestEmails = New System.Windows.Forms.Button()
+        Me.btnSendEmails = New System.Windows.Forms.Button()
+        Me.chkSelectAll = New System.Windows.Forms.CheckBox()
+        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -54,19 +67,9 @@ Partial Class frmStatementOfAccount
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmbClientCode = New System.Windows.Forms.ComboBox()
-        Me.chkCode = New System.Windows.Forms.CheckBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.chkClearAll = New System.Windows.Forms.CheckBox()
-        Me.btnSendTestEmails = New System.Windows.Forms.Button()
-        Me.btnSendEmails = New System.Windows.Forms.Button()
-        Me.chkSelectAll = New System.Windows.Forms.CheckBox()
-        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddNoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -107,7 +110,7 @@ Partial Class frmStatementOfAccount
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Column8, Me.Category, Me.Column9, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.ss, Me.Column10, Me.Column7, Me.Column4})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Column8, Me.Category, Me.Column9, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.ss, Me.Column10, Me.Column7, Me.Column4, Me.Column11})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle14.BackColor = System.Drawing.Color.LemonChiffon
@@ -125,135 +128,17 @@ Partial Class frmStatementOfAccount
         Me.DataGridView1.Size = New System.Drawing.Size(1396, 395)
         Me.DataGridView1.TabIndex = 37
         '
-        'clID
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.Visible = False
-        Me.clID.Width = 80
-        '
-        'clNo
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clNo.HeaderText = "No."
-        Me.clNo.Name = "clNo"
-        Me.clNo.ReadOnly = True
-        Me.clNo.Width = 40
-        '
-        'Column8
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleGoldenrod
-        DataGridViewCellStyle4.NullValue = False
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column8.HeaderText = "Send Email to"
-        Me.Column8.Name = "Column8"
-        Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column8.Width = 90
-        '
-        'Category
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Category.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Category.HeaderText = "Client ID"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 130
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "Account Manager"
-        Me.Column9.Name = "Column9"
-        '
-        'Column6
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column6.HeaderText = "Begining Balance"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column1
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Column1.HeaderText = "Credit"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 90
-        '
-        'Column2
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Column2.HeaderText = "Debit"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 80
-        '
-        'Column5
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle9
-        Me.Column5.HeaderText = "Balance"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column3
-        '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Column3.HeaderText = "Last Payment"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'ss
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ss.DefaultCellStyle = DataGridViewCellStyle11
-        Me.ss.HeaderText = "Amount"
-        Me.ss.Name = "ss"
-        Me.ss.ReadOnly = True
-        '
-        'Column10
-        '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle12
-        Me.Column10.HeaderText = "Credit Limit"
-        Me.Column10.Name = "Column10"
-        '
-        'Column7
-        '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle13
-        Me.Column7.HeaderText = "Days"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 90
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Sent Email"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddNoteToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(126, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(128, 76)
         '
         'ExportToExcelToolStripMenuItem
         '
         Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
         '
         'cmbClientCode
@@ -373,6 +258,141 @@ Partial Class frmStatementOfAccount
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'clID
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
+        Me.clID.Visible = False
+        Me.clID.Width = 80
+        '
+        'clNo
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clNo.HeaderText = "No."
+        Me.clNo.Name = "clNo"
+        Me.clNo.ReadOnly = True
+        Me.clNo.Width = 40
+        '
+        'Column8
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleGoldenrod
+        DataGridViewCellStyle4.NullValue = False
+        Me.Column8.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Column8.HeaderText = "Send Email to"
+        Me.Column8.Name = "Column8"
+        Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column8.Width = 90
+        '
+        'Category
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Category.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Category.HeaderText = "Client ID"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 130
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "Account Manager"
+        Me.Column9.Name = "Column9"
+        '
+        'Column6
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column6.HeaderText = "Begining Balance"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column1
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Column1.HeaderText = "Credit"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 90
+        '
+        'Column2
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column2.HeaderText = "Debit"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 80
+        '
+        'Column5
+        '
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle9
+        Me.Column5.HeaderText = "Balance"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column3
+        '
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Column3.HeaderText = "Last Payment"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'ss
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ss.DefaultCellStyle = DataGridViewCellStyle11
+        Me.ss.HeaderText = "Amount"
+        Me.ss.Name = "ss"
+        Me.ss.ReadOnly = True
+        '
+        'Column10
+        '
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Column10.HeaderText = "Credit Limit"
+        Me.Column10.Name = "Column10"
+        '
+        'Column7
+        '
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle13
+        Me.Column7.HeaderText = "Days"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 90
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Email was Sent"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'Column11
+        '
+        Me.Column11.HeaderText = "Note"
+        Me.Column11.Name = "Column11"
+        Me.Column11.Width = 250
+        '
+        'AddNoteToolStripMenuItem
+        '
+        Me.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem"
+        Me.AddNoteToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.AddNoteToolStripMenuItem.Text = "Add Note"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(124, 6)
+        '
         'frmStatementOfAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -428,5 +448,8 @@ Partial Class frmStatementOfAccount
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents AddNoteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
 
 End Class

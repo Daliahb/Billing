@@ -104,7 +104,7 @@
     End Sub
 
     Public Sub SetControls()
-        lPaymentId = CLng(dgRow.Cells(0).Value)
+        lPaymentId = CLng(dgRow.Cells(1).Value)
         Me.cmbClientCode.Text = dgRow.Cells(2).Value.ToString
         Me.txtAmount.Text = dgRow.Cells(3).Value.ToString
         Me.txtRecievedAmount.Text = dgRow.Cells(4).Value.ToString

@@ -43,23 +43,15 @@ Partial Class frmMaplePayments
         Me.cmbBanks = New System.Windows.Forms.ComboBox()
         Me.cmbClientCode = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditPaymentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.AddAsDebitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditBankFeesFromVouchersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SetAsConfirmedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SetAsUnconfirmedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.chkBank = New System.Windows.Forms.CheckBox()
@@ -70,7 +62,19 @@ Partial Class frmMaplePayments
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.EditBankFeesFromVouchersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -212,7 +216,7 @@ Partial Class frmMaplePayments
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Category, Me.Column2, Me.Column1, Me.Column6, Me.Column3, Me.Column4, Me.Column5, Me.aaa, Me.Inser, Me.Column7})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clNo, Me.clID, Me.Category, Me.Column2, Me.Column1, Me.Column6, Me.Column3, Me.Column4, Me.Column5, Me.aaa, Me.Column8, Me.Inser, Me.Column7})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle9.BackColor = System.Drawing.Color.LemonChiffon
@@ -231,110 +235,12 @@ Partial Class frmMaplePayments
         Me.DataGridView1.Size = New System.Drawing.Size(1399, 492)
         Me.DataGridView1.TabIndex = 37
         '
-        'clID
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.ReadOnly = True
-        Me.clID.Visible = False
-        Me.clID.Width = 80
-        '
-        'clNo
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clNo.HeaderText = "No."
-        Me.clNo.Name = "clNo"
-        Me.clNo.ReadOnly = True
-        Me.clNo.Width = 40
-        '
-        'Category
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Category.HeaderText = "Client"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 150
-        '
-        'Column2
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column2.HeaderText = "Maple Payment"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 150
-        '
-        'Column1
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column1.HeaderText = "Bank Amount"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 120
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Bank Fees"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Bank"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 200
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Note"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 200
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Date"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'aaa
-        '
-        Me.aaa.HeaderText = "Bank Fees  (Handled)"
-        Me.aaa.Name = "aaa"
-        Me.aaa.ReadOnly = True
-        Me.aaa.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.aaa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'Inser
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Inser.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Inser.HeaderText = "Inserted by"
-        Me.Inser.Name = "Inser"
-        Me.Inser.ReadOnly = True
-        Me.Inser.Width = 90
-        '
-        'Column7
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Column7.HeaderText = "Edited by"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 90
-        '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.EditBankFeesFromVouchersToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.EditBankFeesFromVouchersToolStripMenuItem, Me.ToolStripSeparator2, Me.SetAsConfirmedToolStripMenuItem, Me.SetAsUnconfirmedToolStripMenuItem, Me.ToolStripSeparator3, Me.ExportToExcelToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(205, 104)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(205, 154)
         '
         'EditPaymentToolStripMenuItem
         '
@@ -354,11 +260,35 @@ Partial Class frmMaplePayments
         Me.AddAsDebitToolStripMenuItem.Text = "Add Bank Fees as voucher"
         Me.AddAsDebitToolStripMenuItem.Visible = False
         '
+        'EditBankFeesFromVouchersToolStripMenuItem
+        '
+        Me.EditBankFeesFromVouchersToolStripMenuItem.Name = "EditBankFeesFromVouchersToolStripMenuItem"
+        Me.EditBankFeesFromVouchersToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.EditBankFeesFromVouchersToolStripMenuItem.Text = "Edit Bank Fees from Vouchers"
+        Me.EditBankFeesFromVouchersToolStripMenuItem.Visible = False
+        '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(201, 6)
         Me.ToolStripSeparator2.Visible = False
+        '
+        'SetAsConfirmedToolStripMenuItem
+        '
+        Me.SetAsConfirmedToolStripMenuItem.Name = "SetAsConfirmedToolStripMenuItem"
+        Me.SetAsConfirmedToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.SetAsConfirmedToolStripMenuItem.Text = "Set as Confirmed"
+        '
+        'SetAsUnconfirmedToolStripMenuItem
+        '
+        Me.SetAsUnconfirmedToolStripMenuItem.Name = "SetAsUnconfirmedToolStripMenuItem"
+        Me.SetAsUnconfirmedToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
+        Me.SetAsUnconfirmedToolStripMenuItem.Text = "Set as Unconfirmed"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(201, 6)
         '
         'ExportToExcelToolStripMenuItem
         '
@@ -439,12 +369,107 @@ Partial Class frmMaplePayments
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'EditBankFeesFromVouchersToolStripMenuItem
+        'clNo
         '
-        Me.EditBankFeesFromVouchersToolStripMenuItem.Name = "EditBankFeesFromVouchersToolStripMenuItem"
-        Me.EditBankFeesFromVouchersToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
-        Me.EditBankFeesFromVouchersToolStripMenuItem.Text = "Edit Bank Fees from Vouchers"
-        Me.EditBankFeesFromVouchersToolStripMenuItem.Visible = False
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clNo.HeaderText = "No."
+        Me.clNo.Name = "clNo"
+        Me.clNo.ReadOnly = True
+        Me.clNo.Width = 40
+        '
+        'clID
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clID.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
+        Me.clID.ReadOnly = True
+        '
+        'Category
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Category.HeaderText = "Client"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 150
+        '
+        'Column2
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column2.HeaderText = "Maple Payment"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 150
+        '
+        'Column1
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column1.HeaderText = "Bank Amount"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 120
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Bank Fees"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Bank"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 200
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Note"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 200
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Date"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'aaa
+        '
+        Me.aaa.HeaderText = "Bank Fees  (Handled)"
+        Me.aaa.Name = "aaa"
+        Me.aaa.ReadOnly = True
+        Me.aaa.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.aaa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Confirmed"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Inser
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Inser.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Inser.HeaderText = "Inserted by"
+        Me.Inser.Name = "Inser"
+        Me.Inser.ReadOnly = True
+        Me.Inser.Width = 90
+        '
+        'Column7
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column7.HeaderText = "Edited by"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 90
         '
         'frmMaplePayments
         '
@@ -494,8 +519,14 @@ Partial Class frmMaplePayments
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmbBanks As System.Windows.Forms.ComboBox
     Friend WithEvents chkBank As System.Windows.Forms.CheckBox
-    Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents EditBankFeesFromVouchersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SetAsConfirmedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SetAsUnconfirmedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -504,10 +535,8 @@ Partial Class frmMaplePayments
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents aaa As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Inser As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents chkStatus As System.Windows.Forms.CheckBox
-    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
-    Friend WithEvents EditBankFeesFromVouchersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

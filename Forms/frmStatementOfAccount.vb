@@ -14,7 +14,7 @@
 
         fillComboBoxes()
 
-        Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
+        'Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         Me.cmbClientCode.SelectedIndex = 0
 
        
@@ -194,6 +194,18 @@
             End If
         Else
             MsgBox("Please select the invoices you want to send by email.")
+        End If
+    End Sub
+
+    Private Sub AddNoteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AddNoteToolStripMenuItem.Click
+        If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+            Dim lClientID As Long
+            lClientID = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+            Dim frm As New frmClientTransactionNote(lClientID)
+            If frm.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                Me.DataGridView1.SelectedRows(0).Cells(14).Value = frm.strNote
+            End If
+
         End If
     End Sub
 End Class

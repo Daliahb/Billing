@@ -14,7 +14,7 @@ Public Class frmImportData
     Dim worksheet As Excel.Worksheet
     Dim xlWorkBook As Excel.Workbook
 
-    Private Sub frmAddBank_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmImportData_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '      'Me.BackColor = gBackColor
         ' fillData()
         Me.dtpFromDate.Value = Now.Date.AddDays(-7)
@@ -626,6 +626,8 @@ Public Class frmImportData
                 Me.cmbSoftwareID.DataSource = dsSoftware.Tables(0)
                 Me.cmbSoftwareID.ValueMember = "ID"
                 Me.cmbSoftwareID.DisplayMember = "Name"
+
+
             End If
 
         Catch ex As Exception

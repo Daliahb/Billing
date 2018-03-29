@@ -58,7 +58,7 @@
                             .Cells(2).Value = True
                         Else
                             .Cells(2).Value = False
-                            Me.DataGridView1.Rows(intRowIndex).DefaultCellStyle.BackColor = Color.IndianRed
+                            Me.DataGridView1.Rows(intRowIndex).DefaultCellStyle.BackColor = Color.LightCoral
                         End If
                         .Cells(3).Value = dr.Item("Client_Code")
                         .Cells(4).Value = dr.Item("Area_Name")

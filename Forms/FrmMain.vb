@@ -19,7 +19,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.lblCountry.Text = gCountry
+        Me.lblCountry.Text = gCountry.ToString
         CheckPermission()
         Me.Text += gUser.UserName
 

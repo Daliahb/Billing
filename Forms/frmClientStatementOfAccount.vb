@@ -10,34 +10,11 @@
         fillComboBoxes()
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         Me.cmbClientCode.SelectedIndex = 0
+
+        oTCPConnection = New TCPControl()
+
+        AddHandler oTCPConnection.GetAllClientsMCBalances, AddressOf SetClientsMCBalances
     End Sub
-
-    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim enumClientStatus As Enumerators.ClientStatus
-        If Me.rbAllClients.Checked Then
-            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
-                enumClientStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
-            Else
-                enumClientStatus = 0
-            End If
-            Dim oGenerate_Invoice As New Generate_Invoice
-            oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus)
-        Else
-            If Not Me.cmbClientCode.SelectedValue Is Nothing Then
-                Dim oGenerate_Invoice As New Generate_Invoice
-                '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
-                oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
-                Me.Close()
-            End If
-        End If
-
-
-    End Sub
-
-    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-        Me.Close()
-    End Sub
-
 
     Public Sub fillComboBoxes()
         Try
@@ -65,6 +42,83 @@
 
     End Sub
 
+    Public Sub SetClientsMCBalances(strMCClientsBalances As String)
+
+        Dim dt As New System.Data.DataTable()
+        Try
+            If Not strMCClientsBalances.Length = 0 Then
+                Dim arClientBalance() As String
+                Dim arBalance() As String
+                ' Dim lvitem As ListViewItem
+                arClientBalance = strMCClientsBalances.Split(CChar("&"))
+
+
+
+                dt.Columns.Add("ClientCode")
+                dt.Columns.Add("Balance")
+
+                Dim primaryKey(0) As DataColumn
+                primaryKey(0) = dt.Columns("ClientCode")
+                dt.PrimaryKey = primaryKey
+
+                For i = 0 To arClientBalance.Length - 2
+                    ' lvitem = New ListViewItem
+                    Try
+                        arBalance = arClientBalance(i).ToString.Split(CChar(":"))
+                        dt.Rows.Add(arBalance(0), arBalance(1))
+                    Catch ex As Exception
+
+                    End Try
+
+                Next
+            End If
+
+
+            Dim enumClientStatus As Enumerators.ClientStatus
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumClientStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumClientStatus = 0
+            End If
+            Dim oGenerate_Invoice As New Generate_Invoice
+            oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus, dt)
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        Dim enumClientStatus As Enumerators.ClientStatus
+        If Me.rbAllClients.Checked Then
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumClientStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumClientStatus = 0
+            End If
+            Dim oGenerate_Invoice As New Generate_Invoice
+            oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus)
+        Else
+            If Not Me.cmbClientCode.SelectedValue Is Nothing Then
+                Dim oGenerate_Invoice As New Generate_Invoice
+                '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
+                oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
+                Me.Close()
+            End If
+        End If
+
+
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles btnGetSOAMC.Click
+        If oTCPConnection.ConnectToServer Then
+            oTCPConnection.Send("GetAllClientsBalances|")
+        End If
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Close()
+    End Sub
 
     Private Sub cmbClientCode_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbClientCode.KeyUp
         AutoCompleteCombo_KeyUp(Me.cmbClientCode, e)
@@ -76,6 +130,7 @@
 
     Private Sub rbAllClients_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbAllClients.CheckedChanged
         Me.chkStatus.Enabled = rbAllClients.Checked
+        btnGetSOAMC.Enabled = rbAllClients.Checked
     End Sub
 
     Private Sub rbOneClient_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbOneClient.CheckedChanged
@@ -85,5 +140,7 @@
     Private Sub chkStatus_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkStatus.CheckedChanged
         Me.cmbStatus.Enabled = chkStatus.Checked
     End Sub
+
+
 End Class
 

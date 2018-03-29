@@ -36,27 +36,27 @@ Partial Class frmPotentialClients2
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PhoneDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompanyNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Phone2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MobileDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SkypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WebsiteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ExhibitionNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LimitDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CreditCheckDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IsContactedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DsAccountManagers = New WindowsApplication1.dsAccountManagers()
         Me.AccountManagersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AccountManagersTableAdapter = New WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter()
         Me.TableAdapterManager = New WindowsApplication1.dsAccountManagersTableAdapters.TableAdapterManager()
+        Me.dgID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgPhone = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgTitle = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgCompanyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgPhone2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgMobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSkype = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgWebsite = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgExhibitionName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgLimit = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgCreditCheck = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.dgIsContacted = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.dgActionDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgNote = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -108,7 +108,7 @@ Partial Class frmPotentialClients2
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.PhoneDataGridViewTextBoxColumn, Me.EmailDataGridViewTextBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.TitleDataGridViewTextBoxColumn, Me.CompanyNameDataGridViewTextBoxColumn, Me.Phone2DataGridViewTextBoxColumn, Me.MobileDataGridViewTextBoxColumn, Me.SkypeDataGridViewTextBoxColumn, Me.WebsiteDataGridViewTextBoxColumn, Me.ExhibitionNameDataGridViewTextBoxColumn, Me.LimitDataGridViewTextBoxColumn, Me.CreditCheckDataGridViewTextBoxColumn, Me.IsContactedDataGridViewTextBoxColumn, Me.Column1, Me.NoteDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.dgID, Me.dgName, Me.dgPhone, Me.dgEmail, Me.dgAddress, Me.dgTitle, Me.dgCompanyName, Me.dgPhone2, Me.dgMobile, Me.dgSkype, Me.dgWebsite, Me.dgExhibitionName, Me.dgLimit, Me.dgCreditCheck, Me.dgIsContacted, Me.dgActionDate, Me.dgNote})
         Me.DataGridView1.Location = New System.Drawing.Point(5, 44)
         Me.DataGridView1.Name = "DataGridView1"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -171,103 +171,6 @@ Partial Class frmPotentialClients2
         Me.DataGridView2.Size = New System.Drawing.Size(1545, 577)
         Me.DataGridView2.TabIndex = 18
         '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 120
-        '
-        'PhoneDataGridViewTextBoxColumn
-        '
-        Me.PhoneDataGridViewTextBoxColumn.HeaderText = "Phone"
-        Me.PhoneDataGridViewTextBoxColumn.Name = "PhoneDataGridViewTextBoxColumn"
-        Me.PhoneDataGridViewTextBoxColumn.Width = 120
-        '
-        'EmailDataGridViewTextBoxColumn
-        '
-        Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
-        Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
-        Me.EmailDataGridViewTextBoxColumn.Width = 120
-        '
-        'AddressDataGridViewTextBoxColumn
-        '
-        Me.AddressDataGridViewTextBoxColumn.HeaderText = "Address"
-        Me.AddressDataGridViewTextBoxColumn.Name = "AddressDataGridViewTextBoxColumn"
-        Me.AddressDataGridViewTextBoxColumn.Width = 120
-        '
-        'TitleDataGridViewTextBoxColumn
-        '
-        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
-        '
-        'CompanyNameDataGridViewTextBoxColumn
-        '
-        Me.CompanyNameDataGridViewTextBoxColumn.HeaderText = "Company Name"
-        Me.CompanyNameDataGridViewTextBoxColumn.Name = "CompanyNameDataGridViewTextBoxColumn"
-        Me.CompanyNameDataGridViewTextBoxColumn.Width = 120
-        '
-        'Phone2DataGridViewTextBoxColumn
-        '
-        Me.Phone2DataGridViewTextBoxColumn.HeaderText = "Phone2"
-        Me.Phone2DataGridViewTextBoxColumn.Name = "Phone2DataGridViewTextBoxColumn"
-        '
-        'MobileDataGridViewTextBoxColumn
-        '
-        Me.MobileDataGridViewTextBoxColumn.HeaderText = "Mobile"
-        Me.MobileDataGridViewTextBoxColumn.Name = "MobileDataGridViewTextBoxColumn"
-        '
-        'SkypeDataGridViewTextBoxColumn
-        '
-        Me.SkypeDataGridViewTextBoxColumn.HeaderText = "Skype"
-        Me.SkypeDataGridViewTextBoxColumn.Name = "SkypeDataGridViewTextBoxColumn"
-        '
-        'WebsiteDataGridViewTextBoxColumn
-        '
-        Me.WebsiteDataGridViewTextBoxColumn.HeaderText = "Website"
-        Me.WebsiteDataGridViewTextBoxColumn.Name = "WebsiteDataGridViewTextBoxColumn"
-        Me.WebsiteDataGridViewTextBoxColumn.Width = 120
-        '
-        'ExhibitionNameDataGridViewTextBoxColumn
-        '
-        Me.ExhibitionNameDataGridViewTextBoxColumn.HeaderText = "Exhibition Name"
-        Me.ExhibitionNameDataGridViewTextBoxColumn.Name = "ExhibitionNameDataGridViewTextBoxColumn"
-        Me.ExhibitionNameDataGridViewTextBoxColumn.Width = 120
-        '
-        'LimitDataGridViewTextBoxColumn
-        '
-        Me.LimitDataGridViewTextBoxColumn.HeaderText = "Limit"
-        Me.LimitDataGridViewTextBoxColumn.Name = "LimitDataGridViewTextBoxColumn"
-        '
-        'CreditCheckDataGridViewTextBoxColumn
-        '
-        Me.CreditCheckDataGridViewTextBoxColumn.HeaderText = "Credit Check"
-        Me.CreditCheckDataGridViewTextBoxColumn.Name = "CreditCheckDataGridViewTextBoxColumn"
-        Me.CreditCheckDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.CreditCheckDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'IsContactedDataGridViewTextBoxColumn
-        '
-        Me.IsContactedDataGridViewTextBoxColumn.HeaderText = "Contacted?"
-        Me.IsContactedDataGridViewTextBoxColumn.Name = "IsContactedDataGridViewTextBoxColumn"
-        Me.IsContactedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.IsContactedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Action Date"
-        Me.Column1.Name = "Column1"
-        '
-        'NoteDataGridViewTextBoxColumn
-        '
-        Me.NoteDataGridViewTextBoxColumn.HeaderText = "Note"
-        Me.NoteDataGridViewTextBoxColumn.Name = "NoteDataGridViewTextBoxColumn"
-        '
         'DsAccountManagers
         '
         Me.DsAccountManagers.DataSetName = "dsAccountManagers"
@@ -287,6 +190,103 @@ Partial Class frmPotentialClients2
         Me.TableAdapterManager.AccountManagersTableAdapter = Me.AccountManagersTableAdapter
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.UpdateOrder = WindowsApplication1.dsAccountManagersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'dgID
+        '
+        Me.dgID.HeaderText = "ID"
+        Me.dgID.Name = "dgID"
+        Me.dgID.Visible = False
+        '
+        'dgName
+        '
+        Me.dgName.HeaderText = "Name"
+        Me.dgName.Name = "dgName"
+        Me.dgName.Width = 120
+        '
+        'dgPhone
+        '
+        Me.dgPhone.HeaderText = "Phone"
+        Me.dgPhone.Name = "dgPhone"
+        Me.dgPhone.Width = 120
+        '
+        'dgEmail
+        '
+        Me.dgEmail.HeaderText = "Email"
+        Me.dgEmail.Name = "dgEmail"
+        Me.dgEmail.Width = 120
+        '
+        'dgAddress
+        '
+        Me.dgAddress.HeaderText = "Address"
+        Me.dgAddress.Name = "dgAddress"
+        Me.dgAddress.Width = 120
+        '
+        'dgTitle
+        '
+        Me.dgTitle.HeaderText = "Title"
+        Me.dgTitle.Name = "dgTitle"
+        '
+        'dgCompanyName
+        '
+        Me.dgCompanyName.HeaderText = "Company Name"
+        Me.dgCompanyName.Name = "dgCompanyName"
+        Me.dgCompanyName.Width = 120
+        '
+        'dgPhone2
+        '
+        Me.dgPhone2.HeaderText = "Phone2"
+        Me.dgPhone2.Name = "dgPhone2"
+        '
+        'dgMobile
+        '
+        Me.dgMobile.HeaderText = "Mobile"
+        Me.dgMobile.Name = "dgMobile"
+        '
+        'dgSkype
+        '
+        Me.dgSkype.HeaderText = "Skype"
+        Me.dgSkype.Name = "dgSkype"
+        '
+        'dgWebsite
+        '
+        Me.dgWebsite.HeaderText = "Website"
+        Me.dgWebsite.Name = "dgWebsite"
+        Me.dgWebsite.Width = 120
+        '
+        'dgExhibitionName
+        '
+        Me.dgExhibitionName.HeaderText = "Exhibition Name"
+        Me.dgExhibitionName.Name = "dgExhibitionName"
+        Me.dgExhibitionName.Width = 120
+        '
+        'dgLimit
+        '
+        Me.dgLimit.HeaderText = "Limit"
+        Me.dgLimit.Name = "dgLimit"
+        '
+        'dgCreditCheck
+        '
+        Me.dgCreditCheck.HeaderText = "Credit Check"
+        Me.dgCreditCheck.Name = "dgCreditCheck"
+        Me.dgCreditCheck.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCreditCheck.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'dgIsContacted
+        '
+        Me.dgIsContacted.HeaderText = "Contacted?"
+        Me.dgIsContacted.Name = "dgIsContacted"
+        Me.dgIsContacted.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgIsContacted.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'dgActionDate
+        '
+        Me.dgActionDate.HeaderText = "Action Date"
+        Me.dgActionDate.Name = "dgActionDate"
+        '
+        'dgNote
+        '
+        Me.dgNote.HeaderText = "Note"
+        Me.dgNote.Name = "dgNote"
         '
         'frmPotentialClients2
         '
@@ -333,22 +333,22 @@ Partial Class frmPotentialClients2
     Friend WithEvents AccountManagersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents AccountManagersTableAdapter As WindowsApplication1.dsAccountManagersTableAdapters.AccountManagersTableAdapter
     Friend WithEvents TableAdapterManager As WindowsApplication1.dsAccountManagersTableAdapters.TableAdapterManager
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PhoneDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmailDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents AddressDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TitleDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CompanyNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Phone2DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MobileDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SkypeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents WebsiteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ExhibitionNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LimitDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CreditCheckDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents IsContactedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents NoteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgPhone As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgEmail As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgAddress As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgTitle As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgCompanyName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgPhone2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgMobile As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgSkype As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgWebsite As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgExhibitionName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgLimit As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgCreditCheck As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents dgIsContacted As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents dgActionDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dgNote As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

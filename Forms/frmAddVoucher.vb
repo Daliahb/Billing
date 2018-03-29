@@ -162,7 +162,7 @@
     End Sub
 
     Public Sub SetControls()
-        lPaymentId = CLng(dgRow.Cells(0).Value)
+        lPaymentId = CLng(dgRow.Cells(1).Value)
         Me.cmbClientCode.Text = dgRow.Cells(2).Value.ToString
         Me.txtCredit.Text = dgRow.Cells(4).Value.ToString
         Me.txtDebit.Text = dgRow.Cells(3).Value.ToString
@@ -176,6 +176,15 @@
             End If
         Next
 
+        If CType(Me.cmbType.SelectedItem.value, Enumerators.VoucherTypes) = CInt(Enumerators.VoucherTypes.BankFees) Then
+            Me.cmbType.Enabled = False
+            If CDbl(dgRow.Cells(4).Value) = 0 Then
+                Me.txtCredit.Enabled = False
+            End If
+            If CDbl(dgRow.Cells(3).Value) = 0 Then
+                Me.txtDebit.Enabled = False
+            End If
+        End If
     End Sub
 
     Public Sub FillObject()
@@ -193,6 +202,8 @@
         lType = CLng(cmbType.SelectedItem.value)
         If CType(cmbType.SelectedItem.value, Enumerators.VoucherTypes) = Enumerators.VoucherTypes.Dispute Then
             strType = "Dispute"
+        ElseIf CType(cmbType.SelectedItem.value, Enumerators.VoucherTypes) = Enumerators.VoucherTypes.BankFees Then
+            strType = "Bank Fees"
         Else
             strType = "Voucher"
         End If

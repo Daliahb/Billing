@@ -2,11 +2,7 @@
 
     Dim dsClientStatus As DataSet
     Dim isLoaded As Boolean
-
-#Region "Controls Events"
-    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Close()
-    End Sub
+    Dim lMCClientID As Long
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
@@ -15,6 +11,45 @@
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         FillTypes()
         isLoaded = True
+
+        oTCPConnection = New TCPControl()
+
+        AddHandler oTCPConnection.GetClientMCBalance, AddressOf SetClientMCBalance
+
+    End Sub
+
+    Public Sub FillTypes()
+        Try
+            If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+                Me.cmbClientCode.DataSource = gDsMembers.Tables(0)
+                Me.cmbClientCode.DisplayMember = "CompanyCode"
+                Me.cmbClientCode.ValueMember = "ID"
+            Else
+                gDsMembers = odbaccess.GetClientsDS
+                If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+                    FillTypes()
+                End If
+            End If
+
+
+            dsClientStatus = odbaccess.GetClientsStatus
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub SetClientMCBalance(lMCClientId, strMCBalance)
+        If lMCClientId = Me.lMCClientID Then
+            Me.lblMCBalance.Text = Math.Round(CDbl(strMCBalance), 2)
+            Me.lblDifference.Text = Math.Round(CDbl(strMCBalance) - CDbl(Me.lblBalance.Text), 2)
+        End If
+    End Sub
+
+#Region "Controls Events"
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Me.Close()
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -24,7 +59,9 @@
         Dim ds As DataSet
         Dim decBalance As Decimal = 0
         Dim dblTotalCredit, dblTotalDebit, dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
+
         Try
+            Me.btnGetMCBalance.Enabled = False
             Me.DataGridView1.Rows.Clear()
             If Not Me.cmbClientCode.SelectedValue Is Nothing Then
                 lClientID = CLng(Me.cmbClientCode.SelectedValue)
@@ -34,6 +71,7 @@
                 Exit Sub
             End If
 
+            Me.lblMCBalance.Text = 0
 
             ds = odbaccess.GetTransactions(lClientID)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
@@ -72,11 +110,19 @@
                     dblTotalClientPayment = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalClientPayments")), 4)
                     dblTotalTransactionBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalTransactionsBankFees")), 4)
                     dblTotalBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalBankFees")), 4)
+                    If Not ds.Tables(1).Rows(0).Item("MCClientID") Is DBNull.Value Then
+                        Me.lMCClientID = CLng(ds.Tables(1).Rows(0).Item("MCClientID"))
+                    Else
+                        Me.lMCClientID = 0
+                    End If
+
+
 
                     Me.lblClientPayments.Text = dblTotalClientPayment.ToString
                     Me.lblTransactionBankFees.Text = dblTotalTransactionBankFees.ToString
                     Me.lblBankFees.Text = dblTotalBankFees.ToString
                     Me.lblNoClientOfPayments.Text = ds.Tables(1).Rows(0).Item("NoClientOfPayments").ToString
+
                     Try
                         If Not dblTotalClientPayment = 0 Then
                             Me.lblPercentage.Text = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 4).ToString
@@ -88,9 +134,12 @@
 
                     End Try
 
+                    'get MC Balance from the server
+                    oTCPConnection.Send("GetClientBalance|" & Me.lMCClientID.ToString & "|")
                 End If
             End If
 
+            Me.btnGetMCBalance.Enabled = True
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -110,31 +159,6 @@
 
         End Try
     End Sub
-
-#End Region
-
-
-    Public Sub FillTypes()
-        Try
-            If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
-                Me.cmbClientCode.DataSource = gDsMembers.Tables(0)
-                Me.cmbClientCode.DisplayMember = "CompanyCode"
-                Me.cmbClientCode.ValueMember = "ID"
-            Else
-                gDsMembers = odbaccess.GetClientsDS
-                If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
-                    FillTypes()
-                End If
-            End If
-
-
-            dsClientStatus = odbaccess.GetClientsStatus
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
 
     Dim intColumnIndex As Integer
 
@@ -157,12 +181,12 @@
         Me.DataGridView1.Columns(intColumnIndex).Visible = False
     End Sub
 
-
     Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
         For i As Integer = 1 To Me.DataGridView1.Columns.Count - 1
             Me.DataGridView1.Columns(i).Visible = True
         Next
     End Sub
+
     Private Sub cmbClientCode_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbClientCode.KeyUp
         AutoCompleteCombo_KeyUp(Me.cmbClientCode, e)
     End Sub
@@ -185,4 +209,13 @@
         End If
 
     End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles btnGetMCBalance.Click
+        If oTCPConnection.ConnectToServer Then
+            oTCPConnection.Send("GetClientBalance|" & Me.lMCClientID.ToString & "|")
+        End If
+
+    End Sub
+
+#End Region
 End Class

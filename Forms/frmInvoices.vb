@@ -59,8 +59,9 @@
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
                     With Me.DataGridView1.Rows(intRowIndex)
-                        .Cells(0).Value = dr.Item("ID")
-                        .Cells(1).Value = intCounter + 1
+
+                        .Cells(0).Value = intCounter + 1
+                        .Cells(1).Value = dr.Item("ID")
                         .Cells(3).Value = dr.Item("Client_Code")
                         .Cells(4).Value = CDate(dr.Item("date")).ToString("yyyy-MM-dd")
                         .Cells(5).Value = dr.Item("Amount")
@@ -105,7 +106,7 @@
         Try
             Dim i As Integer
             For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
+                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
             Next
         Catch ex As Exception
 

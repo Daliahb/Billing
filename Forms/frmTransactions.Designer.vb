@@ -43,10 +43,12 @@ Partial Class frmTransactions
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lblNoClientOfPayments = New System.Windows.Forms.Label()
+        Me.lblBalance = New System.Windows.Forms.Label()
         Me.lblTotalDebit = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lblTotalCredit = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblClientPayments = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -69,8 +71,11 @@ Partial Class frmTransactions
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblBalance = New System.Windows.Forms.Label()
+        Me.btnGetMCBalance = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblMCBalance = New System.Windows.Forms.Label()
+        Me.lable122 = New System.Windows.Forms.Label()
+        Me.lblDifference = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -83,6 +88,9 @@ Partial Class frmTransactions
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.lblMCBalance)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.btnGetMCBalance)
         Me.Panel1.Controls.Add(Me.lblStatus)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.lblPercentage)
@@ -92,11 +100,13 @@ Partial Class frmTransactions
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.lblNoClientOfPayments)
+        Me.Panel1.Controls.Add(Me.lblDifference)
         Me.Panel1.Controls.Add(Me.lblBalance)
         Me.Panel1.Controls.Add(Me.lblTotalDebit)
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.lblTotalCredit)
         Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.lable122)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.lblClientPayments)
@@ -108,7 +118,7 @@ Partial Class frmTransactions
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1061, 677)
+        Me.Panel1.Size = New System.Drawing.Size(1339, 677)
         Me.Panel1.TabIndex = 0
         '
         'lblStatus
@@ -116,16 +126,16 @@ Partial Class frmTransactions
         Me.lblStatus.AutoSize = True
         Me.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblStatus.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(414, 20)
+        Me.lblStatus.Location = New System.Drawing.Point(400, 15)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(52, 18)
+        Me.lblStatus.Size = New System.Drawing.Size(62, 18)
         Me.lblStatus.TabIndex = 89
-        Me.lblStatus.Text = "Label4"
+        Me.lblStatus.Text = "             "
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(317, 20)
+        Me.Label4.Location = New System.Drawing.Point(303, 16)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 16)
         Me.Label4.TabIndex = 89
@@ -134,7 +144,7 @@ Partial Class frmTransactions
         'lblPercentage
         '
         Me.lblPercentage.AutoSize = True
-        Me.lblPercentage.Location = New System.Drawing.Point(925, 75)
+        Me.lblPercentage.Location = New System.Drawing.Point(688, 75)
         Me.lblPercentage.Name = "lblPercentage"
         Me.lblPercentage.Size = New System.Drawing.Size(16, 16)
         Me.lblPercentage.TabIndex = 88
@@ -143,7 +153,7 @@ Partial Class frmTransactions
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(836, 75)
+        Me.Label13.Location = New System.Drawing.Point(596, 75)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(88, 16)
         Me.Label13.TabIndex = 87
@@ -152,7 +162,7 @@ Partial Class frmTransactions
         'lblTransactionBankFees
         '
         Me.lblTransactionBankFees.AutoSize = True
-        Me.lblTransactionBankFees.Location = New System.Drawing.Point(714, 75)
+        Me.lblTransactionBankFees.Location = New System.Drawing.Point(505, 46)
         Me.lblTransactionBankFees.Name = "lblTransactionBankFees"
         Me.lblTransactionBankFees.Size = New System.Drawing.Size(16, 16)
         Me.lblTransactionBankFees.TabIndex = 86
@@ -161,7 +171,7 @@ Partial Class frmTransactions
         'lblBankFees
         '
         Me.lblBankFees.AutoSize = True
-        Me.lblBankFees.Location = New System.Drawing.Point(387, 75)
+        Me.lblBankFees.Location = New System.Drawing.Point(415, 75)
         Me.lblBankFees.Name = "lblBankFees"
         Me.lblBankFees.Size = New System.Drawing.Size(16, 16)
         Me.lblBankFees.TabIndex = 86
@@ -170,7 +180,7 @@ Partial Class frmTransactions
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(10, 75)
+        Me.Label7.Location = New System.Drawing.Point(596, 46)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(153, 16)
         Me.Label7.TabIndex = 86
@@ -179,7 +189,7 @@ Partial Class frmTransactions
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(513, 75)
+        Me.Label10.Location = New System.Drawing.Point(304, 46)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(202, 16)
         Me.Label10.TabIndex = 85
@@ -188,16 +198,25 @@ Partial Class frmTransactions
         'lblNoClientOfPayments
         '
         Me.lblNoClientOfPayments.AutoSize = True
-        Me.lblNoClientOfPayments.Location = New System.Drawing.Point(676, 48)
+        Me.lblNoClientOfPayments.Location = New System.Drawing.Point(759, 16)
         Me.lblNoClientOfPayments.Name = "lblNoClientOfPayments"
         Me.lblNoClientOfPayments.Size = New System.Drawing.Size(16, 16)
         Me.lblNoClientOfPayments.TabIndex = 86
         Me.lblNoClientOfPayments.Text = "0"
         '
+        'lblBalance
+        '
+        Me.lblBalance.AutoSize = True
+        Me.lblBalance.Location = New System.Drawing.Point(1005, 46)
+        Me.lblBalance.Name = "lblBalance"
+        Me.lblBalance.Size = New System.Drawing.Size(16, 16)
+        Me.lblBalance.TabIndex = 86
+        Me.lblBalance.Text = "0"
+        '
         'lblTotalDebit
         '
         Me.lblTotalDebit.AutoSize = True
-        Me.lblTotalDebit.Location = New System.Drawing.Point(365, 48)
+        Me.lblTotalDebit.Location = New System.Drawing.Point(99, 75)
         Me.lblTotalDebit.Name = "lblTotalDebit"
         Me.lblTotalDebit.Size = New System.Drawing.Size(16, 16)
         Me.lblTotalDebit.TabIndex = 86
@@ -206,7 +225,7 @@ Partial Class frmTransactions
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(276, 75)
+        Me.Label8.Location = New System.Drawing.Point(304, 75)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(113, 16)
         Me.Label8.TabIndex = 85
@@ -224,16 +243,25 @@ Partial Class frmTransactions
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(513, 48)
+        Me.Label3.Location = New System.Drawing.Point(596, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(157, 16)
         Me.Label3.TabIndex = 85
         Me.Label3.Text = "No. of client payments:"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(913, 46)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 16)
+        Me.Label5.TabIndex = 85
+        Me.Label5.Text = "Balance:"
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(276, 48)
+        Me.Label6.Location = New System.Drawing.Point(10, 75)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(83, 16)
         Me.Label6.TabIndex = 85
@@ -242,7 +270,7 @@ Partial Class frmTransactions
         'lblClientPayments
         '
         Me.lblClientPayments.AutoSize = True
-        Me.lblClientPayments.Location = New System.Drawing.Point(161, 75)
+        Me.lblClientPayments.Location = New System.Drawing.Point(747, 46)
         Me.lblClientPayments.Name = "lblClientPayments"
         Me.lblClientPayments.Size = New System.Drawing.Size(16, 16)
         Me.lblClientPayments.TabIndex = 85
@@ -307,13 +335,13 @@ Partial Class frmTransactions
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 97)
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 123)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1053, 576)
+        Me.DataGridView1.Size = New System.Drawing.Size(1331, 550)
         Me.DataGridView1.TabIndex = 37
         '
         'clID
@@ -409,7 +437,7 @@ Partial Class frmTransactions
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(918, 9)
+        Me.btnSearch.Location = New System.Drawing.Point(1196, 9)
         Me.btnSearch.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(136, 34)
@@ -439,23 +467,52 @@ Partial Class frmTransactions
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Label5
+        'btnGetMCBalance
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(836, 47)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(63, 16)
-        Me.Label5.TabIndex = 85
-        Me.Label5.Text = "Balance:"
+        Me.btnGetMCBalance.Enabled = False
+        Me.btnGetMCBalance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGetMCBalance.Location = New System.Drawing.Point(828, 13)
+        Me.btnGetMCBalance.Name = "btnGetMCBalance"
+        Me.btnGetMCBalance.Size = New System.Drawing.Size(79, 23)
+        Me.btnGetMCBalance.TabIndex = 90
+        Me.btnGetMCBalance.Text = "MC Balance"
+        Me.btnGetMCBalance.UseVisualStyleBackColor = True
         '
-        'lblBalance
+        'Label9
         '
-        Me.lblBalance.AutoSize = True
-        Me.lblBalance.Location = New System.Drawing.Point(925, 47)
-        Me.lblBalance.Name = "lblBalance"
-        Me.lblBalance.Size = New System.Drawing.Size(16, 16)
-        Me.lblBalance.TabIndex = 86
-        Me.lblBalance.Text = "0"
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(913, 16)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(86, 16)
+        Me.Label9.TabIndex = 91
+        Me.Label9.Text = "MC Balance:"
+        '
+        'lblMCBalance
+        '
+        Me.lblMCBalance.AutoSize = True
+        Me.lblMCBalance.Location = New System.Drawing.Point(1005, 16)
+        Me.lblMCBalance.Name = "lblMCBalance"
+        Me.lblMCBalance.Size = New System.Drawing.Size(16, 16)
+        Me.lblMCBalance.TabIndex = 91
+        Me.lblMCBalance.Text = "0"
+        '
+        'lable122
+        '
+        Me.lable122.AutoSize = True
+        Me.lable122.Location = New System.Drawing.Point(913, 75)
+        Me.lable122.Name = "lable122"
+        Me.lable122.Size = New System.Drawing.Size(80, 16)
+        Me.lable122.TabIndex = 85
+        Me.lable122.Text = "Difference:"
+        '
+        'lblDifference
+        '
+        Me.lblDifference.AutoSize = True
+        Me.lblDifference.Location = New System.Drawing.Point(1005, 75)
+        Me.lblDifference.Name = "lblDifference"
+        Me.lblDifference.Size = New System.Drawing.Size(16, 16)
+        Me.lblDifference.TabIndex = 86
+        Me.lblDifference.Text = "0"
         '
         'frmTransactions
         '
@@ -463,7 +520,7 @@ Partial Class frmTransactions
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(1065, 682)
+        Me.ClientSize = New System.Drawing.Size(1343, 682)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -519,5 +576,10 @@ Partial Class frmTransactions
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents lblBalance As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents btnGetMCBalance As System.Windows.Forms.Button
+    Friend WithEvents lblMCBalance As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblDifference As System.Windows.Forms.Label
+    Friend WithEvents lable122 As System.Windows.Forms.Label
 
 End Class

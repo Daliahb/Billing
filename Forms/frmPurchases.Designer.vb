@@ -37,6 +37,8 @@ Partial Class frmPurchases
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPurchases))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
+        Me.chkPeriod = New System.Windows.Forms.CheckBox()
         Me.chkStatus = New System.Windows.Forms.CheckBox()
         Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.cmbBillingDates = New System.Windows.Forms.ComboBox()
@@ -65,10 +67,8 @@ Partial Class frmPurchases
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
-        Me.chkPeriod = New System.Windows.Forms.CheckBox()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -115,6 +115,29 @@ Partial Class frmPurchases
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1348, 599)
         Me.Panel1.TabIndex = 0
+        '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.Enabled = False
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(751, 47)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(61, 24)
+        Me.cmbPeriod.TabIndex = 98
+        Me.cmbPeriod.ValueMember = "id"
+        '
+        'chkPeriod
+        '
+        Me.chkPeriod.AutoSize = True
+        Me.chkPeriod.Location = New System.Drawing.Point(634, 49)
+        Me.chkPeriod.Name = "chkPeriod"
+        Me.chkPeriod.Size = New System.Drawing.Size(119, 20)
+        Me.chkPeriod.TabIndex = 97
+        Me.chkPeriod.Text = "Invoice Period"
+        Me.chkPeriod.UseVisualStyleBackColor = True
         '
         'chkStatus
         '
@@ -168,7 +191,7 @@ Partial Class frmPurchases
         Me.lblTotalCharges.AutoSize = True
         Me.lblTotalCharges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTotalCharges.ForeColor = System.Drawing.Color.Maroon
-        Me.lblTotalCharges.Location = New System.Drawing.Point(310, 78)
+        Me.lblTotalCharges.Location = New System.Drawing.Point(404, 78)
         Me.lblTotalCharges.Name = "lblTotalCharges"
         Me.lblTotalCharges.Size = New System.Drawing.Size(38, 18)
         Me.lblTotalCharges.TabIndex = 54
@@ -177,7 +200,7 @@ Partial Class frmPurchases
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(208, 79)
+        Me.Label4.Location = New System.Drawing.Point(302, 79)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(102, 16)
         Me.Label4.TabIndex = 53
@@ -248,7 +271,7 @@ Partial Class frmPurchases
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clID, Me.clNo, Me.Category, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.Column9, Me.ss, Me.Column7, Me.Column4, Me.Column8})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clNo, Me.clID, Me.Category, Me.Column6, Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.Column9, Me.ss, Me.Column7, Me.Column4, Me.Column8})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle12.BackColor = System.Drawing.Color.LemonChiffon
@@ -384,46 +407,21 @@ Partial Class frmPurchases
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'cmbPeriod
-        '
-        Me.cmbPeriod.DisplayMember = "id"
-        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPeriod.Enabled = False
-        Me.cmbPeriod.FormattingEnabled = True
-        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
-        Me.cmbPeriod.Location = New System.Drawing.Point(751, 47)
-        Me.cmbPeriod.Name = "cmbPeriod"
-        Me.cmbPeriod.Size = New System.Drawing.Size(61, 24)
-        Me.cmbPeriod.TabIndex = 98
-        Me.cmbPeriod.ValueMember = "id"
-        '
-        'chkPeriod
-        '
-        Me.chkPeriod.AutoSize = True
-        Me.chkPeriod.Location = New System.Drawing.Point(634, 49)
-        Me.chkPeriod.Name = "chkPeriod"
-        Me.chkPeriod.Size = New System.Drawing.Size(119, 20)
-        Me.chkPeriod.TabIndex = 97
-        Me.chkPeriod.Text = "Invoice Period"
-        Me.chkPeriod.UseVisualStyleBackColor = True
-        '
-        'clID
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clID.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.Visible = False
-        Me.clID.Width = 80
-        '
         'clNo
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
         Me.clNo.HeaderText = "No."
         Me.clNo.Name = "clNo"
         Me.clNo.ReadOnly = True
         Me.clNo.Width = 40
+        '
+        'clID
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clID.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
         '
         'Category
         '
@@ -567,8 +565,8 @@ Partial Class frmPurchases
     Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
     Friend WithEvents cmbPeriod As System.Windows.Forms.ComboBox
     Friend WithEvents chkPeriod As System.Windows.Forms.CheckBox
-    Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents clNo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents clID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn

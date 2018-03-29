@@ -125,6 +125,18 @@ Namespace My
                 Return CType(Me("voip_billing_system_devConnectionString2"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.0.0.1")>  _
+        Public Property APIServerIP() As String
+            Get
+                Return CType(Me("APIServerIP"),String)
+            End Get
+            Set
+                Me("APIServerIP") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

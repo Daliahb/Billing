@@ -44,8 +44,8 @@
                 For Each dr As DataRow In ds.Tables(0).Rows
                     intRowIndex = Me.DataGridView1.Rows.Add
                     With Me.DataGridView1.Rows(intRowIndex)
-                        .Cells(0).Value = dr.Item("ID")
-                        .Cells(1).Value = intCounter + 1
+                        .Cells(0).Value = intCounter + 1
+                        .Cells(1).Value = dr.Item("ID")
                         .Cells(2).Value = dr.Item("Client_Code")
                         .Cells(3).Value = CDate(dr.Item("insert_date")).ToString("yyyy-MM-dd")
                         .Cells(4).Value = dr.Item("Amount")
@@ -94,7 +94,7 @@
         Try
             Dim i As Integer
             For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
+                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
             Next
         Catch ex As Exception
 
@@ -228,7 +228,7 @@
             Dim frm As New frmPassword(boolRight)
             frm.ShowDialog()
             If frm.boolRight = True Then
-                Dim frm2 As New frmEditPurchace(CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value), Me.DataGridView1.SelectedRows(0).Cells(2).Value.ToString, Math.Round(CDbl(Me.DataGridView1.SelectedRows(0).Cells(4).Value), 3), Math.Round(CDbl(Me.DataGridView1.SelectedRows(0).Cells(5).Value), 3))
+                Dim frm2 As New frmEditPurchace(CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value), Me.DataGridView1.SelectedRows(0).Cells(2).Value.ToString, Math.Round(CDbl(Me.DataGridView1.SelectedRows(0).Cells(4).Value), 3), Math.Round(CDbl(Me.DataGridView1.SelectedRows(0).Cells(5).Value), 3))
                 frm2.ShowDialog()
                 If frm2.boolDone Then
                     Me.DataGridView1.SelectedRows(0).Cells(4).Value = frm2.txtAmount.Text
@@ -242,7 +242,7 @@
     Private Sub ConfirmTotalChargesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConfirmTotalChargesToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             If MsgBox("Are you sure you want to change the status of the purchase to Confirmed?", MsgBoxStyle.YesNo) = vbYes Then
-                If odbaccess.SetPurchaseAsConfirmed(CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value), True) Then
+                If odbaccess.SetOperationAsConfirmed(Enumerators.TransactionType.Purchase, CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value), True) Then
                     'MsgBox("Confirmed.")
                     Me.DataGridView1.SelectedRows(0).Cells(11).Value = True
                 Else
@@ -255,7 +255,7 @@
     Private Sub SetAsNotConfirmedToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SetAsNotConfirmedToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             If MsgBox("Are you sure you want to change the status of the purchase to Unconfirmed?", MsgBoxStyle.YesNo) = vbYes Then
-                If odbaccess.SetPurchaseAsConfirmed(CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value), False) Then
+                If odbaccess.SetOperationAsConfirmed(Enumerators.TransactionType.Purchase, CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value), False) Then
                     '  MsgBox("Confirmed.")
                     Me.DataGridView1.SelectedRows(0).Cells(11).Value = False
                 Else
@@ -267,7 +267,7 @@
 
     Private Sub EditNoteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditNoteToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-            Dim lid As Integer = CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+            Dim lid As Integer = CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value)
             Dim strNote As String = Me.DataGridView1.SelectedRows(0).Cells(12).Value.ToString
             Dim frmEditNote As New frmPurchaseNote(strNote, lid)
             frmEditNote.ShowDialog()

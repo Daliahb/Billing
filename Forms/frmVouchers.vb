@@ -62,8 +62,8 @@
                     Try
                         intRowIndex = Me.DataGridView1.Rows.Add
                         With Me.DataGridView1.Rows(intRowIndex)
-                            .Cells(0).Value = dr.Item("ID")
-                            .Cells(1).Value = intCounter + 1
+                            .Cells(0).Value = intCounter + 1
+                            .Cells(1).Value = dr.Item("ID")
                             .Cells(2).Value = dr.Item("CompanyCode").ToString
                             .Cells(3).Value = dr.Item("Debit_Amount").ToString
                             .Cells(4).Value = dr.Item("Credit_Amount").ToString
@@ -73,6 +73,13 @@
                             .Cells(8).Value = dr.Item("InsertBy").ToString
                             .Cells(9).Value = dr.Item("EditBy").ToString
                             .Cells(10).Value = dr.Item("strVoucherType").ToString
+                            .Cells(11).Value = CBool(dr.Item("isAllowEdit"))
+                            If CType(dr.Item("Source_Type"), Enumerators.TransactionType) = Enumerators.TransactionType.ClientPayment Then
+                                .Cells(12).Value = "C/P " & dr.Item("Source_ID").ToString
+                            ElseIf CType(dr.Item("Source_Type"), Enumerators.TransactionType) = Enumerators.TransactionType.MaplePayment Then
+                                .Cells(12).Value = "M/P " & dr.Item("Source_ID").ToString
+                            End If
+
                             intCounter += 1
                         End With
                     Catch ex As Exception
@@ -94,7 +101,7 @@
         Try
             Dim i As Integer
             For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
+                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
             Next
         Catch ex As Exception
 
@@ -155,6 +162,11 @@
             ht = Me.DataGridView1.HitTest(e.X, e.Y)
             If ht.Type = DataGridViewHitTestType.Cell Then
                 Me.DataGridView1.Rows(ht.RowIndex).Selected = True
+                If CBool(Me.DataGridView1.Rows(ht.RowIndex).Cells(11).Value) Then
+                    EditVoucherToolStripMenuItem.Enabled = True
+                Else
+                    EditVoucherToolStripMenuItem.Enabled = False
+                End If
                 DataGridView1.ContextMenuStrip = ContextMenuStrip1
             ElseIf ht.Type = DataGridViewHitTestType.ColumnHeader Then
                 Me.intColumnIndex = ht.ColumnIndex
@@ -196,16 +208,18 @@
 
     Private Sub EditVoucherToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditVoucherToolStripMenuItem.Click
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
-            Dim frm As New frmAddVoucher(Enumerators.EditAdd.Edit, Me.DataGridView1.SelectedRows(0))
-            frm.ShowDialog()
-            If frm.boolSaved Then
-                Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
-                Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtDebit.Text
-                Me.DataGridView1.SelectedRows(0).Cells(4).Value = frm.txtCredit.Text
-                Me.DataGridView1.SelectedRows(0).Cells(5).Value = frm.strBank
-                Me.DataGridView1.SelectedRows(0).Cells(6).Value = frm.txtNote.Text
-                Me.DataGridView1.SelectedRows(0).Cells(7).Value = frm.DateTimePicker1.Value.ToString("yyyy-MM-dd")
-                Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.cmbType.SelectedItem.Name
+            If CBool(Me.DataGridView1.SelectedRows(0).Cells(11).Value) Then
+                Dim frm As New frmAddVoucher(Enumerators.EditAdd.Edit, Me.DataGridView1.SelectedRows(0))
+                frm.ShowDialog()
+                If frm.boolSaved Then
+                    Me.DataGridView1.SelectedRows(0).Cells(2).Value = frm.cmbClientCode.Text
+                    Me.DataGridView1.SelectedRows(0).Cells(3).Value = frm.txtDebit.Text
+                    Me.DataGridView1.SelectedRows(0).Cells(4).Value = frm.txtCredit.Text
+                    Me.DataGridView1.SelectedRows(0).Cells(5).Value = frm.txtBankAccount.Text
+                    Me.DataGridView1.SelectedRows(0).Cells(6).Value = frm.txtNote.Text
+                    Me.DataGridView1.SelectedRows(0).Cells(7).Value = frm.DateTimePicker1.Value.ToString("yyyy-MM-dd")
+                    Me.DataGridView1.SelectedRows(0).Cells(10).Value = frm.cmbType.SelectedItem.Name
+                End If
             End If
         End If
     End Sub

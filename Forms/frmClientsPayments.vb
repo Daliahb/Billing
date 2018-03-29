@@ -48,8 +48,8 @@
                     Try
                         intRowIndex = Me.DataGridView1.Rows.Add
                         With Me.DataGridView1.Rows(intRowIndex)
-                            .Cells(0).Value = dr.Item("ID")
-                            .Cells(1).Value = intCounter + 1
+                            .Cells(0).Value = intCounter + 1
+                            .Cells(1).Value = dr.Item("ID")
                             .Cells(2).Value = dr.Item("CompanyCode")
                             .Cells(3).Value = dr.Item("ClientAmount")
                             .Cells(4).Value = dr.Item("RecievedAmount")
@@ -58,8 +58,13 @@
                             .Cells(7).Value = dr.Item("Note")
                             .Cells(8).Value = CDate(dr.Item("insert_Date")).ToString("yyyy-MM-dd")
                             .Cells(9).Value = CBool(dr.Item("isBankFeesSentToVoucher"))
-                            .Cells(10).Value = dr.Item("InsertBy")
-                            .Cells(11).Value = dr.Item("EditBy")
+                            .Cells(10).Value = CBool(dr.Item("isConfirmed"))
+                            .Cells(11).Value = dr.Item("InsertBy")
+                            .Cells(12).Value = dr.Item("EditBy")
+
+                            If Not CBool(dr.Item("isConfirmed")) Then
+                                Me.DataGridView1.Rows(intRowIndex).DefaultCellStyle.BackColor = Color.LightCoral
+                            End If
                             intCounter += 1
                         End With
                     Catch ex As Exception
@@ -81,7 +86,7 @@
         Try
             Dim i As Integer
             For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(1).Value = i + 1
+                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
             Next
         Catch ex As Exception
 
@@ -207,7 +212,7 @@
         If Not Me.DataGridView1.SelectedRows.Count = 0 Then
             Dim lId As Integer
             Dim dblFees As Double
-            lId = CInt(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
+            lId = CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value)
             dblFees = Math.Round(CDbl(Me.DataGridView1.SelectedRows(0).Cells(5).Value), 3)
             Dim frm As New frmPaymentBankFees(lId, dblFees, True)
             frm.ShowDialog()
@@ -246,5 +251,33 @@
         frm.cmbType.SelectedItem = frm.cmbType.Items(0)
         frm.btnSearch_Click(Me, New System.EventArgs)
 
+    End Sub
+
+    Private Sub SetAsUnconfirmedToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SetAsUnconfirmedToolStripMenuItem.Click
+        If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+            If MsgBox("Are you sure you want to change the status of the payment to Unconfirmed?", MsgBoxStyle.YesNo) = vbYes Then
+                If odbaccess.SetOperationAsConfirmed(Enumerators.TransactionType.ClientPayment, CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value), False) Then
+                    '  MsgBox("Confirmed.")
+                    Me.DataGridView1.SelectedRows(0).Cells(10).Value = False
+                    Me.DataGridView1.SelectedRows(0).DefaultCellStyle.BackColor = Color.LightCoral
+                Else
+                    MsgBox("An error occured.")
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub SetAsConfirmedToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SetAsConfirmedToolStripMenuItem.Click
+        If Not Me.DataGridView1.SelectedRows.Count = 0 Then
+            If MsgBox("Are you sure you want to change the status of the payment to Confirmed?", MsgBoxStyle.YesNo) = vbYes Then
+                If odbaccess.SetOperationAsConfirmed(Enumerators.TransactionType.ClientPayment, CInt(Me.DataGridView1.SelectedRows(0).Cells(1).Value), True) Then
+                    '  MsgBox("Confirmed.")
+                    Me.DataGridView1.SelectedRows(0).Cells(10).Value = True
+                    Me.DataGridView1.SelectedRows(0).DefaultCellStyle.BackColor = Color.LemonChiffon
+                Else
+                    MsgBox("An error occured.")
+                End If
+            End If
+        End If
     End Sub
 End Class

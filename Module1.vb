@@ -9,25 +9,29 @@ Module Module1
     Public gUser As New User
     Public gDsClientsBanks As DataSet
     Public gDsMembers As DataSet
-    Public gConnectionString, gCountry As String
+    Public gConnectionString As String
+
     Public gPurchaseEditPercentage As Double
+    Public oTCPConnection As TCPControl
+    Public gAPISessionID As String = ""
+    Public gCountry As Enumerators.Country
 
     Sub New()
         'Real Online DB
-        'gConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
-        'gCountry = "Jordan"
+        gConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
+        gCountry = Enumerators.Country.Jordan
 
         'Test Online DB
-        gConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
-        gCountry = "Jordan"
+        'gConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        'gCountry = Enumerators.Country.Jordan
 
         ''Armenia Online DB
         'gConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
-        'gCountry = "Yerevan"
+        'gCountry = Enumerators.Country.Armenia
 
         'Armenia Test
         'gConnectionString = "server=localhost;User Id=root;Password=root;Persist Security Info=false;database=voip_billing_system_mapleexpress_yerevan"
-        'gCountry = "Yerevan"
+        'gCountry = Enumerators.Country.Armenia
     End Sub
 
     Public Sub ExportToExcel(ByVal DataGridView1 As DataGridView)

@@ -92,6 +92,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MySql.Data.DLL</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2010\Projects\testTCPServer\testTCPServer\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Office, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -192,6 +197,12 @@
     <Compile Include="DataSets\dsUsersCategories.vb">
       <DependentUpon>dsUsersCategories.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmClientTransactionNote.Designer.vb">
+      <DependentUpon>frmClientTransactionNote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClientTransactionNote.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmSetPurchaceEditPercentage.Designer.vb">
       <DependentUpon>frmSetPurchaceEditPercentage.vb</DependentUpon>
     </Compile>
@@ -226,12 +237,6 @@
       <DependentUpon>frmInquiries.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmInquiries.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmPotentialClients.designer.vb">
-      <DependentUpon>frmPotentialClients.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmPotentialClients.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmReadInquiry.Designer.vb">
@@ -542,6 +547,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SendEmails.vb" />
+    <Compile Include="TCPControl.vb" />
     <Compile Include="UserControl1.Designer.vb">
       <DependentUpon>UserControl1.vb</DependentUpon>
     </Compile>
@@ -555,6 +561,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmClientTransactionNote.resx">
+      <DependentUpon>frmClientTransactionNote.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetPurchaceEditPercentage.resx">
       <DependentUpon>frmSetPurchaceEditPercentage.vb</DependentUpon>
     </EmbeddedResource>
@@ -572,9 +581,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInquiries.resx">
       <DependentUpon>frmInquiries.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPotentialClients.resx">
-      <DependentUpon>frmPotentialClients.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReadInquiry.resx">
       <DependentUpon>frmReadInquiry.vb</DependentUpon>

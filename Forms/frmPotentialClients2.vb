@@ -16,84 +16,84 @@
                 row = Me.DataGridView1.Rows(i)
                 If IsNumeric(row.Cells(0).Value) AndAlso CInt(row.Cells(0).Value) > 0 Then ' Then edit row
                     strQuery.Append(" update potential_clients set ")
-                    If Not row.Cells(1).Value Is Nothing Then
-                        strQuery.Append("`Name` ='" & row.Cells(1).Value & "',")
+                    If Not row.Cells("dgName").Value Is Nothing Then
+                        strQuery.Append("`Name` ='" & row.Cells("dgName").Value & "',")
                     Else
                         strQuery.Append("`Name` =null,")
                     End If
-                    If Not row.Cells(2).Value Is Nothing Then
-                        strQuery.Append("`Title` ='" & row.Cells(2).Value & "',")
+                    If Not row.Cells("dgTitle").Value Is Nothing Then
+                        strQuery.Append("`Title` ='" & row.Cells("dgTitle").Value & "',")
                     Else
                         strQuery.Append("`Title` =null,")
                     End If
-                    If Not row.Cells(3).Value Is Nothing Then
-                        strQuery.Append("`Company_Name` ='" & row.Cells(3).Value & "',")
+                    If Not row.Cells("dgCompanyName").Value Is Nothing Then
+                        strQuery.Append("`Company_Name` ='" & row.Cells("dgCompanyName").Value & "',")
                     Else
                         strQuery.Append("`Company_Name` =null,")
                     End If
-                    If Not row.Cells(4).Value Is Nothing Then
-                        strQuery.Append("`Phone` ='" & row.Cells(4).Value & "',")
+                    If Not row.Cells("dgPhone").Value Is Nothing Then
+                        strQuery.Append("`Phone` ='" & row.Cells("dgPhone").Value & "',")
                     Else
                         strQuery.Append("`Phone` =null,")
                     End If
-                    If Not row.Cells(5).Value Is Nothing Then
-                        strQuery.Append("`Phone2` ='" & row.Cells(5).Value & "',")
+                    If Not row.Cells("dgPhone2").Value Is Nothing Then
+                        strQuery.Append("`Phone2` ='" & row.Cells("dgPhone2").Value & "',")
                     Else
                         strQuery.Append("`Phone2` =null,")
                     End If
-                    If Not row.Cells(6).Value Is Nothing Then
-                        strQuery.Append("`Mobile` ='" & row.Cells(6).Value & "',")
+                    If Not row.Cells("dgMobile").Value Is Nothing Then
+                        strQuery.Append("`Mobile` ='" & row.Cells("dgMobile").Value & "',")
                     Else
                         strQuery.Append("`Mobile` =null,")
                     End If
-                    If Not row.Cells(7).Value Is Nothing Then
-                        strQuery.Append("`Email` ='" & row.Cells(7).Value & "',")
+                    If Not row.Cells("dgEmail").Value Is Nothing Then
+                        strQuery.Append("`Email` ='" & row.Cells("dgEmail").Value & "',")
                     Else
                         strQuery.Append("`Email` =null,")
                     End If
-                    If Not row.Cells(8).Value Is Nothing Then
-                        strQuery.Append("`Skype` ='" & row.Cells(8).Value & "',")
+                    If Not row.Cells("dgSkype").Value Is Nothing Then
+                        strQuery.Append("`Skype` ='" & row.Cells("dgSkype").Value & "',")
                     Else
                         strQuery.Append("`Skype` =null,")
                     End If
-                    If Not row.Cells(9).Value Is Nothing Then
-                        strQuery.Append("`Website` ='" & row.Cells(9).Value & "',")
+                    If Not row.Cells("dgWebsite").Value Is Nothing Then
+                        strQuery.Append("`Website` ='" & row.Cells("dgWebsite").Value & "',")
                     Else
                         strQuery.Append("`Website` =null,")
                     End If
-                    If Not row.Cells(10).Value Is Nothing Then
-                        strQuery.Append("`Address` ='" & row.Cells(10).Value & "',")
+                    If Not row.Cells("dgAddress").Value Is Nothing Then
+                        strQuery.Append("`Address` ='" & row.Cells("dgAddress").Value & "',")
                     Else
                         strQuery.Append("`Address` =null,")
                     End If
-                    If Not row.Cells(11).Value Is Nothing Then
-                        strQuery.Append("`Exhibition_Name` ='" & row.Cells(11).Value & "',")
+                    If Not row.Cells("dgExhibitionName").Value Is Nothing Then
+                        strQuery.Append("`Exhibition_Name` ='" & row.Cells("dgExhibitionName").Value & "',")
                     Else
                         strQuery.Append("`Exhibition_Name` =null,")
                     End If
-                    If Not row.Cells(12).Value Is Nothing Then
-                        strQuery.Append("`Limit` ='" & row.Cells(12).Value & "',")
+                    If Not row.Cells("dgLimit").Value Is Nothing Then
+                        strQuery.Append("`Limit` ='" & row.Cells("dgLimit").Value & "',")
                     Else
                         strQuery.Append("`Limit` =null,")
                     End If
-                    If Not row.Cells(13).Value Is Nothing Then
-                        strQuery.Append("`Credit_Check` =" & CBool(row.Cells(13).Value) & ",")
+                    If Not row.Cells("dgCreditCheck").Value Is Nothing Then
+                        strQuery.Append("`Credit_Check` =" & CBool(row.Cells("dgCreditCheck").Value) & ",")
                     Else
                         strQuery.Append("`Credit_Check` =null,")
                     End If
-                    If Not row.Cells(14).Value Is Nothing Then
-                        strQuery.Append("`isContacted` =" & CBool(row.Cells(14).Value) & ",")
+                    If Not row.Cells("dgIsContacted").Value Is Nothing Then
+                        strQuery.Append("`isContacted` =" & CBool(row.Cells("dgIsContacted").Value) & ",")
                     Else
                         strQuery.Append("`isContacted` =null,")
                     End If
-                    If Not row.Cells(15).Value Is Nothing Then
-                        strQuery.Append("`Action_Date` ='" & row.Cells(15).Value & "',")
+                    If Not row.Cells("dgActionDate").Value Is Nothing Then
+                        strQuery.Append("`Action_Date` ='" & row.Cells("dgActionDate").Value.ToString & "',")
                     Else
                         strQuery.Append("`Action_Date` =null,")
                     End If
 
-                    If Not row.Cells(16).Value Is Nothing Then
-                        strQuery.Append("`Note` ='" & row.Cells(16).Value & "',")
+                    If Not row.Cells("dgNote").Value Is Nothing Then
+                        strQuery.Append("`Note` ='" & row.Cells("dgNote").Value.ToString & "',")
                     Else
                         strQuery.Append("`Note` =null,")
                     End If
@@ -106,87 +106,87 @@
 
                 ElseIf row.Cells(0).Value Is DBNull.Value OrElse row.Cells(0).Value = "" Then 'add row
                     strQuery.Append(" insert into potential_clients (`Name`,`Title`,`Company_Name`,`Phone`,`Phone2`,`Mobile`,`Email`,`Skype`,`Website`,`Address`,`Exhibition_Name`,`Limit`,`Credit_Check`,`isContacted`,`Action_Date`,`Note`,`Account_Manager`) Values (")
-                    If Not row.Cells(1).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(1).Value & "',")
+                    If Not row.Cells("dgName").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgName").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(2).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(2).Value & "',")
+                    If Not row.Cells("dgTitle").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgTitle").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(3).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(3).Value & "',")
+                    If Not row.Cells("dgCompanyName").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgCompanyName").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(4).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(4).Value & "',")
+                    If Not row.Cells("dgPhone").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgPhone").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(5).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(5).Value & "',")
+                    If Not row.Cells("dgPhone2").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgPhone2").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(6).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(6).Value & "',")
+                    If Not row.Cells("dgMobile").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgMobile").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(7).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(7).Value & "',")
+                    If Not row.Cells("dgEmail").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgEmail").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(8).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(8).Value & "',")
+                    If Not row.Cells("dgSkype").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgSkype").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(9).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(9).Value & "',")
+                    If Not row.Cells("dgWebsite").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgWebsite").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(10).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(10).Value & "',")
+                    If Not row.Cells("dgAddress").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgAddress").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(11).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(11).Value & "',")
+                    If Not row.Cells("dgExhibitionName").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgExhibitionName").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(12).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(12).Value & "',")
+                    If Not row.Cells("dgLimit").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgLimit").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(13).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(13).Value & "',")
+                    If Not row.Cells("dgCreditCheck").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgCreditCheck").Value.ToString & "',")
                     Else
                         strQuery.Append("0,")
                     End If
-                    If Not row.Cells(14).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(14).Value & "',")
+                    If Not row.Cells("dgIsContacted").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgIsContacted").Value.ToString & "',")
                     Else
                         strQuery.Append("0,")
                     End If
-                    If Not row.Cells(15).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(15).Value & "',")
+                    If Not row.Cells("Action_Date").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("Action_Date").Value.ToString & "',")
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(16).Value Is Nothing Then
-                        strQuery.Append("'" & row.Cells(16).Value & "',") 'Note
+                    If Not row.Cells("dgNote").Value Is Nothing Then
+                        strQuery.Append("'" & row.Cells("dgNote").Value.ToString & "',") 'Note
                     Else
                         strQuery.Append("null,")
                     End If
-                    If Not row.Cells(17).Value Is Nothing OrElse row.Cells(17).Value = "" Then
+                    If Not row.Cells(17).Value Is Nothing OrElse row.Cells(17).Value.ToString = "" Then
                         strQuery.Append(row.Cells(17).Value) 'Account Manager
                     Else
                         strQuery.Append("0")
@@ -258,23 +258,23 @@
             For Each dr As DataRow In ds.Tables(0).Rows
                 intRowIndex = Me.DataGridView1.Rows.Add
                 With Me.DataGridView1.Rows(intRowIndex)
-                    .Cells(0).Value = dr.Item(0).ToString
-                    .Cells(1).Value = dr.Item(1).ToString
-                    .Cells(2).Value = dr.Item(2).ToString
-                    .Cells(3).Value = dr.Item(3).ToString
-                    .Cells(4).Value = dr.Item(4).ToString
-                    .Cells(5).Value = dr.Item(5).ToString
-                    .Cells(6).Value = dr.Item(6).ToString
-                    .Cells(7).Value = dr.Item(7).ToString
-                    .Cells(8).Value = dr.Item(8).ToString
-                    .Cells(9).Value = dr.Item(9).ToString
-                    .Cells(10).Value = dr.Item(10).ToString
-                    .Cells(11).Value = dr.Item(11).ToString
-                    .Cells(12).Value = dr.Item(12).ToString
-                    .Cells(13).Value = CBool(dr.Item(13).ToString)
-                    .Cells(14).Value = CBool(dr.Item(14).ToString)
-                    .Cells(15).Value = dr.Item(15).ToString
-                    .Cells(16).Value = dr.Item("Note").ToString
+                    .Cells("dgID").Value = dr.Item("ID").ToString
+                    .Cells("dgName").Value = dr.Item("Name").ToString
+                    .Cells("dgPhone").Value = dr.Item("Phone").ToString
+                    .Cells("dgEmail").Value = dr.Item("Email").ToString
+                    .Cells("dgAddress").Value = dr.Item("Address").ToString
+                    .Cells("dgTitle").Value = dr.Item("Title").ToString
+                    .Cells("dgCompanyName").Value = dr.Item("company_Name").ToString
+                    .Cells("dgPhone2").Value = dr.Item("Phone2").ToString
+                    .Cells("dgMobile").Value = dr.Item("Mobile").ToString
+                    .Cells("dgSkype").Value = dr.Item("Skype").ToString
+                    .Cells("dgWebsite").Value = dr.Item("Website").ToString
+                    .Cells("dgExhibitionName").Value = dr.Item("Exhibition_Name").ToString
+                    .Cells("dgLimit").Value = dr.Item("Limit").ToString
+                    .Cells("dgCreditCheck").Value = CBool(dr.Item("Credit_Check").ToString)
+                    .Cells("dgIsContacted").Value = CBool(dr.Item("isContacted").ToString)
+                    .Cells("dgActionDate").Value = dr.Item("Action_Date").ToString
+                    .Cells("dgNote").Value = dr.Item("Note").ToString
                     .Cells(17).Value = dr.Item("Account_Manager").ToString
                     '.Cells(18).Value = dr.Item("Account_Manager").ToString
                 End With
