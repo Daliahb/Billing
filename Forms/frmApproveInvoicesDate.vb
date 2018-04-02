@@ -1,5 +1,7 @@
 ﻿Public Class frmApproveInvoicesDate
 
+    Dim DsDates As New DataSet
+
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
@@ -36,8 +38,6 @@
 
     Public Sub fillComboBoxes()
         Try
-
-            Dim DsDates As New DataSet
             DsDates = odbaccess.GetBillingDatessDS
             If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 AndAlso Not DsDates.Tables(0).Rows.Count = 0 Then
                 Me.cmbBillingDates.DataSource = DsDates.Tables(0)
@@ -49,9 +49,16 @@
         Catch ex As Exception
 
         End Try
-
     End Sub
 
-  
+    Private Sub cmbPeriod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPeriod.SelectedIndexChanged
+        If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 Then
+            Dim dv As New DataView(DsDates.Tables(0))
+            dv.RowFilter = "InvoicePeriod = " & CInt(Me.cmbPeriod.Text).ToString
+            Me.cmbBillingDates.DataSource = dv
+            Me.cmbBillingDates.ValueMember = "Insert_Date"
+            Me.cmbBillingDates.DisplayMember = "Insert_Date"
+        End If
+    End Sub
 End Class
 

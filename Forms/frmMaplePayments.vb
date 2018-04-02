@@ -19,6 +19,8 @@
         Dim lBankID As Long = 0
         Dim enumStatus As Enumerators.ClientStatus
         Dim ds As DataSet
+        Dim boolBankFeesStatus, boolHandled, boolPaymentStatus, boolConfirmed As Boolean
+
         Try
             Me.DataGridView1.Rows.Clear()
             If Me.chkClient.Checked AndAlso Not Me.cmbClientCode.SelectedValue Is Nothing Then
@@ -39,7 +41,29 @@
                 enumStatus = 0
             End If
 
-            ds = odbaccess.GetMaplePayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, enumStatus)
+            If Me.chkBankFees.Checked Then
+                boolBankFeesStatus = True
+                If rbHandled.Checked Then
+                    boolHandled = True
+                ElseIf rbNotHandled.Checked Then
+                    boolHandled = False
+                End If
+            Else
+                boolBankFeesStatus = False
+            End If
+
+            If Me.chkPayment.Checked Then
+                boolPaymentStatus = True
+                If rbConfirmed.Checked Then
+                    boolConfirmed = True
+                ElseIf rbNotConfirmed.Checked Then
+                    boolConfirmed = False
+                End If
+            Else
+                boolPaymentStatus = False
+            End If
+
+            ds = odbaccess.GetMaplePayments(Me.chkClient.Checked, lClientID, Me.chkDate.Checked, Me.dtpFromDate.Value, dtpToDate.Value, lBankID, enumStatus, boolBankFeesStatus, boolHandled, boolPaymentStatus, boolConfirmed)
             If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
                 For Each dr As DataRow In ds.Tables(0).Rows
                     Try
@@ -301,5 +325,13 @@
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub chkPayment_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPayment.CheckedChanged
+        Me.gbConfirmed.Enabled = chkPayment.Checked
+    End Sub
+
+    Private Sub chkBankFees_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkBankFees.CheckedChanged
+        Me.gbHandled.Enabled = chkBankFees.Checked
     End Sub
 End Class

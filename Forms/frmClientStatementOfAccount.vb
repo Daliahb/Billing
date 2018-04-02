@@ -52,8 +52,6 @@
                 ' Dim lvitem As ListViewItem
                 arClientBalance = strMCClientsBalances.Split(CChar("&"))
 
-
-
                 dt.Columns.Add("ClientCode")
                 dt.Columns.Add("Balance")
 
@@ -80,10 +78,10 @@
             Else
                 enumClientStatus = 0
             End If
-            Dim oGenerate_Invoice As New Generate_Invoice
+            Dim oGenerate_Invoice As New Generate_Invoice(Now)
             oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus, dt)
         Catch ex As Exception
-
+            MsgBox(ex.Message & vbCrLf & ex.StackTrace)
         End Try
 
     End Sub
@@ -96,11 +94,16 @@
             Else
                 enumClientStatus = 0
             End If
-            Dim oGenerate_Invoice As New Generate_Invoice
+
+            Dim frm As New frmStatementOfAccount(enumClientStatus)
+            frm.WindowState = FormWindowState.Minimized
+            frm.Show()
+
+            Dim oGenerate_Invoice As New Generate_Invoice(Now)
             oGenerate_Invoice.GenerateStatementOfAccountReport(enumClientStatus)
         Else
             If Not Me.cmbClientCode.SelectedValue Is Nothing Then
-                Dim oGenerate_Invoice As New Generate_Invoice
+                Dim oGenerate_Invoice As New Generate_Invoice(Now)
                 '  oGenerate_Invoice.GenerateStatementOfAccountReportForClient(CInt(Me.cmbClientCode.SelectedValue))
                 oGenerate_Invoice.GenerateStatementOfAccountReportForClient_New(CInt(Me.cmbClientCode.SelectedValue), Me.cmbClientCode.Text)
                 Me.Close()
@@ -110,7 +113,18 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles btnGetSOAMC.Click
+    Private Sub btnGetSOAMC_Click(sender As System.Object, e As System.EventArgs) Handles btnGetSOAMC.Click
+        Dim enumClientStatus As Enumerators.ClientStatus
+        If Me.rbAllClients.Checked Then
+            If Me.chkStatus.Checked AndAlso Not Me.cmbStatus.SelectedItem Is Nothing Then
+                enumClientStatus = CType(Me.cmbStatus.SelectedItem.value, Enumerators.ClientStatus)
+            Else
+                enumClientStatus = 0
+            End If
+        End If
+        Dim frm As New frmStatementOfAccount(enumClientStatus)
+        frm.WindowState = FormWindowState.Minimized
+        frm.Show()
         If oTCPConnection.ConnectToServer Then
             oTCPConnection.Send("GetAllClientsBalances|")
         End If

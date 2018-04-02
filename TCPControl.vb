@@ -74,8 +74,8 @@ Public Class TCPControl
                     If Not intAllClientBalancesLength = 0 Then
                         intMsgLength += arMSG(0).ToString.Length
                         strMsg &= arMSG(0).ToString
-
-                        If intAllClientBalancesLength = intMsgLength Then
+                        '       MsgBox("intAllClientBalancesLength " & intAllClientBalancesLength.ToString & "     intMsgLength " & intMsgLength.ToString)
+                        If intAllClientBalancesLength <= intMsgLength Then
                             intAllClientBalancesLength = 0
                             intMsgLength = 0
 

@@ -1,6 +1,7 @@
 ﻿Public Class frmCompanies
 
     Dim oColCompanys As New ColCompany
+
     Private Sub Template_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
         CheckPermission()
@@ -11,17 +12,15 @@
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-
         Dim intCounter As Integer = 0
         Dim intRowIndex As Integer
-        ' Dim boolStatus, boolActive As Boolean
+        Dim boolStatus, boolActive As Boolean
 
         Try
             Me.DataGridView1.Rows.Clear()
-            'generateSearchCrytiria(boolStatus, boolActive)
+            generateSearchCrytiria(boolStatus, boolActive)
 
-
-            oColCompanys = odbaccess.GetCompanies
+            oColCompanys = odbaccess.GetCompanies(boolStatus, boolActive)
             If Not oColCompanys Is Nothing AndAlso Not oColCompanys.Count = 0 Then
                 For Each oCompany As Company In oColCompanys
                     intRowIndex = Me.DataGridView1.Rows.Add

@@ -627,7 +627,9 @@ Public Class frmImportData
                 Me.cmbSoftwareID.ValueMember = "ID"
                 Me.cmbSoftwareID.DisplayMember = "Name"
 
-
+                If Not Me.cmbSoftwareID.Items.Count < 2 Then
+                    Me.cmbSoftwareID.SelectedIndex = 1
+                End If
             End If
 
         Catch ex As Exception

@@ -63,8 +63,8 @@ Partial Class frmCompanies
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.DataGridView1)
@@ -86,7 +86,6 @@ Partial Class frmCompanies
         Me.GroupBox1.Size = New System.Drawing.Size(256, 37)
         Me.GroupBox1.TabIndex = 53
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Visible = False
         '
         'rbInactive
         '
@@ -94,7 +93,7 @@ Partial Class frmCompanies
         Me.rbInactive.Enabled = False
         Me.rbInactive.Location = New System.Drawing.Point(153, 10)
         Me.rbInactive.Name = "rbInactive"
-        Me.rbInactive.Size = New System.Drawing.Size(64, 17)
+        Me.rbInactive.Size = New System.Drawing.Size(79, 20)
         Me.rbInactive.TabIndex = 1
         Me.rbInactive.Text = "Inactive"
         Me.rbInactive.UseVisualStyleBackColor = True
@@ -106,7 +105,7 @@ Partial Class frmCompanies
         Me.rbActive.Enabled = False
         Me.rbActive.Location = New System.Drawing.Point(6, 11)
         Me.rbActive.Name = "rbActive"
-        Me.rbActive.Size = New System.Drawing.Size(55, 17)
+        Me.rbActive.Size = New System.Drawing.Size(68, 20)
         Me.rbActive.TabIndex = 0
         Me.rbActive.TabStop = True
         Me.rbActive.Text = "Active"
@@ -118,8 +117,8 @@ Partial Class frmCompanies
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -271,13 +270,12 @@ Partial Class frmCompanies
         'chkStatus
         '
         Me.chkStatus.AutoSize = True
-        Me.chkStatus.Location = New System.Drawing.Point(3, 7)
+        Me.chkStatus.Location = New System.Drawing.Point(20, 14)
         Me.chkStatus.Name = "chkStatus"
         Me.chkStatus.Size = New System.Drawing.Size(70, 20)
         Me.chkStatus.TabIndex = 54
         Me.chkStatus.Text = "Status"
         Me.chkStatus.UseVisualStyleBackColor = True
-        Me.chkStatus.Visible = False
         '
         'ContextMenuStrip2
         '

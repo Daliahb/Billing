@@ -22,7 +22,7 @@ Public Class Generate_Invoice
     Dim pTo As Object = Type.Missing
     Dim pOpenAfterPublish As Boolean = False
 
-    Public Sub New()
+    Public Sub New(dInsertDate As Date)
         If My.Settings.RootDirectory.Length = 0 Then
             If MsgBox("Please choose the Invoices directory. Do you want to do it now?", MsgBoxStyle.YesNo) = vbYes Then
                 Dim folderDlg As New FolderBrowserDialog
@@ -40,10 +40,12 @@ Public Class Generate_Invoice
 
         End If
         'create a folder with today's date
-        RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy")
+        RootDirectory = My.Settings.RootDirectory + "/" + dInsertDate.ToString("dd-MM-yyyy")
         If (Not System.IO.Directory.Exists(RootDirectory)) Then
             System.IO.Directory.CreateDirectory(RootDirectory)
         End If
+
+        Me.dInsertDate = dInsertDate
     End Sub
 
     Public Sub New(ByVal dInsertDate As Date, lClientId As Long, intPeriod As Integer)
@@ -65,7 +67,7 @@ Public Class Generate_Invoice
 
         End If
         'create a folder with today's date
-        RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
+        RootDirectory = My.Settings.RootDirectory + "/" + dInsertDate.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
         If (Not System.IO.Directory.Exists(RootDirectory)) Then
             System.IO.Directory.CreateDirectory(RootDirectory)
         End If
@@ -123,7 +125,7 @@ Public Class Generate_Invoice
             Dim ExcelPath As String = System.Windows.Forms.Application.StartupPath & "\Invoice.xlsx"
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
-            RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
+            RootDirectory = My.Settings.RootDirectory + "/" + dInsertDate.ToString("dd-MM-yyyy") + "/" + intPeriod.ToString
             Dim LogoPath As String
 
 
@@ -202,7 +204,7 @@ Public Class Generate_Invoice
                     Me.worksheet.Range("B" & i).Value = dr.Item("Area_Name")
                     '  Me.worksheet.Range("c" & i).Value = dr.Item("Area_Code")
                     Me.worksheet.Range("C" & i).Value = dr.Item("Total_Duration")
-                    Me.worksheet.Range("D" & i).Value = Math.Round(dr.Item("Total_Charges"), 3)
+                    Me.worksheet.Range("D" & i).Value = Math.Round(CDbl(dr.Item("Total_Charges")), 2)
                     i += 1
                 Next
 
@@ -261,7 +263,7 @@ Public Class Generate_Invoice
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
                 '  GenerateExcelFile(ds)
 
-                RootDirectory = My.Settings.RootDirectory + "/" + Now.ToString("dd-MM-yyyy")
+                RootDirectory = My.Settings.RootDirectory + "/" + dInsertDate.ToString("dd-MM-yyyy")
                 Dim strName As String
                 excel.Visible = True
                 Dim i As Integer
@@ -295,7 +297,7 @@ Public Class Generate_Invoice
                             Me.worksheet.Range("D" & i).Value = .Item("InvoiceNo")
                         End If
                         If Not .Item("Amount") Is DBNull.Value Then
-                            Me.worksheet.Range("E" & i).Value = .Item("Amount")
+                            Me.worksheet.Range("E" & i).Value = Math.Round(.Item("Amount"), 2)
                         End If
                         If Not .Item("Duration") Is DBNull.Value Then
                             Me.worksheet.Range("F" & i).Value = .Item("Duration")
@@ -337,15 +339,14 @@ Public Class Generate_Invoice
 
     Public Sub GenerateStatementOfAccountReport(enumClientStatus As Enumerators.ClientStatus, Optional dt As System.Data.DataTable = Nothing)
         Try
-            Dim frmStatementOfAccount As New frmStatementOfAccount
             Dim intRowIndex, intCounter As Integer
             Dim dLastDate As Date
             Dim dblAmount, dblCredit, dblDebit As Double
             Dim ds As DataSet
             Dim dblTotalClientPayment, dblTotalTransactionBankFees, dblTotalBankFees As Double
 
-            dsStatmentNotes = odbaccess.GetClientStatemntNotes(0)
             ds = odbaccess.GetStatementOfAccount(enumClientStatus)
+
             If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
                 '  GenerateExcelFile(ds)
 
@@ -376,44 +377,47 @@ Public Class Generate_Invoice
                         If Not .Item("Company_Code") Is DBNull.Value Then
                             Me.worksheet.Range("B" & i).Value = .Item("Company_Code")
                         End If
+                        If Not .Item("enumClientStatus") Is DBNull.Value Then
+                            Me.worksheet.Range("C" & i).Value = CType(.Item("enumClientStatus"), Enumerators.ClientStatus).ToString()
+                        End If
                         If Not .Item("BeginingBalance") Is DBNull.Value Then
-                            Me.worksheet.Range("C" & i).Value = .Item("BeginingBalance")
+                            Me.worksheet.Range("D" & i).Value = Math.Round(CDbl(.Item("BeginingBalance")), 2)
                         End If
                         'Credit
                         If Not .Item("Purchase") Is DBNull.Value Then
-                            Me.worksheet.Range("D" & i).Value = .Item("Purchase")
+                            Me.worksheet.Range("E" & i).Value = .Item("Purchase")
                         End If
                         If Not .Item("ClientPayment") Is DBNull.Value Then
-                            Me.worksheet.Range("E" & i).Value = .Item("ClientPayment")
+                            Me.worksheet.Range("F" & i).Value = Math.Round(CDbl(.Item("ClientPayment")), 2)
                         End If
                         If Not .Item("VouchersCredit") Is DBNull.Value Then
-                            Me.worksheet.Range("F" & i).Value = .Item("VouchersCredit")
+                            Me.worksheet.Range("G" & i).Value = .Item("VouchersCredit")
                         End If
                         'Debit
                         If Not .Item("Invoice") Is DBNull.Value Then
-                            Me.worksheet.Range("G" & i).Value = .Item("Invoice")
+                            Me.worksheet.Range("H" & i).Value = Math.Round(CDbl(.Item("Invoice")), 2)
                         End If
                         If Not .Item("MaplePayment") Is DBNull.Value Then
-                            Me.worksheet.Range("H" & i).Value = .Item("MaplePayment")
+                            Me.worksheet.Range("I" & i).Value = Math.Round(CDbl(.Item("MaplePayment")), 2)
                         End If
                         If Not .Item("VouchersDebit") Is DBNull.Value Then
-                            Me.worksheet.Range("I" & i).Value = .Item("VouchersDebit")
+                            Me.worksheet.Range("J" & i).Value = Math.Round(CDbl(.Item("VouchersDebit")), 2)
                         End If
 
                         'get Bank Fees percentage from total client payments
-                        dblTotalClientPayment = Math.Round(CDbl(.Item("ClientPayment")), 4)
-                        dblTotalTransactionBankFees = Math.Round(CDbl(.Item("TotalTransactionsBankFees")), 4)
-                        dblTotalBankFees = Math.Round(CDbl(.Item("TotalBankFees")), 4)
+                        dblTotalClientPayment = Math.Round(CDbl(.Item("ClientPayment")), 2)
+                        dblTotalTransactionBankFees = Math.Round(CDbl(.Item("TotalTransactionsBankFees")), 2)
+                        dblTotalBankFees = Math.Round(CDbl(.Item("TotalBankFees")), 2)
 
-                        Me.worksheet.Range("Q" & i).Value = (dblTotalBankFees - dblTotalTransactionBankFees)
+                        Me.worksheet.Range("S" & i).Value = (dblTotalBankFees - dblTotalTransactionBankFees)
 
                         Try
                             If Not dblTotalClientPayment = 0 Then
-                                Me.worksheet.Range("R" & i).Value = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 4).ToString
+                                Me.worksheet.Range("T" & i).Value = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 2).ToString
                             Else
-                                Me.worksheet.Range("R" & i).Value = "0"
+                                Me.worksheet.Range("T" & i).Value = "0"
                             End If
-                            Me.worksheet.Range("S" & i).Value = .Item("NumberOfClientPayments")
+                            Me.worksheet.Range("U" & i).Value = .Item("NumberOfClientPayments")
                         Catch ex As Exception
 
                         End Try
@@ -421,33 +425,33 @@ Public Class Generate_Invoice
                         Dim dblBalance As Double
                         dblBalance = (CDbl(.Item("BeginingBalance")) + CDbl(.Item("Purchase")) + CDbl(.Item("ClientPayment")) + CDbl(.Item("VouchersCredit")) - CDbl(.Item("Invoice")) - CDbl(.Item("MaplePayment")) - CDbl(.Item("VouchersDebit")))
                         Dim j As String
-                        j = "=C" & i & "+D" & i & "+E" & i & "+F" & i & "-G" & i & "-" & "H" & i & "-I" & i
-                        Me.worksheet.Range("J" & i).Formula = j
+                        j = "=D" & i & "+E" & i & "+F" & i & "+G" & i & "-H" & i & "-" & "I" & i & "-J" & i
+                        Me.worksheet.Range("K" & i).Formula = j
 
-                        If Me.worksheet.Range("J" & i).Value < 0 Then
-                            dblCredit += Me.worksheet.Range("J" & i).Value
+                        If Me.worksheet.Range("K" & i).Value < 0 Then
+                            dblCredit += Me.worksheet.Range("K" & i).Value
                         Else
-                            dblDebit += Me.worksheet.Range("J" & i).Value
+                            dblDebit += Me.worksheet.Range("K" & i).Value
                         End If
 
                         getLastPaymentDate(ds.Tables(1), CInt(.Item("fk_client")), dLastDate, dblAmount)
 
-                        Me.worksheet.Range("L" & i).Value = dLastDate
-                        Me.worksheet.Range("M" & i).Value = dblAmount
+                        Me.worksheet.Range("N" & i).Value = dLastDate
+                        Me.worksheet.Range("O" & i).Value = Math.Round(dblAmount, 2)
 
                         If Not .Item("Credit_Limit") Is DBNull.Value Then
-                            Me.worksheet.Range("N" & i).Value = .Item("Credit_Limit")
+                            Me.worksheet.Range("P" & i).Value = .Item("Credit_Limit")
                         End If
 
                         Dim intDiff As Long
                         intDiff = DateDiff(DateInterval.Day, dLastDate, Now())
                         If intDiff > 21 And dblBalance < 0 Then
                             'Me.worksheet.Range("B" & i).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red)
-                            Me.worksheet.Range("O" & i).Value = intDiff
+                            Me.worksheet.Range("Q" & i).Value = intDiff
                         End If
 
                         If Not .Item("AccountManager") Is DBNull.Value Then
-                            Me.worksheet.Range("P" & i).Value = .Item("AccountManager")
+                            Me.worksheet.Range("R" & i).Value = .Item("AccountManager")
                         End If
 
                         If Not dt Is Nothing AndAlso Not dt.Rows.Count = 0 Then
@@ -455,44 +459,25 @@ Public Class Generate_Invoice
                                 Dim row As DataRow
                                 row = dt.Rows.Find(.Item("Company_Code").ToString)
 
+                                Me.worksheet.Range("L" & i).Value = Math.Round(CDbl(row.Item("Balance")), 2)
 
-                                Me.worksheet.Range("K" & i).Value = row.Item("Balance")
                             Catch ex As Exception
-
+                                'Me.worksheet.Range("L" & i).Value = 0
                             End Try
+                            Me.worksheet.Range("M" & i).Value = Math.Round(Me.worksheet.Range("K" & i).Value - Me.worksheet.Range("L" & i).Value, 2)
                         End If
 
-                        ' Fill Form DataGrid
-                        intRowIndex = frmStatementOfAccount.DataGridView1.Rows.Add
-                        With frmStatementOfAccount.DataGridView1.Rows(intRowIndex)
-                            .Cells(0).Value = dr.Item("fk_client")
-                            .Cells(1).Value = intCounter + 1
-                            .Cells(3).Value = dr.Item("Company_Code")
-                            .Cells(4).Value = dr.Item("AccountManager")
-                            .Cells(5).Value = dr.Item("BeginingBalance")
-                            '   .Cells(6).Value = dr.Item("Credit")
-                            '   .Cells(7).Value = dr.Item("Debit")
-                            .Cells(8).Value = Math.Round(dblBalance, 3)
-                            .Cells(9).Value = CDate(dLastDate).ToString("yyyy-MM-dd")
-                            .Cells(10).Value = dblAmount
-                            .Cells(11).Value = dr.Item("Credit_Limit")
-                            If intDiff > 21 And dblBalance < 0 Then
-                                .DefaultCellStyle.BackColor = Color.RosyBrown
-                                .Cells(12).Value = intDiff
-                            End If
-
-                            ' .Cells(13).Value = dr.Item("isSentEmail")
-                            .Cells(14).Value = CheckNotes(CLng(dr.Item("fk_client")))
-                            intCounter += 1
-                        End With
                         i += 1
                     End With
                 Next
 
-                Me.worksheet.Range("M2").Value = dblCredit
-                Me.worksheet.Range("M3").Value = dblDebit
+                dt = Nothing
 
-                frmStatementOfAccount.Show()
+
+                Me.worksheet.Range("N2").Value = Math.Round(dblCredit, 2)
+                Me.worksheet.Range("N3").Value = Math.Round(dblDebit, 2)
+
+
                 Dim strStatus As String
                 Select Case CType(enumClientStatus, Enumerators.ClientStatus)
                     Case Enumerators.ClientStatus.Active
@@ -526,7 +511,7 @@ Public Class Generate_Invoice
 
             End If
         Catch ex As Exception
-
+            MsgBox(ex.Message & vbCrLf & ex.StackTrace)
         End Try
     End Sub
 
@@ -697,7 +682,7 @@ Public Class Generate_Invoice
                             Me.worksheet.Range("G" & i).Value = CDbl(.Item("Duration"))
                         End If
 
-                        Me.worksheet.Range("H" & i).Value = CDbl(.Item("Credit")) - CDbl(.Item("Debit"))
+                        Me.worksheet.Range("H" & i).Value = Math.Round(CDbl(.Item("Credit")) - CDbl(.Item("Debit")), 2)
 
                         Dim k As String
                         If i = 4 Then
@@ -747,7 +732,7 @@ Public Class Generate_Invoice
             For Each dr As DataRow In dt.Rows
                 If CInt(dr.Item("fk_client")) = lClientID Then
                     dLastDate = CDate(dr.Item("Insert_Date")).ToString("yyyy/MM/dd")
-                    dblAmount = Math.Round(CDbl(dr.Item("Amount")), 3)
+                    dblAmount = Math.Round(CDbl(dr.Item("Amount")), 2)
                     If dr.Item("DataFrom").ToString = "mp" Then
                         dblAmount = -dblAmount
                     End If

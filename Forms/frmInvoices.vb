@@ -1,6 +1,7 @@
 ﻿Public Class frmInvoices
 
     Friend boolSendEmail As Boolean = False
+    Dim DsDates As New DataSet
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
@@ -26,7 +27,33 @@
 
     End Sub
 
-#Region "Controls Events"
+    Public Sub fillComboBoxes()
+        Try
+            'Dim DsMembers As New DataSet
+            'DsMembers = odbaccess.GetClientsDS
+            If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+                Me.cmbClientCode.DataSource = gDsMembers.Tables(0)
+                Me.cmbClientCode.DisplayMember = "CompanyCode"
+                Me.cmbClientCode.ValueMember = "ID"
+            Else
+                gDsMembers = odbaccess.GetClientsDS
+                If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
+                    fillComboBoxes()
+                End If
+            End If
+
+            DsDates = odbaccess.GetBillingDatessDS
+            If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 AndAlso Not DsDates.Tables(0).Rows.Count = 0 Then
+                Me.cmbBillingDates.DataSource = DsDates.Tables(0)
+                Me.cmbBillingDates.DisplayMember = "Insert_Date"
+                Me.cmbBillingDates.ValueMember = "Insert_Date"
+            End If
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
@@ -64,7 +91,7 @@
                         .Cells(1).Value = dr.Item("ID")
                         .Cells(3).Value = dr.Item("Client_Code")
                         .Cells(4).Value = CDate(dr.Item("date")).ToString("yyyy-MM-dd")
-                        .Cells(5).Value = dr.Item("Amount")
+                        .Cells(5).Value = Math.Round(CDbl(dr.Item("Amount")), 2)
                         .Cells(6).Value = dr.Item("Duration")
                         .Cells(7).Value = CDate(dr.Item("Billing_Period_From")).ToString("yyyy-MM-dd")
                         .Cells(8).Value = CDate(dr.Item("Billing_Period_To")).ToString("yyyy-MM-dd")
@@ -74,7 +101,7 @@
                         .Cells(12).Value = dr.Item("isSentEmail")
 
                         dTotalDuration += CDbl(dr.Item("Duration"))
-                        dTotalCharges += CDbl(dr.Item("Amount"))
+                        dTotalCharges += Math.Round(CDbl(dr.Item("Amount")), 2)
                         intCounter += 1
                     End With
                 Next
@@ -91,7 +118,6 @@
         Me.cmbClientCode.Enabled = Me.chkCode.Checked
     End Sub
 
-
     Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExportToExcelToolStripMenuItem.Click
         ExportToExcel(Me.DataGridView1)
     End Sub
@@ -100,7 +126,6 @@
         Me.dtpFrom.Enabled = Me.chkPeriodDate.Checked
         Me.dtpTo.Enabled = Me.chkPeriodDate.Checked
     End Sub
-
 
     Private Sub DataGridView1_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Sorted
         Try
@@ -136,8 +161,6 @@
     Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
         AutoCompleteCombo_Leave(Me.cmbClientCode)
     End Sub
-#End Region
-
 
     Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolEmail As Boolean, ByRef boolSent As Boolean, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef intPeriod As Integer)
         Try
@@ -182,34 +205,6 @@
         End Try
     End Sub
 
-    Public Sub fillComboBoxes()
-        Try
-            'Dim DsMembers As New DataSet
-            'DsMembers = odbaccess.GetClientsDS
-            If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
-                Me.cmbClientCode.DataSource = gDsMembers.Tables(0)
-                Me.cmbClientCode.DisplayMember = "CompanyCode"
-                Me.cmbClientCode.ValueMember = "ID"
-            Else
-                gDsMembers = odbaccess.GetClientsDS
-                If Not gDsMembers Is Nothing AndAlso Not gDsMembers.Tables.Count = 0 AndAlso Not gDsMembers.Tables(0).Rows.Count = 0 Then
-                    fillComboBoxes()
-                End If
-            End If
-
-            Dim DsDates As New DataSet
-            DsDates = odbaccess.GetBillingDatessDS
-            If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 AndAlso Not DsDates.Tables(0).Rows.Count = 0 Then
-                Me.cmbBillingDates.DataSource = DsDates.Tables(0)
-                Me.cmbBillingDates.DisplayMember = "Insert_Date"
-                Me.cmbBillingDates.ValueMember = "Insert_Date"
-            End If
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
 
     Dim intColumnIndex As Integer
 
@@ -231,7 +226,6 @@
     Private Sub HideColumnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideColumnToolStripMenuItem.Click
         Me.DataGridView1.Columns(intColumnIndex).Visible = False
     End Sub
-
 
     Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
         For i As Integer = 1 To Me.DataGridView1.Columns.Count - 1
@@ -273,6 +267,9 @@
     Private Sub btnSendEmails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSendEmails.Click
         Dim strConfirmationNote As String = "Are you sure you want to send emails to the clients?"
         SendEmails(False, strConfirmationNote)
+        'Dim oThread As Threading.Thread
+        'oThread = New Threading.Thread(Sub() Me.SendEmails(False, strConfirmationNote))
+        'oThread.Start()
     End Sub
 
     Private Sub btnSendTestEmails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSendTestEmails.Click
@@ -289,13 +286,13 @@
         If Me.chkDurationZero.Checked Then
             For Each dr As DataGridViewRow In Me.DataGridView1.Rows
                 If CBool(dr.Cells(2).Value) = True And (CInt(dr.Cells(6).Value) <> 0) Then
-                    strInvoiceID.Append(dr.Cells(0).Value.ToString + ",")
+                    strInvoiceID.Append(dr.Cells(1).Value.ToString + ",")
                 End If
             Next
         Else
             For Each dr As DataGridViewRow In Me.DataGridView1.Rows
                 If CBool(dr.Cells(2).Value) = True Then
-                    strInvoiceID.Append(dr.Cells(0).Value.ToString + ",")
+                    strInvoiceID.Append(dr.Cells(1).Value.ToString + ",")
                 End If
             Next
         End If
@@ -317,5 +314,15 @@
 
     Private Sub chkPeriod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPeriod.CheckedChanged
         Me.cmbPeriod.Enabled = Me.chkPeriod.Checked
+    End Sub
+
+    Private Sub cmbPeriod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPeriod.SelectedIndexChanged
+        If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 Then
+            Dim dv As New DataView(DsDates.Tables(0))
+            dv.RowFilter = "InvoicePeriod = " & CInt(Me.cmbPeriod.Text).ToString
+            Me.cmbBillingDates.DataSource = dv
+            Me.cmbBillingDates.ValueMember = "Insert_Date"
+            Me.cmbBillingDates.DisplayMember = "Insert_Date"
+        End If
     End Sub
 End Class

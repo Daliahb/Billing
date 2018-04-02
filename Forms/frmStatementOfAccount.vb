@@ -1,6 +1,17 @@
 ﻿Public Class frmStatementOfAccount
 
     Friend boolSendEmail As Boolean = False
+    Dim enumClientStatus As Enumerators.ClientStatus
+    Dim dsStatmentNotes As DataSet
+
+    Public Sub New(enumClientStatus As Enumerators.ClientStatus)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.enumClientStatus = enumClientStatus
+    End Sub
 
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
@@ -17,9 +28,83 @@
         'Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         Me.cmbClientCode.SelectedIndex = 0
 
-       
+        FillDataGrid()
 
     End Sub
+
+    Private Sub FillDataGrid()
+        dsStatmentNotes = odbaccess.GetClientStatemntNotes(0)
+        Dim ds As DataSet = odbaccess.GetStatementOfAccount(enumClientStatus)
+        Dim dLastDate As Date
+        Dim dblAmount As Double
+        Dim intCounter, intRowIndex As Integer
+        If Not ds Is Nothing AndAlso Not ds.Tables.Count = 0 Then
+            ' Fill Form DataGrid
+            For Each drrrrr As DataRow In ds.Tables(0).Rows
+                intRowIndex = Me.DataGridView1.Rows.Add
+                With Me.DataGridView1.Rows(intRowIndex)
+                    .Cells(0).Value = drrrrr.Item("fk_client")
+                    .Cells(1).Value = intCounter + 1
+                    .Cells(3).Value = drrrrr.Item("Company_Code")
+                    .Cells(4).Value = CType(drrrrr.Item("enumClientStatus"), Enumerators.ClientStatus).ToString()
+                    .Cells(5).Value = drrrrr.Item("AccountManager")
+                    .Cells(6).Value = Math.Round(CDbl(drrrrr.Item("BeginingBalance")), 2)
+                    '   .Cells(6).Value = dr.Item("Credit")
+                    '   .Cells(7).Value = dr.Item("Debit")
+                    Dim dblBalance As Double
+                    dblBalance = (CDbl(drrrrr.Item("BeginingBalance")) + CDbl(drrrrr.Item("Purchase")) + CDbl(drrrrr.Item("ClientPayment")) + CDbl(drrrrr.Item("VouchersCredit")) - CDbl(drrrrr.Item("Invoice")) - CDbl(drrrrr.Item("MaplePayment")) - CDbl(drrrrr.Item("VouchersDebit")))
+                    getLastPaymentDate(ds.Tables(1), CInt(drrrrr.Item("fk_client")), dLastDate, dblAmount)
+                    .Cells(9).Value = Math.Round(dblBalance, 2)
+                    .Cells(10).Value = CDate(dLastDate).ToString("yyyy-MM-dd")
+                    .Cells(11).Value = dblAmount
+                    .Cells(12).Value = drrrrr.Item("Credit_Limit")
+
+
+                    Dim intDiff As Long
+                    intDiff = DateDiff(DateInterval.Day, dLastDate, Now())
+
+                    If intDiff > 21 And dblBalance < 0 Then
+                        .DefaultCellStyle.BackColor = Color.RosyBrown
+                        .Cells(13).Value = intDiff
+                    End If
+
+                    ' .Cells(14).Value = dr.Item("isSentEmail")
+                    .Cells(15).Value = CheckNotes(CLng(drrrrr.Item("fk_client")))
+                    intCounter += 1
+                End With
+            Next
+        End If
+    End Sub
+
+    Public Sub getLastPaymentDate(ByVal dt As System.Data.DataTable, ByVal lClientID As Integer, ByRef dLastDate As String, ByRef dblAmount As Double)
+        Try
+            dLastDate = Nothing
+            dblAmount = 0
+            For Each dr As DataRow In dt.Rows
+                If CInt(dr.Item("fk_client")) = lClientID Then
+                    dLastDate = CDate(dr.Item("Insert_Date")).ToString("yyyy/MM/dd")
+                    dblAmount = Math.Round(CDbl(dr.Item("Amount")), 2)
+                    If dr.Item("DataFrom").ToString = "mp" Then
+                        dblAmount = -dblAmount
+                    End If
+                    Exit For
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Function CheckNotes(lClientID As Long) As String
+        If Not dsStatmentNotes Is Nothing AndAlso Not dsStatmentNotes.Tables.Count = 0 AndAlso Not dsStatmentNotes.Tables(0).Rows.Count = 0 Then
+            For Each row As DataRow In dsStatmentNotes.Tables(0).Rows
+                If row.Item("FK_Client") = lClientID Then
+                    Return row.Item("Note").ToString
+                End If
+            Next
+        End If
+        Return ""
+    End Function
 
 #Region "Controls Events"
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -203,7 +288,7 @@
             lClientID = CLng(Me.DataGridView1.SelectedRows(0).Cells(0).Value)
             Dim frm As New frmClientTransactionNote(lClientID)
             If frm.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                Me.DataGridView1.SelectedRows(0).Cells(14).Value = frm.strNote
+                Me.DataGridView1.SelectedRows(0).Cells(15).Value = frm.strNote
             End If
 
         End If

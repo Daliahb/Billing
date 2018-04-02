@@ -19,10 +19,10 @@ Public Class DBAccess
 
     Public Sub New()
         'Real Online  DB
-        'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
+        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user;Password=5skqi5ygv3ciiBF9LDf362uW;Persist Security Info=True;database=voip_billing_system"
 
         ''Test  DB
-        oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
+        ' oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_db_user_dev;Password=xee1lahnaeyoa0iethaeJoo7;Persist Security Info=True;database=voip_billing_system_dev"
 
         'Armenia DB
         'oConnection.ConnectionString = "server=mapleteletech-tools.cyhrjka02xij.eu-west-1.rds.amazonaws.com;port=3337;User Id=maple_yerevan;Password=KeePa1thee5naXaeZunakuge;Persist Security Info=True;database=voip_billing_system_mapleexpress_yerevan"
@@ -276,7 +276,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetCompanies() As ColCompany
+    Public Function GetCompanies(boolStatus As Boolean, boolActive As Boolean) As ColCompany
         ds = New DataSet
         Dim oColCompany As New ColCompany
 
@@ -285,19 +285,19 @@ Public Class DBAccess
             oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
             oSelectCommand.CommandText = "GetCompanies"
 
-            'oParam = New MySqlParameter
-            'With oParam
-            '    .ParameterName = "@boolStatus"
-            '    .Value = True
-            'End With
-            'oSelectCommand.Parameters.Add(oParam)
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "@boolStatus"
+                .Value = True
+            End With
+            oSelectCommand.Parameters.Add(oParam)
 
-            'oParam = New MySqlParameter
-            'With oParam
-            '    .ParameterName = "@boolActive"
-            '    .Value = True
-            'End With
-            'oSelectCommand.Parameters.Add(oParam)
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "@boolActive"
+                .Value = True
+            End With
+            oSelectCommand.Parameters.Add(oParam)
 
             oDataAdapter.SelectCommand = oSelectCommand
             oSelectCommand.Connection = Me.oConnection
@@ -429,8 +429,8 @@ Public Class DBAccess
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
-            oSelectCommand.CommandType = System.Data.CommandType.Text
-            oSelectCommand.CommandText = "select distinct Insert_Date from billing order by Insert_Date desc"
+            oSelectCommand.CommandType = System.Data.CommandType.StoredProcedure
+            oSelectCommand.CommandText = "GetBillingDatesDs"
 
             oDataAdapter.SelectCommand = oSelectCommand
             oSelectCommand.Connection = Me.oConnection
@@ -1601,7 +1601,8 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetClientsPayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus) As DataSet
+    Public Function GetClientsPayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date,
+                                       ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus, boolBankFeesStatus As Boolean, boolHandled As Boolean, boolPaymentStatus As Boolean, boolConfirmed As Boolean) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -1664,6 +1665,34 @@ Public Class DBAccess
             End With
             oSelectCommand.Parameters.Add(oParam)
 
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolBankFeesStatus"
+                .Value = boolBankFeesStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolHandled"
+                .Value = boolHandled
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolPaymentStatus"
+                .Value = boolPaymentStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolConfirmed"
+                .Value = boolConfirmed
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
             oDataAdapter.SelectCommand = oSelectCommand
             oSelectCommand.Connection = Me.oConnection
             oDataAdapter.Fill(ds)
@@ -1678,7 +1707,7 @@ Public Class DBAccess
         End Try
     End Function
 
-    Public Function GetMaplePayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus) As DataSet
+    Public Function GetMaplePayments(ByVal boolClient As Boolean, ByVal lClientID As Long, ByVal boolDate As Boolean, ByVal dFromDate As Date, ByVal dToDate As Date, ByVal lBankID As Integer, enumStatus As Enumerators.ClientStatus, boolBankFeesStatus As Boolean, boolHandled As Boolean, boolPaymentStatus As Boolean, boolConfirmed As Boolean) As DataSet
         ds = New DataSet
         Try
             oSelectCommand = New MySqlCommand
@@ -1738,6 +1767,34 @@ Public Class DBAccess
             With oParam
                 .ParameterName = "lUserID"
                 .Value = gUser.Id
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolBankFeesStatus"
+                .Value = boolBankFeesStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolHandled"
+                .Value = boolHandled
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolPaymentStatus"
+                .Value = boolPaymentStatus
+            End With
+            oSelectCommand.Parameters.Add(oParam)
+
+            oParam = New MySqlParameter
+            With oParam
+                .ParameterName = "boolConfirmed"
+                .Value = boolConfirmed
             End With
             oSelectCommand.Parameters.Add(oParam)
 

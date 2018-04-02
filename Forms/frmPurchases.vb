@@ -1,5 +1,7 @@
 ﻿Public Class frmPurchases
 
+    Dim DsDates As New DataSet
+
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
         'check permission
@@ -10,106 +12,6 @@
         Me.cmbClientCode.SelectedIndex = 0
         Me.cmbPeriod.SelectedIndex = 0
     End Sub
-
-#Region "Controls Events"
-    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Close()
-    End Sub
-
-    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        '  Dim oColEvents As New ColEvents
-        Dim intCounter As Integer = 0
-        Dim intRowIndex As Integer
-
-        Dim lClientID As Long
-        Dim boolPeriodDate, boolInsertDate, boolEmail, boolSent As Boolean
-        Dim dtFrom, dtTo, dInsertDate As Date
-        Dim dTotalDuration As Double = 0
-        Dim dTotalCharges As Double = 0
-        Dim intPeriod As Integer
-        Dim enumStatus As Enumerators.ClientStatus
-        Dim ds As DataSet
-        Try
-            Me.DataGridView1.Rows.Clear()
-            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
-
-            'If Me.cmbBillingDates.SelectedIndex = 0 And Me.chkInsertDate.Checked Then
-            '    Me.DataGridView1.Columns(2).Visible = True
-            'Else
-            '    Me.DataGridView1.Columns(2).Visible = False
-            'End If
-
-            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
-            If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
-                For Each dr As DataRow In ds.Tables(0).Rows
-                    intRowIndex = Me.DataGridView1.Rows.Add
-                    With Me.DataGridView1.Rows(intRowIndex)
-                        .Cells(0).Value = intCounter + 1
-                        .Cells(1).Value = dr.Item("ID")
-                        .Cells(2).Value = dr.Item("Client_Code")
-                        .Cells(3).Value = CDate(dr.Item("insert_date")).ToString("yyyy-MM-dd")
-                        .Cells(4).Value = dr.Item("Amount")
-                        .Cells(5).Value = dr.Item("Duration")
-                        .Cells(6).Value = CDate(dr.Item("Billing_Period_From")).ToString("yyyy-MM-dd")
-                        .Cells(7).Value = CDate(dr.Item("Billing_Period_To")).ToString("yyyy-MM-dd")
-                        .Cells(8).Value = dr.Item("InvoicePeriod").ToString
-                        .Cells(9).Value = dr.Item("AccountManager").ToString
-                        .Cells(10).Value = dr.Item("Bank_Name")
-                        If Not dr.Item("isConfirmed") Is DBNull.Value Then
-                            .Cells(11).Value = CBool(dr.Item("isConfirmed"))
-                        Else
-                            .Cells(11).Value = False
-                        End If
-                        .Cells(12).Value = dr.Item("Note")
-                        dTotalDuration += CDbl(dr.Item("Duration"))
-                        dTotalCharges += CDbl(dr.Item("Amount"))
-                        intCounter += 1
-                    End With
-                Next
-                Me.lblTotalCharges.Text = Math.Round(dTotalCharges, 3).ToString
-                Me.lblTotalDuration.Text = dTotalDuration.ToString
-                '  Me.Text = "Invoices - Total Charges= " & Math.Round(dTotalCharges, 3).ToString & "      Total Duration= " & dTotalDuration.ToString
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub ckbDate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCode.CheckedChanged
-        Me.cmbClientCode.Enabled = Me.chkCode.Checked
-    End Sub
-
-
-    Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExportToExcelToolStripMenuItem.Click
-        ExportToExcel(Me.DataGridView1)
-    End Sub
-
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPeriodDate.CheckedChanged
-        Me.dtpFrom.Enabled = Me.chkPeriodDate.Checked
-        Me.dtpTo.Enabled = Me.chkPeriodDate.Checked
-    End Sub
-
-
-    Private Sub DataGridView1_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Sorted
-        Try
-            Dim i As Integer
-            For i = 0 To Me.DataGridView1.Rows.Count - 1
-                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
-            Next
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub cmbClientCode_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbClientCode.KeyUp
-        AutoCompleteCombo_KeyUp(Me.cmbClientCode, e)
-    End Sub
-
-    Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
-        AutoCompleteCombo_Leave(Me.cmbClientCode)
-    End Sub
-#End Region
-
 
     Public Sub generateSearchCrytiria(ByRef lClientID As Long, ByRef boolPeriodDate As Boolean, ByRef dtFrom As Date, ByRef dtTo As Date, ByRef boolInsertDate As Boolean, ByRef dtInsertDate As Date, ByRef enumStatus As Enumerators.ClientStatus, ByRef intPeriod As Integer)
         Try
@@ -164,7 +66,7 @@
                 End If
             End If
 
-            Dim DsDates As New DataSet
+
             DsDates = odbaccess.GetBillingDatessDS
             If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 AndAlso Not DsDates.Tables(0).Rows.Count = 0 Then
                 Me.cmbBillingDates.DataSource = DsDates.Tables(0)
@@ -183,6 +85,101 @@
 
     End Sub
 
+#Region "Controls Events"
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Me.Close()
+    End Sub
+
+    Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        '  Dim oColEvents As New ColEvents
+        Dim intCounter As Integer = 0
+        Dim intRowIndex As Integer
+
+        Dim lClientID As Long
+        Dim boolPeriodDate, boolInsertDate, boolEmail, boolSent As Boolean
+        Dim dtFrom, dtTo, dInsertDate As Date
+        Dim dTotalDuration As Double = 0
+        Dim dTotalCharges As Double = 0
+        Dim intPeriod As Integer
+        Dim enumStatus As Enumerators.ClientStatus
+        Dim ds As DataSet
+        Try
+            Me.DataGridView1.Rows.Clear()
+            generateSearchCrytiria(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
+
+            'If Me.cmbBillingDates.SelectedIndex = 0 And Me.chkInsertDate.Checked Then
+            '    Me.DataGridView1.Columns(2).Visible = True
+            'Else
+            '    Me.DataGridView1.Columns(2).Visible = False
+            'End If
+
+            ds = odbaccess.GetPurchasesSearch(lClientID, boolPeriodDate, dtFrom, dtTo, boolInsertDate, dInsertDate, enumStatus, intPeriod)
+            If Not ds Is Nothing AndAlso Not ds.Tables().Count = 0 Then
+                For Each dr As DataRow In ds.Tables(0).Rows
+                    intRowIndex = Me.DataGridView1.Rows.Add
+                    With Me.DataGridView1.Rows(intRowIndex)
+                        .Cells(0).Value = intCounter + 1
+                        .Cells(1).Value = dr.Item("ID")
+                        .Cells(2).Value = dr.Item("Client_Code")
+                        .Cells(3).Value = CDate(dr.Item("insert_date")).ToString("yyyy-MM-dd")
+                        .Cells(4).Value = Math.Round(CDbl(dr.Item("Amount")), 2)
+                        .Cells(5).Value = dr.Item("Duration")
+                        .Cells(6).Value = CDate(dr.Item("Billing_Period_From")).ToString("yyyy-MM-dd")
+                        .Cells(7).Value = CDate(dr.Item("Billing_Period_To")).ToString("yyyy-MM-dd")
+                        .Cells(8).Value = dr.Item("InvoicePeriod").ToString
+                        .Cells(9).Value = dr.Item("AccountManager").ToString
+                        .Cells(10).Value = dr.Item("Bank_Name")
+                        If Not dr.Item("isConfirmed") Is DBNull.Value Then
+                            .Cells(11).Value = CBool(dr.Item("isConfirmed"))
+                        Else
+                            .Cells(11).Value = False
+                        End If
+                        .Cells(12).Value = dr.Item("Note")
+                        dTotalDuration += CDbl(dr.Item("Duration"))
+                        dTotalCharges += Math.Round(CDbl(dr.Item("Amount")), 2)
+                        intCounter += 1
+                    End With
+                Next
+                Me.lblTotalCharges.Text = Math.Round(dTotalCharges, 3).ToString
+                Me.lblTotalDuration.Text = dTotalDuration.ToString
+                '  Me.Text = "Invoices - Total Charges= " & Math.Round(dTotalCharges, 3).ToString & "      Total Duration= " & dTotalDuration.ToString
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ckbDate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCode.CheckedChanged
+        Me.cmbClientCode.Enabled = Me.chkCode.Checked
+    End Sub
+
+    Private Sub ExportToExcelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExportToExcelToolStripMenuItem.Click
+        ExportToExcel(Me.DataGridView1)
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPeriodDate.CheckedChanged
+        Me.dtpFrom.Enabled = Me.chkPeriodDate.Checked
+        Me.dtpTo.Enabled = Me.chkPeriodDate.Checked
+    End Sub
+
+    Private Sub DataGridView1_Sorted(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Sorted
+        Try
+            Dim i As Integer
+            For i = 0 To Me.DataGridView1.Rows.Count - 1
+                Me.DataGridView1.Rows(i).Cells(0).Value = i + 1
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub cmbClientCode_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbClientCode.KeyUp
+        AutoCompleteCombo_KeyUp(Me.cmbClientCode, e)
+    End Sub
+
+    Private Sub cmbClientCode_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbClientCode.Leave
+        AutoCompleteCombo_Leave(Me.cmbClientCode)
+    End Sub
 
     Dim intColumnIndex As Integer
 
@@ -209,13 +206,11 @@
         Me.DataGridView1.Columns(intColumnIndex).Visible = False
     End Sub
 
-
     Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
         For i As Integer = 1 To Me.DataGridView1.Columns.Count - 1
             Me.DataGridView1.Columns(i).Visible = True
         Next
     End Sub
-
 
     Private Sub chkInsertDate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkInsertDate.CheckedChanged
         Me.cmbBillingDates.Enabled = Me.chkInsertDate.Checked
@@ -284,4 +279,15 @@
     Private Sub chkPeriod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPeriod.CheckedChanged
         Me.cmbPeriod.Enabled = Me.chkPeriod.Checked
     End Sub
+
+    Private Sub cmbPeriod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPeriod.SelectedIndexChanged
+        If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 Then
+            Dim dv As New DataView(DsDates.Tables(0))
+            dv.RowFilter = "InvoicePeriod = " & CInt(Me.cmbPeriod.Text).ToString
+            Me.cmbBillingDates.DataSource = dv
+            Me.cmbBillingDates.ValueMember = "Insert_Date"
+            Me.cmbBillingDates.DisplayMember = "Insert_Date"
+        End If
+    End Sub
+#End Region
 End Class

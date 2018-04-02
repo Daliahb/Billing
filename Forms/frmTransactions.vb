@@ -7,7 +7,7 @@
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
         Me.Text = Me.Text & " - " & gCountry.ToString
-        Me.lblStatus.Text = ""
+        Me.lblStatus.Text = "    "
         Me.cmbClientCode.AutoCompleteSource = AutoCompleteSource.ListItems
         FillTypes()
         isLoaded = True
@@ -81,8 +81,8 @@
                         With Me.DataGridView1.Rows(intRowIndex)
                             .Cells(0).Value = 0
                             .Cells(1).Value = intCounter + 1
-                            .Cells(2).Value = dr.Item("Debit")
-                            .Cells(3).Value = dr.Item("Credit")
+                            .Cells(2).Value = Math.Round(CDbl(dr.Item("Debit")), 2)
+                            .Cells(3).Value = Math.Round(CDbl(dr.Item("Credit")), 2)
                             .Cells(4).Value = dr.Item("BankFees").ToString
                             .Cells(5).Value = dr.Item("Note").ToString
                             Try
@@ -93,23 +93,23 @@
 
                             intCounter += 1
                             decBalance = CDec(Math.Round(decBalance + CDbl(dr.Item("Credit")) - CDbl(dr.Item("Debit")), 3))
-                            dblTotalCredit += CDbl(dr.Item("Credit"))
-                            dblTotalDebit += CDbl(dr.Item("Debit"))
-                            .Cells(7).Value = decBalance
+                            dblTotalCredit += Math.Round(CDbl(dr.Item("Credit")), 2)
+                            dblTotalDebit += Math.Round(CDbl(dr.Item("Debit")), 2)
+                            .Cells(7).Value = Math.Round(decBalance, 2)
                             .Cells(8).Value = dr.Item("Bank")
                         End With
                     Catch ex As Exception
 
                     End Try
                 Next
-                Me.lblTotalCredit.Text = Math.Round(dblTotalCredit, 4).ToString
-                Me.lblTotalDebit.Text = Math.Round(dblTotalDebit).ToString
-                Me.lblBalance.Text = decBalance
+                Me.lblTotalCredit.Text = Math.Round(dblTotalCredit, 2).ToString
+                Me.lblTotalDebit.Text = Math.Round(dblTotalDebit, 2).ToString
+                Me.lblBalance.Text = Math.Round(decBalance, 2).ToString
 
                 If Not ds.Tables.Count = 1 Then
-                    dblTotalClientPayment = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalClientPayments")), 4)
-                    dblTotalTransactionBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalTransactionsBankFees")), 4)
-                    dblTotalBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalBankFees")), 4)
+                    dblTotalClientPayment = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalClientPayments")), 2)
+                    dblTotalTransactionBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalTransactionsBankFees")), 2)
+                    dblTotalBankFees = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalBankFees")), 2)
                     If Not ds.Tables(1).Rows(0).Item("MCClientID") Is DBNull.Value Then
                         Me.lMCClientID = CLng(ds.Tables(1).Rows(0).Item("MCClientID"))
                     Else
@@ -125,7 +125,7 @@
 
                     Try
                         If Not dblTotalClientPayment = 0 Then
-                            Me.lblPercentage.Text = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 4).ToString
+                            Me.lblPercentage.Text = Math.Round(((dblTotalBankFees - dblTotalTransactionBankFees) / (dblTotalClientPayment)), 2).ToString
                         Else
                             Me.lblPercentage.Text = "0"
                         End If

@@ -25,14 +25,14 @@ Partial Class frmApproveInvoicesDate
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmApproveInvoicesDate))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbBillingDates = New System.Windows.Forms.ComboBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbPeriod = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,6 +55,18 @@ Partial Class frmApproveInvoicesDate
         Me.Panel1.Size = New System.Drawing.Size(280, 190)
         Me.Panel1.TabIndex = 0
         '
+        'cmbPeriod
+        '
+        Me.cmbPeriod.DisplayMember = "id"
+        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPeriod.FormattingEnabled = True
+        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cmbPeriod.Location = New System.Drawing.Point(111, 53)
+        Me.cmbPeriod.Name = "cmbPeriod"
+        Me.cmbPeriod.Size = New System.Drawing.Size(129, 24)
+        Me.cmbPeriod.TabIndex = 91
+        Me.cmbPeriod.ValueMember = "id"
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -64,10 +76,19 @@ Partial Class frmApproveInvoicesDate
         Me.Label2.TabIndex = 58
         Me.Label2.Text = "Approve invoices for:"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(9, 57)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(100, 16)
+        Me.Label3.TabIndex = 58
+        Me.Label3.Text = "Invoice Period"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 58)
+        Me.Label1.Location = New System.Drawing.Point(9, 99)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(87, 16)
         Me.Label1.TabIndex = 58
@@ -82,9 +103,9 @@ Partial Class frmApproveInvoicesDate
         Me.cmbBillingDates.DropDownWidth = 200
         Me.cmbBillingDates.FormattingEnabled = True
         Me.cmbBillingDates.IntegralHeight = False
-        Me.cmbBillingDates.Location = New System.Drawing.Point(111, 55)
+        Me.cmbBillingDates.Location = New System.Drawing.Point(111, 96)
         Me.cmbBillingDates.Name = "cmbBillingDates"
-        Me.cmbBillingDates.Size = New System.Drawing.Size(122, 24)
+        Me.cmbBillingDates.Size = New System.Drawing.Size(129, 24)
         Me.cmbBillingDates.TabIndex = 57
         Me.cmbBillingDates.ValueMember = "ID"
         '
@@ -111,27 +132,6 @@ Partial Class frmApproveInvoicesDate
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
-        '
-        'cmbPeriod
-        '
-        Me.cmbPeriod.DisplayMember = "id"
-        Me.cmbPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPeriod.FormattingEnabled = True
-        Me.cmbPeriod.Items.AddRange(New Object() {"7", "15", "30"})
-        Me.cmbPeriod.Location = New System.Drawing.Point(111, 91)
-        Me.cmbPeriod.Name = "cmbPeriod"
-        Me.cmbPeriod.Size = New System.Drawing.Size(122, 24)
-        Me.cmbPeriod.TabIndex = 91
-        Me.cmbPeriod.ValueMember = "id"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 95)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 16)
-        Me.Label3.TabIndex = 58
-        Me.Label3.Text = "Invoice Period"
         '
         'frmApproveInvoicesDate
         '

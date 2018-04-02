@@ -43,7 +43,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="APIServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">127.0.0.1</Value>
+      <Value Profile="(Default)">178.63.108.4</Value>
     </Setting>
   </Settings>
 </SettingsFile>

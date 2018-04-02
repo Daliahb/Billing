@@ -1,5 +1,7 @@
 ﻿Public Class frmBilling
 
+    Dim DsDates As New DataSet
+
     Private Sub Events_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.BackColor = gBackColor
 
@@ -41,8 +43,8 @@
         Dim dtFrom, dtTo, dInsertDate As Date
         Dim dTotalDuration As Double = 0
         Dim dTotalCharges As Double = 0
-        Me.lblTotalCharges.Text = "0.0000000"
-        Me.lblTotalDuration.Text = "0.0000000"
+        Me.lblTotalCharges.Text = "0.00"
+        Me.lblTotalDuration.Text = "0.00"
         Dim ds As DataSet
         Try
             Me.DataGridView1.Rows.Clear()
@@ -63,7 +65,7 @@
                         .Cells(3).Value = dr.Item("Client_Code")
                         .Cells(4).Value = dr.Item("Area_Name")
                         .Cells(5).Value = dr.Item("Area_Code")
-                        .Cells(6).Value = dr.Item("Total_Charges")
+                        .Cells(6).Value = Math.Round(CDbl(dr.Item("Total_Charges")), 2)
                         .Cells(7).Value = dr.Item("Total_Duration")
                         .Cells(8).Value = CDate(dr.Item("Billing_Period_From")).ToString("dd-MM-yyyy")
                         .Cells(9).Value = CDate(dr.Item("Billing_Period_To")).ToString("dd-MM-yyyy")
@@ -79,11 +81,11 @@
                 Next
 
                 If Not ds.Tables.Count < 2 Then
-                    Me.lblTotalCharges.Text = ds.Tables(1).Rows(0).Item("TotalCharges").ToString
+                    Me.lblTotalCharges.Text = Math.Round(CDbl(ds.Tables(1).Rows(0).Item("TotalCharges")), 2).ToString
                     Me.lblTotalDuration.Text = ds.Tables(1).Rows(0).Item("TotalDurations").ToString
 
-                    Me.lblTotalChargesNoMaple.Text = ds.Tables(2).Rows(0).Item("TotalChargesNoMaple").ToString
-                    Me.lblTotalDurationNoMaple.Text = ds.Tables(2).Rows(0).Item("TotalDurationsNoMaple").ToString
+                    Me.lblTotalChargesNoMaple.Text = Math.Round(CDbl(ds.Tables(2).Rows(0).Item("TotalChargesNoMaple")), 2).ToString
+                    Me.lblTotalDurationNoMaple.Text = Math.Round(CDbl(ds.Tables(2).Rows(0).Item("TotalDurationsNoMaple")), 2).ToString
                 End If
             End If
         Catch ex As Exception
@@ -193,12 +195,9 @@
                 Me.cmbSoftware.DisplayMember = "Name"
             End If
 
-
             'Dim DsMembers As New DataSet
             'DsMembers = odbaccess.GetClientsDS
 
-
-            Dim DsDates As New DataSet
             DsDates = odbaccess.GetBillingDatessDS
             If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 AndAlso Not DsDates.Tables(0).Rows.Count = 0 Then
                 Me.cmbBillingDates.DataSource = DsDates.Tables(0)
@@ -208,7 +207,6 @@
         Catch ex As Exception
 
         End Try
-
     End Sub
 
 
@@ -233,15 +231,13 @@
         Me.DataGridView1.Columns(intColumnIndex).Visible = False
     End Sub
 
-
     Private Sub ShowAllColumnsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowAllColumnsToolStripMenuItem.Click
         For i As Integer = 1 To Me.DataGridView1.Columns.Count - 1
             Me.DataGridView1.Columns(i).Visible = True
         Next
     End Sub
 
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateInvoices.Click
+    Private Sub btnGenerateInvoices_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateInvoices.Click
         If Not Me.chkInsertDate.Checked Then
             ErrorProvider1.SetError(cmbBillingDates, "Please select a Date")
             Return
@@ -250,17 +246,19 @@
         End If
         If Me.chkCode.Checked Then
             If MsgBox("Are you sure you want generate excel file for " & cmbClientCode.Text & "?", vbYesNo) = vbYes Then
-                Dim lClientID As Long
-                lClientID = CLng(Me.cmbClientCode.SelectedValue)
-                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), lClientID, CInt(Me.cmbPeriod.Text))
+                'Dim lClientID As Long
+                'lClientID = CLng(Me.cmbClientCode.SelectedValue)
+                Dim oThread = New Threading.Thread(AddressOf x)
+                oThread.Start()
+                'Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), lClientID, CInt(Me.cmbPeriod.Text))
             End If
         Else
             If MsgBox("Are you sure you want generate excel files for all clients?", vbYesNo) = vbYes Then
-                Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0, CInt(Me.cmbPeriod.Text))
+                ' Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0, CInt(Me.cmbPeriod.Text))
+                Dim oThread = New Threading.Thread(AddressOf y)
+                oThread.Start()
             End If
         End If
-
-
 
         '1- get all clients that have invoice this week
         '2- get company name, company address, company bank account, client name, cliet address, billing period, invoice no., Issue date,time zone, statemtn, period
@@ -270,8 +268,15 @@
         '6- send by email
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeeklyReport.Click
-        Dim oGenerate_Invoice As New Generate_Invoice
+    Private Sub x()
+        Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), CLng(Me.cmbClientCode.SelectedValue), CInt(Me.cmbPeriod.Text))
+    End Sub
+    Private Sub y()
+        Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date), 0, CInt(Me.cmbPeriod.Text))
+    End Sub
+
+    Private Sub btnWeeklyReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeeklyReport.Click
+        Dim oGenerate_Invoice As New Generate_Invoice(CDate(Me.cmbBillingDates.SelectedValue.Date))
         oGenerate_Invoice.GenerateWeeklyReport(CDate(Me.cmbBillingDates.SelectedValue.Date))
     End Sub
 
@@ -287,4 +292,13 @@
         Me.cmbPeriod.Enabled = chkPeriod.Checked
     End Sub
 
+    Private Sub cmbPeriod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPeriod.SelectedIndexChanged
+        If Not DsDates Is Nothing AndAlso Not DsDates.Tables.Count = 0 Then
+            Dim dv As New DataView(DsDates.Tables(0))
+            dv.RowFilter = "InvoicePeriod = " & CInt(Me.cmbPeriod.Text).ToString
+            Me.cmbBillingDates.DataSource = dv
+            Me.cmbBillingDates.ValueMember = "Insert_Date"
+            Me.cmbBillingDates.DisplayMember = "Insert_Date"
+        End If
+    End Sub
 End Class

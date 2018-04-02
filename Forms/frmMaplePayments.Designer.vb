@@ -43,6 +43,19 @@ Partial Class frmMaplePayments
         Me.cmbBanks = New System.Windows.Forms.ComboBox()
         Me.cmbClientCode = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditPaymentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -62,24 +75,21 @@ Partial Class frmMaplePayments
         Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.aaa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Inser = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.gbConfirmed = New System.Windows.Forms.GroupBox()
+        Me.rbNotConfirmed = New System.Windows.Forms.RadioButton()
+        Me.rbConfirmed = New System.Windows.Forms.RadioButton()
+        Me.chkPayment = New System.Windows.Forms.CheckBox()
+        Me.gbHandled = New System.Windows.Forms.GroupBox()
+        Me.rbNotHandled = New System.Windows.Forms.RadioButton()
+        Me.rbHandled = New System.Windows.Forms.RadioButton()
+        Me.chkBankFees = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStripHideColumn.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbConfirmed.SuspendLayout()
+        Me.gbHandled.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -87,11 +97,15 @@ Partial Class frmMaplePayments
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.dtpToDate)
+        Me.Panel1.Controls.Add(Me.gbConfirmed)
+        Me.Panel1.Controls.Add(Me.chkPayment)
+        Me.Panel1.Controls.Add(Me.gbHandled)
+        Me.Panel1.Controls.Add(Me.chkBankFees)
         Me.Panel1.Controls.Add(Me.chkStatus)
         Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.dtpToDate)
         Me.Panel1.Controls.Add(Me.dtpFromDate)
         Me.Panel1.Controls.Add(Me.cmbBanks)
         Me.Panel1.Controls.Add(Me.cmbClientCode)
@@ -235,6 +249,108 @@ Partial Class frmMaplePayments
         Me.DataGridView1.Size = New System.Drawing.Size(1399, 492)
         Me.DataGridView1.TabIndex = 37
         '
+        'clNo
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.clNo.HeaderText = "No."
+        Me.clNo.Name = "clNo"
+        Me.clNo.ReadOnly = True
+        Me.clNo.Width = 40
+        '
+        'clID
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.clID.DefaultCellStyle = DataGridViewCellStyle3
+        Me.clID.HeaderText = "ID"
+        Me.clID.Name = "clID"
+        Me.clID.ReadOnly = True
+        '
+        'Category
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Category.HeaderText = "Client"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Width = 150
+        '
+        'Column2
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column2.HeaderText = "Maple Payment"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 150
+        '
+        'Column1
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column1.HeaderText = "Bank Amount"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 120
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Bank Fees"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Bank"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 200
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Note"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 200
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Date"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'aaa
+        '
+        Me.aaa.HeaderText = "Bank Fees  (Handled)"
+        Me.aaa.Name = "aaa"
+        Me.aaa.ReadOnly = True
+        Me.aaa.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.aaa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Confirmed"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Inser
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Inser.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Inser.HeaderText = "Inserted by"
+        Me.Inser.Name = "Inser"
+        Me.Inser.ReadOnly = True
+        Me.Inser.Width = 90
+        '
+        'Column7
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column7.HeaderText = "Edited by"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 90
+        '
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPaymentToolStripMenuItem, Me.ToolStripSeparator1, Me.AddAsDebitToolStripMenuItem, Me.EditBankFeesFromVouchersToolStripMenuItem, Me.ToolStripSeparator2, Me.SetAsConfirmedToolStripMenuItem, Me.SetAsUnconfirmedToolStripMenuItem, Me.ToolStripSeparator3, Me.ExportToExcelToolStripMenuItem})
@@ -340,7 +456,7 @@ Partial Class frmMaplePayments
         'chkDate
         '
         Me.chkDate.AutoSize = True
-        Me.chkDate.Location = New System.Drawing.Point(328, 10)
+        Me.chkDate.Location = New System.Drawing.Point(327, 10)
         Me.chkDate.Name = "chkDate"
         Me.chkDate.Size = New System.Drawing.Size(58, 20)
         Me.chkDate.TabIndex = 87
@@ -369,107 +485,91 @@ Partial Class frmMaplePayments
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'clNo
+        'gbConfirmed
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clNo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.clNo.HeaderText = "No."
-        Me.clNo.Name = "clNo"
-        Me.clNo.ReadOnly = True
-        Me.clNo.Width = 40
+        Me.gbConfirmed.Controls.Add(Me.rbNotConfirmed)
+        Me.gbConfirmed.Controls.Add(Me.rbConfirmed)
+        Me.gbConfirmed.Enabled = False
+        Me.gbConfirmed.Location = New System.Drawing.Point(823, 59)
+        Me.gbConfirmed.Name = "gbConfirmed"
+        Me.gbConfirmed.Size = New System.Drawing.Size(225, 37)
+        Me.gbConfirmed.TabIndex = 97
+        Me.gbConfirmed.TabStop = False
         '
-        'clID
+        'rbNotConfirmed
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.clID.DefaultCellStyle = DataGridViewCellStyle3
-        Me.clID.HeaderText = "ID"
-        Me.clID.Name = "clID"
-        Me.clID.ReadOnly = True
+        Me.rbNotConfirmed.AutoSize = True
+        Me.rbNotConfirmed.Location = New System.Drawing.Point(107, 12)
+        Me.rbNotConfirmed.Name = "rbNotConfirmed"
+        Me.rbNotConfirmed.Size = New System.Drawing.Size(117, 20)
+        Me.rbNotConfirmed.TabIndex = 1
+        Me.rbNotConfirmed.Text = "Not Confirmed"
+        Me.rbNotConfirmed.UseVisualStyleBackColor = True
         '
-        'Category
+        'rbConfirmed
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Category.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Category.HeaderText = "Client"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        Me.Category.Width = 150
+        Me.rbConfirmed.AutoSize = True
+        Me.rbConfirmed.Checked = True
+        Me.rbConfirmed.Location = New System.Drawing.Point(6, 11)
+        Me.rbConfirmed.Name = "rbConfirmed"
+        Me.rbConfirmed.Size = New System.Drawing.Size(91, 20)
+        Me.rbConfirmed.TabIndex = 0
+        Me.rbConfirmed.TabStop = True
+        Me.rbConfirmed.Text = "Confirmed"
+        Me.rbConfirmed.UseVisualStyleBackColor = True
         '
-        'Column2
+        'chkPayment
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column2.HeaderText = "Maple Payment"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 150
+        Me.chkPayment.AutoSize = True
+        Me.chkPayment.Location = New System.Drawing.Point(689, 70)
+        Me.chkPayment.Name = "chkPayment"
+        Me.chkPayment.Size = New System.Drawing.Size(131, 20)
+        Me.chkPayment.TabIndex = 98
+        Me.chkPayment.Text = "Payment Status"
+        Me.chkPayment.UseVisualStyleBackColor = True
         '
-        'Column1
+        'gbHandled
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column1.HeaderText = "Bank Amount"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 120
+        Me.gbHandled.Controls.Add(Me.rbNotHandled)
+        Me.gbHandled.Controls.Add(Me.rbHandled)
+        Me.gbHandled.Enabled = False
+        Me.gbHandled.Location = New System.Drawing.Point(422, 60)
+        Me.gbHandled.Name = "gbHandled"
+        Me.gbHandled.Size = New System.Drawing.Size(200, 37)
+        Me.gbHandled.TabIndex = 95
+        Me.gbHandled.TabStop = False
         '
-        'Column6
+        'rbNotHandled
         '
-        Me.Column6.HeaderText = "Bank Fees"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
+        Me.rbNotHandled.AutoSize = True
+        Me.rbNotHandled.Location = New System.Drawing.Point(93, 12)
+        Me.rbNotHandled.Name = "rbNotHandled"
+        Me.rbNotHandled.Size = New System.Drawing.Size(104, 20)
+        Me.rbNotHandled.TabIndex = 1
+        Me.rbNotHandled.Text = "Not Handled"
+        Me.rbNotHandled.UseVisualStyleBackColor = True
         '
-        'Column3
+        'rbHandled
         '
-        Me.Column3.HeaderText = "Bank"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 200
+        Me.rbHandled.AutoSize = True
+        Me.rbHandled.Checked = True
+        Me.rbHandled.Location = New System.Drawing.Point(6, 11)
+        Me.rbHandled.Name = "rbHandled"
+        Me.rbHandled.Size = New System.Drawing.Size(78, 20)
+        Me.rbHandled.TabIndex = 0
+        Me.rbHandled.TabStop = True
+        Me.rbHandled.Text = "Handled"
+        Me.rbHandled.UseVisualStyleBackColor = True
         '
-        'Column4
+        'chkBankFees
         '
-        Me.Column4.HeaderText = "Note"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 200
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Date"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'aaa
-        '
-        Me.aaa.HeaderText = "Bank Fees  (Handled)"
-        Me.aaa.Name = "aaa"
-        Me.aaa.ReadOnly = True
-        Me.aaa.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.aaa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Confirmed"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Inser
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Inser.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Inser.HeaderText = "Inserted by"
-        Me.Inser.Name = "Inser"
-        Me.Inser.ReadOnly = True
-        Me.Inser.Width = 90
-        '
-        'Column7
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Column7.HeaderText = "Edited by"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 90
+        Me.chkBankFees.AutoSize = True
+        Me.chkBankFees.Location = New System.Drawing.Point(327, 72)
+        Me.chkBankFees.Name = "chkBankFees"
+        Me.chkBankFees.Size = New System.Drawing.Size(91, 20)
+        Me.chkBankFees.TabIndex = 96
+        Me.chkBankFees.Text = "Bank Fees"
+        Me.chkBankFees.UseVisualStyleBackColor = True
         '
         'frmMaplePayments
         '
@@ -493,6 +593,10 @@ Partial Class frmMaplePayments
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ContextMenuStripHideColumn.ResumeLayout(False)
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbConfirmed.ResumeLayout(False)
+        Me.gbConfirmed.PerformLayout()
+        Me.gbHandled.ResumeLayout(False)
+        Me.gbHandled.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -538,5 +642,13 @@ Partial Class frmMaplePayments
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Inser As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents gbConfirmed As System.Windows.Forms.GroupBox
+    Friend WithEvents rbNotConfirmed As System.Windows.Forms.RadioButton
+    Friend WithEvents rbConfirmed As System.Windows.Forms.RadioButton
+    Friend WithEvents chkPayment As System.Windows.Forms.CheckBox
+    Friend WithEvents gbHandled As System.Windows.Forms.GroupBox
+    Friend WithEvents rbNotHandled As System.Windows.Forms.RadioButton
+    Friend WithEvents rbHandled As System.Windows.Forms.RadioButton
+    Friend WithEvents chkBankFees As System.Windows.Forms.CheckBox
 
 End Class
