@@ -22,7 +22,6 @@
         End If
     End Sub
 
-
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If CheckValidation() Then
             If isClientPayment Then 'came from ClientPayments form
@@ -53,10 +52,17 @@
        
         '  If Not (CDbl(Me.txtCredit.Text) + CDbl(Me.txtDebit.Text) = Me.dblFees) Then
         If (CDbl(Me.txtCredit.Text) > Me.dblFees) Then
-            ErrorProvider1.SetError(lblFees, "Credit and Debit values together should equal Bank Fees.")
+            ErrorProvider1.SetError(txtCredit, "Credit should not be greater than Bank Fees.")
             Return False
         Else
-            ErrorProvider1.SetError(lblFees, "")
+            ErrorProvider1.SetError(txtCredit, "")
+        End If
+
+        If (CDbl(Me.txtDebit.Text) > Me.dblFees) Then
+            ErrorProvider1.SetError(txtDebit, "Debit should not be greater than Bank Fees.")
+            Return False
+        Else
+            ErrorProvider1.SetError(txtDebit, "")
         End If
         Return True
     End Function
@@ -84,6 +90,14 @@
             Me.txtCredit.Text = "0"
         End If
         '   Me.txtDebit.Text = CStr(Math.Round(Me.dblFees - CDbl(txtCredit.Text), 3))
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        If isClientPayment Then
+            Me.txtCredit.Text = dblFees.ToString
+        Else
+            Me.txtDebit.Text = dblFees.ToString
+        End If
     End Sub
 End Class
 

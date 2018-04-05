@@ -9,7 +9,7 @@ Public Class TCPControl
     Public Event ConnectedToServer As EventHandler
     Dim intAllClientBalancesLength, intMsgLength As Integer
     Dim strMsg As String
-
+    Dim strLastCharecters As String = ""
     Dim clientSocket As Socket
     Dim byteData(1023) As Byte
 
@@ -63,6 +63,7 @@ Public Class TCPControl
 
                 Case "GetAllClientsBalances"
                     intAllClientBalancesLength = arMSG(1)
+                    strLastCharecters = arMSG(3)
                     If arMSG(2).ToString.Length = intAllClientBalancesLength Then
                         RaiseEvent GetAllClientsMCBalances(arMSG(2).ToString)
                         intAllClientBalancesLength = 0
@@ -75,10 +76,10 @@ Public Class TCPControl
                         intMsgLength += arMSG(0).ToString.Length
                         strMsg &= arMSG(0).ToString
                         '       MsgBox("intAllClientBalancesLength " & intAllClientBalancesLength.ToString & "     intMsgLength " & intMsgLength.ToString)
-                        If intAllClientBalancesLength <= intMsgLength Then
+                        If intAllClientBalancesLength <= intMsgLength Then ' AndAlso msg.Substring(msg.Length - 7, 7) = strLastCharecters Then
                             intAllClientBalancesLength = 0
                             intMsgLength = 0
-
+                            strLastCharecters = ""
                             RaiseEvent GetAllClientsMCBalances(strMsg)
                             strMsg = ""
                         End If

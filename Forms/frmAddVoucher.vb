@@ -80,12 +80,12 @@
         If boolError = False Then
             Return boolError
         End If
-        If CDbl(Me.txtDebit.Text) = 0.0 And CDbl(Me.txtCredit.Text) = 0.0 Then
-            ErrorProvider1.SetError(txtDebit, "Insert either Credit or Debit amount.")
-            boolError = False
-        Else
-            ErrorProvider1.SetError(txtDebit, "")
-        End If
+        'If CDbl(Me.txtDebit.Text) = 0.0 And CDbl(Me.txtCredit.Text) = 0.0 Then
+        '    ErrorProvider1.SetError(txtDebit, "Insert either Credit or Debit amount.")
+        '    boolError = False
+        'Else
+        '    ErrorProvider1.SetError(txtDebit, "")
+        'End If
         Return boolError
     End Function
 

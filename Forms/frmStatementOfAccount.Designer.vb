@@ -40,21 +40,6 @@ Partial Class frmStatementOfAccount
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStatementOfAccount))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.AddNoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmbClientCode = New System.Windows.Forms.ComboBox()
-        Me.chkCode = New System.Windows.Forms.CheckBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.chkClearAll = New System.Windows.Forms.CheckBox()
-        Me.btnSendTestEmails = New System.Windows.Forms.Button()
-        Me.btnSendEmails = New System.Windows.Forms.Button()
-        Me.chkSelectAll = New System.Windows.Forms.CheckBox()
-        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.clID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -71,6 +56,21 @@ Partial Class frmStatementOfAccount
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AddNoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExportToExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmbClientCode = New System.Windows.Forms.ComboBox()
+        Me.chkCode = New System.Windows.Forms.CheckBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.chkClearAll = New System.Windows.Forms.CheckBox()
+        Me.btnSendTestEmails = New System.Windows.Forms.Button()
+        Me.btnSendEmails = New System.Windows.Forms.Button()
+        Me.chkSelectAll = New System.Windows.Forms.CheckBox()
+        Me.ContextMenuStripHideColumn = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HideColumnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowAllColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -91,7 +91,7 @@ Partial Class frmStatementOfAccount
         Me.Panel1.Location = New System.Drawing.Point(3, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1404, 463)
+        Me.Panel1.Size = New System.Drawing.Size(1569, 742)
         Me.Panel1.TabIndex = 0
         '
         'DataGridView1
@@ -126,149 +126,8 @@ Partial Class frmStatementOfAccount
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1396, 395)
+        Me.DataGridView1.Size = New System.Drawing.Size(1561, 674)
         Me.DataGridView1.TabIndex = 37
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddNoteToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(126, 54)
-        '
-        'AddNoteToolStripMenuItem
-        '
-        Me.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem"
-        Me.AddNoteToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.AddNoteToolStripMenuItem.Text = "Add Note"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(122, 6)
-        '
-        'ExportToExcelToolStripMenuItem
-        '
-        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
-        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
-        '
-        'cmbClientCode
-        '
-        Me.cmbClientCode.BackColor = System.Drawing.Color.LemonChiffon
-        Me.cmbClientCode.DisplayMember = "Country"
-        Me.cmbClientCode.DropDownHeight = 400
-        Me.cmbClientCode.DropDownWidth = 200
-        Me.cmbClientCode.Enabled = False
-        Me.cmbClientCode.FormattingEnabled = True
-        Me.cmbClientCode.IntegralHeight = False
-        Me.cmbClientCode.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
-        Me.cmbClientCode.Location = New System.Drawing.Point(92, 10)
-        Me.cmbClientCode.Name = "cmbClientCode"
-        Me.cmbClientCode.Size = New System.Drawing.Size(234, 24)
-        Me.cmbClientCode.TabIndex = 40
-        Me.cmbClientCode.ValueMember = "ID"
-        Me.cmbClientCode.Visible = False
-        '
-        'chkCode
-        '
-        Me.chkCode.AutoSize = True
-        Me.chkCode.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.chkCode.Location = New System.Drawing.Point(4, 12)
-        Me.chkCode.Name = "chkCode"
-        Me.chkCode.Size = New System.Drawing.Size(87, 21)
-        Me.chkCode.TabIndex = 45
-        Me.chkCode.Text = "Client ID"
-        Me.chkCode.UseVisualStyleBackColor = True
-        Me.chkCode.Visible = False
-        '
-        'Panel2
-        '
-        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.chkClearAll)
-        Me.Panel2.Controls.Add(Me.btnSendTestEmails)
-        Me.Panel2.Controls.Add(Me.btnSendEmails)
-        Me.Panel2.Controls.Add(Me.chkSelectAll)
-        Me.Panel2.Enabled = False
-        Me.Panel2.Location = New System.Drawing.Point(896, 8)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(501, 49)
-        Me.Panel2.TabIndex = 62
-        '
-        'chkClearAll
-        '
-        Me.chkClearAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkClearAll.AutoSize = True
-        Me.chkClearAll.BackColor = System.Drawing.Color.Transparent
-        Me.chkClearAll.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkClearAll.Location = New System.Drawing.Point(6, 27)
-        Me.chkClearAll.Name = "chkClearAll"
-        Me.chkClearAll.Size = New System.Drawing.Size(72, 17)
-        Me.chkClearAll.TabIndex = 59
-        Me.chkClearAll.Text = "Clear All"
-        Me.chkClearAll.UseVisualStyleBackColor = False
-        '
-        'btnSendTestEmails
-        '
-        Me.btnSendTestEmails.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSendTestEmails.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSendTestEmails.Location = New System.Drawing.Point(352, 6)
-        Me.btnSendTestEmails.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSendTestEmails.Name = "btnSendTestEmails"
-        Me.btnSendTestEmails.Size = New System.Drawing.Size(144, 37)
-        Me.btnSendTestEmails.TabIndex = 61
-        Me.btnSendTestEmails.Tag = ""
-        Me.btnSendTestEmails.Text = "Send Test Emails"
-        Me.btnSendTestEmails.UseVisualStyleBackColor = True
-        '
-        'btnSendEmails
-        '
-        Me.btnSendEmails.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSendEmails.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSendEmails.Location = New System.Drawing.Point(199, 6)
-        Me.btnSendEmails.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSendEmails.Name = "btnSendEmails"
-        Me.btnSendEmails.Size = New System.Drawing.Size(144, 37)
-        Me.btnSendEmails.TabIndex = 60
-        Me.btnSendEmails.Tag = ""
-        Me.btnSendEmails.Text = "Send emails to clients"
-        Me.btnSendEmails.UseVisualStyleBackColor = True
-        '
-        'chkSelectAll
-        '
-        Me.chkSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkSelectAll.AutoSize = True
-        Me.chkSelectAll.BackColor = System.Drawing.Color.Transparent
-        Me.chkSelectAll.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSelectAll.Location = New System.Drawing.Point(6, 4)
-        Me.chkSelectAll.Name = "chkSelectAll"
-        Me.chkSelectAll.Size = New System.Drawing.Size(156, 17)
-        Me.chkSelectAll.TabIndex = 58
-        Me.chkSelectAll.Text = "Select all late payment"
-        Me.chkSelectAll.UseVisualStyleBackColor = False
-        '
-        'ContextMenuStripHideColumn
-        '
-        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
-        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
-        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
-        '
-        'HideColumnToolStripMenuItem
-        '
-        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
-        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
-        '
-        'ShowAllColumnsToolStripMenuItem
-        '
-        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
-        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.ContainerControl = Me
         '
         'clID
         '
@@ -399,12 +258,153 @@ Partial Class frmStatementOfAccount
         Me.Column11.Name = "Column11"
         Me.Column11.Width = 250
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddNoteToolStripMenuItem, Me.ToolStripSeparator1, Me.ExportToExcelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.ShowImageMargin = False
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(126, 54)
+        '
+        'AddNoteToolStripMenuItem
+        '
+        Me.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem"
+        Me.AddNoteToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.AddNoteToolStripMenuItem.Text = "Add Note"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(122, 6)
+        '
+        'ExportToExcelToolStripMenuItem
+        '
+        Me.ExportToExcelToolStripMenuItem.Name = "ExportToExcelToolStripMenuItem"
+        Me.ExportToExcelToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ExportToExcelToolStripMenuItem.Text = "Export to Excel"
+        '
+        'cmbClientCode
+        '
+        Me.cmbClientCode.BackColor = System.Drawing.Color.LemonChiffon
+        Me.cmbClientCode.DisplayMember = "Country"
+        Me.cmbClientCode.DropDownHeight = 400
+        Me.cmbClientCode.DropDownWidth = 200
+        Me.cmbClientCode.Enabled = False
+        Me.cmbClientCode.FormattingEnabled = True
+        Me.cmbClientCode.IntegralHeight = False
+        Me.cmbClientCode.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
+        Me.cmbClientCode.Location = New System.Drawing.Point(92, 10)
+        Me.cmbClientCode.Name = "cmbClientCode"
+        Me.cmbClientCode.Size = New System.Drawing.Size(234, 24)
+        Me.cmbClientCode.TabIndex = 40
+        Me.cmbClientCode.ValueMember = "ID"
+        Me.cmbClientCode.Visible = False
+        '
+        'chkCode
+        '
+        Me.chkCode.AutoSize = True
+        Me.chkCode.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.chkCode.Location = New System.Drawing.Point(4, 12)
+        Me.chkCode.Name = "chkCode"
+        Me.chkCode.Size = New System.Drawing.Size(87, 21)
+        Me.chkCode.TabIndex = 45
+        Me.chkCode.Text = "Client ID"
+        Me.chkCode.UseVisualStyleBackColor = True
+        Me.chkCode.Visible = False
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.chkClearAll)
+        Me.Panel2.Controls.Add(Me.btnSendTestEmails)
+        Me.Panel2.Controls.Add(Me.btnSendEmails)
+        Me.Panel2.Controls.Add(Me.chkSelectAll)
+        Me.Panel2.Enabled = False
+        Me.Panel2.Location = New System.Drawing.Point(1061, 8)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(501, 49)
+        Me.Panel2.TabIndex = 62
+        '
+        'chkClearAll
+        '
+        Me.chkClearAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkClearAll.AutoSize = True
+        Me.chkClearAll.BackColor = System.Drawing.Color.Transparent
+        Me.chkClearAll.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkClearAll.Location = New System.Drawing.Point(6, 27)
+        Me.chkClearAll.Name = "chkClearAll"
+        Me.chkClearAll.Size = New System.Drawing.Size(72, 17)
+        Me.chkClearAll.TabIndex = 59
+        Me.chkClearAll.Text = "Clear All"
+        Me.chkClearAll.UseVisualStyleBackColor = False
+        '
+        'btnSendTestEmails
+        '
+        Me.btnSendTestEmails.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSendTestEmails.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSendTestEmails.Location = New System.Drawing.Point(352, 6)
+        Me.btnSendTestEmails.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSendTestEmails.Name = "btnSendTestEmails"
+        Me.btnSendTestEmails.Size = New System.Drawing.Size(144, 37)
+        Me.btnSendTestEmails.TabIndex = 61
+        Me.btnSendTestEmails.Tag = ""
+        Me.btnSendTestEmails.Text = "Send Test Emails"
+        Me.btnSendTestEmails.UseVisualStyleBackColor = True
+        '
+        'btnSendEmails
+        '
+        Me.btnSendEmails.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSendEmails.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSendEmails.Location = New System.Drawing.Point(199, 6)
+        Me.btnSendEmails.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSendEmails.Name = "btnSendEmails"
+        Me.btnSendEmails.Size = New System.Drawing.Size(144, 37)
+        Me.btnSendEmails.TabIndex = 60
+        Me.btnSendEmails.Tag = ""
+        Me.btnSendEmails.Text = "Send emails to clients"
+        Me.btnSendEmails.UseVisualStyleBackColor = True
+        '
+        'chkSelectAll
+        '
+        Me.chkSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkSelectAll.AutoSize = True
+        Me.chkSelectAll.BackColor = System.Drawing.Color.Transparent
+        Me.chkSelectAll.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkSelectAll.Location = New System.Drawing.Point(6, 4)
+        Me.chkSelectAll.Name = "chkSelectAll"
+        Me.chkSelectAll.Size = New System.Drawing.Size(156, 17)
+        Me.chkSelectAll.TabIndex = 58
+        Me.chkSelectAll.Text = "Select all late payment"
+        Me.chkSelectAll.UseVisualStyleBackColor = False
+        '
+        'ContextMenuStripHideColumn
+        '
+        Me.ContextMenuStripHideColumn.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HideColumnToolStripMenuItem, Me.ShowAllColumnsToolStripMenuItem})
+        Me.ContextMenuStripHideColumn.Name = "ContextMenuStripHideColumn"
+        Me.ContextMenuStripHideColumn.Size = New System.Drawing.Size(172, 48)
+        '
+        'HideColumnToolStripMenuItem
+        '
+        Me.HideColumnToolStripMenuItem.Name = "HideColumnToolStripMenuItem"
+        Me.HideColumnToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.HideColumnToolStripMenuItem.Text = "Hide Column"
+        '
+        'ShowAllColumnsToolStripMenuItem
+        '
+        Me.ShowAllColumnsToolStripMenuItem.Name = "ShowAllColumnsToolStripMenuItem"
+        Me.ShowAllColumnsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ShowAllColumnsToolStripMenuItem.Text = "Show All Columns"
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'frmStatementOfAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.ClientSize = New System.Drawing.Size(1408, 465)
+        Me.ClientSize = New System.Drawing.Size(1573, 744)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

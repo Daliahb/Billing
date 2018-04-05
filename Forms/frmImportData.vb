@@ -136,6 +136,8 @@ Public Class frmImportData
             Dim intPeriod As Integer
             Dim ExcelPath As String = filename
             Dim htNumberAlpahbit As Hashtable = GetHashtable()
+            Dim NoOfInsertedRows As Integer = 0
+
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
             worksheet = excel.Worksheets(1)
@@ -260,6 +262,7 @@ Public Class frmImportData
 
 
                                 sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dInvoiceDate & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",2," & intPeriod & "," & Margin & "," & Profit & "),")
+                                NoOfInsertedRows += 1
                             Else
                                 boolRead = False
                                 row -= 1
@@ -279,7 +282,14 @@ Public Class frmImportData
             Me.ProgressBar1.Value = 100
             excel.Workbooks.Close()
             excel.Quit()
-            boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
+
+            'if there is no data to insert, then return true
+            If NoOfInsertedRows > 0 Then
+                boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            Else
+                boolError = True
+            End If
+
 
             If boolError Then
                 Me.lblInsertAim.Enabled = True
@@ -335,6 +345,7 @@ Public Class frmImportData
             Dim ExcelPath As String = filename
             Dim intPeriod As Integer
             Dim htNumberAlpahbit As Hashtable = GetHashtable()
+            Dim NoOfInsertedRows As Integer = 0
             excel.Workbooks.Open(ExcelPath)
             excel.WindowState = Microsoft.Office.Interop.Excel.XlWindowState.xlMinimized
             worksheet = excel.Worksheets(1)
@@ -456,6 +467,7 @@ Public Class frmImportData
                                 Margin = Math.Round(CDec(Me.worksheet.Range(MarginCol & row).Value()), 3)
 
                                 sql.Append("(0," & ClientCode & "," & AreaName & "," & AreaCode & "," & TotalCharge & "," & TotalDuration & "," & dToday & "," & dFromDate & "," & dToDate & "," & lSoftware & "," & gUser.Id & ",1," & intPeriod & "," & Margin & "," & Profit & "),")
+                                NoOfInsertedRows += 1
                             Else
                                 boolRead = False
                                 row -= 1
@@ -475,7 +487,13 @@ Public Class frmImportData
             Me.ProgressBar1.Value = 100
             excel.Workbooks.Close()
             excel.Quit()
-            boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            'if there is no data to insert, then return true
+            If NoOfInsertedRows > 0 Then
+                boolError = odbaccess.ExecuteSQL(sql.ToString.Substring(0, sql.ToString.Length - 1))
+            Else
+                boolError = True
+            End If
+
 
             If boolError Then
                 '  MsgBox("Inbound data imported successfully.")
@@ -628,7 +646,7 @@ Public Class frmImportData
                 Me.cmbSoftwareID.DisplayMember = "Name"
 
                 If Not Me.cmbSoftwareID.Items.Count < 2 Then
-                    Me.cmbSoftwareID.SelectedIndex = 1
+                    Me.cmbSoftwareID.SelectedIndex = 0
                 End If
             End If
 

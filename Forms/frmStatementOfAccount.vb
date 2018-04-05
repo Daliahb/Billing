@@ -53,7 +53,10 @@
                     '   .Cells(7).Value = dr.Item("Debit")
                     Dim dblBalance As Double
                     dblBalance = (CDbl(drrrrr.Item("BeginingBalance")) + CDbl(drrrrr.Item("Purchase")) + CDbl(drrrrr.Item("ClientPayment")) + CDbl(drrrrr.Item("VouchersCredit")) - CDbl(drrrrr.Item("Invoice")) - CDbl(drrrrr.Item("MaplePayment")) - CDbl(drrrrr.Item("VouchersDebit")))
-                    getLastPaymentDate(ds.Tables(1), CInt(drrrrr.Item("fk_client")), dLastDate, dblAmount)
+                    If Not drrrrr.Item("fk_client") Is DBNull.Value Then
+                        getLastPaymentDate(ds.Tables(1), CInt(drrrrr.Item("fk_client")), dLastDate, dblAmount)
+                    End If
+
                     .Cells(9).Value = Math.Round(dblBalance, 2)
                     .Cells(10).Value = CDate(dLastDate).ToString("yyyy-MM-dd")
                     .Cells(11).Value = dblAmount
@@ -69,7 +72,10 @@
                     End If
 
                     ' .Cells(14).Value = dr.Item("isSentEmail")
-                    .Cells(15).Value = CheckNotes(CLng(drrrrr.Item("fk_client")))
+                    If Not drrrrr.Item("fk_client") Is DBNull.Value Then
+                        .Cells(15).Value = CheckNotes(CLng(drrrrr.Item("fk_client")))
+                    End If
+
                     intCounter += 1
                 End With
             Next
@@ -81,14 +87,25 @@
             dLastDate = Nothing
             dblAmount = 0
             For Each dr As DataRow In dt.Rows
-                If CInt(dr.Item("fk_client")) = lClientID Then
-                    dLastDate = CDate(dr.Item("Insert_Date")).ToString("yyyy/MM/dd")
-                    dblAmount = Math.Round(CDbl(dr.Item("Amount")), 2)
-                    If dr.Item("DataFrom").ToString = "mp" Then
-                        dblAmount = -dblAmount
+                If Not dr.Item("fk_client") Is DBNull.Value Then
+                    If CInt(dr.Item("fk_client")) = lClientID Then
+                        If Not dr.Item("Insert_Date") Is DBNull.Value Then
+                            dLastDate = CDate(dr.Item("Insert_Date")).ToString("yyyy/MM/dd")
+                        End If
+                        If Not dr.Item("Amount") Is DBNull.Value Then
+                            dblAmount = Math.Round(CDbl(dr.Item("Amount")), 2)
+                        End If
+
+                        If Not dr.Item("DataFrom") Is DBNull.Value Then
+                            If dr.Item("DataFrom").ToString = "mp" Then
+                                dblAmount = -dblAmount
+                            End If
+                        End If
+
+                        Exit For
                     End If
-                    Exit For
                 End If
+
             Next
         Catch ex As Exception
 

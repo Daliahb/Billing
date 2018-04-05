@@ -266,6 +266,7 @@
     Private Sub EditBankFeesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EditBankFeesToolStripMenuItem.Click
         Dim frm As New frmVouchers
         frm.cmbClientCode.Text = Me.DataGridView1.SelectedRows(0).Cells(2).Value.ToString
+        frm.chkClient.Checked = True
         frm.chkDate.Checked = True
         frm.dtpFromDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)
         frm.dtpToDate.Value = CDate(Me.DataGridView1.SelectedRows(0).Cells(8).Value)

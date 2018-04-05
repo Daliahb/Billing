@@ -36,6 +36,7 @@ Partial Class frmPaymentBankFees
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.PanelClientPayment.SuspendLayout()
         Me.PanelMaplePayment.SuspendLayout()
@@ -47,6 +48,7 @@ Partial Class frmPaymentBankFees
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.PanelClientPayment)
         Me.Panel1.Controls.Add(Me.PanelMaplePayment)
         Me.Panel1.Controls.Add(Me.lblFees)
@@ -134,7 +136,6 @@ Partial Class frmPaymentBankFees
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnSave.Location = New System.Drawing.Point(40, 123)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
@@ -156,6 +157,16 @@ Partial Class frmPaymentBankFees
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(166, 4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 35)
+        Me.Button1.TabIndex = 15
+        Me.Button1.Text = "Use Full Amount"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmPaymentBankFees
         '
@@ -196,5 +207,6 @@ Partial Class frmPaymentBankFees
     Friend WithEvents lblFees As System.Windows.Forms.Label
     Friend WithEvents PanelClientPayment As System.Windows.Forms.Panel
     Friend WithEvents PanelMaplePayment As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
